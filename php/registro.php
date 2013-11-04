@@ -10,8 +10,17 @@ require_once 'Swift-5.0.1/lib/swift_required.php';
 
 SendGrid::register_autoloader();
 
-
 $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
+
+$mail = new SendGrid\Mail();
+$mail->
+ 	addTo('comics.dealer@gmail.com')->
+ 	setFrom('comics.dealer@gmail.com')->
+ 	setSubject('Subject goes here')->
+ 	setText('Hello World!')->
+ 	setHtml('<strong>Hello World!</strong>');
+
+$sendgrid->smtp->send($mail);
 
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
@@ -49,15 +58,13 @@ else{
 
 	$mail = new SendGrid\Mail();
 	$mail->
-		addCategory("Registro");
-	  	addTo($usuario_email)->
-	  	setFrom('comics.dealer@gmail.com')->
-	  	setSubject('Bienvenido a Comics Dealer, tu registro esta casi completo!')->
-	  	setText('Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador ' . $cadena_activacion_completa)->
-	  	setHtml('<strong>Bienvenido</strong>');
+	 	addTo($usuario_email)->
+	 	setFrom('comics.dealer@gmail.com')->
+	 	setSubject('Bienvenido a Comics Dealer')->
+	 	setText('Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador ' . $cadena_activacion_completa)->
+	 	setHtml('<strong>Hello World!</strong>');
 
-	$sendgrid->
-		smtp->send($mail);
+  	$sendgrid->smtp->send($mail);
 
 	/*$para      = $usuario_email;
 	$titulo = 'Bienvenido a Comics Dealer';
