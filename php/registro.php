@@ -53,18 +53,7 @@ else{
 	 	setSubject('Bienvenido a Comics Dealer')->
 	 	setText('Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador ' . $cadena_activacion_completa)->
 	 	addCategory("Registro");
-
-
   	$sendgrid->smtp->send($mail);
-
-	/*$para      = $usuario_email;
-	$titulo = 'Bienvenido a Comics Dealer';
-	$mensaje = "Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador " . $cadena_activacion_completa;
-	$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: comics.dealer@gmail.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-	mail($para, $titulo, $mensaje, $cabeceras);*/
 
 	$mail = new SendGrid\Mail();
 	$mail->
@@ -72,35 +61,15 @@ else{
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
 		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
-
 	$sendgrid->smtp->send($mail);
-
-	/*$para      = 'comics.dealer@gmail.com';
-	$titulo = "Usuario nuevo registrado: $usuario_nombre";
-	$mensaje = "El usuario: $usuario_nombre se ha registrado, en espera de confirmacion de su correo.";
-	$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: comics.dealer@gmail.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();*/
-
-	mail($para, $titulo, $mensaje, $cabeceras);
 
 	$mail = new SendGrid\Mail();
 	$mail->
 		addTo('carlos.mejia.rueda@gmail.com')->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
-		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
-
+		setText('El usuario: ' . $usuario_nombre . ' se ha registrado, en espera de confirmacion de su correo.');
 	$sendgrid->smtp->send($mail);
-
-	/*$para      = 'carlos.mejia.rueda@gmail.com';
-	$titulo = "Usuario nuevo registrado: $usuario_nombre";
-	$mensaje = "El usuario: $usuario_nombre se ha registrado, en espera de confirmacion de su correo.";
-	$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: comics.dealer@gmail.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-	mail($para, $titulo, $mensaje, $cabeceras);*/
 
 	$respuestaJSON	= true;
 }

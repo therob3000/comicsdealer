@@ -2,6 +2,13 @@
 	include 'conexion.php';
 	$con = conexion();
 
+	require_once 'unirest-php-master/lib/Unirest.php';
+	require_once 'sendgrid-php-master/lib/SendGrid.php';
+	require_once 'Swift-5.0.1/lib/swift_required.php';
+
+	SendGrid::register_autoloader();
+
+	$sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
 	/*ini_set('display_errors',1); 
 	error_reporting(E_ALL);*/
@@ -30,6 +37,24 @@
 		$queryUsuario 	= "UPDATE usuarios SET usuario_max_pedidos = usuario_max_pedidos + 1 WHERE usuario_id = $usuario_id";
 
 		mysql_query($queryUsuario);
+
+		$mail = new SendGrid\Mail();
+		$mail->
+		addTo('comics.dealer@gmail.com')->
+		setFrom('comics.dealer@gmail.com')->
+		setSubject('El usuario: ' . $usuario_nombre . ' ha hecho un nuevo pedido')->
+		setText('Pedido: \n' . $texto_libre);
+		$sendgrid->smtp->send($mail);
+
+		$mail = new SendGrid\Mail();
+		$mail->
+		addTo('carlos.mejia.rueda@gmail.com')->
+		setFrom('comics.dealer@gmail.com')->
+		setSubject('El usuario: ' . $usuario_nombre . ' ha hecho un nuevo pedido')->
+		setText('Pedido: \n' . $texto_libre);
+		$sendgrid->smtp->send($mail);
+
+
 	}
 
 	else{
