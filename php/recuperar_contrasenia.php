@@ -15,14 +15,14 @@ $cadena = random_password(8);
 if (CRYPT_STD_DES == 1) {
 	$passwd 		= crypt($cadena, 'rl');
 }
-$queryUsuario	= "SELECT * FROM Usuarios WHERE usuario_email = '$usuario_email'";
+$queryUsuario	= "SELECT * FROM usuarios WHERE usuario_email = '$usuario_email'";
 //echo $queryUsuario;
 $queryResultado	= mysql_query($queryUsuario, $con);
 $num			= mysql_num_rows($queryResultado);
 
 if($num > 0){
 	$usuario_id 	= mysql_result($queryResultado, 0, "usuario_id");
-	$queryPass	   	= "UPDATE Usuarios SET usuario_password = '$passwd' WHERE usuario_id = $usuario_id";
+	$queryPass	   	= "UPDATE usuarios SET usuario_password = '$passwd' WHERE usuario_id = $usuario_id";
 	$exito			= mysql_query($queryPass);
 	//echo $exito;
 	if ($exito == true) {

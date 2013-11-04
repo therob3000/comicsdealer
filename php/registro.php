@@ -3,7 +3,25 @@
 //Conexion a la BD
 include 'conexion.php';
 $con = conexion();
-require_once 'Mail.php';
+require_once 'sendgrid-php-master/lib/SendGrid.php';
+
+$sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
+
+$mail = new SendGrid\Mail();
+$mail->
+  addTo('carlos.mejia.rueda@gmail.com')->
+  setFrom('comics.dealer@gmail.com')->
+  setSubject('Subject goes here')->
+  setText('Hello World!')->
+  setHtml('<strong>Hello World!</strong>');
+
+  $sendgrid->
+smtp->
+  send($mail);
+
+
+
+
 
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
