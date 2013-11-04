@@ -6,6 +6,14 @@ $con = conexion();
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
 
+require_once 'unirest-php-master/lib/Unirest.php';
+require_once 'sendgrid-php-master/lib/SendGrid.php';
+require_once 'Swift-5.0.1/lib/swift_required.php';
+
+SendGrid::register_autoloader();
+
+$sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
+
 $usuario_email 	= $_POST['usuario_email'];
 $respuestaJSON 	= NULL;
 $json 			= new stdClass();
@@ -26,14 +34,16 @@ if($num > 0){
 	$exito			= mysql_query($queryPass);
 	//echo $exito;
 	if ($exito == true) {
-		$para      = $usuario_email;
-		$titulo = 'Recuperacion de contraseña en Comics Dealer';
-		$mensaje = "Tu nuevo password es: " . $cadena . " te recomendamos que ingreses a tu perfil y lo cambies por alguno que puedas recordar. Gracias!";
-		$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-		'Reply-To: comics.dealer@gmail.com' . "\r\n" .
-		'X-Mailer: PHP/' . phpversion();
 
-		mail($para, $titulo, $mensaje, $cabeceras);
+		$mail = new SendGrid\Mail();
+		$mail->
+		addTo($usuario_email)->
+		setFrom('comics.dealer@gmail.com')->
+		setSubject('Recuperacion de contraseña en Comics Dealer')->
+		setText('Estimado usuario tu nuevo password es: ' . $cadena . ' te recomendamos que ingreses a tu perfil y lo cambies por alguno que puedas recordar. Gracias!')->
+		addCategory("RecuperacionPass");
+		$sendgrid->smtp->send($mail);
+
 		$respuestaJSON = true;
 	} else {
 		$respuestaJSON = false;
