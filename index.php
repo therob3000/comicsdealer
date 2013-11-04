@@ -3,7 +3,7 @@
   <head>
     <title>Comics Dealer</title>
     
-    <link href="http://comicsdealer.zapto.org/img/ComicDminiFB.jpg" rel="image_src" />
+    <link href="http://www.comicsdealer.com/img/ComicDminiFB.jpg" rel="image_src" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="comics, cómics, bootstrap, marvel, dc, televisa, vid, méxico, bootstrap">
