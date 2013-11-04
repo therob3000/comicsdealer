@@ -6,6 +6,7 @@ $con = conexion();
 
 require_once 'unirest-php-master/lib/Unirest.php';
 require_once 'sendgrid-php-master/lib/SendGrid.php';
+require_once 'Swift-5.0.1/lib/swift_required.php';
 
 SendGrid::register_autoloader();
 
