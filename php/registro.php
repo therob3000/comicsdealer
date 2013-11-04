@@ -14,15 +14,15 @@ $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
 $mail = new SendGrid\Mail();
 $mail->
-  addTo('carlos.mejia.rueda@gmail.com')->
-  setFrom('comics.dealer@gmail.com')->
-  setSubject('Subject goes here')->
-  setText('Hello World!')->
-  setHtml('<strong>Hello World!</strong>');
+	addCategory("Registro");
+  	addTo('carlos.mejia.rueda@gmail.com')->
+  	setFrom('comics.dealer@gmail.com')->
+  	setSubject('Subject goes here')->
+  	setText('Hello World!')->
+  	setHtml('<strong>Hello World!</strong>');
 
-  $sendgrid->
-	smtp->
-  		send($mail);
+$sendgrid->
+	smtp->send($mail);
 
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
