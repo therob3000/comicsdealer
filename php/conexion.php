@@ -9,11 +9,6 @@ function conexion(){
     $password = $url["pass"];
     $db = substr($url["path"],1);
 
-    
-            
-    
-    
-
 	//Definimos los parametros de conexion, host, usuario, password
 	$con = mysql_connect($server, $username, $password);
 
@@ -23,6 +18,7 @@ function conexion(){
 	}
 	//Seleccionamos la base de datos a usar
 	else{
+		echo "Funciona la pinche conexion";
 		mysql_select_db($db);
 		return($con);
 	}
