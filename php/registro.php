@@ -13,18 +13,6 @@ SendGrid::register_autoloader();
 
 $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
-$mail = new SendGrid\Mail();
-$mail->
-	addCategory("Registro");
-  	addTo('carlos.mejia.rueda@gmail.com')->
-  	setFrom('comics.dealer@gmail.com')->
-  	setSubject('Subject goes here')->
-  	setText('Hello World!')->
-  	setHtml('<strong>Hello World!</strong>');
-
-$sendgrid->
-	smtp->send($mail);
-
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
 
@@ -59,14 +47,26 @@ else{
 
 	$cadena_activacion_completa = "www.comicsdealer.com/php/activacion.php?fier=$usuario_id&codigo=$cadena_confirmacion";
 
-	$para      = $usuario_email;
+	$mail = new SendGrid\Mail();
+	$mail->
+		addCategory("Registro");
+	  	addTo($usuario_email)->
+	  	setFrom('comics.dealer@gmail.com')->
+	  	setSubject('Bienvenido a Comics Dealer, tu registro esta casi completo!')->
+	  	setText('Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador ' . $cadena_activacion_completa)->
+	  	setHtml('<strong>Bienvenido</strong>');
+
+	$sendgrid->
+		smtp->send($mail);
+
+	/*$para      = $usuario_email;
 	$titulo = 'Bienvenido a Comics Dealer';
 	$mensaje = "Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador " . $cadena_activacion_completa;
 	$cabeceras = 'From: webmaster@example.com' . "\r\n" .
     'Reply-To: comics.dealer@gmail.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-	mail($para, $titulo, $mensaje, $cabeceras);
+	mail($para, $titulo, $mensaje, $cabeceras);*/
 
 	$para      = 'comics.dealer@gmail.com';
 	$titulo = "Usuario nuevo registrado: $usuario_nombre";
