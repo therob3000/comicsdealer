@@ -3,7 +3,11 @@
 //Conexion a la BD
 include 'conexion.php';
 $con = conexion();
+
+require_once 'unirest-php-master/lib/Unirest.php';
 require_once 'sendgrid-php-master/lib/SendGrid.php';
+
+SendGrid::register_autoloader();
 
 $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
@@ -16,12 +20,8 @@ $mail->
   setHtml('<strong>Hello World!</strong>');
 
   $sendgrid->
-smtp->
-  send($mail);
-
-
-
-
+	smtp->
+  		send($mail);
 
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
