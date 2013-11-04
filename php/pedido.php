@@ -16,7 +16,7 @@
 	$respuestaJSON 	= NULL;
 	$json 			= new stdClass();
 
-	$queryInsertPedido = "INSERT INTO Pedidos VALUES ('', '$usuario_id', '$compania_id', '$personaje_id', '$texto_libre', '$pedido_lugar_entrega', '$pedido_forma_pago_id')";
+	$queryInsertPedido = "INSERT INTO pedidos VALUES ('', '$usuario_id', '$compania_id', '$personaje_id', '$texto_libre', '$pedido_lugar_entrega', '$pedido_forma_pago_id')";
 	//echo $queryInsertPedido;
 
 	$exito = mysql_query($queryInsertPedido, $con);
@@ -27,7 +27,7 @@
 		$_SESSION['usuario_max_pedidos']++;
 		//echo $_SESSION['usuario_max_pedidos'];
 		$respuestaJSON 	= true;
-		$queryUsuario 	= "UPDATE Usuarios SET usuario_max_pedidos = usuario_max_pedidos + 1 WHERE usuario_id = $usuario_id";
+		$queryUsuario 	= "UPDATE usuarios SET usuario_max_pedidos = usuario_max_pedidos + 1 WHERE usuario_id = $usuario_id";
 
 		mysql_query($queryUsuario);
 	}

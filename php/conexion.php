@@ -18,7 +18,7 @@ function conexion(){
 	}
 	//Seleccionamos la base de datos a usar
 	else{
-		echo "Funciona la pinche conexion";
+		//echo "Funciona la pinche conexion";
 		mysql_select_db($db);
 		return($con);
 	}

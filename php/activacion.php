@@ -1,8 +1,9 @@
 <?php 
 include 'conexion.php';
 $con = conexion();
-ini_set('display_errors',1); 
-	error_reporting(E_ALL);
+
+/*ini_set('display_errors',1); 
+error_reporting(E_ALL);*/
 
 $codigo_activacion 	= $_GET['codigo'];
 $usuario_id			= $_GET['fier'];
@@ -11,7 +12,7 @@ if(!$codigo_activacion || !$usuario_id){
 	$mensaje 					= "Error: Tu cadena de activacion es incorrecta";
 }
 else{
-	$queryConsultaActivacion 	= "SELECT usuario_cadena FROM Usuarios WHERE usuario_id = $usuario_id";
+	$queryConsultaActivacion 	= "SELECT usuario_cadena FROM usuarios WHERE usuario_id = $usuario_id";
 	$consulta					= mysql_query($queryConsultaActivacion, $con);
 	$num						= mysql_num_rows($consulta);
 	
@@ -19,8 +20,8 @@ else{
 		$codigo_db 					= mysql_result($consulta, 0, "usuario_cadena");
 		//echo "Cadena de activacion" . $codigo_db;
 		if($codigo_db == $codigo_activacion){
-			$queryActivacion 	= "UPDATE Usuarios SET usuario_activado = 1 WHERE usuario_id = $usuario_id";
-			$queryBorraCodigo	= "UPDATE Usuarios SET usuario_cadena = NULL WHERE usuario_id = $usuario_id";
+			$queryActivacion 	= "UPDATE usuarios SET usuario_activado = 1 WHERE usuario_id = $usuario_id";
+			$queryBorraCodigo	= "UPDATE usuarios SET usuario_cadena = NULL WHERE usuario_id = $usuario_id";
 			$query1				= mysql_query($queryActivacion);
 			$query2				= mysql_query($queryBorraCodigo);
 			$mensaje			= "Tu cuenta está activada";						

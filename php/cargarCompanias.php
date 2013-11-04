@@ -7,7 +7,7 @@
 
 	$respuestaJSON 	= array();
 
-	$queryDatos 	= "SELECT * FROM Companias";
+	$queryDatos 	= "SELECT * FROM companias";
 
 	$queryResultado = mysql_query($queryDatos); 
 	$num			= mysql_num_rows($queryResultado);

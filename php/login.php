@@ -12,7 +12,7 @@
 	$respuestaJSON		= NULL;
 	$json 				= new stdClass();
 
-	$queryLogin 	= "SELECT * FROM Usuarios WHERE usuario_email = '$usuario_email'";
+	$queryLogin 	= "SELECT * FROM usuarios WHERE usuario_email = '$usuario_email'";
 
 	$queryResultado			= mysql_query($queryLogin, $con);
 	$num					= mysql_num_rows($queryResultado);

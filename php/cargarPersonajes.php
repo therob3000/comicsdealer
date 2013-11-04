@@ -9,7 +9,7 @@
 	$compania_id 		= $_GET['compania_id'];
 	$respuestaJSON 		= array();
 
-	$queryPersonajes 	= "SELECT * FROM Personajes WHERE personaje_compania_id = $compania_id";
+	$queryPersonajes 	= "SELECT * FROM personajes WHERE personaje_compania_id = $compania_id";
 	$queryResultado		= mysql_query($queryPersonajes);
 	$num				= mysql_num_rows($queryResultado);
 

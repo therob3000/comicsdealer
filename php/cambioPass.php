@@ -12,7 +12,7 @@
 	$respuestaJSON		= NULL;
 	$json 				= new stdClass();
 
-	$queryPass			= "SELECT usuario_password FROM Usuarios WHERE usuario_id = $usuario_id";
+	$queryPass			= "SELECT usuario_password FROM usuarios WHERE usuario_id = $usuario_id";
 
 	$queryResultado 	= mysql_query($queryPass, $con);
 	$num 				= mysql_num_rows($queryResultado);
@@ -21,7 +21,7 @@
 		$dbpasswd = mysql_result($queryResultado, 0, "usuario_password");
 		if(crypt($usuario_old_pass, $dbpasswd) == $dbpasswd){
 			$passwd 			= crypt($usuario_new_pass, 'rl');
-			$queryCambioPass 	= "UPDATE Usuarios SET usuario_password = '$passwd' WHERE usuario_id = $usuario_id";
+			$queryCambioPass 	= "UPDATE usuarios SET usuario_password = '$passwd' WHERE usuario_id = $usuario_id";
 			mysql_query($queryCambioPass, $con);
 
 			$respuestaJSON = true;
