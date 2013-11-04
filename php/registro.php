@@ -12,16 +12,6 @@ SendGrid::register_autoloader();
 
 $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
-$mail = new SendGrid\Mail();
-$mail->
- 	addTo('comics.dealer@gmail.com')->
- 	setFrom('comics.dealer@gmail.com')->
- 	setSubject('Subject goes here')->
- 	setText('Hello World!')->
- 	setHtml('<strong>Hello World!</strong>');
-
-$sendgrid->smtp->send($mail);
-
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
 
@@ -61,7 +51,9 @@ else{
 	 	addTo($usuario_email)->
 	 	setFrom('comics.dealer@gmail.com')->
 	 	setSubject('Bienvenido a Comics Dealer')->
-	 	setText('Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador ' . $cadena_activacion_completa);
+	 	setText('Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador ' . $cadena_activacion_completa)->
+	 	addCategory("Registro");
+
 
   	$sendgrid->smtp->send($mail);
 
@@ -74,16 +66,34 @@ else{
 
 	mail($para, $titulo, $mensaje, $cabeceras);*/
 
-	$para      = 'comics.dealer@gmail.com';
+	$mail = new SendGrid\Mail();
+	$mail->
+		addTo('comics.dealer@gmail.com')->
+		setFrom('comics.dealer@gmail.com')->
+		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
+		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
+
+	$sendgrid->smtp->send($mail);
+
+	/*$para      = 'comics.dealer@gmail.com';
 	$titulo = "Usuario nuevo registrado: $usuario_nombre";
 	$mensaje = "El usuario: $usuario_nombre se ha registrado, en espera de confirmacion de su correo.";
 	$cabeceras = 'From: webmaster@example.com' . "\r\n" .
     'Reply-To: comics.dealer@gmail.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+    'X-Mailer: PHP/' . phpversion();*/
 
 	mail($para, $titulo, $mensaje, $cabeceras);
 
-	/*$para      = 'vladimir.1416@gmail.com';
+	$mail = new SendGrid\Mail();
+	$mail->
+		addTo('carlos.mejia.rueda@gmail.com')->
+		setFrom('comics.dealer@gmail.com')->
+		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
+		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
+
+	$sendgrid->smtp->send($mail);
+
+	/*$para      = 'carlos.mejia.rueda@gmail.com';
 	$titulo = "Usuario nuevo registrado: $usuario_nombre";
 	$mensaje = "El usuario: $usuario_nombre se ha registrado, en espera de confirmacion de su correo.";
 	$cabeceras = 'From: webmaster@example.com' . "\r\n" .
@@ -91,15 +101,6 @@ else{
     'X-Mailer: PHP/' . phpversion();
 
 	mail($para, $titulo, $mensaje, $cabeceras);*/
-
-	$para      = 'carlos.mejia.rueda@gmail.com';
-	$titulo = "Usuario nuevo registrado: $usuario_nombre";
-	$mensaje = "El usuario: $usuario_nombre se ha registrado, en espera de confirmacion de su correo.";
-	$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: comics.dealer@gmail.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-	mail($para, $titulo, $mensaje, $cabeceras);
 
 	$respuestaJSON	= true;
 }
