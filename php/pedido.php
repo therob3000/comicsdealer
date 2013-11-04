@@ -19,6 +19,7 @@
 	$texto_libre				= $_POST['texto_libre'];
 	$pedido_forma_pago_id		= $_POST['pedido_forma_pago_id'];
 	$pedido_lugar_entrega		= $_POST['lugar_entrega'];
+	
 
 	$respuestaJSON 	= NULL;
 	$json 			= new stdClass();
@@ -31,6 +32,7 @@
 	if($exito == true){
 		//echo "Se inserto correctamente el pedido";
 		session_start();
+		$usuario_nombre	= $_SESSION['usuario_nombre'];
 		$_SESSION['usuario_max_pedidos']++;
 		//echo $_SESSION['usuario_max_pedidos'];
 		$respuestaJSON 	= true;
@@ -51,7 +53,7 @@
 		addTo('carlos.mejia.rueda@gmail.com')->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('El usuario: ' . $usuario_nombre . ' ha hecho un nuevo pedido')->
-		setText('Pedido: \n' . $texto_libre);
+		setText('Pedido: ' . $texto_libre);
 		$sendgrid->smtp->send($mail);
 
 
