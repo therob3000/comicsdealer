@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cambio de datos</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="shortcut icon" href="../img/ComicDico-01.png">
+    <link href="../bootstrap/css/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
+    <script src="../bootstrap/assets/js/jquery.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/cambios.js"></script>
+    <script src="../js/login.js"></script>
+
+    <style>
+      .container {
+        background: url(../img/superman.jpg) no-repeat center center fixed;
+        background-size: cover;
+      }       
+    </style>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="container tres">
+        <div class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a align="center" href="http://www.comicsdealer.com/">
+              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
+               class="img-responsive text-center" width="207" height="26"/></a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+            <ul class="nav navbar-nav navbar-right">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Cuenta <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Historial de compras</a></li>
+                  <li><a href="Pedido.html">Pide cómics</a></li>
+                  <li class="divider"></li>
+                  <li id="cerrar_sesion"><a>Cerrar Sesión</a></li>
+                </ul>
+              
+            </ul>
+          </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+      
+      <div class="container tres">
+        <div class="jumbotron">
+          <div id="mensaje"></div>
+          <img src="../img/Cambios.svg" vspace="10" hspace="10"
+               class="img-responsive text-center" />
+            <!-- Formulario Cambio de password-->
+            <form role="form" id="cambio_pass">
+              <div class="highlight">
+                <div class="form-group" id="formpass1">
+                  <label for="Cambios">Cambio de password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Password actual" name="usuario_password" autocomplete="off">
+                </div>
+                <div class="form-group" id="formpass2">
+                  <input type="password" class="form-control" id="password1" placeholder="Nuevo password de al menos 8 caracteres" name="password1" autocomplete="off">
+                </div>
+                <div class="form-group" id="formpassnew2">
+                  <input type="password" class="form-control" id="password2" placeholder="Tu nuevo password otra vez, cómo la vez" name="password2" autocomplete="off">
+                </div>
+              
+                <p></p>
+                <p align="right">
+                  <button type="submit" class="btn btn-danger">Cambio de password</button>
+                </p>
+              </div> 
+            </form>
+            <!-- Formulario Cambio de email-->
+            <form role="form" id="cambio_email">
+              <div class="highlight">
+                <div class="form-group" id="formpass">
+                  <label for="Cambios">Cambio de E-mail</label>
+                  <div class="form-group" id="formemail">
+                  <input type="email" class="form-control" id="email" placeholder="Tu e-mail actual" name="usuario_email">
+                </div>
+                  <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password" autocomplete="off">
+                </div>
+                <div class="form-group" id="formemail">
+                  <input type="email" class="form-control" id="email" placeholder="Tu nuevo e-mail" name="usuario_emailnew">
+                </div>
+              
+                <p></p>
+                <p align="right">
+                  <button type="submit" class="btn btn-danger">Cambio de e-mail</button>
+                </p>
+              </div> 
+            </form>
+        </div>
+      </div>
+
+      <div class="container tres">
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-lg-4">
+              <h3>¿Cómo funciona?</h3>
+              <p align="justify" style="font-size: 12pt">Muy fácil, simplemente te registras con tu nombre y tu email, y luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos por ti en nuestra amplia red de contactos, cuando lo encontramos (siempre lo encontramos) te mandamos un email con el costo del cómic. Nos pagas y te lo damos... </p>
+              <p><a class="btn btn-primary" href="Como Funciona.html">Ver más detalles »</a></p>
+            </div>
+            <div class="col-lg-4">
+              <h3>¿Cómo pago?</h3>
+              <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, ©DineroMail y ©Paypal, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
+              <p><a class="btn btn-primary" href="Como Pago.html">Averigua más »</a></p>
+            </div>
+            <div class="col-lg-4">
+              <h3>Formas de entrega</h3>
+              <p align="justify" style="font-size: 12pt">Te entregamos tu pedido personalmente. Para ello tenemos una lista especifica de estaciones del Sistema de Transporte Colectivo - Metro donde podrás elegir cuál te queda más cerca...</p>
+              <p><a class="btn btn-primary" href="Formas Entrega.html">Ver la lista »</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container tres">  
+        <div class="jumbotron">
+          <blockquote style="font-size:12pt">
+            <p>"One ring to rule them all, one ring to find them, one ring the bring them all, and in the darkness bind them. In the land of Mordor where the shadows lie.” -</p>
+            <small><cite title="The Lord Of The Rings">Dark Lord Sauron</cite></small>
+          </blockquote>
+        </div>
+      </div>
+
+      <footer>
+      <p align="center" class="text-info"><strong>© Comics Dealer 2013 | Todas las imágenes aquí mostradas no nos pertenecen y no son usadas con fin de lucro | <a href="Sitemap.html"> Mapa de Sitio</a></string></p>
+    </footer>
+      
+
+          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      
+      <!-- Include all compiled plugins (below), or include individual  files as needed -->
+    </div> 
+  </body>
+</html>
