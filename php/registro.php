@@ -10,6 +10,7 @@ require_once 'Swift-5.0.1/lib/swift_required.php';
 
 SendGrid::register_autoloader();
 
+
 $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
 $mail = new SendGrid\Mail();
