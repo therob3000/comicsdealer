@@ -3,6 +3,7 @@
 //Conexion a la BD
 include 'conexion.php';
 $con = conexion();
+require_once 'Mail.php';
 
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
