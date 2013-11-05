@@ -51,7 +51,8 @@ else{
 	 	addTo($usuario_email)->
 	 	setFrom('comics.dealer@gmail.com')->
 	 	setSubject('Bienvenido a Comics Dealer')->
-	 	setText('Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en el siguiente enlace o copiandolo en tu navegador ' . $cadena_activacion_completa)->
+	 	setHtml('Hello World!');
+	 	setHtml('<strong>Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en </strong><a href="'  . $cadena_activacion_completa . '><strong>ESTE ENLACE</strong></a>')->
 	 	addCategory("Registro");
   	$sendgrid->smtp->send($mail);
 
