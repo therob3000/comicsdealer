@@ -33,12 +33,21 @@
 		//echo "Se inserto correctamente el pedido";
 		session_start();
 		$usuario_nombre	= $_SESSION['usuario_nombre'];
+		$usuario_email 	= $_SESSION['usuario_email'];
 		$_SESSION['usuario_max_pedidos']++;
 		//echo $_SESSION['usuario_max_pedidos'];
 		$respuestaJSON 	= true;
 		$queryUsuario 	= "UPDATE usuarios SET usuario_max_pedidos = usuario_max_pedidos + 1 WHERE usuario_id = $usuario_id";
 
 		mysql_query($queryUsuario);
+
+		$mail = new SendGrid\Mail();
+		$mail->
+		addTo($usuario_email)->
+		setFrom('comics.dealer@gmail.com')->
+		setSubject('Pedido Comics Dealer')->
+		setText('Estimado '. $usuario_nombre . ' hemos recibido tu pedido a la brevedad tendremos noticias sobre tu pedido, gracias!');
+		$sendgrid->smtp->send($mail);
 
 		$mail = new SendGrid\Mail();
 		$mail->
