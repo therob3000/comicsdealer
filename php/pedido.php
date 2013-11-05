@@ -45,7 +45,7 @@
 		addTo('comics.dealer@gmail.com')->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('El usuario: ' . $usuario_nombre . ' ha hecho un nuevo pedido')->
-		setText('Pedido: \n' . $texto_libre);
+		setText('Pedido: ' . $texto_libre);
 		$sendgrid->smtp->send($mail);
 
 		$mail = new SendGrid\Mail();
