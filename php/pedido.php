@@ -24,7 +24,7 @@
 	$respuestaJSON 	= NULL;
 	$json 			= new stdClass();
 
-	$queryInsertPedido = "INSERT INTO pedidos VALUES ('', '$usuario_id', '$compania_id', '$personaje_id', '$texto_libre', '$pedido_lugar_entrega', '$pedido_forma_pago_id')";
+	$queryInsertPedido = "INSERT INTO pedidos VALUES ('', '$usuario_id', '$compania_id', '$personaje_id', '$texto_libre', '$pedido_lugar_entrega', '$pedido_forma_pago_id', CURDATE(), NULL, NULL, 0)";
 	//echo $queryInsertPedido;
 
 	$exito = mysql_query($queryInsertPedido, $con);
