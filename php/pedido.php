@@ -46,7 +46,8 @@
 		addTo($usuario_email)->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('Pedido Comics Dealer')->
-		setText('Estimado '. $usuario_nombre . ' hemos recibido tu pedido a la brevedad tendremos noticias sobre tu pedido, gracias!');
+		setText('Estimado '. $usuario_nombre . ' hemos recibido tu pedido a la brevedad tendremos noticias sobre tu pedido, gracias!')->
+		addCategory("ConfirmacionPedido");
 		$sendgrid->smtp->send($mail);
 
 		$mail = new SendGrid\Mail();
