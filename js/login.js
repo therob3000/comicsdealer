@@ -7,10 +7,11 @@ $(document).ready(function(){
 function login (argument) {
 	$('#login').submit(function(e){
 		//alert($(this).serialize());
-		console.log($(this).serialize());
+		//console.log($(this).serialize());
 		$.post("../php/login.php",
 			$(this).serialize(),
 			function(data){
+				alert("funciona");
 				login = data.login;
 				if(login == true){
 					window.location.href = "/html/Pedido.html";
