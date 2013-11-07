@@ -69,8 +69,10 @@
           </div>
                   
           <p align="right">
+            <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es" data-size="large">Seguir a @ComicsDealer</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             <!--<a class="btn btn-lg btn-info">Más información</a>-->
-            <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate ya!</a>
+            <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate!</a>
           </p>
           <p align="right" class="text-muted" style="font-size: 11pt">
         <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a></p>
