@@ -12,7 +12,7 @@ function cargarPedidos(){
 				console.log(val.compania_nombre);
 
 				//$.ajaxSetup({async:false});
-				$.get("../html/layouts/historial_layout", 
+				$.get("../html/layouts/historial_layout.html", 
 					function(data) {
 						$('#historial').append(data);
 						$('#historial').find('#rowid').attr('id', i);
