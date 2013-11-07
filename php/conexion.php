@@ -1,7 +1,7 @@
 <?php
 
 //funcion para la conexion en heroku
-/*function conexion(){
+function conexion(){
 
 	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -23,10 +23,10 @@
 		mysql_select_db($db);
 		return($con);
 	}
-}*/
+}
 
 //funcion para la conexion local
-function conexion(){
+/*function conexion(){
 	//Definimos los parametros de conexion, host, usuario, password
 	$con = mysql_connect("localhost","root","root");
 
@@ -39,6 +39,6 @@ function conexion(){
 		mysql_select_db("heroku_ee0f158613570e0", $con);
 		return($con);
 	}
-}
+}*/
 
 ?>
