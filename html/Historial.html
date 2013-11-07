@@ -15,7 +15,7 @@
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/pedido.js"></script>
-    <script src="../js/login.js"></script>
+    <script src="../js/historial.js"></script>
 
     <style>
       .container {
@@ -73,24 +73,14 @@
           <!-- Table -->
           <table class="table">
             <thead>
+              <th>Numero</th>
               <th>Compañia</th>
               <th>Personaje</th>
               <th>Texto</th>
               <th>Estado</th>
             </thead>
-            <tbody>
-              <tr>
-                <td>DC</td>
-                <td>Batman</td>
-                <td>Todos los numeros de batman</td>
-                <td><span class="label label-warning">Pendiente</span></td>
-              </tr>
-              <tr>
-                <td>DC</td>
-                <td>Batman</td>
-                <td>Todos los numeros de batman</td>
-                <td><span class="label label-warning">Pendiente</span></td>
-              </tr>
+            <tbody id="historial">
+              
             </tbody>
           </table>
         </div>
