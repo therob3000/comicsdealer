@@ -3,7 +3,7 @@ var usuario_id;
 $(document).ready(function(){
 	verificaSesion();
 	validaNuevoPassword();
-	$('#cambio_email').hide();
+	cambiarCorreo();
 });
 
 function verificaSesion(){
@@ -26,8 +26,7 @@ function verificaSesion(){
 	$.ajaxSetup({async:true});
 }
 
-function validaNuevoPassword(){
-	
+function validaNuevoPassword(){	
 	$('#cambio_pass').submit(function(e){
 		$('.alert').remove();
 		password1 	= $('#password1').val();
@@ -74,5 +73,27 @@ function validaNuevoPassword(){
 		}
 		e.preventDefault();
 	});
+}
+
+function cambiarCorreo(){
+	$('#cambio_email').submit(function(e){
+		alert($(this).serialize());
+		$.post("../php/cambioCorreo.php",
+			$(this).serialize(),
+			function(data){
+				cambio_correo = data.correo;
+				alert(data.correo);
+				if (cambio_correo){
+					$('#cambio_email').hide();
+				} 
+				else{
+					alert("Algo horrible paso :(");
+				}
+			},
+			'json'
+			);
+		e.preventDefault();
+	});
+
 }
 
