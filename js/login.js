@@ -11,7 +11,6 @@ function login (argument) {
 		$.post("../php/login.php",
 			$(this).serialize(),
 			function(data){
-				alert("funciona");
 				login = data.login;
 				if(login == true){
 					window.location.href = "/html/Pedido.html";
