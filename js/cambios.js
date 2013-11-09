@@ -62,7 +62,7 @@ function validaNuevoPassword(){
 					if(cambio == true){
 						//alert("Tu contraseña ha sido cambiada con exito");
 						$('#cambio_pass').hide();
-						$('#mensaje').append('<div class="alert alert-success"><strong>La contraseña ha sido cambiada con éxito</strong></div>');
+						$('#mensajepass').append('<div class="alert alert-success"><strong>La contraseña ha sido cambiada con éxito</strong></div>');
 
 					}
 					else{
@@ -77,14 +77,17 @@ function validaNuevoPassword(){
 
 function cambiarCorreo(){
 	$('#cambio_email').submit(function(e){
-		alert($(this).serialize());
+		//alert($(this).serialize());
 		$.post("../php/cambioCorreo.php",
 			$(this).serialize(),
 			function(data){
 				cambio_correo = data.correo;
-				alert(data.correo);
+				//alert(data.correo);
 				if (cambio_correo){
 					$('#cambio_email').hide();
+					$('#mensajemail').append('<div class="alert alert-success"><strong>Tu correo ha sido cambiado con éxito</strong> te hemos enviado un correo, revisa tu bandeja de entrada y verificalo. Tu sesión se cerrara.</div>');
+					var delay = 5000; //Your delay in milliseconds
+	        		setTimeout(function(){ window.location.href = "../index.html"; }, delay);
 				} 
 				else{
 					alert("Algo horrible paso :(");

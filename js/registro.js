@@ -81,7 +81,7 @@ $(document).ready(function(){
 			$('#info').hide();
 			$('#registroContainer').append('<div class="alert alert-success"><strong>Tus datos han sido registrados</strong> te hemos enviado un correo de confirmación, revisa tu bandeja de entrada, te estamos redirigiendo a la página inicial.</div>');
 
-			var delay = 10000; //Your delay in milliseconds
+			var delay = 5000; //Your delay in milliseconds
 	        setTimeout(function(){ window.location.href = "../index.html"; }, delay);
 		}
 
