@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	login();
 	cerrar_sesion();
+	
 });
 
 function login (argument) {
@@ -10,7 +11,7 @@ function login (argument) {
 		correo 		= $('#email').val().toLowerCase();
 		password 	= $('#password').serialize();
 		cadena		= 'usuario_email=' + correo + '&' + password;
-		alert(cadena);
+		//alert(cadena);
 		$.post("../php/login.php",
 			cadena,
 			function(data){
