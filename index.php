@@ -3,11 +3,11 @@
   <head>
     <title>Comics Dealer</title>
     
-    <link href="http://www.comicsdealer.com/img/ComicDminiFB.jpg" rel="image_src" />
+    <link href="http://comicsdealer.zapto.org/img/ComicDminiFB.jpg" rel="image_src" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="comics, cómics, bootstrap, marvel, dc, televisa, vid, méxico, bootstrap">
-	<meta name="description" content="Comics Dealer se especializa en buscar y encontrar cómics en México">
+  <meta name="description" content="Comics Dealer se especializa en buscar y encontrar cómics en México">
     
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
@@ -18,6 +18,20 @@
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/login.js"></script>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-45620115-1']);
+      _gaq.push(['_setDomainName', 'comicsdealer.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
 
     <style>
       .container {
@@ -32,6 +46,14 @@
     <![endif]-->
   </head>
   <body>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <div class="container">
       <div class="container tres">
         <div class="navbar navbar-inverse">
@@ -49,10 +71,10 @@
           <div class="navbar-collapse collapse">
             <form class="navbar-form navbar-right" id="login">
               <div class="form-group">
-                <input type="email" placeholder="Email" class="form-control" name="usuario_email">
+                <input id="email" type="email" placeholder="Email" class="form-control" name="usuario_email">
               </div>
               <div class="form-group">
-                <input type="password" placeholder="Password" class="form-control" name="usuario_password">
+                <input id="password" type="password" placeholder="Password" class="form-control" name="usuario_password">
               </div>
               <button type="submit" class="btn btn-success">Sign in</button>
             </form>
@@ -69,20 +91,35 @@
           </div>
                   
           <p align="right">
-            <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es" data-size="large">Seguir a @ComicsDealer</a>
-              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             <!--<a class="btn btn-lg btn-info">Más información</a>-->
-            <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate!</a>
+            <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate ya!</a>
           </p>
-          <p align="right" class="text-muted" style="font-size: 11pt">
-        <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a></p>
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+            </div>
+            <div class="col-lg-3">
+              <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+            <div class="col-lg-2">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+            <div class="col-lg-3 col-md-offset-1">
+              <p align="right" class="text-muted" style="font-size: 11pt"> 
+            <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
+          </p>
+            </div>
+          </div>
+          
         </div>
       </div>
 
       <div class="container tres">
         <div class="jumbotron">
           <h4>¿Quiénes somos?</h4>
-          <p style="font-size: 12pt" align="justify">Somos un grupo dedicado a buscar y encontrar cómics, cómics que se encuentren en México, por ejemplo, de editorial Televisa o editorial Vid, pero también podemos encontrar cómics greengos que ronden en nuestro país. Con nuestra ayuda puedes tener todos los ejemplares que faltan en tu colección. Y para obtener los tomos que te hacen llorar por las noches hasta quedarte dormido, sólo tienes que seguir estos tres simples pasos: 
+          <p style="font-size: 12pt" align="justify">Somos un grupo dedicado a buscar y encontrar cómics, cómics que se encuentren en México, por ejemplo, de editorial Televisa o editorial Vid, pero también podemos encontrar cómics greengos que ronden en nuestro país. Con nuestra ayuda puedes tener todos los ejemplares que faltan en tu colección. Y para obtener los tomos que te hacen llorar por las noches (hasta quedarte dormido), sólo tienes que seguir estos tres simples pasos: 
           </p>
           <p class="text-default" align="center">
             <span class="label label-info">Nos preguntas por tomos »</span>
