@@ -7,7 +7,7 @@ $(document).ready(function(){
 		password2 	= $('#password2').val();
 		chars1		= password.length;
 		chars2		= password2.length;
-		email		= $('#email').val();
+		email		= $('#email').val().toLowerCase();
 		nombre		= $('#nombre').val();
 		var passwords = false;
 		//alert(existe_email);
@@ -65,7 +65,12 @@ $(document).ready(function(){
 
 		if(nombre && ver_correo == false && passwords == true){
 			//Cadena a pasar al archivo php
-			cadena = $(this).serialize();
+			cadena = $('input[name!=usuario_email]', this).serialize();
+			//alert(cadena);
+			correo = $('#email').val().toLowerCase();
+			//alert(correo);
+			cadena = cadena + '&usuario_email=' + correo;
+			//alert(cadena);
 
 			//Hacemos INSERT en la base de datos
 			$.post("../php/registro.php",

@@ -8,8 +8,12 @@ function login (argument) {
 	$('#login').submit(function(e){
 		//alert($(this).serialize());
 		//console.log($(this).serialize());
+		correo 		= $('#email').val().toLowerCase();
+		password 	= $('#password').serialize();
+		cadena		= 'usuario_email=' + correo + '&' + password;
+		//alert(cadena);
 		$.post("../php/login.php",
-			$(this).serialize(),
+			cadena,
 			function(data){
 				login = data.login;
 				if(login == true){
