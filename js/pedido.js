@@ -1,12 +1,13 @@
 var nombre;
 var email;
+var usuario_id;
 
 $(document).ready(function(){
 	verificaSesion();
 	cargarCompanias();
 	cargarPersonajes();
 	realizarPedido();
-	
+	realizarPedidoFinde();
 });
 
 function verificaSesion(){
@@ -68,7 +69,7 @@ function realizarPedido(){
 		formulario_pedido = $(this).serialize();
 		//alert(formulario_pedido);
 		cadena = formulario_pedido+"&usuario_id="+usuario_id;
-		console.log(cadena);
+		//console.log(cadena);
 		
 		$.post("../php/pedido.php",
 			cadena,
@@ -87,6 +88,25 @@ function realizarPedido(){
 	    setTimeout(function(){ window.location.href = "/html/Pedido.html"; }, delay);
 		e.preventDefault();
 	});
+}
 
+function realizarPedidoFinde(){
+	$('#pedidofinde').click(function(e){
+		cadena = "usuario_id="+usuario_id+"&compania_id=1&personaje_id=21&texto_libre=Promocion+Fin&pedido_forma_pago_id=1&lugar_entrega=No+definido";
+		//console.log(cadena);
+
+		$.post("../php/pedido.php",
+			cadena,
+			function(data){
+				if(data.pedido == true){
+					$('#pedido_form_finde').hide();
+					$('#pedido_finde').append('<div class="alert alert-success"><strong>Tus pedido ha sido registrado!</strong> la busqueda de tus cómics ha comenzado, en los próximos días recibiras un correo con el costo y la forma de pago que hayas seleccionado.</div>');
+				}
+				else{
+					alert("Algo horrendo pasó :(");
+				}
+			},
+			'json');
+	});
 }
 

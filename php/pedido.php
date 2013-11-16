@@ -13,12 +13,19 @@
 	/*ini_set('display_errors',1); 
 	error_reporting(E_ALL);*/
 
-	$usuario_id					= $_POST['usuario_id'];
+	/*$usuario_id					= $_POST['usuario_id'];
 	$compania_id				= $_POST['compania_id'];
 	$personaje_id				= $_POST['personaje_id'];
 	$texto_libre				= $_POST['texto_libre'];
 	$pedido_forma_pago_id		= $_POST['pedido_forma_pago_id'];
-	$pedido_lugar_entrega		= $_POST['lugar_entrega'];
+	$pedido_lugar_entrega		= $_POST['lugar_entrega'];*/
+
+	$usuario_id					= $_REQUEST['usuario_id'];
+	$compania_id				= $_REQUEST['compania_id'];
+	$personaje_id				= $_REQUEST['personaje_id'];
+	$texto_libre				= $_REQUEST['texto_libre'];
+	$pedido_forma_pago_id		= $_REQUEST['pedido_forma_pago_id'];
+	$pedido_lugar_entrega		= $_REQUEST['lugar_entrega'];
 	
 
 	$respuestaJSON 	= NULL;
@@ -78,8 +85,7 @@
 
 	echo json_encode($json);
 
-	
-	//compania_id=2&personaje_id=2&mensaje_web=Probando+los+espacios+en+el+textfield&pedido_forma_pago_id=1&usuario_id=5
 	//compania_id=1&personaje_id=1&texto_libre=dsadasd+dasd+sa+da+dsa+dsa&metro=Balderas&pedido_forma_pago_id=2&usuario_id=5
+	//usuario_id=132&compania_id=1&personaje_id=21&texto_libre=Promocion+Fin&pedido_forma_pago_id=1&lugar_entrega=No+definido
 ?>
 

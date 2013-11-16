@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	login();
 	cerrar_sesion();
-	
+	$('#original').hide();
 });
 
 function login (argument) {
