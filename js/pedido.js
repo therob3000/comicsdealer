@@ -77,7 +77,7 @@ function realizarPedido(){
 				//alert(data.pedido);
 				if(data.pedido == true){
 					$('#pedido').hide();
-					$('#pedido_form').append('<div class="alert alert-success"><strong>Tus pedido ha sido registrado!</strong> la busqueda de tus cómics ha comenzado, en los próximos días recibiras un correo con el costo y la forma de pago que hayas seleccionado.</div>');
+					$('#pedido_form').append('<div class="alert alert-success"><strong>Tu pedido ha sido registrado!</strong> la busqueda de tus cómics ha comenzado, en los próximos días recibiras un correo con el costo y la forma de pago que hayas seleccionado.</div>');
 				}
 				else{
 					alert("Algo horrendo pasó :(");
@@ -100,7 +100,7 @@ function realizarPedidoFinde(){
 			function(data){
 				if(data.pedido == true){
 					$('#pedido_form_finde').hide();
-					$('#pedido_finde').append('<div class="alert alert-success"><strong>Tus pedido ha sido registrado!</strong> la busqueda de tus cómics ha comenzado, en los próximos días recibiras un correo con el costo y la forma de pago que hayas seleccionado.</div>');
+					$('#pedido_finde').append('<div class="alert alert-success"><strong>Tu pedido ha sido registrado!</strong> gracias por comprar en la oferta de fin de semana en la brevedad nos pondremos en contacto contigo via e-mail.</div>');
 				}
 				else{
 					alert("Algo horrendo pasó :(");
