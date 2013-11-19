@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	login();
 	cerrar_sesion();
-	$('#original').hide();
+	//$('#original').hide();
+	$('#oferta').hide();
 });
 
 function login (argument) {
