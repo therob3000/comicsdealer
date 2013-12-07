@@ -7,8 +7,8 @@ $(document).ready(function(){
 	cargarCompanias();
 	cargarPersonajes();
 	realizarPedido();
-	//realizarPedidoFinde();
-	$('#oferta').hide();
+	realizarPedidoFinde();
+	//$('#oferta').hide();
 });
 
 function verificaSesion(){
