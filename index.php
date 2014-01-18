@@ -94,10 +94,10 @@
               <h3>Copia unica.</h3>
               <!--<h4>¡No te quedes sin la tuya!</h4>-->
                 <ul style="font-size: 11pt">
-                  <li><strong>Watchmen</strong></li><!--Esto CAMBIA hasta-->
-                  <li>DC Comics Absolute: Before Watchmen Vol. 1</li>
-                  <li>Volumen 1 de la serie Before Watchmen. Este volumen contiene: Minutemen, Silk Specter, Rorschach.</li>
-                  <li><strong>Precio de portada $239.00</strong></li><!--Aquí según el comic-->
+                  <li><strong>Superman</strong></li><!--Esto CAMBIA hasta-->
+                  <li>DC Comics Definitive Edition: Superman Tierra Uno</li>
+                  <li>Superman Tierra Uno nos deja ver una prespectiva mas realista del Universo DC. En este volumen se narran los origenes de Superman y el dilema causado por sus super poderes. En general un volumen que no puede faltar en tu colección.</li>
+                  <li><strong>Precio de portada $119.00</strong></li><!--Aquí según el comic-->
                 </ul>
               <p align="right">
             <!--<a class="btn btn-lg btn-info">Más información</a>-->
