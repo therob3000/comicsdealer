@@ -55,8 +55,7 @@
 		addTo($usuario_email)->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('Pedido Comics Dealer')->
-		//setText('Estimado '. $usuario_nombre . ' hemos recibido tu pedido a la brevedad tendremos noticias sobre tu pedido, gracias!')->
-		setHtml('<div><p>Estimado <strong>'. $usuario_nombre . '</strong> hemos recibido tu pedido, la busqueda de tu(s) comics ha comenzado.</p></div><div><p>Tendras noticias sobre tu pedido el proximo: <strong>' . $proximoSabado . '</strong></p></div><div>Gracias y recuerda que toda la comunicacion sera por correo electronico.</div>')->
+		setHtml('<div><p>Estimado <strong>'. $usuario_nombre . '</strong> hemos recibido tu pedido, la busqueda de tu(s) comics ha comenzado.</p></div><div><p>Tendras noticias sobre tu pedido el proximo: <strong>' . $proximoSabado . '</strong></p></div><div><p>Gracias y recuerda que toda la comunicacion sera por correo electronico.</p></div>')->
 		addCategory("ConfirmacionPedido");
 		$sendgrid->smtp->send($mail);
 
@@ -65,7 +64,7 @@
 		addTo('comics.dealer@gmail.com')->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('El usuario: ' . $usuario_nombre . ' ha hecho un nuevo pedido')->
-		setText('Pedido: ' . $texto_libre);
+		setHtml('<div><p>Pedido: ' . $texto_libre . '</p></div><div><p>Correo del Usuario: ' . $usuario_email . '</div></p><div><p>Fecha noticias de pedido: '. $proximoSabado . '</div></p>' );
 		$sendgrid->smtp->send($mail);
 
 		$mail = new SendGrid\Mail();
@@ -73,9 +72,16 @@
 		addTo('carlos.mejia.rueda@gmail.com')->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('El usuario: ' . $usuario_nombre . ' ha hecho un nuevo pedido')->
-		setText('Pedido: ' . $texto_libre);
+		setHtml('<div><p>Pedido: ' . $texto_libre . '</p></div><div><p>Correo del Usuario: ' . $usuario_email . '</div></p><div><p>Fecha noticias de pedido: '. $proximoSabado . '</div></p>' );
 		$sendgrid->smtp->send($mail);
 
+		$mail = new SendGrid\Mail();
+		$mail->
+		addTo('vladimir.1416@gmail.com')->
+		setFrom('comics.dealer@gmail.com')->
+		setSubject('El usuario: ' . $usuario_nombre . ' ha hecho un nuevo pedido')->
+		setHtml('<div><p>Pedido: ' . $texto_libre . '</p></div><div><p>Correo del Usuario: ' . $usuario_email . '</div></p><div><p>Fecha noticias de pedido: '. $proximoSabado . '</div></p>' );
+		$sendgrid->smtp->send($mail);
 
 	}
 
