@@ -1,5 +1,6 @@
 <?php
 	include 'conexion.php';
+	include 'fecha.php';
 	$con = conexion();
 
 	require_once 'unirest-php-master/lib/Unirest.php';
@@ -47,13 +48,15 @@
 		$queryUsuario 	= "UPDATE usuarios SET usuario_max_pedidos = usuario_max_pedidos + 1 WHERE usuario_id = $usuario_id";
 
 		mysql_query($queryUsuario);
+		$proximoSabado = obtenerProximoSabado();
 
 		$mail = new SendGrid\Mail();
 		$mail->
 		addTo($usuario_email)->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('Pedido Comics Dealer')->
-		setText('Estimado '. $usuario_nombre . ' hemos recibido tu pedido a la brevedad tendremos noticias sobre tu pedido, gracias!')->
+		//setText('Estimado '. $usuario_nombre . ' hemos recibido tu pedido a la brevedad tendremos noticias sobre tu pedido, gracias!')->
+		setHtml('<div><p>Estimado <strong>'. $usuario_nombre . '</strong> hemos recibido tu pedido, la busqueda de tu(s) comics ha comenzado.</p></div><div><p>Tendras noticias sobre tu pedido el proximo: <strong>' . $proximoSabado . '</strong></p></div><div>Gracias y recuerda que toda la comunicacion sera por correo electronico.</div>')->
 		addCategory("ConfirmacionPedido");
 		$sendgrid->smtp->send($mail);
 
