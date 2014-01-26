@@ -1,238 +1,265 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bienvenido</title>
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Bootstrap -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="shortcut icon" href="../img/ComicDico-01.png">
-    <link href="../bootstrap/css/navbar.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
-    <script src="../bootstrap/assets/js/jquery.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/pedido.js"></script>
-    <script src="../js/login.js"></script>
+<head>
+  <title>Bienvenido</title>
 
-    <style>
-      .container {
-        background: url(../img/spiderman.jpg) no-repeat center center fixed;
-        background-size: cover;
-      }       
-    </style>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link rel="shortcut icon" href="../img/ComicDico-01.png">
+  <link href="../bootstrap/css/navbar.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
+  <script src="../bootstrap/assets/js/jquery.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/pedido.js"></script>
+  <script src="../js/login.js"></script>
+
+  <style>
+    .container {
+      background: url(../img/spiderman.jpg) no-repeat center center fixed;
+      background-size: cover;
+    }       
+  </style>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+      <![endif]-->
+    </head>
+    <body>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     </script>
-   <div class="container">
-    <div class="container tres">
-      <div class="navbar navbar-inverse">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="http://www.comicsdealer.com/html/Pedido.html">
-            <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-             class="img-responsive text-center" width="207" height="26"/></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-          <ul class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Cuenta <span class="caret"></span></button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="Historial.html">Historial de compras</a></li>
-                <li><a href="Cambios.html">Cambia tu información</a></li>
-                <li class="divider"></li>
-                <li id="cerrar_sesion"><a>Cerrar Sesión</a></li>
-              </ul>
-            
-          </ul>
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
-    <div class="container tres" id="oferta"><!--ESto es lo NUEVO-->
-    <div class="jumbotron" id="pedido_finde">
-    <div id="pedido_form_finde">
-      <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6" align="center">
-              <img class="img-responsive" style="width:100%; max-width: 300px; height:100%; max-height:600px" width="207" height="26" src="../img/kingdomcome.jpg">
+    <div class="container">
+      <div class="container tres">
+        <div class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.comicsdealer.com/html/Pedido.html">
+              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
+              class="img-responsive text-center" width="207" height="26"/></a>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <h2>¡OFERTA DE <strong>FIN DE SEMANA</strong>!</h2>
-              <h3>VARIAS COPIAS</h3>
-              <!--<h4>¡No te quedes sin la tuya!</h4>-->
-                <ul style="font-size: 11pt">
-                  <li><strong>Tomo de pasta dura DC</strong></li><!--Esto CAMBIA hasta-->
-                  <li>DC Comics Presenta: Kingdom Come</li>
-                  <li>Kingdome Come narra la historia de un mundo donde los superheroes hacen justicia por su propia cuenta sin tomar en cuenta como afectara esto al resto de los habitantes que dicen proteger. Tras estos hechos, superheroes retirados como Wonder Woman, Batman y Superman se ven obligados a regresar para poner orden en todo este caos.</li>
-                  <li><strike><strong>Precio de portada $349</strong></strike></li><!--Aquí según el comic-->
-                  <li><strong>PRECIO DE OFERTA $300</strong></li>
+            <div class="navbar-collapse collapse">
+              <form class="navbar-form navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Cuenta <span class="caret"></span></button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="Historial.html">Historial de compras</a></li>
+                    <li><a href="Cambios.html">Cambia tu información</a></li>
+                    <li class="divider"></li>
+                    <li id="cerrar_sesion"><a>Cerrar Sesión</a></li>
+                  </ul>
+
                 </ul>
-              <p align="right">
-            <!--<a class="btn btn-lg btn-info">Más información</a>-->
-            <a class="btn btn-lg btn-success" id="pedidofinde">Comprar!</a>
-          </p>
+              </form>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+
+        <div class="container tres" id="oferta"><!--ESto es lo NUEVO-->
+          <div class="jumbotron" id="pedido_finde">
+            <div id="pedido_form_finde">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6" align="center">
+                  <img class="img-responsive" style="width:100%; max-width: 300px; height:100%; max-height:600px" width="207" height="26" src="../img/kingdomcome.jpg">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <h2>¡OFERTA DE <strong>FIN DE SEMANA</strong>!</h2>
+                  <h3>VARIAS COPIAS</h3>
+                  <!--<h4>¡No te quedes sin la tuya!</h4>-->
+                  <ul style="font-size: 11pt">
+                    <li><strong>Tomo de pasta dura DC</strong></li><!--Esto CAMBIA hasta-->
+                    <li>DC Comics Presenta: Kingdom Come</li>
+                    <li>Kingdome Come narra la historia de un mundo donde los superheroes hacen justicia por su propia cuenta sin tomar en cuenta como afectara esto al resto de los habitantes que dicen proteger. Tras estos hechos, superheroes retirados como Wonder Woman, Batman y Superman se ven obligados a regresar para poner orden en todo este caos.</li>
+                    <li><strike><strong>Precio de portada $349</strong></strike></li><!--Aquí según el comic-->
+                    <li><strong>PRECIO DE OFERTA $300</strong></li>
+                  </ul>
+                  <p align="right">
+                    <!--<a class="btn btn-lg btn-info">Más información</a>-->
+                    <a class="btn btn-lg btn-success" id="pedidofinde">Comprar!</a>
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+                <div class="col-lg-3">
+                  <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
+                  <script>
+                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                  </script>
+                </div>
+                <div class="col-lg-2">
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="¡Oferta de fin de semana!" data-via="ComicsDealer" data-lang="es">Twittear</a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
+              </div>
             </div>
           </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-        </div>
-        <div class="col-lg-3">
-          <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
-          <script>
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-          </script>
-        </div>
-        <div class="col-lg-2">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="¡Oferta de fin de semana!" data-via="ComicsDealer" data-lang="es">Twittear</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div><!--Aquí se acaba lo NUEVO-->
-    
-    <div class="container tres">
-      <div class="jumbotron" id="pedido_form">
-        <img src="../img/Bienvenido.svg" vspace="10" hspace="10"
-             class="img-responsive text-center" />
-        <h2 id="usuario"></h2>
-          Listo para pedir cómics?
+        </div><!--Aquí se acaba lo NUEVO-->
 
-          <form role="form" id="pedido">
-            <div class="highlight">
-              
+        <div class="container tres">
+          <div class="jumbotron" id="pedido_form">
+            <img src="../img/Bienvenido.svg" vspace="10" hspace="10"
+            class="img-responsive text-center" />
+            <h2 id="usuario"></h2>
+            Listo para pedir cómics?
+
+            <form role="form" id="pedido">
+              <div class="highlight">
+
                 <div class="form-group">
                   <label for="Pedido">Selecciona la compañía</label>
-                    <select class="form-control" name="compania_id" id="compania">
-                                        
-                    </select>
+                  <select class="form-control" name="compania_id" id="compania">
+
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="Pedido">Selecciona el personaje</label>
-                    <select class="form-control" name="personaje_id" id="personaje">
-                      <option selected>Primero selecciona una compañia</option>            
-                    </select>
+                  <select class="form-control" name="personaje_id" id="personaje">
+                    <option selected>Primero selecciona una compañia</option>            
+                  </select>
                 </div>
                 <div class="form-group">
-                    <label for="Pedido">Ahora dinos qué serie y qué tomos estás buscando</label>
-                    <div>
-                      <textarea class="form-control" rows="3" name="texto_libre" placeholder="Un par de buenos ejemplos serían: ''Monster Edition: The Avengers Versus The x-Men'', o bien ''Ultimate Comics: #11''"></textarea>
-                    </div>
+                  <label for="Pedido">Ahora dinos qué serie y qué tomos estás buscando</label>
+                  <div>
+                    <textarea id="textolibre" class="form-control" rows="3" name="texto_libre" placeholder="Un par de buenos ejemplos serían: ''Monster Edition: The Avengers Versus The x-Men'', o bien ''Ultimate Comics: #11''"></textarea>
+                  </div>
                 </div> 
-              
-            </div>
-            <div class="highlight">
-              <p></p>
-              <div class="form-group">
-                  <label for="Pedido">Selecciona una estación de Metro</label>
-                    <select class="form-control" name="lugar_entrega" >
-                      <option selected>Elige un lugar de entrega</option>
-                      <option>18 de Marzo</option>
-                      <option>Balderas</option>
-                      <option>Bellas Artes</option>
-                      <option>Centro Médico</option>
-                      <option>Chabacano</option>
-                      <option>Ermita</option>
-                      <option>Guerrero</option>
-                      <option>Hidalgo</option>
-                      <option>La Raza</option>
-                      <option>Pino Suarez</option>
-                      <option>Santa Anita</option>
-                      <option>Tacuba</option>
-                      <option>Envio a Estado de la Republica</option>
-                      <option>Envio Local (Distrito Federal)</option>
-                    </select>
-                </div>
-              <div class="row">
-                <div class="form-group"><label for="Pedido"></label>
-                  <div class="col-md-6">
-                    <p align="justify" style="font-size: 12pt">Recuerda que no pagas hasta que te mandemos un correo confirmando que encontramos tu pedido y cuánto te costará.</p></div>
-                  <div class="col-md-3">
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="pedido_forma_pago_id" id="pago1" value="1" checked="">
-                        <img src="../img/paypal.png"class="img-responsive text-center" width="100" height="31">
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="pedido_forma_pago_id" id="pago2" value="2">
-                        <img src="../img/DineroMail-by-PAYU-logo.png" class="img-responsive text-center" width="114" height="30">
-                      </label>
-                    </div>
-                  </div>
-                </div>  
-              </div>
-              <p align="right"><button type="submit" class="btn btn-lg btn-success">Realizar pedido</button></p>
-            </div>
-            <div class="highlight">
-              <div class=" alert alert-info">
-                <p align="justify" style="font-size: 14pt" >
-                <strong>Nota: </strong>Al hacer tu pedido recibiras un <strong>CORREO ELECTRONICO</strong> en la direccion que hayas registrado. En este <strong>CORREO ELECTRONICO</strong> te daremos la fecha en la que recibiras noticias sobre tu <strong>PEDIDO.</strong> Una vez que decidas si te conviene o no el costo del pedido, tienes un maximo de <strong>5 dias</strong> para contestar, de lo contrario <strong>daremos por cancelado tu pedido</strong>. Gracias!.
-                </p>
-              </div>
-            </div>
-          </form>
-      </div>
-    </div>
 
-    <div class="container tres">
-      <div class="jumbotron">
-        <div class="row">
-          <div class="col-lg-4">
-            <h3>¿Cómo funciona?</h3>
-            <p align="justify" style="font-size: 12pt">Muy fácil, simplemente te registras con tu nombre y tu email, y luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos por ti en nuestra amplia red de contactos, cuando lo encontramos (siempre lo encontramos) te mandamos un email con el costo del cómic. Nos pagas y te lo damos... </p>
-            <p><a class="btn btn-primary" href="Como Funciona.html">Ver más detalles »</a></p>
+              </div>
+              <div class="highlight">
+                <p></p>
+                <div class="form-group">
+                  <label for="Pedido">Selecciona una estación de Metro</label>
+                  <select class="form-control" name="lugar_entrega" id="lugarEntrega" >
+                    <option selected>Elige un lugar de entrega</option>
+                    <option>18 de Marzo</option>
+                    <option>Balderas</option>
+                    <option>Bellas Artes</option>
+                    <option>Centro Médico</option>
+                    <option>Chabacano</option>
+                    <option>Ermita</option>
+                    <option>Guerrero</option>
+                    <option>Hidalgo</option>
+                    <option>La Raza</option>
+                    <option>Pino Suarez</option>
+                    <option>Santa Anita</option>
+                    <option>Tacuba</option>
+                    <option>Envio a Estado de la Republica</option>
+                    <option>Envio Local (Distrito Federal)</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <div class="form-group"><label for="Pedido"></label>
+                    <div class="col-md-6">
+                      <p align="justify" style="font-size: 12pt">Recuerda que no pagas hasta que te mandemos un correo confirmando que encontramos tu pedido y cuánto te costará.</p></div>
+                      <div class="col-md-3">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="pedido_forma_pago_id" id="pago1" value="1" checked="">
+                            <img src="../img/paypal.png"class="img-responsive text-center" width="100" height="31">
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="radio" id="f">
+                          <label>
+                            <input type="radio" name="pedido_forma_pago_id" id="pago2" value="2">
+                            <img src="../img/DineroMail-by-PAYU-logo.png" class="img-responsive text-center" width="114" height="30">
+                          </label>
+                        </div>
+                      </div>
+                    </div>  
+                  </div>
+                  <p align="right"><button type="submit" class="btn btn-lg btn-success">Realizar pedido</button></p>
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="col-lg-4">
-            <h3>¿Cómo pago?</h3>
-            <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, ©DineroMail y ©Paypal, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
-            <p><a class="btn btn-primary" href="Como Pago.html">Averigua más »</a></p>
+
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Comics Dealer</h4>
+                </div>
+                <div class="modal-body">
+                  
+
+                  <p>Gracias por tu pedido! La busqueda de tu(s) comics ha iniciado!</p>
+                  <p id="personajeModal"></p>
+                  <p id="textoModal"></p>
+                  <p id="lugarEntregaModal"></p>
+                  <p>Te hemos enviado un correo a: </p>
+                  <p id="correo"></p>
+                  <p>En este correo te indicamos la fecha en que tendremos informes sobre tu pedido, por favor revisa tu correo en esa fecha.</p>
+                </div>
+                <div class="modal-footer navbar-inverse">
+                  <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
+              class="img-responsive text-center" width="207" height="26"/>
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModal">Close</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <div class="container tres">
+            <div class="jumbotron">
+              <div class="row">
+                <div class="col-lg-4">
+                  <h3>¿Cómo funciona?</h3>
+                  <p align="justify" style="font-size: 12pt">Muy fácil, simplemente te registras con tu nombre y tu email, y luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos por ti en nuestra amplia red de contactos, cuando lo encontramos (siempre lo encontramos) te mandamos un email con el costo del cómic. Nos pagas y te lo damos... </p>
+                  <p><a class="btn btn-primary" href="Como Funciona.html">Ver más detalles »</a></p>
+                </div>
+                <div class="col-lg-4">
+                  <h3>¿Cómo pago?</h3>
+                  <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, ©DineroMail y ©Paypal, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
+                  <p><a class="btn btn-primary" href="Como Pago.html">Averigua más »</a></p>
+                </div>
+                <div class="col-lg-4">
+                  <h3>Formas de entrega</h3>
+                  <p align="justify" style="font-size: 12pt">Te entregamos tu pedido personalmente. Para ello tenemos una lista especifica de estaciones del Sistema de Transporte Colectivo - Metro donde podrás elegir cuál te queda más cerca...</p>
+                  <p><a class="btn btn-primary" href="Formas Entrega.html">Ver la lista »</a></p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-4">
-            <h3>Formas de entrega</h3>
-            <p align="justify" style="font-size: 12pt">Te entregamos tu pedido personalmente. Para ello tenemos una lista especifica de estaciones del Sistema de Transporte Colectivo - Metro donde podrás elegir cuál te queda más cerca...</p>
-            <p><a class="btn btn-primary" href="Formas Entrega.html">Ver la lista »</a></p>
+
+          <div class="container tres">  
+            <div class="jumbotron">
+              <blockquote style="font-size:12pt">
+                <p>"...do or do not, there is no try"</p>
+                <small><cite title="The Empire Strikes Back">Master Yoda</cite></small>
+              </blockquote>
+            </div>
+          </div>
+
+          <footer>
+            <p align="center" class="text-info"><strong>© Comics Dealer 2013 | Todas las imágenes aquí mostradas no nos pertenecen y no son usadas con fin de lucro | <a href="Sitemap.html"> Mapa de Sitio</a></string></p>
+          </footer>
+        </div>  
+        <div class="highlight">
+          <div class=" alert alert-info">
+            <p align="justify" style="font-size: 14pt" >
+              <strong>Nota: </strong>Al hacer tu pedido recibiras un <strong>CORREO ELECTRONICO</strong> en la direccion que hayas registrado. En este <strong>CORREO ELECTRONICO</strong> te daremos la fecha en la que recibiras noticias sobre tu <strong>PEDIDO.</strong> Una vez que decidas si te conviene o no el costo del pedido, tienes un maximo de <strong>5 dias</strong> para contestar, de lo contrario <strong>daremos por cancelado tu pedido</strong>. Gracias!.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="container tres">  
-      <div class="jumbotron">
-        <blockquote style="font-size:12pt">
-          <p>"...do or do not, there is no try"</p>
-          <small><cite title="The Empire Strikes Back">Master Yoda</cite></small>
-        </blockquote>
-      </div>
-    </div>
-
-    <footer>
-      <p align="center" class="text-info"><strong>© Comics Dealer 2013 | Todas las imágenes aquí mostradas no nos pertenecen y no son usadas con fin de lucro | <a href="Sitemap.html"> Mapa de Sitio</a></string></p>
-    </footer>
-   </div>   
-  </body>
-</html>
+      </body>
+      </html>

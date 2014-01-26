@@ -66,7 +66,12 @@ function cargarPersonajes(){
 }
 
 function realizarPedido(){
+	var exito = false;
 	$('#pedido').submit(function(e){
+		personaje = $(this).find("#personaje option:selected").html();
+		texto = $(this).find("#textolibre").val();
+		lugar = $(this).find("#lugarEntrega option:selected").html();
+
 		formulario_pedido = $(this).serialize();
 		//alert(formulario_pedido);
 		cadena = formulario_pedido+"&usuario_id="+usuario_id;
@@ -77,16 +82,23 @@ function realizarPedido(){
 			function(data){
 				//alert(data.pedido);
 				if(data.pedido == true){
-					$('#pedido').hide();
-					$('#pedido_form').append('<div class="alert alert-success"><strong>Tu pedido ha sido registrado!</strong> la busqueda de tus cómics ha comenzado, en los próximos días recibiras un correo con el costo y la forma de pago que hayas seleccionado.</div>');
+					$('#myModal').find("#personajeModal").html("<strong>Personaje: </strong>"+personaje);
+					$('#myModal').find("#textoModal").html("<strong>Descripcion: </strong>"+texto);
+					$('#myModal').find("#lugarEntregaModal").html("<strong>Lugar de Entrega: </strong>"+lugar);
+					$('#myModal').find("#correo").html("<strong>"+usuario_correo+"</strong>");
+
+					$('#myModal').modal('show');
+					aceptarCompra();
+					
 				}
 				else{
 					alert("Algo horrendo pasó :(");
 				}
 			},
 			'json');
-		var delay = 3000; //Your delay in milliseconds
-	    setTimeout(function(){ window.location.href = "/html/Pedido.html"; }, delay);
+		
+		//var delay = 3000; //Your delay in milliseconds
+	    //setTimeout(function(){ window.location.href = "/html/Pedido.html"; }, delay);
 		e.preventDefault();
 	});
 }
@@ -111,3 +123,8 @@ function realizarPedidoFinde(){
 	});
 }
 
+function aceptarCompra(){
+	$('#cerrarModal').click(function(){
+		window.location.href = "/html/Pedido.html";
+	});
+}
