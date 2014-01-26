@@ -67,3 +67,12 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.modal-backdrop.fade {
+opacity: 0;
+filter: alpha(opacity=0);
+}
+.modal-backdrop.fade.in {
+opacity: 0.5;
+filter: alpha(opacity=50);
+}
