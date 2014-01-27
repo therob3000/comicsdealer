@@ -1,5 +1,7 @@
 <?php
 
+determinaFindeSemana();
+
 function obtenerProximoSabado(){
 	date_default_timezone_set('America/Mexico_City');
 	$diaProximoSabado = date('j', strtotime('next Saturday'));
