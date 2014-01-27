@@ -5,12 +5,10 @@ var usuario_id;
 $(document).ready(function(){
 	cargarPromocionFinDeSemana('pedidos');
 	verificaSesion();
-
 	cargarCompanias();
 	cargarPersonajes();
 	realizarPedido();
 	realizarPedidoFinde();
-	//$('#oferta').hide();
 });
 
 function verificaSesion(){
@@ -80,7 +78,7 @@ function realizarPedido(){
 		$.post("../php/pedido.php",
 			cadena,
 			function(data){
-				//alert(data.pedido);
+				
 				if(data.pedido == true){
 					$('#myModal').find("#personajeModal").html("<strong>Personaje: </strong>"+personaje);
 					$('#myModal').find("#textoModal").html("<strong>Descripcion: </strong>"+texto);
