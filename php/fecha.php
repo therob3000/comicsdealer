@@ -51,4 +51,13 @@ function obtenerProximoSabado(){
 	return $fechaProximoSabado;
 }
 
+function determinaFindeSemana(){
+	date_default_timezone_set('America/Mexico_City');
+	$diaActual = date('l', strtotime('now'));
+
+	if($diaActual == 'Friday' || $diaActual == 'Saturday' || $diaActual == 'Sunday'){
+		return TRUE;
+	}
+}
+
 ?>

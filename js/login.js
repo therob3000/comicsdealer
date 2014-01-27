@@ -1,18 +1,14 @@
 $(document).ready(function(){
 	login();
 	cerrar_sesion();
-	$('#original').hide();
-	//$('#oferta').hide();
+	cargarPromocionFinDeSemana('index');
 });
 
-function login (argument) {
+function login () {
 	$('#login').submit(function(e){
-		//alert($(this).serialize());
-		//console.log($(this).serialize());
 		correo 		= $('#email').val().toLowerCase();
 		password 	= $('#password').serialize();
 		cadena		= 'usuario_email=' + correo + '&' + password;
-		//alert(cadena);
 		$.post("../php/login.php",
 			cadena,
 			function(data){

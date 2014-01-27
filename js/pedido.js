@@ -3,7 +3,9 @@ var email;
 var usuario_id;
 
 $(document).ready(function(){
+	cargarPromocionFinDeSemana('pedidos');
 	verificaSesion();
+
 	cargarCompanias();
 	cargarPersonajes();
 	realizarPedido();
@@ -73,9 +75,7 @@ function realizarPedido(){
 		lugar = $(this).find("#lugarEntrega option:selected").html();
 
 		formulario_pedido = $(this).serialize();
-		//alert(formulario_pedido);
 		cadena = formulario_pedido+"&usuario_id="+usuario_id;
-		//console.log(cadena);
 		
 		$.post("../php/pedido.php",
 			cadena,
@@ -97,8 +97,6 @@ function realizarPedido(){
 			},
 			'json');
 		
-		//var delay = 3000; //Your delay in milliseconds
-	    //setTimeout(function(){ window.location.href = "/html/Pedido.html"; }, delay);
 		e.preventDefault();
 	});
 }

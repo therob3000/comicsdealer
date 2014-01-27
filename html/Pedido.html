@@ -14,8 +14,8 @@
   <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
   <script src="../bootstrap/assets/js/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/promocion_index.js"></script>
   <script src="../js/pedido.js"></script>
-  <script src="../js/login.js"></script>
 
   <style>
     .container {
@@ -69,48 +69,35 @@
           </div>
         </div>
 
-        <div class="container tres" id="oferta"><!--ESto es lo NUEVO-->
-          <div class="jumbotron" id="pedido_finde">
-            <div id="pedido_form_finde">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6" align="center">
-                  <img class="img-responsive" style="width:100%; max-width: 300px; height:100%; max-height:600px" width="207" height="26" src="../img/kingdomcome.jpg">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                  <h2>¡OFERTA DE <strong>FIN DE SEMANA</strong>!</h2>
-                  <h3>VARIAS COPIAS</h3>
-                  <!--<h4>¡No te quedes sin la tuya!</h4>-->
-                  <ul style="font-size: 11pt">
-                    <li><strong>Tomo de pasta dura DC</strong></li><!--Esto CAMBIA hasta-->
-                    <li>DC Comics Presenta: Kingdom Come</li>
-                    <li>Kingdome Come narra la historia de un mundo donde los superheroes hacen justicia por su propia cuenta sin tomar en cuenta como afectara esto al resto de los habitantes que dicen proteger. Tras estos hechos, superheroes retirados como Wonder Woman, Batman y Superman se ven obligados a regresar para poner orden en todo este caos.</li>
-                    <li><strike><strong>Precio de portada $349</strong></strike></li><!--Aquí según el comic-->
-                    <li><strong>PRECIO DE OFERTA $300</strong></li>
-                  </ul>
-                  <p align="right">
-                    <!--<a class="btn btn-lg btn-info">Más información</a>-->
-                    <a class="btn btn-lg btn-success" id="pedidofinde">Comprar!</a>
-                  </p>
-                </div>
+        <div class="container tres" id="promocion"><!--ESto es lo NUEVO-->
+          <div class="jumbotron">
+            <div id="layout"></div>
+            <div class="row"><p align="right">
+              <!--<a class="btn btn-lg btn-info">Más información</a>-->
+              <a class="btn btn-lg btn-success" id="pedidofinde">Comprar!</a>
+            </p></div>
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
               </div>
-              <div class="row">
-                <div class="col-lg-3">
-                  <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                </div>
-                <div class="col-lg-3">
-                  <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
-                  <script>
-                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-                  </script>
-                </div>
-                <div class="col-lg-2">
-                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="¡Oferta de fin de semana!" data-via="ComicsDealer" data-lang="es">Twittear</a>
-                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                </div>
+
+              <div class="col-lg-3">
+                <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
+                <script>
+                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                </script>
               </div>
+
+              <div class="col-lg-2">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="¡Oferta de fin de semana!" data-via="ComicsDealer" data-lang="es">Twittear</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              </div>
+
             </div>
+
           </div>
-        </div><!--Aquí se acaba lo NUEVO-->
+        </div>
+        <!--Aquí se acaba lo NUEVO-->
 
         <div class="container tres">
           <div class="jumbotron" id="pedido_form">
@@ -192,32 +179,7 @@
             </div>
           </div>
 
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel">Comics Dealer</h4>
-                </div>
-                <div class="modal-body">
-                  
-
-                  <p>Gracias por tu pedido! La busqueda de tu(s) comics ha iniciado!</p>
-                  <p id="personajeModal"></p>
-                  <p id="textoModal"></p>
-                  <p id="lugarEntregaModal"></p>
-                  <p>Te hemos enviado un correo a: </p>
-                  <p id="correo"></p>
-                  <p>En este correo te indicamos la fecha en que tendremos informes sobre tu pedido, por favor revisa tu correo en esa fecha.</p>
-                </div>
-                <div class="modal-footer navbar-inverse">
-                  <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-              class="img-responsive text-center" width="207" height="26"/>
-                  <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModal">Close</button>
-                </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
+          <div id="mensajeModal"></div>
 
           <div class="container tres">
             <div class="jumbotron">
