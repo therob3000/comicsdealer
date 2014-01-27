@@ -1,7 +1,8 @@
 function cargarPromocionFinDeSemana(paginaOrigen){
 	$.get("../php/cargarPromocionFin.php", function(data){
-		alert(data.promocion)
-		if(data.promocion == false){
+		alert(data.promocion);
+		alert(data.promocion_imagen);
+		if(data.promocion == true){
 			$('#layout').load("../html/layouts/promocion_fin_semana_layout.html" , function(){
 				$("#imagen_promocion").attr("src", data.promocion_imagen);
 				$("#formato").html("<strong>"+data.descripcion_formato+"</strong>");
