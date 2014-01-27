@@ -7,10 +7,10 @@
 	error_reporting(E_ALL);
 
 	$finDeSemana = determinaFindeSemana();
-
+	
 	$json = new stdClass();
 
-	if(1){
+	if($finDeSemana){
 		
 		$queryPromocion = "SELECT * FROM promociones WHERE promocion_activa = 1";
 		$queryResultado	= mysql_query($queryPromocion);
