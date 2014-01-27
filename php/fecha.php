@@ -54,6 +54,7 @@ function obtenerProximoSabado(){
 function determinaFindeSemana(){
 	date_default_timezone_set('America/Mexico_City');
 	$diaActual = date('l', strtotime('now'));
+	echo $diaActual;
 
 	if($diaActual == 'Friday' || $diaActual == 'Saturday' || $diaActual == 'Sunday'){
 		return TRUE;

@@ -7,6 +7,7 @@
 	error_reporting(E_ALL);
 
 	$finDeSemana = determinaFindeSemana();
+	
 	$json = new stdClass();
 
 	if($finDeSemana){
