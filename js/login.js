@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	login();
 	cerrar_sesion();
-	cargarPromocionFinDeSemana('index');
 });
 
 function login () {
