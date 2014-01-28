@@ -18,7 +18,7 @@ function cargarPromocionFinDeSemana(paginaOrigen){
 			if(paginaOrigen == 'index')
 				$('#layout').load("../html/layouts/principal_layout.html");
 			else
-				$('#promocion').hide();
+				$('#promocion').remove();
 		}
 	},
 	'json');
