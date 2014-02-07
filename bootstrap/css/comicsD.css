@@ -43,9 +43,9 @@ body {
   border: 1px solid #000;
   border-radius: 9px;
 }
-.container .segus {
-  max-width: 924px;
-  margin-bottom: 80px;
+.container .segu {
+  max-width: 730px;
+  background-color: #fff;
 }
 .container .tres {
   max-width: 924px;
