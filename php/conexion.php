@@ -1,7 +1,7 @@
 <?php
 
 //funcion para la conexion en heroku
-/*function conexion(){
+function conexion(){
 
 	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -21,12 +21,13 @@
 	else{
 		//echo "Funciona la pinche conexion";
 		mysql_select_db($db);
+		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
-}*/
+}
 
 //funcion para la conexion local MAMP
-function conexion(){
+/*function conexion(){
 	//Definimos los parametros de conexion, host, usuario, password
 	$con = mysql_connect("localhost","root","root");
 
@@ -37,9 +38,10 @@ function conexion(){
 	//Seleccionamos la base de datos a usar
 	else{
 		mysql_select_db("heroku_ee0f158613570e0", $con);
+		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
-}
+}*/
 
 //funcion para la conexion local WAMP
 /*function conexion(){
