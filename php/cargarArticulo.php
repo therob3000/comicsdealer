@@ -1,5 +1,6 @@
 <?php
 	include 'conexion.php';
+	include 'fecha.php';
 	$con = conexion();
 	
 	ini_set('display_errors',1); 
@@ -14,15 +15,15 @@
 
 	if($num > 0){
 		$json->articulo = TRUE;
-		$json->articulo_titulo 	= obtenerResultado("articulo_titulo");
-		$json->articulo_fecha		= obtenerResultado("articulo_fecha");
+		$json->articulo_titulo 		= obtenerResultado("articulo_titulo");
+		$json->articulo_fecha		= obtenerCadenaFecha(obtenerResultado("articulo_fecha"));
 		$json->articulo_autor		= obtenerResultado("articulo_autor");
-		$json->articulo_resumen	= obtenerResultado("articulo_resumen");
+		$json->articulo_resumen		= obtenerResultado("articulo_resumen");
 		$json->articulo_cita		= obtenerResultado("articulo_cita");
-		$json->articulo_subtitulo = obtenerResultado("articulo_subtitulo");
-		$json->articulo_principal = obtenerResultado("articulo_principal");
+		$json->articulo_subtitulo 	= obtenerResultado("articulo_subtitulo");
+		$json->articulo_principal 	= obtenerResultado("articulo_principal");
 		$json->articulo_segundo_subtitulo = obtenerResultado("articulo_segundo_subtitulo");
-		$json->articulo_secundario = obtenerResultado("articulo_secundario");
+		$json->articulo_secundario 	= obtenerResultado("articulo_secundario");
 	}
 	else{
 		$json->articulo = FALSE;

@@ -1,11 +1,41 @@
 <?php
+date_default_timezone_set('America/Mexico_City');
+//$fecha = "2014-02-11";
+//obtenerCadenaFecha($fecha);
+
+function obtenerCadenaFecha($fecha){
+	$diaNombre = obtenerDiaTraducido(date('D', strtotime($fecha)));
+	$diaNumero = date('j', strtotime($fecha));
+	$mesNombre = obtenerMesTraducido(date('n', strtotime($fecha)));
+	$anioNumero = date('Y', strtotime($fecha));
+
+	return $diaNombre." ".$diaNumero." de ".$mesNombre.", ".$anioNumero;
+	
+}
 
 function obtenerProximoSabado(){
-	date_default_timezone_set('America/Mexico_City');
 	$diaProximoSabado = date('j', strtotime('next Saturday'));
 	$mesProximoSabado = date('n', strtotime('next Saturday'));
+	$mesLiteral = obtenerMesTraducido($mesProximoSabado);
+		
+	$fechaProximoSabado = "Sabado $diaProximoSabado de $mesLiteral";
 
-	switch ($mesProximoSabado) {
+	return $fechaProximoSabado;
+}
+
+function determinaFindeSemana(){
+	
+	$diaActual = date('l', strtotime('now'));
+
+	if($diaActual == 'Friday' || $diaActual == 'Saturday' || $diaActual == 'Sunday'){
+		return TRUE;
+	}
+	else
+		return FALSE;
+}
+
+function obtenerMesTraducido($mes){
+	switch ($mes) {
 		case '1':
 			$mesLiteral = "Enero";
 			break;
@@ -46,20 +76,40 @@ function obtenerProximoSabado(){
 			# code...
 			break;
 	}
-	$fechaProximoSabado = "Sabado $diaProximoSabado de $mesLiteral";
 
-	return $fechaProximoSabado;
+	return $mesLiteral;
+
 }
 
-function determinaFindeSemana(){
-	date_default_timezone_set('America/Mexico_City');
-	$diaActual = date('l', strtotime('now'));
-
-	if($diaActual == 'Friday' || $diaActual == 'Saturday' || $diaActual == 'Sunday'){
-		return TRUE;
+function obtenerDiaTraducido($dia){
+	switch ($dia) {
+		case 'Sun':
+			$diaLiteral = "Domingo";
+			break;
+		case 'Mon':
+			$diaLiteral = "Lunes";
+			break;
+		case 'Tue':
+			$diaLiteral = "Martes";
+			break;
+		case 'Wed':
+			$diaLiteral = "Miercoles";
+			break;
+		case 'Thu':
+			$diaLiteral = "Jueves";
+			break;
+		case 'Fri':
+			$diaLiteral = "Viernes";
+			break;
+		case 'Sat':
+			$diaLiteral = "Sabado";
+			break;
+		default:
+			# code...
+			break;
 	}
-	else
-		return FALSE;
+
+	return $diaLiteral;
 }
 
 ?>

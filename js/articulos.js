@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	//alert(articulo_id);
+	alert(articulo_id);
 	cargarArticulo(articulo_id);
 });
 
@@ -10,7 +10,7 @@ function cargarArticulo(articulo_id){
 		function(data){
 			if(data.articulo == true){
 				$("#articulo_titulo").text(data.articulo_titulo);
-				$("#articulo_autor").text(data.articulo_autor);
+				$("#articulo_fecha_autor").text(data.articulo_fecha+" por "+data.articulo_autor);
 				$("#articulo_resumen").text(data.articulo_resumen);
 				$("#articulo_cita").text(data.articulo_cita);
 				$("#articulo_subtitulo").text(data.articulo_subtitulo);

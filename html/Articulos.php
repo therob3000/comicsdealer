@@ -104,8 +104,7 @@
                   <!--Titulo-->
                   <h2 id="articulo_titulo" class="blog-post-title"></h2>
                   <!--Fecha y Autor-->
-                  <p id="articulo_fecha" class="blog-post-meta"></p>
-                  <p id="articulo_autor"></p>
+                  <p id="articulo_fecha_autor"></p>
                   <hr>
                   <h4>Resumen</h4>
                   <p id="articulo_resumen" align="justify"></p>
@@ -129,7 +128,7 @@
 
               </div><!-- /.blog-main -->
 
-              <!--<div class="col-sm-3 blog-sidebar">
+              <div class="col-sm-3 blog-sidebar">
                 <div class="sidebar-module sidebar-module-inset">
                   <h4>Acerca</h4>
                   <p align="justify">Esta sección de <em>artículos</em> la hemos creado para darte una introducción a nuevos personajes, o bien una guía a sagas importantes. "Es lo que debes saber".</p>
@@ -153,7 +152,7 @@
                     <li><a href="http://starwars.wikia.com/wiki/Main_Page" target="_blank">Star Wars Wiki</a></li>
                   </ol>
                 </div>
-              </div>--><!-- /.blog-sidebar -->
+              </div><!-- /.blog-sidebar -->
 
             </div><!-- /.row -->
           
