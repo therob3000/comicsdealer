@@ -18,6 +18,7 @@
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/promocion_index.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/login.js"></script>
     <script type="text/javascript">
 
@@ -68,9 +69,8 @@
             <a align="center" href="http://www.comicsdealer.com/">
               <img src="img/ComicDLogo-04.svg" vspace="10" hspace="10"
                class="img-responsive text-center" width="207" height="26"/></a>
-            <!--<a class="navbar-brand" href="http://www.google.com">ComicsDealer.com</a>-->
           </div>
-          <div class="navbar-collapse collapse">
+          <!--<div class="navbar-collapse collapse">
             <form class="navbar-form navbar-right" id="login">
               <div class="form-group">
                 <input id="email" type="email" placeholder="Email" class="form-control" name="usuario_email">
@@ -80,75 +80,187 @@
               </div>
               <button type="submit" class="btn btn-success">Sign in</button>
             </form>
+          </div>/.nav-collapse -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div class="nav navbar-nav navbar-right">
+              <li><a href="html/Articulos.html">Artículos</a></li>
+              <li><a href="html/Catalogo.html">Catálogo</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success" style="font-size: 10pt">Sign in <span class="caret"></span></span></a>
+                <ul class="dropdown-menu">
+                  <form class="navbar-form navbar-right" id="login">
+                    <li>
+                      <div class="form-group">
+                        <input id="email" type="email" placeholder="Email" class="form-control" name="usuario_email">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-group">
+                        <input id="password" type="password" placeholder="Password" class="form-control" name="usuario_password">
+                      </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <div align="right">
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                      </div>
+                    </li>
+                  </form><!--/.Fin del Form -->
+                </ul>
+              </li>
+            </div>
           </div><!--/.nav-collapse -->
         </div>
       </div>
       
+      <!--Aqui empieza el jumbotron Principal y de Fin de semana -->
       <div class="container tres" >
         <div class="jumbotron">
           <div id="layout"></div>
 
           <div class="row"><p align="right">
-      <!--<a class="btn btn-lg btn-info">Más información</a>-->
-      <strong>Haz sign in o </strong>
-      <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate ya!</a>
-    </p></div>
+            <strong>Haz sign in o </strong>
+            <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate ya!</a></p>
+          </div>
           <div class="row">
             <div class="col-lg-3">
               <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3" style="margin-top: 2%">
               <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2" style="margin-top: 2%">
               <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
             <div class="col-lg-4">
-              <p align="right" class="text-muted" style="font-size: 11pt"> 
-            <a href="html/PerdidaPass.html"><strong>¿Olvidaste tu Password?</strong></a>
+              <p align="right" class="text-muted" style="font-size: 10pt"> 
+            <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
           </p>
             </div>
           </div>
         </div>
       </div>
+      <!--Aqui termina el jumbotron Principal y de Fin de semana -->
+
+      <div class="container tres">
+        <div class="jumbotron">
+          <div class="highlight">
+            <div class="row">
+              <div class="col-lg-12" align="center">
+                <h2>Un Poco del Catálogo Privado de <strong>Dr. Death.</strong></h2>
+                <p>La pura nata consentrada de los cómics</p>
+              </div>  
+              <!-- <div class="col-lg-4"></div>  
+              <div class="col-lg-4"></div> -->
+            </div>
+            
+            <hr></hr>
+            <div class="row">
+              <div align="center" class="col-lg-4">
+                  <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                  <h4>Batman</h4>
+                  <h5><span class="label label-primary">A Death in the Family</span></h5>
+                  <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
+                  <h5>$300 MXN</h5>
+                  <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
+              </div><!-- /.col-lg-4 -->
+
+              <div align="center" class="col-lg-4">                
+                  <img src="http://img20.imageshack.us/img20/8263/4oum.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                  <h4>Batman</h4>
+                  <h5><span class="label label-primary">A Death in the Family</span></h5>
+                  <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
+                  <h5>$300 MXN</h5>
+                  <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
+              </div><!-- /.col-lg-4 -->
+
+              <div align="center" class="col-lg-4">
+                  <img src="http://i2.cdnds.net/12/41/618x822/comics_marvel_now_superior_spiderman.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                  <h4>Batman</h4>
+                  <h5><span class="label label-primary">A Death in the Family</span></h5>
+                  <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
+                  <h5>$300 MXN</h5>
+                  <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
+              </div><!-- /.col-lg-4 -->
+            </div><!-- /.row1 -->
+            <hr></hr>
+            <div class="row">
+              <div align="center" class="col-lg-4">
+                  <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                  <h4>Batman</h4>
+                  <h5><span class="label label-primary">A Death in the Family</span></h5>
+                  <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
+                  <h5>$300 MXN</h5>
+                  <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
+              </div><!-- /.col-lg-4 -->
+
+              <div align="center" class="col-lg-4">
+                  <img src="http://img20.imageshack.us/img20/8263/4oum.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                  <h4>Batman</h4>
+                  <h5><span class="label label-primary">A Death in the Family</span></h5>
+                  <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
+                  <h5>$300 MXN</h5>
+                  <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
+              </div><!-- /.col-lg-4 -->
+
+              <div align="center" class="col-lg-4">
+                  <img src="http://i2.cdnds.net/12/41/618x822/comics_marvel_now_superior_spiderman.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                  <h4>Batman</h4>
+                  <h5><span class="label label-primary">A Death in the Family</span></h5>
+                  <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
+                  <h5>$300 MXN</h5>
+                  <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
+              </div><!-- /.col-lg-4 -->
+            </div><!-- /.row2 -->
+            <hr></hr>
+            <div class="row">
+              <div class="col-lg-4"></div>  
+              <div class="col-lg-4"></div>  
+              <div class="col-lg-4"> 
+                <p style="font-size: 14pt" align="center"><a href="html/Catalogo.html">Ver el catálogo completo <strong>»</strong></a></p>
+              </div> 
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /.Catalogo -->
 
       <div class="container tres">
         <div class="jumbotron">
           <h4>¿Quiénes somos?</h4>
-          <p style="font-size: 12pt" align="justify">Somos un grupo dedicado a buscar y encontrar cómics, cómics que se encuentren en México, por ejemplo, de Editorial Televisa o Editorial Vid, pero también podemos encontrar cómics en Ingles que ronden en nuestro país. Con nuestra ayuda puedes tener todos los ejemplares que faltan en tu colección, sólo tienes que seguir estos tres simples pasos: 
+          <p style="font-size: 12pt" align="justify">Somos un grupo dedicado a buscar y encontrar cómics, cómics de <strong>cualquier editorial</strong>, por ejemplo, de Editorial Televisa o Editorial Vid, en <strong>cualquier idioma</strong> (inglés, alemán, zapoteco), o bien de <strong>cualquier país</strong> (Japón, Yugoslavia, <a href="http://es.wikipedia.org/wiki/Islas_Cook">Islas Cook</a>, etc). Con nuestra ayuda puedes tener todos los ejemplares que faltan en tu colección, sólo tienes que seguir estos tres simples pasos: 
           </p>
           <p class="text-default" align="center">
             <span class="label label-info">Nos preguntas por tomos »</span>
             <span class="label label-primary">Buscamos hasta encontrarlos »</span>
             <span class="label label-success">Los pagas y te los entregamos \o/</span></p>
-          <p style="font-size: 12pt" align="justify">Ahora, si eres un Jedi(Y ya estas Registrado) usa la fuerza y pídenos cómics, si no, no temas y...</p>        
+          <p style="font-size: 12pt" align="justify">Ahora, si eres un Jedi usa la fuerza y pídenos cómics, si no, no temas y...</p>        
           <p align="right">
             <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate ya!</a>
           </p>
           <p align="right" class="text-muted" style="font-size: 11pt">Este servicio es para toda la Republica Mexicana.</p>
         </div>
-      </div>
+      </div> 
 
       <div class="container tres">
         <div class="jumbotron">
           <div class="row">
             <div class="col-lg-4">
               <h3>¿Cómo funciona?</h3>
-              <p align="justify" style="font-size: 12pt">Muy fácil, simplemente te registras con tu nombre y tu email, y luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos por ti en nuestra amplia red de contactos, cuando lo encontramos (siempre lo encontramos) te mandamos un email con el costo del cómic. Nos pagas y te lo damos... </p>
+              <p align="justify" style="font-size: 12pt">Muy fácil, te registras con tu nombre y tu email, luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos con nuestra amplia red de contactos, cuando lo encontramos <strong>(y siempre lo encontramos)</strong> te mandamos un email con el costo del cómic. Así de sencillo... </p>
               <p><a class="btn btn-primary" href="html/Como Funciona.html">Ver más detalles »</a></p>
             </div>
             <div class="col-lg-4">
               <h3>¿Cómo pago?</h3>
-              <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, ©DineroMail y ©Paypal, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
+              <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, <a href="https://mx.dineromail.com/Index" target="_blank">©DineroMail</a> y <a href="https://www.paypal.com/mx" target="_blank">©Paypal</a>, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
               <p><a class="btn btn-primary" href="html/Como Pago.html">Averigua más »</a></p>
             </div>
             <div class="col-lg-4">
               <h3>Formas de entrega</h3>
-              <p align="justify" style="font-size: 12pt">En el caso de pedidos en el DF te entregamos tu pedido personalmente. Para ello tenemos una lista especifica de estaciones del Sistema de Transporte Colectivo - Metro donde podrás elegir cuál te queda más cerca.</p>
-              <p><a class="btn btn-primary" href="html/Formas Entrega.html">Ver la lista »</a></p>
-              <p align="justify" style="font-size: 12pt">Para pedidos en estados de la Republica hacemos envios por la paqueteria que mas te convenga.
+              <p align="justify" style="font-size: 12pt">Para el <strong>Distrito Federal</strong> tenemos un sistema de entrega personal. Para ello tenemos una lista específica de estaciones del STC Metro, de donde podrás elegir cuál te queda más cerca.</p><p align="justify" style="font-size: 12pt">Para pedidos en el interior de la <strong>Republica Mexicana</strong> enviamos tus cómics por <a href="http://www.correosdemexico.com.mx/Mexpost/Paginas/Mexpost.aspx" target="_blank">Mexpost</a>.</p>
+              <p><a class="btn btn-primary" href="html/Formas Entrega.html">Ver toda la info »</a></p>
             </div>
           </div>
         </div>
