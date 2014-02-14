@@ -15,6 +15,7 @@
 
 	if($num > 0){
 		$json->articulo = TRUE;
+		$json->articulo_id 			= obtenerResultado("articulo_id");
 		$json->articulo_titulo 		= obtenerResultado("articulo_titulo");
 		$json->articulo_fecha		= obtenerCadenaFecha(obtenerResultado("articulo_fecha"));
 		$json->articulo_autor		= obtenerResultado("articulo_autor");

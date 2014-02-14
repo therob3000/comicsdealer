@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	alert(articulo_id);
+	//alert(articulo_id);
 	cargarArticulo(articulo_id);
+	cargarArticulosArchivo();
 });
 
 function cargarArticulo(articulo_id){
@@ -17,7 +18,29 @@ function cargarArticulo(articulo_id){
 				$("#articulo_principal").text(data.articulo_principal);
 				$("#articulo_segundo_subtitulo").text(data.articulo_segundo_subtitulo);
 				$("#articulo_secundario").text(data.articulo_secundario);
+			
 			}
 		},
 		'json');
+	if(articulo_id-1 == 0){
+		$("#anterior").html("<a href='#'>Anterior</a>");
+	}
+	else{
+		$("#anterior").html("<a href='./Articulos.php?articulo_id="+(+articulo_id-1)+"'>Anterior</a>");
+	}
+	$("#siguiente").html("<a href='./Articulos.php?articulo_id="+(+articulo_id+1)+"'>Anterior</a>");
 }
+
+function cargarArticulosArchivo(){
+	$.post("../php/cargarArticulos.php",
+		function(data){
+			$.each(data, function(i, val){
+				//alert(val.articulo_id);
+				$("#archivo").append("<li><a href='./Articulos.php?articulo_id="+val.articulo_id+"'>"+val.articulo_titulo+"</a></li>");
+				
+			});
+		},
+		'json');
+}
+
+

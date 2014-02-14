@@ -122,8 +122,8 @@
                 </div><!-- /.Aquí termina lo que hay que poner para cada artículo -->
 
                 <ul class="pager">
-                  <li><a href="#">Anterior</a></li>
-                  <li><a href="#">Siguiente</a></li>
+                  <li id="anterior"></li>
+                  <li id="siguiente"></li>
                 </ul>
 
               </div><!-- /.blog-main -->
@@ -135,13 +135,8 @@
                 </div>
                 <div class="sidebar-module">
                   <h4>Archivo</h4>
-                  <ol class="list-unstyled">
-                    <li><a href="#">Civil War</a></li>
-                    <li><a href="#">Kingdom Come</a></li>
-                    <li><a href="#">Kick Ass</a></li>
-                    <li><a href="#">Scott Pilgrim</a></li>
-                    <li><a href="#">Deadpool</a></li>
-                    <li><a href="#">El Batman de Frank Miller</a></li>
+                  <ol class="list-unstyled" id="archivo">
+                    
                   </ol>
                 </div>
                 <div class="sidebar-module">
