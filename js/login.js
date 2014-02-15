@@ -11,8 +11,16 @@ function login () {
 		$.post("../php/login.php",
 			cadena,
 			function(data){
-				login = data.login;
-				if(login == true){
+				//LOGIN VIEJO - Se modifico 15/02/2014
+				//login = data.login;
+				/*if(login == true){
+					window.location.href = "/html/Pedido.html";
+				}
+				else{
+					alert("Datos erroneos");
+				}*/
+				//LOGIN NUEVO, verifica las tres condiciones
+				if(data.usuario_existe && data.usuario_pass && data.usuario_activado){
 					window.location.href = "/html/Pedido.html";
 				}
 				else{

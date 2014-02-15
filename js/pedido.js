@@ -90,7 +90,7 @@ function realizarPedido(){
 					
 				}
 				else{
-					alert("Algo horrendo pasó :(");
+					alert("No se ha podido generar el pedido. Contactanos en comics.dealer@gmail.com para mas informacion.");
 				}
 			},
 			'json');
@@ -112,7 +112,7 @@ function realizarPedidoFinde(){
 					$('#pedido_finde').append('<div class="alert alert-success"><strong>Tu pedido ha sido registrado!</strong> gracias por comprar en la oferta de fin de semana en la brevedad nos pondremos en contacto contigo via e-mail.</div>');
 				}
 				else{
-					alert("Algo horrendo pasó :(");
+					alert("No se ha podido generar el pedido. Contactanos en comics.dealer@gmail.com para mas informacion.");
 				}
 			},
 			'json');

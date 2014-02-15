@@ -6,8 +6,8 @@
 	ini_set('display_errors',1); 
 	error_reporting(E_ALL);
 
-	$usuario_email 		= $_POST['usuario_email'];
-	$usuario_password 	= $_POST['usuario_password'];
+	$usuario_email 		= $_REQUEST['usuario_email'];
+	$usuario_password 	= $_REQUEST['usuario_password'];
 
 	$respuestaJSON		= NULL;
 	$json 				= new stdClass();
@@ -20,12 +20,12 @@
 	if($num > 0){
 
 		$dbpasswd 				= mysql_result($queryResultado, 0, "usuario_password");
-		$activo					= mysql_result($queryResultado, 0, "usuario_activado");
+		$usuario_activado		= mysql_result($queryResultado, 0, "usuario_activado");
 		$usuario_nombre			= mysql_result($queryResultado, 0, "usuario_nombre");
 		$usuario_id 			= mysql_result($queryResultado, 0, "usuario_id");
 		$usuario_max_pedidos 	= mysql_result($queryResultado, 0, "usuario_max_pedidos");
 
-		if($activo == 1){
+		if($usuario_activado == 1){
 			if(crypt($usuario_password, $dbpasswd) == $dbpasswd){
 				session_start();
 				session_destroy(); 
@@ -37,24 +37,32 @@
 				$_SESSION['usuario_id']				= $usuario_id;
 				$_SESSION['usuario_max_pedidos']	= $usuario_max_pedidos;
 				
-				$respuestaJSON = true;
+				//$respuestaJSON = true;
+
+				$json->usuario_existe = true;
+				$json->usuario_pass = true;
+				$json->usuario_activado = true;
+
 			}
 			else{
 				//echo "La contraseña es incorrecta";
-				$respuestaJSON = false;
+				//$respuestaJSON = false;
+				$json->usuario_pass = false;
 			}
 		}
 		else{
 			//echo "El usuario esta desactivado";
-			$respuestaJSON = false;
+			//$respuestaJSON = false;
+			$json->usuario_activado = false;
 		}		
 	}
 	else{
 		//echo "El usuario no existe";
-		$respuestaJSON = false;
+		//$respuestaJSON = false;
+		$json->usuario_existe = false;
 	}
 
-	$json->login = $respuestaJSON;
+	//$json->login = $respuestaJSON;
 
 	echo json_encode($json);
 

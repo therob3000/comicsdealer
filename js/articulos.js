@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	//alert(articulo_id);
 	cargarArticulo(articulo_id);
 	cargarArticulosArchivo();
 });
