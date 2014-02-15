@@ -4,6 +4,8 @@ $(document).ready(function(){
 });
 
 function cargarArticulo(articulo_id){
+	$(".fb-share-button").attr("data-href", "http://www.comicsdealer.com/html/Articulos.php?articulo_id="+articulo_id);
+	
 	cadena = "articulo_id="+articulo_id;
 	$.get("../php/cargarArticulo.php",
 		cadena,
@@ -17,6 +19,8 @@ function cargarArticulo(articulo_id){
 				$("#articulo_principal").text(data.articulo_principal);
 				$("#articulo_segundo_subtitulo").text(data.articulo_segundo_subtitulo);
 				$("#articulo_secundario").text(data.articulo_secundario);
+				$(".twitter-share-button").attr("data-url", "http://www.comicsdealer.com/html/Articulos.php?articulo_id="+articulo_id);
+				$(".twitter-share-button").attr("data-text", data.articulo_titulo);
 			
 			}
 		},
