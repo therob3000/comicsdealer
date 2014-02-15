@@ -72,10 +72,9 @@
             </div>
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <div class="nav navbar-nav navbar-right">
-              <li class="active"><a href="html/Articulos.html">Artículos</a></li>
+              <li><a href="html/Articulos.html">Artículos</a></li>
               <li><a href="html/Catalogo.html">Catálogo</a></li>
               <div class="navbar-form navbar-left">
-
                 <button id="loginButton" type="submit" class="btn btn-success">Haz Login!</button>
               </div>
               <!--<li class="dropdown">

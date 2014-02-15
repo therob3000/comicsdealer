@@ -67,18 +67,27 @@
               class="img-responsive text-center" width="207" height="26"/></a>
             </div>
             <div class="navbar-collapse collapse">
-              <form class="navbar-form navbar-right">
-                <ul class="nav navbar-nav navbar-right">
-                  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Cuenta <span class="caret"></span></button>
+            <div class="nav navbar-nav navbar-right">
+              <li><a href="html/Articulos.html">Artículos</a></li>
+              <li><a href="html/Catalogo.html">Catálogo</a></li>
+            
+              <div class="navbar-form navbar-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info">Tu cuenta</button>
+                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="Historial.html">Historial de compras</a></li>
                     <li><a href="Cambios.html">Cambia tu información</a></li>
                     <li class="divider"></li>
                     <li id="cerrar_sesion"><a>Cerrar Sesión</a></li>
                   </ul>
+                </div>
+              </div>
 
-                </ul>
-              </form>
+              </div>
             </div><!--/.nav-collapse -->
           </div>
         </div>
@@ -201,7 +210,7 @@
                   <h4 class="modal-title" id="myModalLabel">Comics Dealer</h4>
                 </div>
                 <div class="modal-body">
-                  
+
                   <p>Gracias por tu pedido! La busqueda de tu(s) comics ha iniciado!</p>
                   <p id="personajeModal"></p>
                   <p id="textoModal"></p>
