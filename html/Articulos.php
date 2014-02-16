@@ -109,12 +109,29 @@ $articulo_id = $_GET['articulo_id'];
                 <div class="col-sm-offset-1 col-sm-7 blog-main">
 
                   <div class="blog-post">
-                    <!--Titulo-->
-                    <h2 id="articulo_titulo" class="blog-post-title"></h2>
-                    <!--Fecha y Autor-->
-                    <p id="articulo_fecha_autor"></p>
-                    <hr>
-                    <h4>Resumen</h4>
+                   
+
+                    <div class="row">
+                    <div class="col-sm-8">
+                      <div class="row">
+                        <div >
+                          <h2 id="articulo_titulo" class="blog-post-title"></h2>
+                          <p id="articulo_fecha_autor"></p>
+                          <hr>
+                        </div>
+                      </div>
+                    
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <h4>Resumen</h4>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4" align="center">
+                      <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 120px; height: 180px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                    </div>
+                  </div>
+
                     <p id="articulo_resumen" align="justify"></p>
                     <blockquote>
                       <p id="articulo_cita"></p>

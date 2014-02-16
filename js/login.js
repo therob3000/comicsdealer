@@ -32,8 +32,19 @@ function login () {
 	});
 }
 
-function cerrar_sesion () {
+/*function cerrar_sesion () {
 	$('#cerrar_sesion').click(function(e){
+		$.ajaxSetup({async:false});
+		$.post("../php/cierra_sesion.php");
+		var delay = 1000; //Your delay in milliseconds
+	    setTimeout(function(){ window.location.href = "../index.html"; }, delay);
+	    e.preventDefault();
+	    $.ajaxSetup({async:true});
+	});
+}*/
+
+function cerrar_sesion() {
+	$('#nav_bar').on("click", "#cerrar_sesion", function(e){
 		$.ajaxSetup({async:false});
 		$.post("../php/cierra_sesion.php");
 		var delay = 1000; //Your delay in milliseconds

@@ -55,41 +55,8 @@
     </script>
     <div class="container">
       <div class="container tres">
-        <div class="navbar navbar-inverse">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="http://www.comicsdealer.com/html/Pedido.html">
-              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-              class="img-responsive text-center" width="207" height="26"/></a>
-            </div>
-            <div class="navbar-collapse collapse">
-            <div class="nav navbar-nav navbar-right">
-              <li><a href="html/Articulos.html">Artículos</a></li>
-              <li><a href="html/Catalogo.html">Catálogo</a></li>
-            
-              <div class="navbar-form navbar-right">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-info">Tu cuenta</button>
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="Historial.html">Historial de compras</a></li>
-                    <li><a href="Cambios.html">Cambia tu información</a></li>
-                    <li class="divider"></li>
-                    <li id="cerrar_sesion"><a>Cerrar Sesión</a></li>
-                  </ul>
-                </div>
-              </div>
-
-              </div>
-            </div><!--/.nav-collapse -->
-          </div>
+        <div id="nav_bar"></div>
+       
         </div>
 
         <div class="container tres" id="promocion"><!--ESto es lo NUEVO-->
@@ -133,21 +100,21 @@
               <div class="highlight">
 
                 <div class="form-group">
-                  <label for="Pedido">Selecciona la compañía</label>
+                  <label for="Pedido">Paso 1: Selecciona la compañía</label>
                   <select class="form-control" name="compania_id" id="compania">
 
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="Pedido">Selecciona el personaje</label>
+                  <label for="Pedido">Paso 2: Selecciona el personaje</label>
                   <select class="form-control" name="personaje_id" id="personaje">
                     <option selected>Primero selecciona una compañia</option>            
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="Pedido">Ahora dinos qué serie y qué tomos estás buscando</label>
+                  <label for="Pedido">Paso 3: Ahora dinos qué serie y qué tomos estás buscando</label>
                   <div>
-                    <textarea id="textolibre" class="form-control" rows="3" name="texto_libre" placeholder="Un par de buenos ejemplos serían: ''Monster Edition: The Avengers Versus The x-Men'', o bien ''Ultimate Comics: #11''"></textarea>
+                    <textarea id="textolibre" class="form-control" rows="3" name="texto_libre" placeholder="Un par de buenos ejemplos serían: ''Monster Edition: The Avengers Versus The x-Men'', o bien ''Ultimate Comics: #11'' TRATA DE SER LO MAS ESPECIFICO POSIBLE."></textarea>
                   </div>
                 </div> 
 
@@ -193,12 +160,20 @@
                             <img src="../img/DineroMail-by-PAYU-logo.png" class="img-responsive text-center" width="114" height="30">
                           </label>
                         </div>
+
                       </div>
                     </div>  
                   </div>
                   <p align="right"><button type="submit" class="btn btn-lg btn-success">Realizar pedido</button></p>
                 </div>
               </form>
+              <div class="highlight">
+          <div class=" alert alert-info">
+            <p align="justify" style="font-size: 14pt" >
+              <strong>Nota: </strong>Al hacer tu pedido recibiras un <strong>CORREO ELECTRONICO</strong> en la direccion que hayas registrado. En este <strong>CORREO ELECTRONICO</strong> te daremos la fecha en la que recibiras noticias sobre tu <strong>PEDIDO.</strong> Una vez que decidas si te conviene o no el costo del pedido, tienes un maximo de <strong>5 dias</strong> para contestar, de lo contrario <strong>daremos por cancelado tu pedido</strong>. Gracias!.
+            </p>
+          </div>
+        </div>
             </div>
           </div>
 
@@ -211,13 +186,13 @@
                 </div>
                 <div class="modal-body">
 
-                  <p>Gracias por tu pedido! La busqueda de tu(s) comics ha iniciado!</p>
+                  <p id="inicial">Gracias por tu pedido! La busqueda de tu(s) comics ha iniciado!</p>
                   <p id="personajeModal"></p>
                   <p id="textoModal"></p>
                   <p id="lugarEntregaModal"></p>
                   <p>Te hemos enviado un correo a: </p>
                   <p id="correo"></p>
-                  <p>En este correo te indicamos la fecha en que tendremos informes sobre tu pedido, por favor revisa tu correo en esa fecha.</p>
+                  <p id="mensaje">En este correo te indicamos la fecha en que tendremos informes sobre tu pedido, por favor revisa tu correo en esa fecha.</p>
                 </div>
                 <div class="modal-footer navbar-inverse">
                   <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
@@ -229,26 +204,26 @@
           </div><!-- /.modal -->
 
           <div class="container tres">
-            <div class="jumbotron">
-              <div class="row">
-                <div class="col-lg-4">
-                  <h3>¿Cómo funciona?</h3>
-                  <p align="justify" style="font-size: 12pt">Muy fácil, simplemente te registras con tu nombre y tu email, y luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos por ti en nuestra amplia red de contactos, cuando lo encontramos (siempre lo encontramos) te mandamos un email con el costo del cómic. Nos pagas y te lo damos... </p>
-                  <p><a class="btn btn-primary" href="Como Funciona.html">Ver más detalles »</a></p>
-                </div>
-                <div class="col-lg-4">
-                  <h3>¿Cómo pago?</h3>
-                  <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, ©DineroMail y ©Paypal, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
-                  <p><a class="btn btn-primary" href="Como Pago.html">Averigua más »</a></p>
-                </div>
-                <div class="col-lg-4">
-                  <h3>Formas de entrega</h3>
-                  <p align="justify" style="font-size: 12pt">Te entregamos tu pedido personalmente. Para ello tenemos una lista especifica de estaciones del Sistema de Transporte Colectivo - Metro donde podrás elegir cuál te queda más cerca...</p>
-                  <p><a class="btn btn-primary" href="Formas Entrega.html">Ver la lista »</a></p>
-                </div>
-              </div>
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-lg-4">
+              <h3>¿Cómo funciona?</h3>
+              <p align="justify" style="font-size: 12pt">Muy fácil, te registras con tu nombre y tu email, luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos con nuestra amplia red de contactos, cuando lo encontramos <strong>(y siempre lo encontramos)</strong> te mandamos un email con el costo del cómic. Así de sencillo... </p>
+              <p><a class="btn btn-primary" href="/html/Como Funciona.html">Ver más detalles »</a></p>
+            </div>
+            <div class="col-lg-4">
+              <h3>¿Cómo pago?</h3>
+              <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, <a href="https://mx.dineromail.com/Index" target="_blank">©DineroMail</a> y <a href="https://www.paypal.com/mx" target="_blank">©Paypal</a>, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
+              <p><a class="btn btn-primary" href="/html/Como Pago.html">Averigua más »</a></p>
+            </div>
+            <div class="col-lg-4">
+              <h3>Formas de entrega</h3>
+              <p align="justify" style="font-size: 12pt">Para el <strong>Distrito Federal</strong> tenemos un sistema de entrega personal. Para ello tenemos una lista específica de estaciones del STC Metro, de donde podrás elegir cuál te queda más cerca.</p><p align="justify" style="font-size: 12pt">Para pedidos en el interior de la <strong>Republica Mexicana</strong> enviamos tus cómics por <a href="http://www.correosdemexico.com.mx/Mexpost/Paginas/Mexpost.aspx" target="_blank">Mexpost</a>.</p>
+              <p><a class="btn btn-primary" href="/html/Formas Entrega.html">Ver toda la info »</a></p>
             </div>
           </div>
+        </div>
+      </div>
 
           <div class="container tres">  
             <div class="jumbotron">
@@ -263,12 +238,6 @@
             <p align="center" class="text-info"><strong>© Comics Dealer 2013 | Todas las imágenes aquí mostradas no nos pertenecen y no son usadas con fin de lucro | <a href="Sitemap.html"> Mapa de Sitio</a></string></p>
           </footer>
         </div>  
-        <div class="highlight">
-          <div class=" alert alert-info">
-            <p align="justify" style="font-size: 14pt" >
-              <strong>Nota: </strong>Al hacer tu pedido recibiras un <strong>CORREO ELECTRONICO</strong> en la direccion que hayas registrado. En este <strong>CORREO ELECTRONICO</strong> te daremos la fecha en la que recibiras noticias sobre tu <strong>PEDIDO.</strong> Una vez que decidas si te conviene o no el costo del pedido, tienes un maximo de <strong>5 dias</strong> para contestar, de lo contrario <strong>daremos por cancelado tu pedido</strong>. Gracias!.
-            </p>
-          </div>
-        </div>
+        
       </body>
       </html>

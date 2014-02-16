@@ -2,6 +2,11 @@ var existe_email = false;
 var ver_correo;
 
 $(document).ready(function(){
+	cargarNavBar();
+	modalIniciarSesion();
+	$.ajaxSetup({async:false});
+	$.post("../php/cierra_sesion.php");
+	$.ajaxSetup({async:true});
 	$('#registro').submit(function(e){
 		password 	= $('#password').val();
 		password2 	= $('#password2').val();
@@ -95,3 +100,13 @@ $(document).ready(function(){
 	
 	
 });
+
+function cargarNavBar(){
+	$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
+}
+
+function modalIniciarSesion(){
+	$("#nav_bar").on("click", "#loginButton", function(e){
+		$('#myModal').modal('show');
+	});
+}
