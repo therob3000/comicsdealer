@@ -31,7 +31,7 @@ function cargarArticulo(articulo_id){
 	else{
 		$("#anterior").html("<a href='./Articulos.php?articulo_id="+(+articulo_id-1)+"'>Anterior</a>");
 	}
-	$("#siguiente").html("<a href='./Articulos.php?articulo_id="+(+articulo_id+1)+"'>Anterior</a>");
+	$("#siguiente").html("<a href='./Articulos.php?articulo_id="+(+articulo_id+1)+"'>Siguiente</a>");
 }
 
 function cargarArticulosArchivo(){
