@@ -128,7 +128,7 @@ $articulo_id = $_GET['articulo_id'];
                       </div>
                     </div>
                     <div class="col-sm-4" align="center">
-                      <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 120px; height: 180px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
+                      <img id="articulo_imagen"  src="" style="width: 120px; height: 180px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
                     </div>
                   </div>
 

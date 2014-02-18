@@ -25,6 +25,7 @@
 		$json->articulo_principal 	= obtenerResultado("articulo_principal");
 		$json->articulo_segundo_subtitulo = obtenerResultado("articulo_segundo_subtitulo");
 		$json->articulo_secundario 	= obtenerResultado("articulo_secundario");
+		$json->articulo_imagen		= obtenerResultado("articulo_imagen");
 	}
 	else{
 		$json->articulo = FALSE;
