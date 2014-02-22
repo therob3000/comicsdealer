@@ -36,7 +36,7 @@ function cargarArticulo(articulo_id){
 }
 
 function cargarArticulosArchivo(){
-	$.post("../php/cargarArticulos.php",
+	$.get("../php/cargarArchivo.php",
 		function(data){
 			$.each(data, function(i, val){
 				//alert(val.articulo_id);

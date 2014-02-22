@@ -16,6 +16,7 @@ function cargarArticulos(salto, rango){
 					$("#"+val.articulo_id).find("#articulo_titulo").text(val.articulo_titulo);
 					$("#"+val.articulo_id).find("#articulo_fecha_autor").text(val.articulo_fecha+" por "+val.articulo_autor);
 					$("#"+val.articulo_id).find("#articulo_resumen").text(val.articulo_resumen);
+					$("#"+val.articulo_id).find("#articulo_boton").attr("href", "/html/Articulos.php?articulo_id="+val.articulo_id);
 				});
 			});
 		},

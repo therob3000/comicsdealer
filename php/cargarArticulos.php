@@ -12,7 +12,7 @@
 	$salto = $_GET['salto'];
 	$rango = $_GET['rango'];
 
-	$queryArticulos = "SELECT articulo_id, articulo_titulo, articulo_fecha, articulo_autor, articulo_resumen FROM articulos LIMIT $salto, $rango";
+	$queryArticulos = "SELECT articulo_id, articulo_titulo, articulo_fecha, articulo_autor, articulo_resumen, articulo_imagen FROM articulos LIMIT $salto, $rango";
 	$queryResultado = mysql_query($queryArticulos);
 	$num = mysql_num_rows($queryResultado);
 
@@ -23,12 +23,14 @@
 				$articulo_fecha 	= obtenerCadenaFecha(obtenerResultado("articulo_fecha", $i));
 				$articulo_autor 	= obtenerResultado("articulo_autor", $i);
 				$articulo_resumen 	= obtenerResultado("articulo_resumen", $i);
+				$articulo_imagen	= obtenerResultado("articulo_imagen", $i);
 
 				$articulosArray[] = array('articulo_id' => $articulo_id,
 										  'articulo_titulo'	=> $articulo_titulo,
 										  'articulo_fecha' => $articulo_fecha,
 										  'articulo_autor'=> $articulo_autor,
-										  'articulo_resumen' => $articulo_resumen
+										  'articulo_resumen' => $articulo_resumen,
+										  'articulo_imagen' => $articulo_imagen
 				);
 		}
 	}
