@@ -15,11 +15,12 @@
   <link rel="shortcut icon" href="img/ComicDico-01.png">
   <link href="bootstrap/css/navbar.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="bootstrap/css/comicsD.css">
-  <script src="../bootstrap/assets/js/jquery.js"></script>
-  <script src="../bootstrap/js/bootstrap.min.js"></script>
-  <script src="../js/promocion_index.js"></script>
-  <script src="../js/index.js"></script>
-  <script src="../js/login.js"></script>
+  <script src="/bootstrap/assets/js/jquery.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/catalogo.js"></script>
+  <script src="/js/promocion_index.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/login.js"></script>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -59,51 +60,7 @@
     </script>
     <div class="container">
       <div class="container tres">
-        <div class="navbar navbar-inverse">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a align="center" href="http://www.comicsdealer.com/">
-              <img src="img/ComicDLogo-04.svg" vspace="10" hspace="10"
-              class="img-responsive text-center" width="207" height="26"/></a>
-            </div>
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <div class="nav navbar-nav navbar-right">
-              <li class="active"><a href="html/Articulos.html">Artículos</a></li>
-              <li><a href="html/Catalogo.html">Catálogo</a></li>
-              <div class="navbar-form navbar-left">
-
-                <button id="loginButton" type="submit" class="btn btn-success">Haz Login!</button>
-              </div>
-              <!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success" style="font-size: 10pt">Sign in <span class="caret"></span></span></a>
-                <ul class="dropdown-menu">
-                  <form class="navbar-form navbar-right" id="login">
-                    <li>
-                      <div class="form-group">
-                        <input id="email" type="email" placeholder="Email" class="form-control" name="usuario_email">
-                      </div>
-                    </li>
-                    <li>
-                      <div class="form-group">
-                        <input id="password" type="password" placeholder="Password" class="form-control" name="usuario_password">
-                      </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <div align="right">
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                      </div>
-                    </li>
-                  </form>/.Fin del Form
-                </ul>
-              </li>-->
-            </div>
-          </div><!--/.nav-collapse -->
-        </div>
+        <div id="nav_bar"></div>
       </div>
 
       <!-- Inicia ventana modal -->
@@ -172,69 +129,13 @@
                 <h2>Un Poco del Catálogo Privado de <strong>Dr. Death.</strong></h2>
                 <p>La pura nata consentrada de los cómics</p>
               </div>  
-              <!-- <div class="col-lg-4"></div>  
-              <div class="col-lg-4"></div> -->
             </div>
             
             <hr></hr>
-            <div class="row">
-              <div align="center" class="col-lg-4">
-                <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">                
-                <img src="http://img20.imageshack.us/img20/8263/4oum.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">
-                <img src="http://i2.cdnds.net/12/41/618x822/comics_marvel_now_superior_spiderman.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-            </div><!-- /.row1 -->
-            <hr></hr>
-            <div class="row">
-              <div align="center" class="col-lg-4">
-                <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">
-                <img src="http://img20.imageshack.us/img20/8263/4oum.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">
-                <img src="http://i2.cdnds.net/12/41/618x822/comics_marvel_now_superior_spiderman.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-            </div><!-- /.row2 -->
-            <hr></hr>
+            <div class="row" id="catalogo_comics">
+              
+            </div>
+  
             <div class="row">
               <div class="col-lg-4"></div>  
               <div class="col-lg-4"></div>  

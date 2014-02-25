@@ -19,6 +19,7 @@ function cargarArticulo(articulo_id){
 				$("#articulo_principal").text(data.articulo_principal);
 				$("#articulo_segundo_subtitulo").text(data.articulo_segundo_subtitulo);
 				$("#articulo_secundario").text(data.articulo_secundario);
+				$("#articulo_imagen").attr("src", data.articulo_imagen);
 				$(".twitter-share-button").attr("data-url", "http://www.comicsdealer.com/html/Articulos.php?articulo_id="+articulo_id);
 				$(".twitter-share-button").attr("data-text", data.articulo_titulo);
 			
@@ -31,11 +32,11 @@ function cargarArticulo(articulo_id){
 	else{
 		$("#anterior").html("<a href='./Articulos.php?articulo_id="+(+articulo_id-1)+"'>Anterior</a>");
 	}
-	$("#siguiente").html("<a href='./Articulos.php?articulo_id="+(+articulo_id+1)+"'>Anterior</a>");
+	$("#siguiente").html("<a href='./Articulos.php?articulo_id="+(+articulo_id+1)+"'>Siguiente</a>");
 }
 
 function cargarArticulosArchivo(){
-	$.post("../php/cargarArticulos.php",
+	$.get("../php/cargarArchivo.php",
 		function(data){
 			$.each(data, function(i, val){
 				//alert(val.articulo_id);

@@ -1,6 +1,7 @@
 var usuario_id;
 
 $(document).ready(function(){
+	cargarNavBar();
 	verificaSesion();
 	validaNuevoPassword();
 	cambiarCorreo();
@@ -98,5 +99,11 @@ function cambiarCorreo(){
 		e.preventDefault();
 	});
 
+}
+
+function cargarNavBar(){
+	$("#nav_bar").load("../html/layouts/navbar_login_layout.html", function(){
+		$("#nav_bar").find(".menu_opcion#2").html("<a href='Pedido.html'>Pide Comics!</a>");
+	});
 }
 

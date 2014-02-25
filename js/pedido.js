@@ -3,6 +3,7 @@ var email;
 var usuario_id;
 
 $(document).ready(function(){
+	cargarNavBar();
 	cargarPromocionFinDeSemana('pedidos');
 	verificaSesion();
 	cargarCompanias();
@@ -100,16 +101,25 @@ function realizarPedido(){
 }
 
 function realizarPedidoFinde(){
-	$('#pedidofinde').click(function(e){
+	$('#pedidofinde').click(function(){
 		cadena = "usuario_id="+usuario_id+"&compania_id=1&personaje_id=21&texto_libre=Promocion+Fin&pedido_forma_pago_id=1&lugar_entrega=No+definido";
-		//console.log(cadena);
+		console.log(cadena);
 
 		$.post("../php/pedido.php",
 			cadena,
 			function(data){
+				alert(data.pedido);
 				if(data.pedido == true){
-					$('#pedido_form_finde').hide();
-					$('#pedido_finde').append('<div class="alert alert-success"><strong>Tu pedido ha sido registrado!</strong> gracias por comprar en la oferta de fin de semana en la brevedad nos pondremos en contacto contigo via e-mail.</div>');
+					$('#myModal').find("#inicial").hide();
+					$('#myModal').find("#personajeModal").hide();
+					$('#myModal').find("#textoModal").html("<strong>Gracias por comprar en la Promocion de Fin de Semana</strong>");
+					$('#myModal').find("#lugarEntregaModal").hide();
+					$('#myModal').find("#correo").html("<strong>"+usuario_correo+"</strong>");
+					$('#myModal').find("#mensaje").text("Revisa tu correo para acordar la fecha y forma de pago. ")
+
+					$('#myModal').modal('show');
+					aceptarCompra();
+					
 				}
 				else{
 					alert("No se ha podido generar el pedido. Contactanos en comics.dealer@gmail.com para mas informacion.");
@@ -123,4 +133,8 @@ function aceptarCompra(){
 	$('#cerrarModal').click(function(){
 		window.location.href = "/html/Pedido.html";
 	});
+}
+
+function cargarNavBar(){
+	$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
 }

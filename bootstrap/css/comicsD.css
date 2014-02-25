@@ -43,6 +43,7 @@ body {
   border: 1px solid #000;
   border-radius: 9px;
 }
+<<<<<<< HEAD
 .segus {
   margin-right: auto;
   margin-left: auto;
@@ -50,13 +51,27 @@ body {
   padding-right: 15px;
   max-width: 1024px;
   margin-bottom: 20px;
+=======
+
+
+.segus {
+    max-width: 1024px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+>>>>>>> 14d3ea84d765ab4cf945006048831d58834a7f82
 }
+
+
 .container .tres {
   max-width: 924px;
 }
 .container {
   margin-top: 20px;
   max-width: 1024px;
+  margin-top: 20px;
   margin-bottom: 20px;
   -webkit-background-size: contain;
   -moz-background-size: contain;
