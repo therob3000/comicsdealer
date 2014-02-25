@@ -43,29 +43,47 @@ body {
   border: 1px solid #000;
   border-radius: 9px;
 }
-.container .segus {
-  max-width: 924px;
-  margin-bottom: 80px;
+.segus {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1024px;
+  margin-bottom: 20px;
 }
 .container .tres {
   max-width: 924px;
 }
 .container {
+  margin-top: 20px;
   max-width: 1024px;
   margin-bottom: 20px;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
-  
-  
 }
+
 .jumbotron {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 .navbar {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   margin-bottom: 20px;
+}
+.navbar-fixed-top{
+  /*margin-left: 22%;
+  margin-right: 22%;
+  max-width: 1024px;
+  left: 50%;
+  margin-left: -512px;
+  right: 50%;
+  margin-right: -512px;
+   left: 50%;
+  right: 50%;
+  margin-left: -512px;
+  margin-right: -512px;margin: 0 -512px 0 -512px;
+  */
 }
 
 .modal-backdrop.fade {
