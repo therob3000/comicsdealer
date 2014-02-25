@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" href="bootstrap/css/comicsD.css">
   <script src="/bootstrap/assets/js/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/catalogo.js"></script>
   <script src="/js/promocion_index.js"></script>
   <script src="/js/index.js"></script>
   <script src="/js/login.js"></script>
@@ -128,69 +129,13 @@
                 <h2>Un Poco del Catálogo Privado de <strong>Dr. Death.</strong></h2>
                 <p>La pura nata consentrada de los cómics</p>
               </div>  
-              <!-- <div class="col-lg-4"></div>  
-              <div class="col-lg-4"></div> -->
             </div>
             
             <hr></hr>
-            <div class="row">
-              <div align="center" class="col-lg-4">
-                <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">                
-                <img src="http://img20.imageshack.us/img20/8263/4oum.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">
-                <img src="http://i2.cdnds.net/12/41/618x822/comics_marvel_now_superior_spiderman.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-            </div><!-- /.row1 -->
-            <hr></hr>
-            <div class="row">
-              <div align="center" class="col-lg-4">
-                <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">
-                <img src="http://img20.imageshack.us/img20/8263/4oum.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-
-              <div align="center" class="col-lg-4">
-                <img src="http://i2.cdnds.net/12/41/618x822/comics_marvel_now_superior_spiderman.jpg" style="width: 100px; height: 150px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                <h4>Batman</h4>
-                <h5><span class="label label-primary">A Death in the Family</span></h5>
-                <p  style="font-size: 10pt">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</p>
-                <h5>$300 MXN</h5>
-                <p><a class="btn btn-success" href="#" role="button">Comprar »</a></p>
-              </div><!-- /.col-lg-4 -->
-            </div><!-- /.row2 -->
-            <hr></hr>
+            <div class="row" id="catalogo_comics">
+              
+            </div>
+  
             <div class="row">
               <div class="col-lg-4"></div>  
               <div class="col-lg-4"></div>  
