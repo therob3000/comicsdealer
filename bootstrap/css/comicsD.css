@@ -43,7 +43,7 @@ body {
   border: 1px solid #000;
   border-radius: 9px;
 }
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 .segus {
   margin-right: auto;
   margin-left: auto;
@@ -51,7 +51,7 @@ body {
   padding-right: 15px;
   max-width: 1024px;
   margin-bottom: 20px;
-=======
+=======*/
 
 
 .segus {
@@ -61,7 +61,7 @@ body {
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
->>>>>>> 14d3ea84d765ab4cf945006048831d58834a7f82
+/*>>>>>>> 14d3ea84d765ab4cf945006048831d58834a7f82*/
 }
 
 
