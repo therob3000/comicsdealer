@@ -121,32 +121,6 @@
       </div>
       <!--Aqui termina el jumbotron Principal y de Fin de semana -->
 
-      <!--<div class="container tres">
-        <div class="jumbotron">
-          <div class="highlight">
-            <div class="row">
-              <div class="col-lg-12" align="center">
-                <h2>Un Poco del Catálogo Privado de <strong>Dr. Death.</strong></h2>
-                <p>La pura nata consentrada de los cómics</p>
-              </div>  
-            </div>
-            
-            <hr></hr>
-            <div class="row" id="catalogo_comics">
-              
-            </div>
-  
-            <div class="row">
-               
-              <div class="col-lg-4 col-lg-offset-8"> 
-                <p style="font-size: 14pt" align="center"><a href="html/Catalogo.html">Ver el catálogo completo <strong>»</strong></a></p>
-              </div> 
-            </div>
-          </div>
-
-        </div>
-      </div>--><!-- /.Catalogo -->
-
       <div class="container tres">
         <div class="catalogo">
           <div class="row">
@@ -160,10 +134,6 @@
           
           <hr></hr>
           <div class="row" id="catalogo_comics">
-            
-
-            
-
             
           </div><!-- /.row1 -->
           <div class="row">
