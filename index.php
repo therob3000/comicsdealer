@@ -121,7 +121,7 @@
       </div>
       <!--Aqui termina el jumbotron Principal y de Fin de semana -->
 
-      <div class="container tres">
+      <!--<div class="container tres">
         <div class="jumbotron">
           <div class="highlight">
             <div class="row">
@@ -137,16 +137,44 @@
             </div>
   
             <div class="row">
-              <div class="col-lg-4"></div>  
-              <div class="col-lg-4"></div>  
-              <div class="col-lg-4"> 
+               
+              <div class="col-lg-4 col-lg-offset-8"> 
                 <p style="font-size: 14pt" align="center"><a href="html/Catalogo.html">Ver el catálogo completo <strong>»</strong></a></p>
               </div> 
             </div>
           </div>
 
         </div>
-      </div><!-- /.Catalogo -->
+      </div>--><!-- /.Catalogo -->
+
+      <div class="container tres">
+        <div class="catalogo">
+          <div class="row">
+            <div class="col-lg-12" >
+              <h2 style="margin-bottom: 0px;">Un Poco del Catálogo Privado de <strong>Dr. Lel.</strong>
+              <br><small>La pura nata consentrada de los cómics</small></h2>
+            </div>  
+            <!-- <div class="col-lg-4"></div>  
+            <div class="col-lg-4"></div> -->
+          </div>
+          
+          <hr></hr>
+          <div class="row" id="catalogo_comics">
+            
+
+            
+
+            
+          </div><!-- /.row1 -->
+          <div class="row">
+             
+            <div class="col-lg-4 col-lg-offset-8"> 
+              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.html">Ver el catálogo completo <strong>»</strong></a></p>
+            </div> 
+          </div>
+          <hr></hr>
+        </div>
+      </div><!-- /.Catalogo Muestra-->
 
       <div class="container tres">
         <div class="jumbotron">
