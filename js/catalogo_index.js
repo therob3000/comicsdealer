@@ -10,6 +10,5 @@ function cargarComics(salto){
 		cargarCatalogoComics(sigSalto,3);
 		$("#catalogo_comics").attr("id", i);
 		sigSalto = sigSalto+3;
-		alert(sigSalto);
 	};
 }
