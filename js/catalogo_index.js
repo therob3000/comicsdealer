@@ -19,7 +19,7 @@ function cargarComics(salto){
 	else{
 		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-12)+"'>Anterior</a>");
 	}
-	if(+salto+12 >= total){
+	if(+salto+12 > total){
 		$("#siguiente").togglehide();
 	}
 	else{
