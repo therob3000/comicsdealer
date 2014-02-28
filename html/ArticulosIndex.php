@@ -1,5 +1,14 @@
 <?php
-$articulo_id = $_GET['articulo_id'];
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
+
+if (empty($_GET['pagina'])){
+  $pagina = 0; 
+}
+else{
+  $pagina = $_GET['pagina'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,13 +28,13 @@ $articulo_id = $_GET['articulo_id'];
   <!-- Estilo css para blog -->
   <link href="blog.css" rel="stylesheet">
   <script>
-    var articulo_id = <?php echo json_encode($articulo_id); ?>;
+    var pagina = <?php echo json_encode($pagina); ?>;
   </script>
   <script src="../bootstrap/assets/js/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
   <script src="../js/registro.js"></script>
   <script src="../js/login.js"></script>
-  <script src="../js/articulos.js"></script>
+  <script src="../js/articulos_index.js"></script>
 
   <style>
     .container {
@@ -40,14 +49,14 @@ $articulo_id = $_GET['articulo_id'];
       <![endif]-->
     </head>
     <body>
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
       <div class="container">
         <div class="container tres">
           <div class="navbar navbar-inverse">
@@ -106,50 +115,19 @@ $articulo_id = $_GET['articulo_id'];
 
               <div class="row">
 
-                <div class="col-sm-offset-1 col-sm-7 blog-main" id="main">
-
-                  <div class="blog-post">
-                   
-
-                    <div class="row">
-                    <div class="col-sm-8">
-                      <div class="row">
-                        <div >
-                          <h2 id="articulo_titulo" class="blog-post-title"></h2>
-                          <p id="articulo_fecha_autor"></p>
-                          <hr>
-                        </div>
-                      </div>
-                    
-                      <div class="row">
-                        <div class="col-sm-8">
-                          <h4>Resumen</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-4" align="center">
-                      <img id="articulo_imagen"  src="" style="width: 120px; height: 180px;" class="img-rounded" data-src="holder.js/140x140" alt="140x140">
-                    </div>
+                <div class="col-sm-offset-1 col-sm-10 blog-main">
+                  <div class="sidebar-module sidebar-module-inset">
+                    <h4>Acerca</h4>
+                    <p align="justify">Esta sección de <em>artículos</em> la hemos creado para darte una introducción a nuevos personajes, o bien una guía a sagas importantes. "Es lo que debes saber".</p>
                   </div>
 
-                    <p id="articulo_resumen" align="justify"></p>
-                    <blockquote>
-                      <p id="articulo_cita"></p>
-                      <cite><small>Quién lo dijo</small></cite>
-                    </blockquote>
-
-                    <h3 id="articulo_subtitulo"></h3>
-                    <div id="articulo_principal" align="justify"></div>
-
-                    <h4 id="articulo_segundo_subtitulo"></h4>
-                    <div id="articulo_secundario" align="justify"></div>
-
+                  <div class="blog-post" id="articulos">
 
                   </div><!-- /.Aquí termina lo que hay que poner para cada artículo -->
 
-                  <div class="row" id="social">
+                  <div class="row">
                     <div class="col-sm-4" style="margin-top: 2%">
-                      <div class="fb-share-button" data-href="" data-type="button_count"></div>
+                      <div class="fb-share-button" data-href="http://www.comicsdealer.com/html/ArticulosIndex.php" data-type="button_count"></div>
                     </div>
                     <div class="col-sm-4" style="margin-top: 2%">
                       <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
@@ -167,27 +145,6 @@ $articulo_id = $_GET['articulo_id'];
                   </ul>
 
                 </div><!-- /.blog-main -->
-
-                <div class="col-sm-3 blog-sidebar">
-                  <div class="sidebar-module sidebar-module-inset">
-                    <h4>Acerca</h4>
-                    <p align="justify">Esta sección de <em>artículos</em> la hemos creado para darte una introducción a nuevos personajes, o bien una guía a sagas importantes. "Es lo que debes saber".</p>
-                  </div>
-                  <div class="sidebar-module">
-                    <h4>Archivo</h4>
-                    <ol class="list-unstyled" id="archivo">
-
-                    </ol>
-                  </div>
-                  <div class="sidebar-module">
-                    <h4>También debes ver</h4>
-                    <ol class="list-unstyled">
-                      <li><a href="http://es.marvel.wikia.com/wiki/Portada" target="_blank">Marvel Wiki</a></li>
-                      <li><a href="http://es.dc.wikia.com/wiki/Wiki_DC_Comics" target="_blank">Dc Wiki</a></li>
-                      <li><a href="http://starwars.wikia.com/wiki/Main_Page" target="_blank">Star Wars Wiki</a></li>
-                    </ol>
-                  </div>
-                </div><!-- /.blog-sidebar -->
 
               </div><!-- /.row -->
 

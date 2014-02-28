@@ -26,6 +26,7 @@
 		$json->articulo_segundo_subtitulo = obtenerResultado("articulo_segundo_subtitulo");
 		$json->articulo_secundario 	= obtenerResultado("articulo_secundario");
 		$json->articulo_imagen		= obtenerResultado("articulo_imagen");
+		$json->total 				= obtenerTotalArticulos();
 	}
 	else{
 		$json->articulo = FALSE;
@@ -36,6 +37,12 @@
 	function obtenerResultado($nombreColumna){
 		global $queryResultado;
 		return mysql_result($queryResultado, 0, "$nombreColumna");
+	}
+
+	function obtenerTotalArticulos(){
+		$queryTotal = "SELECT COUNT(*) AS total FROM articulos";
+		$queryResultado = mysql_query($queryTotal);
+		return mysql_result($queryResultado, 0, "total");
 	}
 ?>
 
