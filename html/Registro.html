@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Bootstrap -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" href="../img/ComicDico-01.png">
     <link href="../bootstrap/css/navbar.css" rel="stylesheet">
@@ -16,6 +15,7 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/registro.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/pie_pagina.js"></script>
 
     <style>
       .container {
@@ -30,11 +30,9 @@
     <![endif]-->
   </head>
   <body>
+    <div id="nav_bar">
+    </div>
     <div class="container">
-      <div class="container tres">
-        <div id="nav_bar"></div>
-      </div>
-
       <!-- Inicia ventana modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -132,9 +130,8 @@
         </div>
       </div>
 
-      <footer>
-      <p align="center" class="text-info"><strong>© Comics Dealer 2013 | Todas las imágenes aquí mostradas no nos pertenecen y no son usadas con fin de lucro | <a href="Sitemap.html"> Mapa de Sitio</a></string></p>
-    </footer>
+      <div id="footer">
+      </div>
       
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
