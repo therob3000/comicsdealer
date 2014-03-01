@@ -12,7 +12,13 @@
 	$salto = $_GET['salto'];
 	$rango = $_GET['rango'];
 
-	$queryArticulos = "SELECT articulo_id, articulo_titulo, articulo_fecha, articulo_autor, articulo_resumen, articulo_imagen FROM articulos LIMIT $salto, $rango";
+	$queryArticulos = "SELECT articulo_id,
+								articulo_titulo,
+								articulo_fecha, 
+								articulo_autor, 
+								articulo_resumen, 
+								articulo_imagen 
+								FROM articulos LIMIT $salto, $rango";
 	$queryResultado = mysql_query($queryArticulos);
 	$num = mysql_num_rows($queryResultado);
 
@@ -37,12 +43,22 @@
 	else{
 		$articulosArray = array();
 	}
+	$json->articulos = $articulosArray;
+	$json->total = obtenerTotalArticulos();
 
-	echo json_encode($articulosArray);
+	echo json_encode($json);
 
 	function obtenerResultado($nombreColumna, $indice){
 		global $queryResultado;
 		return mysql_result($queryResultado, $indice, "$nombreColumna");
 	}
+
+	function obtenerTotalArticulos(){
+		$queryTotal = "SELECT COUNT(*) AS total FROM articulos";
+		$queryResultado = mysql_query($queryTotal);
+		return mysql_result($queryResultado, 0, "total");
+	}
+
+
 
 ?>
