@@ -23,8 +23,8 @@
 
 	$queryCatalogoComics = "SELECT 
     INV.inventario_id,
-    CATALOGO.cat_comic_titulo,
-    CATALOGO.cat_comic_descripcion,
+    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
+    (SELECT datos_comic_descripcion FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_descripcion,
     (SELECT 
             personaje_nombre
         FROM
