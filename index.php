@@ -58,10 +58,8 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+    <div id="nav_bar"></div>
     <div class="container">
-      <div class="container tres">
-        <div id="nav_bar"></div>
-      </div>
 
       <!-- Inicia ventana modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -128,8 +126,6 @@
               <h2 style="margin-bottom: 0px;">Un Poco del Catálogo Privado de <strong>Dr. Lel.</strong>
               <br><small>La pura nata consentrada de los cómics</small></h2>
             </div>  
-            <!-- <div class="col-lg-4"></div>  
-            <div class="col-lg-4"></div> -->
           </div>
           
           <hr></hr>
@@ -139,7 +135,7 @@
           <div class="row">
              
             <div class="col-lg-4 col-lg-offset-8"> 
-              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.html">Ver el catálogo completo <strong>»</strong></a></p>
+              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php">Ver el catálogo completo <strong>»</strong></a></p>
             </div> 
           </div>
           <hr></hr>

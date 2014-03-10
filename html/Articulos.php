@@ -49,50 +49,7 @@ $articulo_id = $_GET['articulo_id'];
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
       <div class="container">
-        <div class="container tres">
-          <div class="navbar navbar-inverse">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a align="center" href="http://www.comicsdealer.com/">
-                <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-                class="img-responsive text-center" width="207" height="26"/></a>
-                <!--<a class="navbar-brand" href="http://www.google.com">ComicsDealer.com</a>-->
-              </div>
-              <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <div class="nav navbar-nav navbar-right">
-                  <li><a href="Articulos.html">Artículos</a></li>
-                  <li><a href="Catalogo.html">Catálogo</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success" style="font-size: 10pt">Sign in <span class="caret"></span></span></a>
-                    <ul class="dropdown-menu">
-                      <form class="navbar-form navbar-right" id="login">
-                        <li>
-                          <div class="form-group">
-                            <input id="email" type="email" placeholder="Email" class="form-control" name="usuario_email">
-                          </div>
-                        </li>
-                        <li>
-                          <div class="form-group">
-                            <input id="password" type="password" placeholder="Password" class="form-control" name="usuario_password">
-                          </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                          <div align="right">
-                            <button type="submit" class="btn btn-success">Sign in</button>
-                          </div>
-                        </li>
-                      </form><!--/.Fin del Form -->
-                    </ul>
-                  </li>
-                </div>
-              </div><!--/.nav-collapse -->
-            </div>
-          </div>
+         <div id="nav_bar"></div>
 
           <div class="container tres">
             <div class="highlight">
