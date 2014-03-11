@@ -100,7 +100,7 @@
           <div id="layout"></div>
           <div class="row"><p align="right">
             <strong>Haz Login o </strong>
-            <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate ya!</a></p>
+            <a class="btn btn-lg btn-danger" href="html/preRegistro.html">Regístrate ya!</a></p>
           </div>
           <div class="row">
             <div class="col-lg-3">

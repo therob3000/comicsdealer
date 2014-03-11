@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	cargarArticulos(pagina, 5);
+	verificaSesion();
 });
 
 function cargarArticulos(salto, rango){
@@ -26,10 +27,26 @@ function cargarArticulos(salto, rango){
 				$("#anterior").html("<a href='./ArticulosIndex.php?pagina="+(+salto-rango)+"'>Anterior</a>");
 			}
 			if(+salto+rango >= data.total){
-				$("#siguiente").togglehide();
+				$("#siguiente").toggle();
 			}
 			else{
 				$("#siguiente").html("<a href='./ArticulosIndex.php?pagina="+(+salto+rango)+"'>Siguiente</a>");
+			}
+		},
+		'json');
+	$.ajaxSetup({async:true});
+}
+
+function verificaSesion(){
+	$.ajaxSetup({async:false});
+	$.post("../php/verifica_sesion.php",
+		function(data){
+			verifica = data.ver_sesion.estado;
+			if(verifica == true){
+				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+			}
+			else{
+				$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
 			}
 		},
 		'json');

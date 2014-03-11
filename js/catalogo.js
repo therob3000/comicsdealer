@@ -23,3 +23,19 @@ function cargarCatalogoComics (salto, rango) {
 	$.ajaxSetup({async:true});
 
 }
+
+function verificaSesion(){
+	$.ajaxSetup({async:false});
+	$.post("../php/verifica_sesion.php",
+		function(data){
+			verifica = data.ver_sesion.estado;
+			if(verifica == true){
+				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+			}
+			else{
+				$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
+			}
+		},
+		'json');
+	$.ajaxSetup({async:true});
+}

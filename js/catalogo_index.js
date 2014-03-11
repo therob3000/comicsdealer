@@ -1,6 +1,7 @@
 var total;
 
 $(document).ready(function(){
+	verificaSesion();
 	cargarComics(pagina);
 });
 
@@ -20,7 +21,6 @@ function cargarComics(salto){
 		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-12)+"'>Anterior</a>");
 	}
 	if(+salto+12 > total){
-		alert(total);
 		$("#siguiente").hide();
 	}
 	else{

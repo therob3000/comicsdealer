@@ -32,7 +32,6 @@ else{
   </script>
   <script src="../bootstrap/assets/js/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
-  <script src="../js/registro.js"></script>
   <script src="../js/login.js"></script>
   <script src="../js/articulos_index.js"></script>
 

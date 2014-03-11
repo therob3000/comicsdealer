@@ -30,7 +30,6 @@ else{
 
   <script src="../bootstrap/assets/js/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
-  <script src="../js/registro.js"></script>
   <script src="../js/login.js"></script>
   <script src="../js/catalogo.js"></script>
   <script src="../js/catalogo_index.js"></script>
@@ -53,6 +52,36 @@ else{
 
 
       <div class="container">
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Bienvenido, haz login!</h4>
+              </div>
+              <form role="form" id="login">
+                <div class="modal-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Correo Electrónico</label>
+                      <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="usuario_email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
+                    </div>
+                    <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
+                  </div>
+                  <div class="modal-footer navbar-inverse">
+                    <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
+                    class="img-responsive text-center" width="207" height="26"/>
+                    <button type="submit" class="btn btn-success" >Iniciar Sesión</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
 
         <div class="container tres">
 

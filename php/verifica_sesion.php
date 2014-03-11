@@ -15,6 +15,7 @@
 							'usuario_nombre'		=> $_SESSION['usuario_nombre'],
 							'usuario_id'			=> $_SESSION['usuario_id'],
 							'usuario_max_pedidos'	=> $_SESSION['usuario_max_pedidos'],
+							'usuario_pro' 			=> $_SESSION['usuario_pro'],
 							'estado'		=> true
 		);
 	}

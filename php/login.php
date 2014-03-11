@@ -24,6 +24,7 @@
 		$usuario_nombre			= mysql_result($queryResultado, 0, "usuario_nombre");
 		$usuario_id 			= mysql_result($queryResultado, 0, "usuario_id");
 		$usuario_max_pedidos 	= mysql_result($queryResultado, 0, "usuario_max_pedidos");
+		$usuario_pro 			= mysql_result($queryResultado, 0, "usuario_pro");
 
 		if($usuario_activado == 1){
 			if(crypt($usuario_password, $dbpasswd) == $dbpasswd){
@@ -36,12 +37,20 @@
 				$_SESSION['usuario_nombre']			= $usuario_nombre;
 				$_SESSION['usuario_id']				= $usuario_id;
 				$_SESSION['usuario_max_pedidos']	= $usuario_max_pedidos;
+				$_SESSION['usuario_pro']      		= $usuario_pro;
 				
 				//$respuestaJSON = true;
 
 				$json->usuario_existe = true;
 				$json->usuario_pass = true;
 				$json->usuario_activado = true;
+
+				if($usuario_pro == 1){
+					$json->usuario_pro = true;
+				}
+				else{
+					$json->usuario_pro = false;
+				}
 
 			}
 			else{

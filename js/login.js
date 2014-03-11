@@ -21,7 +21,13 @@ function login () {
 				}*/
 				//LOGIN NUEVO, verifica las tres condiciones
 				if(data.usuario_existe && data.usuario_pass && data.usuario_activado){
-					window.location.href = "/html/Pedido.html";
+					if(data.usuario_pro == true){
+						window.location.href = "/html/Pedido.html";
+					}
+					else{
+						window.location.href = "/html/Catalogo.php";
+					}
+					
 				}
 				else{
 					alert("Datos erroneos");
