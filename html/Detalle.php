@@ -1,3 +1,7 @@
+<?php
+$comic_id = $_GET['comic_id'];
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,13 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Bootstrap -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" href="../img/ComicDico-01.png">
-    <link href="../bootstrap/css/navbar.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
+    <link href="/bootstrap/css/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/comicsD.css">
+    <script>
+      var comic_id = <?php echo json_encode($comic_id); ?>;
+    </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/registro.js"></script>
+    <script src="../js/detalle_comic.js"></script>
     <script src="../js/login.js"></script>
 
     <style>
@@ -30,83 +37,33 @@
   </head>
   <body>
     
-      <div class="navbar-fixed-top">
-         <div class="segus navbar-inverse">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a align="center" href="http://www.comicsdealer.com/">
-              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-               class="img-responsive text-center" width="207" height="26"/></a>
-            <!--<a class="navbar-brand" href="http://www.google.com">ComicsDealer.com</a>-->
-          </div>
-        
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
-          
-            <div class="nav navbar-nav navbar-right">
-              <li><a href="Articulos.html">Artículos</a></li>
-              <li><a href="Catalogo.html">Catálogo</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success" style="font-size: 10pt">Sign in <span class="caret"></span></span></a>
-                <ul class="dropdown-menu">
-                  <form class="navbar-form navbar-right" id="login">
-                    <li>
-                      <div class="form-group">
-                        <input id="email" type="email" placeholder="Email" class="form-control" name="usuario_email">
-                      </div>
-                    </li>
-                    <li>
-                      <div class="form-group">
-                        <input id="password" type="password" placeholder="Password" class="form-control" name="usuario_password">
-                      </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <div align="right">
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                      </div>
-                    </li>
-                  </form><!--/.Fin del Form -->
-                </ul>
-              </li>
-            </div>
-          </div><!--/.nav-collapse -->
-        </div>
-        </div>
-
-  
+    <div id="nav_bar"></div>
     <div class="container">
-    
-      
-      
       <div class="container tres">
 
         <div class="catalogo">
           <div class="row">
             <div class="col-md-3">
-              <img src="http://upload.wikimedia.org/wikipedia/en/f/f8/Batman_Death_In_The_Family_TPB_cover.jpg"  class="img-responsive img-rounded">
+              <img src="" class="img-responsive img-rounded" id="comic_img">
             </div>
             <div class="col-md-9">
-              <h1 class="blog-title">Batman
-              <br><small><span class="label label-primary">A Death in the Family</span></strong></small></h1>
+              <h1 class="blog-title" id="comic_personaje"></h1>
+              <h1><small><span class="label label-primary" id="comic_titulo"></span></strong></small></h1>
             
               <hr></hr>
 
-              <h4 align="justify">It's a new paperback edition of the classic Batman tale that sealed the fate of the second Robin, Jason Todd, collected from BATMAN #426-429 and 440-442 and THE NEW TITANS #60-61! 272 pg</h4><br>
+              <p align="justify" style="font-size: 12pt" id="comic_descripcion"></p>
               <!--<div class="row" align="center">
                 <div class="col-md-4"><h4>Estado: <small>Nuevo</small></h4></div>
                 <div class="col-md-4"><h4>Año: <small>1989</small></h4></div>
                 <div class="col-md-4"><h4>Copias: <small>3</small></h4></div>
               </div>-->
+              </div>
               <div class="row" align="right">
-                <div class="col-md-6 col-md-offset-8">
+                <div class="col-md-6 col-md-offset-6">
                 <div class="row">
-                  
-                  <div class="col-md-4">
-                    <h3 class="panel-title price">$300</h3>
+                  <div class="col-md-8">
+                    <h4 class="panel-title price" id="comic_precio"></h4>
                   </div>
                   <div class="col-md-4">
                     <a class="btn btn-success" href="#" role="button">Comprar »</a>
@@ -118,8 +75,6 @@
             </div>
           </div>
         </div>
-
-      </div><!-- /.Catalogo -->
 
       <div class="container tres">
         <div class="jumbotron">
