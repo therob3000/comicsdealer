@@ -34,8 +34,8 @@ function botonComprar(){
 	$(".btn-comprar").on("click", function(){
 		cadena = "cat_comic_inventario_id="+$(this).attr('id');
 		$.post("/php/agregarCompra.php",cadena);
-		$("#boton_comprar").hide();
-		$("#boton_eliminar").show();
+		$("#boton_comprar"+$(this).attr('id')).hide();
+		$("#boton_eliminar"+$(this).attr('id')).show();
 	});
 }
 
@@ -43,8 +43,8 @@ function botonEliminar(){
 	$(".btn-eliminar").on("click", function(){
 		cadena = "cat_comic_inventario_id="+$(this).attr('id');
 		$.post("/php/eliminarCompra.php",cadena);
-		$("#boton_eliminar").hide();
-		$("#boton_comprar").show();
+		$("#boton_eliminar"+$(this).attr('id')).hide();
+		$("#boton_comprar"+$(this).attr('id')).show();
 	});
 }
 

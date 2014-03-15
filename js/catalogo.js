@@ -14,15 +14,15 @@ function cargarCatalogoComics (salto, rango) {
 						$("#"+val.inventario_id).find('#boton_comprar').hide();
 						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
 						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
-						$("#"+val.inventario_id).find('#boton_comprar').html("<a class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar >></a>");
-						$("#"+val.inventario_id).find('#boton_eliminar').html("<a class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar >></a>");
+						$("#"+val.inventario_id).find('#boton_comprar'+val.inventario_id).html("<a class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar >></a>");
+						$("#"+val.inventario_id).find('#boton_eliminar'+val.inventario_id).html("<a class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar >></a>");
 					}
 					else{
 						$("#"+val.inventario_id).find('#boton_eliminar').hide();
 						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
 						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
-						$("#"+val.inventario_id).find('#boton_eliminar').html("<a class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar >></a>");
-						$("#"+val.inventario_id).find('#boton_comprar').html("<a class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar >></a>");
+						$("#"+val.inventario_id).find('#boton_eliminar'+val.inventario_id).html("<a class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar >></a>");
+						$("#"+val.inventario_id).find('#boton_comprar'+val.inventario_id).html("<a class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar >></a>");
 					}
 					$("#"+val.inventario_id).find('#cat_detalle').attr('href', "/html/Detalle.php?comic_id="+val.inventario_id);
 					$("#"+val.inventario_id).find("#cat_imagen").attr("src", val.cat_comic_imagen_url);
