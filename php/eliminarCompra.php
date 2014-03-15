@@ -4,11 +4,16 @@
 	session_start();
 
 	$comic_inventario_id = $_REQUEST['cat_comic_inventario_id'];
-	$comicsArray = $_SESSION['usuario_comics'];
-
-	if(($key = array_search($comic_inventario_id, $comicsArray)) !== false) {
-		unset($comicsArray[$key]);
+	$arrayExistente = $_SESSION['usuario_comics'];
+	$arrayNuevo = array();
+	foreach ($arrayExistente as $key => $value) {
+		if($comic_inventario_id != $arrayExistente[$key]){
+			$arrayNuevo[] = $arrayExistente[$key];
+		}
 	}
 
-	$_SESSION['usuario_comics'] = $comicsArray;
+	print_r($arrayNuevo);
+
+	$_SESSION['usuario_comics'] = $arrayNuevo;
+
 ?>
