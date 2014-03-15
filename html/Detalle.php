@@ -66,7 +66,8 @@ $comic_id = $_GET['comic_id'];
                     <h4 class="panel-title price" id="comic_precio"></h4>
                   </div>
                   <div class="col-md-4">
-                    <a class="btn btn-success" href="#" role="button">Comprar »</a>
+                    <div id="boton_comprar"><button class="btn btn-success btn-comprar" role="button">Comprar »</button></div>
+                    <div id="boton_eliminar"><button class="btn btn-danger btn-eliminar" role="button">Eliminar »</button></div>
                   </div>
                 </div>
                 </div>

@@ -52,7 +52,7 @@ function cargarCatalogoComics2(salto, rango) {
 				$.get("../html/layouts/catalogo_layout.html", function(data2){
 					$("#catalogo_comics").append(data2);
 					$("#catalogo_comics").find("#catalogo_comic").attr("id", val.inventario_id);
-					$("#"+val.inventario_id).find('#boton_comprar').html("<button class='btn btn-success btn-comprar' href='/html/Catalogo.php' role='button'>Comprar</button>");
+					$("#"+val.inventario_id).find('#boton_comprar').html("<button class='btn btn-success btn-comprar' role='button'>Comprar</button>");
 					$("#"+val.inventario_id).find('#cat_detalle').attr('href', "/html/Detalle.php?comic_id="+val.inventario_id);
 					$("#"+val.inventario_id).find("#cat_imagen").attr("src", val.cat_comic_imagen_url);
 					$("#"+val.inventario_id).find("#cat_personaje").text(val.cat_comic_personaje)

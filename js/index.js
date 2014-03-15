@@ -3,7 +3,7 @@ $(document).ready(function(){
 	cargarPromocionFinDeSemana('index');
 	modalIniciarSesion();
 	cargarCatalogoComics2(0,3);
-	
+	botonComprarNologin();
 });
 
 function modalIniciarSesion(){
@@ -15,5 +15,11 @@ function modalIniciarSesion(){
 
 function cargarNavBar(){
 	$("#nav_bar").load("html/layouts/navbar_nologin_layout.html");
+}
+
+function botonComprarNologin(){
+	$(".btn-comprar").on("click", function(){
+		$('#myModal').modal('show');
+	})
 }
 
