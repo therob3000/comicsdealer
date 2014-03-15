@@ -12,11 +12,15 @@ function cargarCatalogoComics (salto, rango) {
 					$("#catalogo_comics").find("#catalogo_comic").attr("id", val.inventario_id);
 					if($.inArray(val.inventario_id, data.agregados) != -1){
 						$("#"+val.inventario_id).find('#boton_comprar').hide();
+						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
+						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
 						$("#"+val.inventario_id).find('#boton_comprar').html("<a class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar >></a>");
 						$("#"+val.inventario_id).find('#boton_eliminar').html("<a class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar >></a>");
 					}
 					else{
 						$("#"+val.inventario_id).find('#boton_eliminar').hide();
+						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
+						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
 						$("#"+val.inventario_id).find('#boton_eliminar').html("<a class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar >></a>");
 						$("#"+val.inventario_id).find('#boton_comprar').html("<a class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar >></a>");
 					}
