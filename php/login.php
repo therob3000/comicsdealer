@@ -11,6 +11,7 @@
 
 	$respuestaJSON		= NULL;
 	$json 				= new stdClass();
+	$comicsArray		= array();
 
 	$queryLogin 	= "SELECT * FROM usuarios WHERE usuario_email = '$usuario_email'";
 
@@ -38,6 +39,7 @@
 				$_SESSION['usuario_id']				= $usuario_id;
 				$_SESSION['usuario_max_pedidos']	= $usuario_max_pedidos;
 				$_SESSION['usuario_pro']      		= $usuario_pro;
+				$_SESSION['usuario_comics']			= $comicsArray;
 				
 				//$respuestaJSON = true;
 

@@ -2,7 +2,7 @@ $(document).ready(function(){
 	cargarNavBar();
 	cargarPromocionFinDeSemana('index');
 	modalIniciarSesion();
-	cargarCatalogoComics(0,3);
+	cargarCatalogoComics2(0,3);
 	
 });
 

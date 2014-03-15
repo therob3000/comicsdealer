@@ -69,7 +69,6 @@
 
 	$json->catalogo = $catalogoArray;
 	$json->total = obtenerTotalComics();
-	$json->agregados = $_SESSION['usuario_comics'];
 
 	echo json_encode($json);
 
@@ -83,6 +82,3 @@
 		$queryResultado = mysql_query($queryTotal);
 		return mysql_result($queryResultado, 0, "total");
 	}
-
-
-

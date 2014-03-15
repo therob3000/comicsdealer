@@ -3,6 +3,8 @@ var total;
 $(document).ready(function(){
 	verificaSesion();
 	cargarComics(pagina);
+	botonComprar();
+	botonEliminar();
 });
 
 
@@ -27,4 +29,23 @@ function cargarComics(salto){
 		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+12)+"'>Siguiente</a>");
 	}
 }
+
+function botonComprar(){
+	$(".btn-comprar").on("click", function(){
+		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		$.post("/php/agregarCompra.php",cadena);
+		$("#boton_comprar").hide();
+		$("#boton_eliminar").show();
+	});
+}
+
+function botonEliminar(){
+	$(".btn-eliminar").on("click", function(){
+		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		$.post("/php/eliminarCompra.php",cadena);
+		$("#boton_eliminar").hide();
+		$("#boton_comprar").show();
+	});
+}
+
 
