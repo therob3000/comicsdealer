@@ -1,6 +1,9 @@
 $(document).ready(function(){
 	
 	verificaSesion(comic_id);
+	botonComprar();
+	botonEliminar();
+	botonComprarNologin();
 });
 
 function verificaSesion(comic_id){
@@ -34,7 +37,8 @@ function cargarComic(comic_id){
 				$('#comic_personaje').text(data.comic.cat_comic_personaje);
 				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
-				$('#boton_comprar').html("<a class='btn btn-success' href='#' role='button'>Comprar »</a>");
+				$('#boton_eliminar').hide();
+				$('#boton_comprar').hide();
 			}
 		},
 		'json');
@@ -55,19 +59,43 @@ function cargarComic2(comic_id){
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
 				
 				if($.inArray(data.comic.inventario_id, data.agregados) != -1){
-					
+					$('#boton_comprar_nologin').hide();					
 					$('#boton_comprar').hide();
 					$('.btn-eliminar').attr("id", data.comic.inventario_id);
 					$('.btn-comprar').attr("id", data.comic.inventario_id);
 				}
 				else{
-					
+					$('#boton_comprar_nologin').hide();
 					$('#boton_eliminar').hide();
 					$('.btn-comprar').attr("id", data.comic.inventario_id);
-					$('.btn-comprar').attr("id", data.comic.inventario_id);
+					$('.btn-eliminar').attr("id", data.comic.inventario_id);
 				}
 
 			}
 		},
 		'json');
+}
+
+function botonComprar(){
+	$(".btn-comprar").on("click", function(){
+		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		$.post("/php/agregarCompra.php",cadena);
+		$("#boton_comprar").hide();
+		$("#boton_eliminar").show();
+	});
+}
+
+function botonEliminar(){
+	$(".btn-eliminar").on("click", function(){
+		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		$.post("/php/eliminarCompra.php",cadena);
+		$("#boton_eliminar").hide();
+		$("#boton_comprar").show();
+	});
+}
+
+function botonComprarNologin(){
+	$(".btn-comprar-nologin").on("click", function(){
+		$('#myModal').modal('show');
+	})
 }
