@@ -1,7 +1,7 @@
 <?php
 
 //funcion para la conexion en heroku
-function conexion(){
+/*function conexion(){
 
 	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -24,7 +24,7 @@ function conexion(){
 		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
-}
+}*/
 
 //funcion para la conexion local MAMP
 /*function conexion(){
@@ -44,7 +44,7 @@ function conexion(){
 }*/
 
 //funcion para la conexion local WAMP
-/*function conexion(){
+function conexion(){
 	//Definimos los parametros de conexion, host, usuario, password
 	$con = mysql_connect("localhost","root","");
 
@@ -58,6 +58,6 @@ function conexion(){
 		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
-}*/
+}
 
 ?>

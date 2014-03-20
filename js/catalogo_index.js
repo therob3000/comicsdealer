@@ -12,6 +12,7 @@ function verificaSesion(pagina){
 			verifica = data.ver_sesion.estado;
 			if(verifica == true){
 				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'>Finalizar Compra<span class='badge' id='compraTotal'></span></button>")
 				cargarComics(pagina);
 				botonComprar();
 				botonEliminar();
@@ -73,7 +74,9 @@ function cargarComicsNologin(salto){
 function botonComprar(){
 	$(".btn-comprar").on("click", function(){
 		cadena = "cat_comic_inventario_id="+$(this).attr('id');
-		$.post("/php/agregarCompra.php",cadena);
+		$.post("/php/agregarCompra.php",cadena,function(data){
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
 		$("#boton_comprar"+$(this).attr('id')).hide();
 		$("#boton_eliminar"+$(this).attr('id')).show();
 	});
@@ -81,8 +84,12 @@ function botonComprar(){
 
 function botonEliminar(){
 	$(".btn-eliminar").on("click", function(){
+
 		cadena = "cat_comic_inventario_id="+$(this).attr('id');
-		$.post("/php/eliminarCompra.php",cadena);
+		$.post("/php/eliminarCompra.php",cadena, function(data){
+			
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
 		$("#boton_eliminar"+$(this).attr('id')).hide();
 		$("#boton_comprar"+$(this).attr('id')).show();
 	});
