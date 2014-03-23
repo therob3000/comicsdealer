@@ -104,6 +104,9 @@ $comic_id = $_GET['comic_id'];
                 </div>
               </div>
               <hr></hr>
+              <div class="col-lg-4"> 
+              <p style="font-size: 14pt" align="center"><a href="/html/Catalogo.php"><strong>«</strong> Regresar al catálogo</a></p>
+            </div>
             </div>
           </div>
         </div>

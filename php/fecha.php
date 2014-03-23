@@ -69,7 +69,7 @@ function obtenerMesTraducido($mes){
 		case '11':
 			$mesLiteral = "Noviembre";
 			break;
-		case 'variable':
+		case '12':
 			$mesLiteral = "Diciembre";
 			break;
 		default:
