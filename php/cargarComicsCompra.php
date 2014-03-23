@@ -12,9 +12,19 @@
 
 	$json = new stdClass();
 
-	for ($i=0; $i < count($inventario_comics_array); $i++) { 
-		$cadenaInventarioId = $inventario_comics_array[$i].", ";
-	}
+    $camposArray = array("inventario_id",
+                        "cat_comic_titulo",
+                        "cat_comic_descripcion",
+                        "cat_comic_personaje",
+                        "cat_comic_numero_ejemplar",
+                        "cat_comic_imagen_url",
+                        "inventario_precio_salida"
+    );
+
+    $catalogoArray = array();
+    $rowArray = array();
+
+	$cadenaInventarioId = implode(",", $inventario_comics_array);
 
 	$queryComics = "SELECT 
     INV.inventario_id,
@@ -44,6 +54,28 @@
 	WHERE
     	CATALOGO.cat_comic_activo = 1 AND INV.inventario_existente = 1 AND INV.inventario_id IN ($cadenaInventarioId)";
 
-    echo $queryComics;
+    $queryResultado = mysql_query($queryComics);
+    $num = mysql_num_rows($queryResultado);
+    if($num>0){
+        for($i = 0; $i < $num; $i++){
+            $rowArray = array();
+            for ($j=0; $j < count($camposArray); $j++) {
+                $rowArray[$camposArray[$j]] = obtenerResultado($camposArray[$j], $i);
+            }
+            $catalogoArray[] = $rowArray;
+        }
+    }
+    else{
+        $catalogoArray = array();
+    }
+
+    $json->compras = $catalogoArray;
+
+    echo json_encode($json);
+
+    function obtenerResultado($nombreColumna, $indice){
+        global $queryResultado;
+        return mysql_result($queryResultado, $indice, "$nombreColumna");
+    }
 
 ?>
