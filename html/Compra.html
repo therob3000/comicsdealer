@@ -141,23 +141,42 @@
           <div class="alert alert-info">
             <strong>Recuerda: </strong>al finalizar tu compra recibirás un correo electrónico con las intrucciones de pago!
           </div>
-
+          <h5>Forma de Entrega:</h4>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="FormaDeEntrega" id="DF" value="df" checked>Para recoger en algún metro del D.F.
+                </label>
+              </div>
+            </div>  
+            <div class="col-lg-4" align="center">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="FormaDeEntrega" id="Rep" value="rep">Para envío al interior de la República <input type="text" class="form-control" placeholder="Codigo Postal de 5 digitos" id="zipcode">
+                </label>
+              </div>
+            </div>  
+            <div class="col-lg-4">
+            </div> 
+          </div>
+          <h5>Forma de Pago:</h5>
           <div class="row">
             <div class="col-lg-4" align="center">
               <div class="radio">
                 <label>
-                  <input type="radio" name="FormaDePago" id="Banamex" value="1" checked><img class="img-responsive" src="../img/logosBan.jpg" hspace="30" width="150" height="47">Depositanos en cualquier Oxxo de 8am a 8pm, sin costo.
+                  <input type="radio" name="FormaDePago" id="Banamex" value="1" checked><img class="img-responsive" src="../img/logosBan.jpg" hspace="30" width="150" height="47">Depositanos bancario, que puede ser en Oxxo de 8am a 8pm, sin costo.
                 </label>
               </div>
             </div>  
             <div class="col-lg-4" align="center">
               <div class="radio">
                 <label>
-                  <input type="radio" name="FormaDePago" id="Paypal" value="2"> <img class="img-responsive" src="../img/paypal.png" hspace="30" width="150" height="47">Usa tu cuenta Paypal para realiar el pago.
+                  <input type="radio" name="FormaDePago" id="Paypal" value="2"> <img class="img-responsive" src="../img/paypal.png" hspace="30" width="150" height="47">Usa tu cuenta Paypal para realizar el pago.
                 </label>
               </div>
             </div>  
-            <div class="col-lg-4"> 
+            <div class="col-lg-4"> <br><br>
               <p style="font-size: 14pt" align="right"><a class="btn btn-success" href="#">Finalizar la compra <strong>»</strong></a></p>
             </div> 
           </div>
