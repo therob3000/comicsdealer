@@ -2,6 +2,9 @@ $(document).ready(function(){
 	verificaSesion();
 	eliminaComic();
 	finalizarCompra();
+	$("#cerrarModal").click(function(){
+		window.location.href = "/html/Catalogo.php";
+	});
 });
 
 function cargarComicsCompra(){
