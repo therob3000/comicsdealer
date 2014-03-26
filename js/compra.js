@@ -59,10 +59,12 @@ function finalizarCompra(){
 		$.post("/php/insertarCompra.php",
 			cadena, function(data){
 				$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
-				$("#correo").text(data.correo);
+				$("#correo").text(data.usuario_correo);
 			}, 'json');
 		$('#myModal').modal('show');
 		e.preventDefault();
 	});
 }
+
+
 
