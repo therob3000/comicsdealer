@@ -3,6 +3,7 @@ var total;
 $(document).ready(function(){
 	verificaSesion(pagina);
 	modalIniciarSesion();
+	finalizarCompra();
 });
 
 function verificaSesion(pagina){
@@ -104,6 +105,12 @@ function botonComprarNologin(){
 function modalIniciarSesion(){
 	$("#nav_bar").on("click", "#loginButton", function(e){
 		$('#myModal').modal('show');
+	});
+}
+
+function finalizarCompra(){
+	$('#botonFinalizarCompra').on("click", function(){
+		window.location.href = "/html/Compra.php";
 	});
 }
 

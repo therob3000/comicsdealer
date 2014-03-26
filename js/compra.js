@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	verificaSesion();
+	eliminaComic();
+	finalizarCompra();
 });
 
 function cargarComicsCompra(){
@@ -14,6 +16,7 @@ function cargarComicsCompra(){
 					$("#"+val.inventario_id).find("#catal").text(val.cat_comic_descripcion);
 					$("#"+val.inventario_id).find("#titulo").text(val.cat_comic_titulo);
 					$("#"+val.inventario_id).find("#precio").text(val.inventario_precio_salida+" MXN");
+					$("#"+val.inventario_id).find(".eliminaComic").attr("id", val.inventario_id);
 				});
 			});
 		},
@@ -39,3 +42,23 @@ function verificaSesion(pagina){
 		'json');
 	$.ajaxSetup({async:true});
 }
+
+function eliminaComic(){
+	$(".eliminaComic").on("click", function(){
+		id = $(this).attr("id");
+		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		$.post("/php/eliminarCompra.php",cadena);
+		$("#"+id).remove();
+	});
+}
+
+function finalizarCompra(){
+	$("#formasPago").submit(function(e){
+		//$('#myModal').modal('show');
+		cadena = $(this).serialize();
+		$.post("/php/insertarCompra.php",
+			cadena);
+		e.preventDefault();
+	});
+}
+

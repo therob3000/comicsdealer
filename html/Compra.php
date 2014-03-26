@@ -39,28 +39,18 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="myModalLabel">Bienvenido, haz login!</h4>
+              <h4 class="modal-title" id="myModalLabel">Comics Dealer</h4>
             </div>
-            <form role="form" id="login">
             <div class="modal-body">
-              <form role="form">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Correo Electrónico</label>
-                  <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="usuario_email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
-                </div>
-                <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
+              <p id="inicial">Gracias por tu compra!</p>
+              <p>Te hemos enviado un correo a: </p>
+              <p id="correo"></p>
+              <p id="mensaje">En este correo te indicamos las instrucciones a seguir para la entrega de tus comics, NO OLVIDES REVISARLO.</p>
             </div>
             <div class="modal-footer navbar-inverse">
-              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-              class="img-responsive text-center" width="207" height="26"/>
-              <button type="submit" class="btn btn-success" >Iniciar Sesión</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10" class="img-responsive text-center" width="207" height="26"/>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModal">Close</button>
             </div>
-            </form>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
@@ -84,27 +74,29 @@
           </div>
 
           <div class="row">
+            <form id="formasPago">
             <div class="col-lg-4" align="center">
               <div class="radio">
                 <label>
-                  <input type="radio" name="FormaDePago" id="Banamex" value="1" checked><img class="img-responsive" src="../img/logosBan.jpg" hspace="30" width="150" height="47">Depositanos en cualquier Oxxo de 8am a 8pm, sin costo.
+                  <input type="radio" name="forma_pago_id" id="pago" value="1" checked><img class="img-responsive" src="../img/logosBan.jpg" hspace="30" width="150" height="47">Depositanos en cualquier Oxxo de 8am a 8pm, sin costo.
                 </label>
               </div>
             </div>  
             <div class="col-lg-4" align="center">
               <div class="radio">
                 <label>
-                  <input type="radio" name="FormaDePago" id="Paypal" value="2"> <img class="img-responsive" src="../img/paypal.png" hspace="30" width="150" height="47">Usa tu cuenta Paypal para realiar el pago.
+                  <input type="radio" name="forma_pago_id" id="pago" value="2"> <img class="img-responsive" src="../img/paypal.png" hspace="30" width="150" height="47">Usa tu cuenta Paypal para realiar el pago.
                 </label>
               </div>
             </div>  
-            <div class="col-lg-4"> 
-              <p style="font-size: 14pt" align="right"><a class="btn btn-success" href="#">Finalizar la compra <strong>»</strong></a></p>
+            <div class="col-lg-3 col-lg-offset-1"> 
+              <button class="btn btn-success" id="finalizarCompra">Finalizar la compra <strong>»</strong></button>
             </div> 
+            </form>
           </div>
           <hr></hr>
         </div>
-      </div><!-- /.Catalogo Muestra-->
+      </div>
 
       <div class="container tres" id="info">
         <div class="jumbotron">
