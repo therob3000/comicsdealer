@@ -19,15 +19,21 @@
 	$ultimo_id = mysql_insert_id();
 
 	for ($i=0; $i < count($inventario_id) ; $i++) { 
-		$queryCompraInventario = "INSERT INTO compra_inventario VALUES($ultimo_id, $inventario_id[$i])";
+		$queryCompraInventario = "INSERT INTO compra_inventario VALUES('', $ultimo_id, $inventario_id[$i])";
 		$queryExito2 = mysql_query($queryCompraInventario);
 		if ($queryExito2) {
 			$queryActInventario = "UPDATE inventario SET inventario_existente = 0 WHERE inventario_id = $inventario_id[$i]";
 			$queryComics = "UPDATE cat_comics SET cat_comic_copias = cat_comic_copias - 1 WHERE cat_comic_unique_id = (SELECT inventario_cat_comic_unique_id FROM inventario WHERE inventario_id = $inventario_id[$i])";
 			$queryInventario = mysql_query($queryActInventario);
 			$queryComics = mysql_query($queryComics);
+			$usuario_nombre = $_SESSION['usuario_nombre'];
+			$usuario_correo = $_SESSION['usuario_correo'];
 
 			$json->exito = true;
+			$json->usuario_nombre = $usuario_nombre;
+			$json->usuario_correo = $usuario_correo;
+
+			echo json_encode($json);
 		}
 		else{
 			$json->exito = false;

@@ -57,7 +57,11 @@ function finalizarCompra(){
 		//$('#myModal').modal('show');
 		cadena = $(this).serialize();
 		$.post("/php/insertarCompra.php",
-			cadena);
+			cadena, function(data){
+				$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
+				$("#correo").text(data.correo);
+			}, 'json');
+		$('#myModal').modal('show');
 		e.preventDefault();
 	});
 }

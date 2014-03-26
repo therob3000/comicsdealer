@@ -42,7 +42,7 @@
               <h4 class="modal-title" id="myModalLabel">Comics Dealer</h4>
             </div>
             <div class="modal-body">
-              <p id="inicial">Gracias por tu compra!</p>
+              <p id="inicial"></p>
               <p>Te hemos enviado un correo a: </p>
               <p id="correo"></p>
               <p id="mensaje">En este correo te indicamos las instrucciones a seguir para la entrega de tus comics, NO OLVIDES REVISARLO.</p>
