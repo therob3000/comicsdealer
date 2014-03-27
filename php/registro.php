@@ -64,13 +64,13 @@ else{
 		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
 	$sendgrid->smtp->send($mail);
 
-	$mail = new SendGrid\Mail();
+	/*$mail = new SendGrid\Mail();
 	$mail->
 		addTo('carlos.mejia.rueda@gmail.com')->
 		setFrom('comics.dealer@gmail.com')->
 		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
 		setText('El usuario: ' . $usuario_nombre . ' se ha registrado, en espera de confirmacion de su correo.');
-	$sendgrid->smtp->send($mail);
+	$sendgrid->smtp->send($mail);*/
 
 	$respuestaJSON	= true;
 }

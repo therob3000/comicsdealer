@@ -49,7 +49,7 @@
             </div>
             <div class="modal-footer navbar-inverse">
               <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10" class="img-responsive text-center" width="207" height="26"/>
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModal">Hecho!</button>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

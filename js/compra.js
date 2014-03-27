@@ -61,8 +61,13 @@ function finalizarCompra(){
 		cadena = $(this).serialize();
 		$.post("/php/insertarCompra.php",
 			cadena, function(data){
-				$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
-				$("#correo").text(data.usuario_correo);
+				if(data.exito){
+					$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
+					$("#correo").text(data.usuario_correo);
+				}
+				else{
+					alert("Ocurrio un error en tu compra, probablemente alguien te gano algun comic :(");
+				}
 			}, 'json');
 		$('#myModal').modal('show');
 		e.preventDefault();
