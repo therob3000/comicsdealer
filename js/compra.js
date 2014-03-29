@@ -63,9 +63,9 @@ function finalizarCompra(){
 		$.post("/php/insertarCompra.php",
 			cadena, function(data){
 				if(data.exito){
+					alert(data.exito);
 					$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
 					$("#correo").text(data.usuario_correo);
-					
 				}
 				else{
 					alert("Ocurrio un error en tu compra, probablemente alguien te gano algun comic :(");

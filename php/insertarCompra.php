@@ -92,15 +92,14 @@
 	 	addTo($usuario_correo)->
 	 	setFrom('comics.dealer@gmail.com')->
 	 	setSubject('Comics Dealer: Resumen de tu compra.')->
-	 	setHtml('Gracias por tu compra, estos son los comics que compraste: <strong>'.$comicsImplode.'</strong>');
+	 	setHtml('Gracias por tu compra <strong>'.$usuario_nombre.'</strong>, estos son los comics que compraste: <strong>'.$comicsImplode.'</strong> en breve nos pondremos en contacto contigo, Gracias!. <p>(Este correo se genera automaticamente, no hay necesidad de responderlo)</p>');
   		$sendgrid->smtp->send($mail);
 
 		$mail = new SendGrid\Mail();
 		$mail->
 		addTo('comics.dealer@gmail.com')->
-		setFrom('comics.dealer@gmail.com')->
 		setSubject('Compra del usuario: ' . $usuario_nombre)->
-		setText('El usuario: ' . $usuario_nombre . 'ha hecho una nueva compra lel.	');
+		setText('El usuario: ' . $usuario_nombre . 'ha hecho una nueva compra: <strong>'.$comicsImplode.'</strong><p>Correo de contacto: '.$usuario_correo.'</p>');
 		$sendgrid->smtp->send($mail);
 
 		$json->usuario_nombre = $usuario_nombre;
@@ -118,7 +117,6 @@
 	function obtenerComics(){
 
 		$comicsIds = implode(",", $_SESSION['usuario_comics']);
-
 		$camposArray = array(
 						"cat_comic_titulo",
 						"cat_comic_numero_ejemplar",
