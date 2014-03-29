@@ -8,7 +8,7 @@
 
 	SendGrid::register_autoloader();
 
-	$sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
+	$sendgrid = new SendGrid('app22515118@heroku.com', 'ubb0aski');
 
 	ini_set('display_errors',1); 
 	error_reporting(E_ALL);
@@ -94,6 +94,8 @@
 	 	setSubject('Comics Dealer: Resumen de tu compra.')->
 	 	setHtml('Gracias por tu compra <strong>'.$usuario_nombre.'</strong>, estos son los comics que compraste: <strong>'.$comicsImplode.'</strong> en breve nos pondremos en contacto contigo, Gracias!. <p>(Este correo se genera automaticamente, no hay necesidad de responderlo)</p>');
   		$sendgrid->smtp->send($mail);
+
+  		
 
 		$mail = new SendGrid\Mail();
 		$mail->
