@@ -8,7 +8,7 @@
 
 	SendGrid::register_autoloader();
 
-	$sendgrid = new SendGrid('app22515118@heroku.com', 'ubb0aski');
+	$sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
 	ini_set('display_errors',1); 
 	error_reporting(E_ALL);
@@ -95,13 +95,12 @@
 	 	setHtml('Gracias por tu compra <strong>'.$usuario_nombre.'</strong>, estos son los comics que compraste: <strong>'.$comicsImplode.'</strong> en breve nos pondremos en contacto contigo, Gracias!. <p>(Este correo se genera automaticamente, no hay necesidad de responderlo)</p>');
   		$sendgrid->smtp->send($mail);
 
-  		
-
 		$mail = new SendGrid\Mail();
 		$mail->
 		addTo('comics.dealer@gmail.com')->
+		setFrom('comics.dealer@gmail.com')->
 		setSubject('Compra del usuario: ' . $usuario_nombre)->
-		setText('El usuario: ' . $usuario_nombre . 'ha hecho una nueva compra: <strong>'.$comicsImplode.'</strong><p>Correo de contacto: '.$usuario_correo.'</p>');
+		setHtml('El usuario: ' . $usuario_nombre . ' ha hecho una nueva compra: <strong>'.$comicsImplode.'</strong><p>Correo de contacto: '.$usuario_correo.'</p>');
 		$sendgrid->smtp->send($mail);
 
 		$json->usuario_nombre = $usuario_nombre;
