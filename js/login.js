@@ -54,7 +54,7 @@ function cerrar_sesion() {
 		$.ajaxSetup({async:false});
 		$.post("../php/cierra_sesion.php");
 		var delay = 1000; //Your delay in milliseconds
-	    setTimeout(function(){ window.location.href = "../index.html"; }, delay);
+	    setTimeout(function(){ window.location.href = "../index.php"; }, delay);
 	    e.preventDefault();
 	    $.ajaxSetup({async:true});
 	});
