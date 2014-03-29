@@ -75,7 +75,6 @@
 		}
 	}
 
-
 	else{
 		$exitoFinal = false;
 	}
@@ -85,15 +84,15 @@
 		$comicsNombre = obtenerComics();
 		$comicsImplode = implode($comicsNombre);
 
-		print_r($comicsNombre);
-		echo $comicsImplode;
+		//print_r($comicsNombre);
+		//echo "IMPLODE: $comicsImplode :TERMINA";
 
 		$mail = new SendGrid\Mail();
 		$mail->
 	 	addTo($usuario_correo)->
 	 	setFrom('comics.dealer@gmail.com')->
-	 	setSubject('Bienvenido a Comics Dealer')->
-	 	setHtml('<strong>Gracias por tu compra, estos son los comics que compraste:'.$comicsImplode.'</strong>');
+	 	setSubject('Comics Dealer: Resumen de tu compra.')->
+	 	setHtml('Gracias por tu compra, estos son los comics que compraste: <strong>'.$comicsImplode.'</strong>');
   		$sendgrid->smtp->send($mail);
 
 		$mail = new SendGrid\Mail();
@@ -114,7 +113,6 @@
 		$json->exito = $exitoFinal;
 	}
 	
-
 	echo json_encode($json);
 
 	function obtenerComics(){
@@ -123,15 +121,12 @@
 
 		$camposArray = array(
 						"cat_comic_titulo",
-						"cat_comic_personaje",
 						"cat_comic_numero_ejemplar",
 						"inventario_precio_salida"
 		);
 
 		$queryCatalogoComics = "SELECT 
-	    
 	    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
-	    (SELECT personaje_nombre FROM personajes WHERE personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
 	    CATALOGO.cat_comic_numero_ejemplar,
 	    INV.inventario_precio_salida
 		FROM
@@ -139,30 +134,36 @@
 	        INNER JOIN
 	    (SELECT 
 	        inventario_id,
-			max(inventario_precio_entrada) as inventario_max_precio_entrada,
 			inventario_precio_salida,
-			inventario_cat_comic_unique_id,
-			inventario_existente
+			inventario_cat_comic_unique_id
 	    FROM
 	        inventario
 	    GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 		WHERE
 	    	CATALOGO.cat_comic_activo = 1 AND INV.inventario_id IN ($comicsIds)";
 
-	    echo $queryCatalogoComics;
+	    //echo $queryCatalogoComics;
 
 	    $queryResultado = mysql_query($queryCatalogoComics);
 		$num = mysql_num_rows($queryResultado);
 
 		if($num>0){
-			$cadenaArray = "";
 			for($i = 0; $i < $num; $i++){
+				$compraCadena = "";
 				for ($j=0; $j < count($camposArray); $j++) {
-					echo mysql_result($queryResultado, $i, $camposArray[$j]);
 					$resultadoMil = mysql_result($queryResultado, $i, $camposArray[$j]);
-					$cadenaArray = $cadenaArray . " $resultadoMil";
+					//echo mysql_result($queryResultado, $i, $camposArray[$j]);
+					if($j == 2){
+						$compraCadena = $compraCadena . " \$$resultadoMil";
+					}
+					if($j == 1){
+						$compraCadena = $compraCadena . " #$resultadoMil";
+					}
+					if($j == 0){
+						$compraCadena = $compraCadena . " $resultadoMil";
+					}	
 				}
-				$rowArray[] = $cadenaArray;
+				$rowArray[] = "<p>$compraCadena</p>";
 			}
 		}
 

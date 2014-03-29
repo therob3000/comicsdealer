@@ -79,7 +79,7 @@
 	}
 
 	function obtenerTotalComics(){
-		$queryTotal = "SELECT COUNT(*) AS total FROM cat_comics";
+		$queryTotal = "SELECT COUNT(*) AS total FROM cat_comics WHERE cat_comic_copias > 0";
 		$queryResultado = mysql_query($queryTotal);
 		return mysql_result($queryResultado, 0, "total");
 	}

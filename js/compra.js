@@ -59,16 +59,19 @@ function finalizarCompra(){
 	$("#formasPago").submit(function(e){
 		//$('#myModal').modal('show');
 		cadena = $(this).serialize();
+		$.ajaxSetup({async:false});
 		$.post("/php/insertarCompra.php",
 			cadena, function(data){
 				if(data.exito){
 					$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
 					$("#correo").text(data.usuario_correo);
+					
 				}
 				else{
 					alert("Ocurrio un error en tu compra, probablemente alguien te gano algun comic :(");
 				}
 			}, 'json');
+		$.ajaxSetup({async:true});
 		$('#myModal').modal('show');
 		e.preventDefault();
 	});
