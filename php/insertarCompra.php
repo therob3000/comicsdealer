@@ -16,6 +16,7 @@
 	session_start();
 
 	$forma_pago_id = $_REQUEST['forma_pago_id'];
+	$codigo_postal = $_REQUEST['codigo_postal'];
 	$inventario_id = $_SESSION['usuario_comics'];
 	$usuario_id = $_SESSION['usuario_id'];
 	$usuario_nombre = $_SESSION['usuario_nombre'];
@@ -51,7 +52,7 @@
 			}
 		}
 		if($exito2){
-			$queryCompra = "INSERT INTO compras VALUES('',$usuario_id, 0, CURDATE(), $forma_pago_id)";
+			$queryCompra = "INSERT INTO compras VALUES('',$usuario_id, 0, CURDATE(), $forma_pago_id, $codigo_postal)";
 			$queryExito = mysql_query($queryCompra);
 
 			$ultimo_id = mysql_insert_id();

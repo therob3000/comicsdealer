@@ -69,28 +69,65 @@
           
           <div id="compras"></div>
 
+          
           <div class="alert alert-info">
             <strong>Recuerda: </strong>al finalizar tu compra recibirás un correo electrónico con las intrucciones de pago!
           </div>
 
+          <h5>Forma de Entrega:</h4>
           <div class="row">
+            <div class="col-lg-4">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="forma_entrega" id="entrega" value="df" >Para recoger en algún metro del D.F.</input>
+                </label>
+              </div>
+            </div>  
+            <div class="col-lg-4" align="center">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="forma_entrega" id="entrega" value="rep">Para envío al interior de la República </input>
+                  
+                </label>
+                <input type="text" class="form-control" placeholder="Codigo Postal de 5 digitos" id="zipcode" name="codigo_postal"></input>
+              </div>
+            </div>  
+            <div class="col-lg-4">
+            </div> 
+          </div>
+
+          <div class="row" id="entrega_df">
+          <div class="col-lg-7">
+          <div class="alert alert-info" >
+            <strong>Si eres del DF </strong>el pago es a contra entrega
+          </div>
+          
+          </div>
+          <div class="col-lg-4 col-lg-offset-1"> 
+              <button class="btn btn-success" id="finalizarCompra_df">Finalizar la compra <strong>»</strong></button>
+            </div> 
+          </div>
+
+
+          <div class="row" id="entrega_republica">
+          <h5>Forma de Pago:</h5>
             <form id="formasPago">
             <div class="col-lg-4" align="center">
               <div class="radio">
                 <label>
-                  <input type="radio" name="forma_pago_id" id="pago" value="1" checked><img class="img-responsive" src="../img/logosBan.jpg" hspace="30" width="150" height="47">Depositanos en cualquier Oxxo de 8am a 8pm, sin costo.
+                  <input type="radio" name="forma_pago_id" id="pago" value="3" checked><img class="img-responsive" src="../img/logosBan.jpg" hspace="30" width="150" height="47">Depositanos en cualquier Oxxo de 8am a 8pm, sin costo.</input>
                 </label>
               </div>
             </div>  
             <div class="col-lg-4" align="center">
               <div class="radio">
                 <label>
-                  <input type="radio" name="forma_pago_id" id="pago" value="2"> <img class="img-responsive" src="../img/paypal.png" hspace="30" width="150" height="47">Usa tu cuenta Paypal para realiar el pago.
+                  <input type="radio" name="forma_pago_id" id="pago" value="1"> <img class="img-responsive" src="../img/paypal.png" hspace="30" width="150" height="47">Usa tu cuenta Paypal para realiar el pago.</input>
                 </label>
               </div>
             </div>  
             <div class="col-lg-3 col-lg-offset-1"> 
-              <button class="btn btn-success" id="finalizarCompra">Finalizar la compra <strong>»</strong></button>
+              <button type="submit" class="btn btn-success" id="finalizarCompra_rep">Finalizar la compra <strong>»</strong></button>
             </div> 
             </form>
           </div>

@@ -1,7 +1,12 @@
 $(document).ready(function(){
+	$("#entrega_df").hide();
+	$("#entrega_republica").hide();
+	$("#zipcode").hide();
 	verificaSesion();
 	eliminaComic();
-	finalizarCompra();
+	formaPago();
+	finalizarCompra_rep();
+	finalizarCompra_df();
 	$("#cerrarModal").click(function(){
 		window.location.href = "/html/Catalogo.php";
 	});
@@ -18,7 +23,7 @@ function cargarComicsCompra(){
 					$("#"+val.inventario_id).find("#imagen").attr("src", val.cat_comic_imagen_url);
 					$("#"+val.inventario_id).find("#catal").text(val.cat_comic_descripcion);
 					$("#"+val.inventario_id).find("#titulo").text(val.cat_comic_titulo);
-					$("#"+val.inventario_id).find("#precio").text(val.inventario_precio_salida+" MXN");
+					$("#"+val.inventario_id).find("#precio").text("$"+val.inventario_precio_salida+" MXN");
 					$("#"+val.inventario_id).find(".eliminaComic").attr("id", val.inventario_id);
 				});
 			});
@@ -55,10 +60,11 @@ function eliminaComic(){
 	});
 }
 
-function finalizarCompra(){
+function finalizarCompra_rep(){
 	$("#formasPago").submit(function(e){
 		//$('#myModal').modal('show');
 		cadena = $(this).serialize();
+		cadena = cadena + "&codigo_postal="+$("#zipcode").val();
 		$.ajaxSetup({async:false});
 		$.post("/php/insertarCompra.php",
 			cadena, function(data){
@@ -75,6 +81,47 @@ function finalizarCompra(){
 		$('#myModal').modal('show');
 		e.preventDefault();
 	});
+}
+
+function finalizarCompra_df(){
+	$("#finalizarCompra_df").click(function(e){
+		//$('#myModal').modal('show');
+		cadena = "forma_pago_id=4&codigo_postal=NULL"
+		$.ajaxSetup({async:false});
+		$.post("/php/insertarCompra.php",
+			cadena, function(data){
+				if(data.exito){
+					//alert(data.exito);
+					$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
+					$("#correo").text(data.usuario_correo);
+				}
+				else{
+					alert("Ocurrio un error en tu compra, probablemente alguien te gano algun comic :(");
+				}
+			}, 'json');
+		$.ajaxSetup({async:true});
+		$('#myModal').modal('show');
+		e.preventDefault();
+	});
+}
+
+function formaPago(){
+
+	$( "input#entrega" ).on( "click", function() {
+		//alert($( "input:checked" ).val());
+		entrega = $( "input:checked" ).val();
+		if(entrega == 'df'){
+			$("#entrega_df").show();
+			$("#entrega_republica").hide();
+			$("#zipcode").hide();
+		}
+		else{
+			$("#entrega_df").hide();
+			$("#entrega_republica").show();
+			$("#zipcode").show();
+		}
+	});
+
 }
 
 
