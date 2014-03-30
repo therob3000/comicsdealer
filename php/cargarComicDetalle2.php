@@ -14,7 +14,8 @@
 						"cat_comic_personaje",
 						"cat_comic_numero_ejemplar",
 						"cat_comic_imagen_url",
-						"inventario_precio_salida"
+						"inventario_precio_salida",
+						"cat_comic_copias"
 	);
 
 	$queryComic = "SELECT 
@@ -29,7 +30,8 @@
             personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
     CATALOGO.cat_comic_numero_ejemplar,
 	CATALOGO.cat_comic_imagen_url,
-    INV.inventario_precio_salida
+    INV.inventario_precio_salida,
+    CATALOGO.cat_comic_copias
 	FROM
     cat_comics as CATALOGO
         INNER JOIN

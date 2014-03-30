@@ -90,12 +90,15 @@ $comic_id = $_GET['comic_id'];
               </div>-->
               </div>
               <div class="row" align="right">
-                <div class="col-md-6 col-md-offset-6">
+                <div class="col-md-9 col-md-offset-3">
                 <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-3" id="comic_copias">
+                    
+                  </div>
+                  <div class="col-md-6">
                     <h4 class="panel-title price" id="comic_precio"></h4>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div id="boton_comprar"><button class="btn btn-success btn-comprar" role="button">Comprar »</button></div>
                     <div id="boton_eliminar"><button class="btn btn-danger btn-eliminar" role="button">Eliminar »</button></div>
                     <div id="boton_comprar_nologin"><button class="btn btn-success btn-comprar-nologin" role="button">Comprar »</button></div>

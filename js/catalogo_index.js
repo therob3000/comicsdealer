@@ -13,7 +13,8 @@ function verificaSesion(pagina){
 			verifica = data.ver_sesion.estado;
 			if(verifica == true){
 				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
-				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'>Finalizar Compra<span class='badge' id='compraTotal'></span></button>")
+				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'>Finalizar Compra<span class='badge' id='compraTotal'></span></button>");
+				botonComprarInit();
 				cargarComics(pagina);
 				botonComprar();
 				botonEliminar();
@@ -81,6 +82,12 @@ function botonComprar(){
 		$("#boton_comprar"+$(this).attr('id')).hide();
 		$("#boton_eliminar"+$(this).attr('id')).show();
 	});
+}
+
+function botonComprarInit(){
+	$.post("/php/elementosComprados.php", function(data){
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
 }
 
 function botonEliminar(){

@@ -12,7 +12,7 @@ $respuestaJSON	= NULL;
 
 $json 			= new stdClass();
 
-$queryCorreo 			= "SELECT * FROM usuarios WHERE usuario_email = '$usuario_correo'";
+$queryCorreo 			= "SELECT * FROM usuarios WHERE usuario_email LIKE '$usuario_correo'";
 //echo $queryCorreo;
 $queryResultado 		= mysql_query($queryCorreo, $con);
 $num					= mysql_num_rows($queryResultado);
