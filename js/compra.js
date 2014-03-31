@@ -69,7 +69,7 @@ function finalizarCompra_rep(){
 		$.post("/php/insertarCompra.php",
 			cadena, function(data){
 				if(data.exito){
-					alert(data.exito);
+					//alert(data.exito);
 					$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
 					$("#correo").text(data.usuario_correo);
 				}
