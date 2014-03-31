@@ -92,7 +92,7 @@ $comic_id = $_GET['comic_id'];
               <div class="row" align="right">
                 <div class="col-md-9 col-md-offset-3">
                 <div class="row">
-                  <div class="col-md-3" id="comic_copias">
+                  <div class="col-md-3" id="comic_copias" align="left">
                     
                   </div>
                   <div class="col-md-6">

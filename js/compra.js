@@ -16,7 +16,9 @@ function cargarComicsCompra(){
 	$.ajaxSetup({async:false});
 	$.get("/php/cargarComicsCompra.php",
 		function(data){
+			var totalComics = 0;
 			$.each(data.compras, function(i,val){
+				totalComics += Number(val.inventario_precio_salida);
 				$.get("/html/layouts/compra_final_layout.html", function(data2){
 					$("#compras").append(data2);
 					$("#compras").find("#compra_comic").attr("id", val.inventario_id);
@@ -27,6 +29,7 @@ function cargarComicsCompra(){
 					$("#"+val.inventario_id).find(".eliminaComic").attr("id", val.inventario_id);
 				});
 			});
+			$('#totalComics').html('<h2>Total: $'+totalComics+'</h2>');
 		},
 		'json');
 }
