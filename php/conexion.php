@@ -1,7 +1,7 @@
 <?php
 
 //funcion para la conexion en heroku
-function conexion(){
+/*function conexion(){
 
 	$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -21,6 +21,23 @@ function conexion(){
 	else{
 		//echo "Funciona la pinche conexion";
 		mysql_select_db($db);
+		mysql_query('SET CHARACTER SET utf8');
+		return($con);
+	}
+}*/
+
+//funcion para la conexion Free MySQL Hosting
+function conexion(){
+	//Definimos los parametros de conexion, host, usuario, password
+	$con = mysql_connect("sql4.freemysqlhosting.net","sql435018","eP9*fH2%");
+
+	//Si no se puede conectar manda el siguiente mensaje
+	if (!$con){
+		die('Error no se pudo conectar: ' . mysql_error());
+	}
+	//Seleccionamos la base de datos a usar
+	else{
+		mysql_select_db("sql435018", $con);
 		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
