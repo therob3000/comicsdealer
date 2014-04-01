@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	login();
 	cerrar_sesion();
+	cargar_info();
 });
 
 function login () {
@@ -58,4 +59,9 @@ function cerrar_sesion() {
 	    e.preventDefault();
 	    $.ajaxSetup({async:true});
 	});
+}
+
+function cargar_info() {
+	$("#infos").load("../html/layouts/infos.html");
+	$("#footer").load("../html/layouts/pie_pagina.html");
 }

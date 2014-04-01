@@ -109,40 +109,18 @@ else{
 
           </div><!-- /.Catalogo -->
 
-          <div class="container tres">
-            <div class="jumbotron">
-              <div class="row">
-                <div class="col-lg-4">
-                  <h3>¿Cómo funciona?</h3>
-                  <p align="justify" style="font-size: 12pt">Muy fácil, te registras con tu nombre y tu email, luego nos pides que busquemos un cómic o cómics. Nosotros lo buscamos con nuestra amplia red de contactos, cuando lo encontramos <strong>(y siempre lo encontramos)</strong> te mandamos un email con el costo del cómic. Así de sencillo... </p>
-                  <p><a class="btn btn-primary" href="html/Como Funciona.html">Ver más detalles »</a></p>
-                </div>
-                <div class="col-lg-4">
-                  <h3>¿Cómo pago?</h3>
-                  <p align="justify" style="font-size: 12pt">Tenemos dos modos de pago, <a href="https://mx.dineromail.com/Index" target="_blank">©DineroMail</a> y <a href="https://www.paypal.com/mx" target="_blank">©Paypal</a>, cuando preguntes por cómics te pediremos que especifiques el modo de pago que prefieres, entonces, cuando te contestemos por email el costo de tu pedido, vendrá la información para que realices tu pago... </p>
-                  <p><a class="btn btn-primary" href="html/Como Pago.html">Averigua más »</a></p>
-                </div>
-                <div class="col-lg-4">
-                  <h3>Formas de entrega</h3>
-                  <p align="justify" style="font-size: 12pt">Para el <strong>Distrito Federal</strong> tenemos un sistema de entrega personal. Para ello tenemos una lista específica de estaciones del STC Metro, de donde podrás elegir cuál te queda más cerca.</p><p align="justify" style="font-size: 12pt">Para pedidos en el interior de la <strong>Republica Mexicana</strong> enviamos tus cómics por <a href="http://www.correosdemexico.com.mx/Mexpost/Paginas/Mexpost.aspx" target="_blank">Mexpost</a>.</p>
-                  <p><a class="btn btn-primary" href="html/Formas Entrega.html">Ver toda la info »</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="infos"></div>
 
           <div class="container tres">  
             <div class="jumbotron">
               <blockquote style="font-size:12pt">
-                <p>"...with great power there must also come -- great responsibility!"</p>
-                <small><cite title="Amazing Spider-Man, Vol. 2, #38">Ben Parker</cite></small>
+                <p>"We didn't mean it! We never mean it! But what good does that do..."</p>
+                <small><cite title="Amazing Spider-Man, Vol. 2, #38">Vietnam veteran Flash Thompson, Amazing Spider-Man, 1st series, #109</cite></small>
               </blockquote>
             </div>
           </div>
 
-          <footer>
-            <p align="center" class="text-info"><strong>© Comics Dealer 2013 | Todas las imágenes aquí mostradas no nos pertenecen y no son usadas con fin de lucro | <a href="Sitemap.html"> Mapa de Sitio</a></string></p>
-          </footer>
+          <div id="footer"></div>
 
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
