@@ -69,7 +69,12 @@
           
           <div id="compras"></div>
 
-          
+          <div class="row">
+            <div class="col-lg-4 col-lg-offset-8" align="right" id="totalComics">
+              
+            </div>
+          </div>
+
           <div class="alert alert-info">
             <strong>Recuerda: </strong>al finalizar tu compra recibirás un correo electrónico con las intrucciones de pago!
           </div>
