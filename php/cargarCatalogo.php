@@ -42,10 +42,11 @@
 		max(inventario_precio_entrada) as inventario_max_precio_entrada,
 		inventario_precio_salida,
 		inventario_cat_comic_unique_id,
-		inventario_existente
+		inventario_existente,
+		inventario_fecha_entrada
     FROM
         inventario
-    GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
+    GROUP BY inventario_cat_comic_unique_id ORDER BY inventario_fecha_entrada) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 	WHERE
     	CATALOGO.cat_comic_activo = 1 AND INV.inventario_existente = 1
     LIMIT $salto, $rango";
