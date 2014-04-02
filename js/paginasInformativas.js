@@ -11,7 +11,7 @@ function verificaSesion(){
 			if(verifica == true){
 				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
 				$("#inicia").text("Haz tu pedido!");
-				$("#inicia").attr("href", "Pedido.html");
+				$("#inicia").attr("href", "Catalogo.php");
 			}
 			else{
 				$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
