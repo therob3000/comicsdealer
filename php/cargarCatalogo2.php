@@ -46,7 +46,7 @@
 		inventario_fecha_entrada
     FROM
         inventario
-    GROUP BY inventario_cat_comic_unique_id ORDER BY inventario_fecha_entrada ASC) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
+    GROUP BY inventario_cat_comic_unique_id ORDER BY inventario_fecha_entrada DESC) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 	WHERE
     	CATALOGO.cat_comic_activo = 1 AND INV.inventario_existente = 1
     LIMIT $salto, $rango";
