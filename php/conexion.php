@@ -25,8 +25,6 @@
 		return($con);
 	}
 }*/
-<<<<<<< HEAD
-=======
 
 //funcion para la conexion Free MySQL Hosting
 function conexion(){
@@ -44,10 +42,10 @@ function conexion(){
 		return($con);
 	}
 }
->>>>>>> FETCH_HEAD
+
 
 //funcion para la conexion local MAMP
-function conexion(){
+/*function conexion(){
 	//Definimos los parametros de conexion, host, usuario, password
 	$con = mysql_connect("localhost","root","root");
 
@@ -61,7 +59,7 @@ function conexion(){
 		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
-}
+}*/
 
 //funcion para la conexion local WAMP
 /*function conexion(){
