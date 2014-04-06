@@ -3,9 +3,9 @@ var email;
 var usuario_id;
 
 $(document).ready(function(){
-	cargarNavBar();
-	cargarPromocionFinDeSemana('pedidos');
 	verificaSesion();
+	//cargarNavBar();
+	cargarPromocionFinDeSemana('pedidos');
 	cargarCompanias();
 	cargarPersonajes();
 	realizarPedido();
@@ -19,6 +19,10 @@ function verificaSesion(){
 			verifica 	= data.ver_sesion.estado;
 			pro 		= data.ver_sesion.usuario_pro;
 			if(verifica == true && pro == true){
+				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+				if(data.ver_sesion.usuario_pro != 1){
+					$("#nav_bar").find("#nav_pedido").remove();
+				}
 				usuario_nombre 		= data.ver_sesion.usuario_nombre;
 				usuario_correo 		= data.ver_sesion.usuario_email;
 				usuario_id			= data.ver_sesion.usuario_id;

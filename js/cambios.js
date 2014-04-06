@@ -1,7 +1,7 @@
 var usuario_id;
 
 $(document).ready(function(){
-	cargarNavBar();
+	//cargarNavBar();
 	verificaSesion();
 	validaNuevoPassword();
 	cambiarCorreo();
@@ -13,6 +13,10 @@ function verificaSesion(){
 		function(data){
 			verifica = data.ver_sesion.estado;
 			if(verifica == true){
+				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+				if(data.ver_sesion.usuario_pro != 1){
+					$("#nav_bar").find("#nav_pedido").remove();
+				}
 				usuario_nombre 		= data.ver_sesion.usuario_nombre;
 				usuario_correo 		= data.ver_sesion.usuario_email;
 				usuario_id			= data.ver_sesion.usuario_id;

@@ -14,6 +14,9 @@ function verificaSesion(comic_id){
 			verifica = data.ver_sesion.estado;
 			if(verifica == true){
 				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+				if(data.ver_sesion.usuario_pro != 1){
+					$("#nav_bar").find("#nav_pedido").remove();
+				}
 				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'>Finalizar Compra<span class='badge' id='compraTotal'></span></button>");
 				botonComprarInit();
 				cargarComic2(comic_id);
