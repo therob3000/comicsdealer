@@ -59,7 +59,8 @@ function eliminaComic(){
 		id = $(this).attr("id");
 		cadena = "cat_comic_inventario_id="+$(this).attr('id');
 		$.post("/php/eliminarCompra.php",cadena);
-		$("#"+id).remove();
+		//$("#"+id).remove();
+		location.reload(true);
 	});
 }
 
