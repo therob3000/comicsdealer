@@ -34,8 +34,14 @@ function cargarComic(comic_id){
 		cadena,
 		function(data){
 			if(data.comic_estado == true){
+				$('#comic_title').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
 				$('#comic_img').attr('src',data.comic.cat_comic_imagen_url);
 				$('#comic_titulo').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
+				if(data.comic.cat_comic_idioma == "ing"){
+					$('#comic_idioma').text(" Idioma: Inglés");
+				}else if(data.comic.cat_comic_idioma == "esp"){
+					$('#comic_idioma').text(" Idioma: Español");
+				}
 				$('#comic_personaje').text(data.comic.cat_comic_personaje);
 				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
@@ -55,8 +61,14 @@ function cargarComic2(comic_id){
 		cadena,
 		function(data){
 			if(data.comic_estado == true){
+				$('#comic_title').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
 				$('#comic_img').attr('src',data.comic.cat_comic_imagen_url);
 				$('#comic_titulo').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
+				if(data.comic.cat_comic_idioma == "ing"){
+					$('#comic_idioma').text(" Idioma: Inglés");
+				}else if(data.comic.cat_comic_idioma == "esp"){
+					$('#comic_idioma').text(" Idioma: Español");
+				}
 				$('#comic_personaje').text(data.comic.cat_comic_personaje);
 				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");

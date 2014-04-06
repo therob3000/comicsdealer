@@ -5,7 +5,7 @@ $comic_id = $_GET['comic_id'];
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nombre</title><!-- Nombre del comic-->
+    <title id="comic_title"></title><!-- Nombre del comic-->
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,7 +78,7 @@ $comic_id = $_GET['comic_id'];
             </div>
             <div class="col-md-9">
               <h1 class="blog-title" id="comic_personaje"></h1>
-              <h1><small><span class="label label-primary" id="comic_titulo"></span></strong></small></h1>
+              <h1><small><span class="label label-primary" id="comic_titulo"></span></strong></small><small id="comic_idioma"></small></h1>
             
               <hr></hr>
 
