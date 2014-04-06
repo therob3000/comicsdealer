@@ -36,7 +36,7 @@ function cargarComicsCompra(){
 
 function verificaSesion(pagina){
 	$.ajaxSetup({async:false});
-	$.post("../php/verifica_sesion.php",
+	$.post("/php/verifica_sesion.php",
 		function(data){
 			verifica = data.ver_sesion.estado;
 			if(verifica == true){

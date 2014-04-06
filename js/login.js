@@ -9,7 +9,7 @@ function login () {
 		correo 		= $('#email').val().toLowerCase();
 		password 	= $('#password').serialize();
 		cadena		= 'usuario_email=' + correo + '&' + password;
-		$.post("../php/login.php",
+		$.post("/php/login.php",
 			cadena,
 			function(data){
 				//LOGIN VIEJO - Se modifico 15/02/2014
@@ -53,7 +53,7 @@ function login () {
 function cerrar_sesion() {
 	$('#nav_bar').on("click", "#cerrar_sesion", function(e){
 		$.ajaxSetup({async:false});
-		$.post("../php/cierra_sesion.php");
+		$.post("/php/cierra_sesion.php");
 		var delay = 1000; //Your delay in milliseconds
 	    setTimeout(function(){ window.location.href = "../index.php"; }, delay);
 	    e.preventDefault();
