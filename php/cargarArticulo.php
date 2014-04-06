@@ -9,7 +9,7 @@
 	$articulo_id = $_GET['articulo_id'];
 	$json = new stdClass();
 
-	$queryArticulo 	= "SELECT * FROM articulos WHERE articulo_id = $articulo_id";
+	$queryArticulo 	= "SELECT * FROM articulos WHERE articulo_id = $articulo_id ORDER BY articulo_fecha ASC";
 	$queryResultado	= mysql_query($queryArticulo);
 	$num = mysql_num_rows($queryResultado);
 
@@ -26,6 +26,7 @@
 		$json->articulo_segundo_subtitulo = obtenerResultado("articulo_segundo_subtitulo");
 		$json->articulo_secundario 	= obtenerResultado("articulo_secundario");
 		$json->articulo_imagen		= obtenerResultado("articulo_imagen");
+		$json->articulo_cita_autor	= obtenerResultado("articulo_cita_autor");
 		$json->total 				= obtenerTotalArticulos();
 	}
 	else{

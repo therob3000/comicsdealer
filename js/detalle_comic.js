@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	verificaSesion(comic_id);
+	modalIniciarSesion();
 	botonComprar();
 	botonEliminar();
 	finalizarCompra();
@@ -47,7 +48,7 @@ function cargarComic(comic_id){
 				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
 				$('#comic_copias').html('<h4>Existencias: <small>'+data.comic.cat_comic_copias+' </small></h4>');
-				$('#comic_integridad').html('<h4>Integridad: <small>'+data.comic.inventario_integridad+"/10");
+				$('#comic_integridad').html('<h4>Integridad: <small>'+data.comic.inventario_integridad+"/10</small></h4>");
 				$('#boton_eliminar').hide();
 				$('#boton_comprar').hide();
 			}
@@ -75,6 +76,7 @@ function cargarComic2(comic_id){
 				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
 				$('#comic_copias').html('<h4>Copias: <small>'+data.comic.cat_comic_copias+'</small></h4>');
+				$('#comic_integridad').html('<h4>Integridad: <small>'+data.comic.inventario_integridad+"/10</small></h4>");
 				
 				if($.inArray(data.comic.inventario_id, data.agregados) != -1){
 					$('#boton_comprar_nologin').hide();					
@@ -129,5 +131,11 @@ function botonComprarInit(){
 function finalizarCompra(){
 	$('#botonFinalizarCompra').on("click", function(){
 		window.location.href = "/html/Compra.php";
+	});
+}
+
+function modalIniciarSesion(){
+	$("#nav_bar").on("click", "#loginButton", function(e){
+		$('#myModal').modal('show');
 	});
 }

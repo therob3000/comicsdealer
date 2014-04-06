@@ -48,7 +48,7 @@
         inventario
     GROUP BY inventario_cat_comic_unique_id ORDER BY inventario_fecha_entrada DESC) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 	WHERE
-    	CATALOGO.cat_comic_activo = 1 AND INV.inventario_existente = 1
+    	CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1
     LIMIT $salto, $rango";
 
 	$queryResultado = mysql_query($queryCatalogoComics);
@@ -79,7 +79,7 @@
 	}
 
 	function obtenerTotalComics(){
-		$queryTotal = "SELECT COUNT(*) AS total FROM cat_comics";
+		$queryTotal = "SELECT COUNT(*) AS total FROM cat_comics WHERE cat_comic_copias > 0";
 		$queryResultado = mysql_query($queryTotal);
 		return mysql_result($queryResultado, 0, "total");
 	}

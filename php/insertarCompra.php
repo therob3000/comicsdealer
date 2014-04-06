@@ -25,6 +25,7 @@
 	$json = new stdClass();
 
 	for ($i=0; $i < count($inventario_id) ; $i++) { 
+		//Actualizamos el inventario del comic poniendo existente en 0 
 		$queryActInventario = "UPDATE inventario SET inventario_existente = 0 WHERE inventario_existente = 1 AND inventario_id = $inventario_id[$i]";
 		$resultados[] = mysql_query($queryActInventario);	
 	}
@@ -40,6 +41,7 @@
 
 	if($exito){
 		for ($i=0; $i < count($inventario_id); $i++) { 
+			//Actualizamos el catalogo de comics restando una unidad al numero de copias
 			$queryComics = "UPDATE cat_comics SET cat_comic_copias = cat_comic_copias - 1 WHERE cat_comic_copias NOT IN (0) AND cat_comic_unique_id = (SELECT inventario_cat_comic_unique_id FROM inventario WHERE inventario_id = $inventario_id[$i])";
 			$resultados2[] = mysql_query($queryComics);
 		}

@@ -30,6 +30,7 @@ function verificaSesion(pagina){
 }
 
 function cargarComics(salto){
+	console.log(total);
 	var sigSalto = salto;
 	for (var i = 0; i < 4; i++) {
 		$(".rows").append("<div class=row id=catalogo_comics></div>");
@@ -52,6 +53,7 @@ function cargarComics(salto){
 }
 
 function cargarComicsNologin(salto){
+	console.log(total);
 	var sigSalto = salto;
 	for (var i = 0; i < 4; i++) {
 		$(".rows").append("<div class=row id=catalogo_comics></div>");
@@ -65,7 +67,7 @@ function cargarComicsNologin(salto){
 	else{
 		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-12)+"'>Anterior</a>");
 	}
-	if(+salto+12 > total){
+	if(+salto+12 >= total){
 		$("#siguiente").hide();
 	}
 	else{
