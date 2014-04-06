@@ -35,6 +35,7 @@ function cargarComic(comic_id){
 		function(data){
 			if(data.comic_estado == true){
 				$('#comic_title').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
+				$('#comic_href').attr('href',data.comic.cat_comic_imagen_url);
 				$('#comic_img').attr('src',data.comic.cat_comic_imagen_url);
 				$('#comic_titulo').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
 				if(data.comic.cat_comic_idioma == "ing"){
@@ -45,7 +46,8 @@ function cargarComic(comic_id){
 				$('#comic_personaje').text(data.comic.cat_comic_personaje);
 				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
-				$('#comic_copias').html('<h4>Copias: <small>'+data.comic.cat_comic_copias+'</small></h4>');
+				$('#comic_copias').html('<h4>Existencias: <small>'+data.comic.cat_comic_copias+' </small></h4>');
+				$('#comic_integridad').html('<h4>Integridad: <small>'+data.comic.inventario_integridad+"/10");
 				$('#boton_eliminar').hide();
 				$('#boton_comprar').hide();
 			}

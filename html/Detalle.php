@@ -74,28 +74,32 @@ $comic_id = $_GET['comic_id'];
         <div class="catalogo">
           <div class="row">
             <div class="col-md-3">
-              <img src="" class="img-responsive img-rounded" id="comic_img">
+              <a target="_blank" id="comic_href" href="">
+                <img src="" class="img-responsive img-rounded" id="comic_img">
+              </a>
             </div>
             <div class="col-md-9">
               <h1 class="blog-title" id="comic_personaje"></h1>
               <h1><small><span class="label label-primary" id="comic_titulo"></span></strong></small><small id="comic_idioma"></small></h1>
             
               <hr></hr>
-
+              <div class="row">
+                <div class="col-md-3" id="comic_copias" align="left">
+                  </div>
+                  <div class="col-md-3" id="comic_integridad" align="left">
+                  </div>
+              </div>
               <p align="justify" style="font-size: 12pt" id="comic_descripcion"></p>
               <!--<div class="row" align="center">
                 <div class="col-md-4"><h4>Estado: <small>Nuevo</small></h4></div>
                 <div class="col-md-4"><h4>Año: <small>1989</small></h4></div>
                 <div class="col-md-4"><h4>Copias: <small>3</small></h4></div>
               </div>-->
-              </div>
-              <div class="row" align="right">
-                <div class="col-md-9 col-md-offset-3">
+            </div>
+            <div class="row" align="right">
+              <div class="col-md-9 col-md-offset-3">
                 <div class="row">
-                  <div class="col-md-3" id="comic_copias" align="left">
-                    
-                  </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 col-md-offset-3">
                     <h4 class="panel-title price" id="comic_precio"></h4>
                   </div>
                   <div class="col-md-3">
@@ -104,15 +108,15 @@ $comic_id = $_GET['comic_id'];
                     <div id="boton_comprar_nologin"><button class="btn btn-success btn-comprar-nologin" role="button">Comprar »</button></div>
                   </div>
                 </div>
-                </div>
               </div>
-              <hr></hr>
-              <div class="col-lg-4"> 
-              <p style="font-size: 14pt" align="center"><a href="/html/Catalogo.php"><strong>«</strong> Regresar al catálogo</a></p>
             </div>
+            <hr></hr>
+            <div class="col-lg-4"> 
+              <p style="font-size: 14pt" align="center"><a href="/html/Catalogo.php"><strong>«</strong> Regresar al catálogo</a></p>
             </div>
           </div>
         </div>
+      </div>
 
       <div id="infos"></div>
 

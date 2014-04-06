@@ -16,7 +16,8 @@
 						"cat_comic_imagen_url",
 						"inventario_precio_salida",
 						"cat_comic_copias",
-						"cat_comic_idioma"
+						"cat_comic_idioma",
+						"inventario_integridad"
 
 	);
 
@@ -34,7 +35,8 @@
 	CATALOGO.cat_comic_imagen_url,
     INV.inventario_precio_salida,
     CATALOGO.cat_comic_copias,
-    CATALOGO.cat_comic_idioma
+    CATALOGO.cat_comic_idioma,
+    INV.inventario_integridad
 	FROM
     cat_comics as CATALOGO
         INNER JOIN
@@ -43,7 +45,8 @@
 		max(inventario_precio_entrada) as inventario_max_precio_entrada,
 		inventario_precio_salida,
 		inventario_cat_comic_unique_id,
-		inventario_existente
+		inventario_existente,
+		inventario_integridad
     FROM
         inventario
     GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
