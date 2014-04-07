@@ -13,7 +13,8 @@ function cargarArticulos(salto, rango){
 			$.each(data.articulos, function(i, val){
 				$.get("../html/layouts/articulos_index_layout.html", function(data){
 					$("#articulos").append(data);
-					$("#articulos").find("#articulo").attr("id", val.articulo_id);
+					$("#articulos").find("#articulo").attr("id", val.articulo_id)
+					$("#"+val.articulo_id).find("#img_href").attr("href", "/html/Articulos.php?articulo_id="+val.articulo_id);
 					$("#"+val.articulo_id).find("#articulo_imagen").attr("src", val.articulo_imagen);
 					$("#"+val.articulo_id).find("#articulo_titulo").text(val.articulo_titulo);
 					$("#"+val.articulo_id).find("#articulo_fecha_autor").text(val.articulo_fecha+" por "+val.articulo_autor);
