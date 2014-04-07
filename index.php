@@ -153,7 +153,7 @@
             <span class="label label-success">Los pagas y te los entregamos \o/</span></p>
             <p style="font-size: 12pt" align="justify">Ahora, si eres un Jedi usa la fuerza y pídenos cómics, si no, no temas y...</p>        
             <p align="right">
-              <a class="btn btn-lg btn-danger" href="html/Registro.html">Regístrate ya!</a>
+              <a class="btn btn-lg btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
             </p>
             <p align="right" class="text-muted" style="font-size: 11pt">Este servicio es para toda la Republica Mexicana.</p>
           </div>

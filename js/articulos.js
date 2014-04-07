@@ -1,7 +1,9 @@
 $(document).ready(function(){
+	verificaSesion();
+	modalIniciarSesion();
 	cargarArticulo(articulo_id);
 	cargarArticulosArchivo();
-	verificaSesion();
+	
 });
 
 function cargarArticulo(articulo_id){
@@ -76,5 +78,11 @@ function verificaSesion(){
 		},
 		'json');
 	$.ajaxSetup({async:true});
+}
+
+function modalIniciarSesion(){
+	$("#nav_bar").on("click", "#loginButton", function(e){
+		$('#myModal').modal('show');
+	});
 }
 

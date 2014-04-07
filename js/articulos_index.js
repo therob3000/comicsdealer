@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	cargarArticulos(pagina, 5);
 	verificaSesion();
+	modalIniciarSesion();
+	cargarArticulos(pagina, 5);
 });
 
 function cargarArticulos(salto, rango){
@@ -54,5 +55,11 @@ function verificaSesion(){
 		},
 		'json');
 	$.ajaxSetup({async:true});
+}
+
+function modalIniciarSesion(){
+	$("#nav_bar").on("click", "#loginButton", function(e){
+		$('#myModal').modal('show');
+	});
 }
 

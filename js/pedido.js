@@ -114,7 +114,7 @@ function realizarPedidoFinde(){
 		$.post("../php/pedido.php",
 			cadena,
 			function(data){
-				alert(data.pedido);
+				//alert(data.pedido);
 				if(data.pedido == true){
 					$('#myModal').find("#inicial").hide();
 					$('#myModal').find("#personajeModal").hide();
