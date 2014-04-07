@@ -62,7 +62,7 @@ function cargarComic(comic_id){
 
 //Cargar el comic cuando el usuario HA INICIADO SESION
 function cargarComic2(comic_id){
-	$(".fb-share-button").attr("data-href", "http://www.comicsdealer.com/html/Detalle.php?articulo_id="+comic_id);
+	$(".fb-share-button").attr("data-href", "http://www.comicsdealer.com/html/Detalle.php?comic_id="+comic_id);
 	cadena = "comic_id="+comic_id;
 
 	$.get("../php/cargarComicDetalle2.php",
