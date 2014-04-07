@@ -84,7 +84,7 @@ $articulo_id = $_GET['articulo_id'];
 
               <div class="row">
                 <div class="col-sm-offset-1 col-sm-10 blog-main">
-                  <h1 class="blog-title">Los Reviews de Dr. V. Sarnavskiy, Dr. Death y la Liga de la Maldad.</h1>
+                  <h1 class="blog-title">Los Reviews de La Liga de la Maldad.</h1>
                   <p class="lead blog-description">Todo lo que debes saber para convertirte un lector serio.</p>
                 </div>
               </div>

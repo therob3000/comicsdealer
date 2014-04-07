@@ -94,7 +94,7 @@ else{
 
               <div class="row">
                 <div class="col-sm-offset-1 col-sm-10 blog-main">
-                  <h1 class="blog-title">Los Reviews de Yunrock y Dr. Death</h1>
+                  <h1 class="blog-title">Los Reviews de la Liga de la Maldad.</h1>
                   <p class="lead blog-description">Todo lo que debes saber para convertirte un lector serio.</p>
                 </div>
               </div>
