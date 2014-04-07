@@ -85,6 +85,7 @@ $comic_id = $_GET['comic_id'];
               <a target="_blank" id="comic_href" href="">
                 <img src="" class="img-responsive img-rounded" id="comic_img">
               </a>
+              <h5 align="center"><small>Da click en la imagen para verla en grande</small></h5>
             </div>
             <div class="col-md-9">
               <h1 class="blog-title" id="comic_personaje"></h1>
@@ -118,16 +119,12 @@ $comic_id = $_GET['comic_id'];
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" align="right">
             <div class="col-md-9 col-md-offset-3">
-                    <div class="col-sm-4" style="margin-top: 2%">
+                    <div class="col-sm-3 col-sm-offset-6" style="margin-top: 2%">
                       <div class="fb-share-button" data-href="" data-type="button_count"></div>
                     </div>
-                    <div class="col-sm-4" style="margin-top: 2%">
-                      <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
-                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div>
-                    <div class="col-sm-4" style="margin-top: 2%">
+                    <div class="col-sm-3" style="margin-top: 2%">
                       <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="" data-via="ComicsDealer" data-lang="es">Twittear</a>
                       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                     </div>
@@ -135,7 +132,11 @@ $comic_id = $_GET['comic_id'];
                 </div>
             <hr></hr>
             <div class="col-lg-4"> 
-              <p style="font-size: 14pt" align="center"><a href="/html/Catalogo.php"><strong>«</strong> Regresar al catálogo</a></p>
+              <p style="font-size: 14pt"><a href="/html/Catalogo.php"><strong>«</strong> Regresar al catálogo</a></p>
+            </div>
+            <div class="col-lg-4 col-lg-offset-4" style="margin-top: 2%;" align="right">
+              <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
+                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
           </div>
         </div>
