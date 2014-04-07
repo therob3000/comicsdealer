@@ -33,7 +33,20 @@ else{
   <script src="../js/login.js"></script>
   <script src="../js/catalogo.js"></script>
   <script src="../js/catalogo_index.js"></script>
+  <script type="text/javascript">
 
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45620115-1']);
+    _gaq.push(['_setDomainName', 'comicsdealer.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
   <style>
     .container {
       background: url(../img/avengers.jpg) no-repeat center center fixed;
