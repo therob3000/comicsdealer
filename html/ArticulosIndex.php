@@ -111,19 +111,7 @@ else{
 
                   </div><!-- /.Aquí termina lo que hay que poner para cada artículo -->
 
-                  <div class="row">
-                    <div class="col-sm-4" style="margin-top: 2%">
-                      <div class="fb-share-button" data-href="http://www.comicsdealer.com/html/ArticulosIndex.php" data-type="button_count"></div>
-                    </div>
-                    <div class="col-sm-4" style="margin-top: 2%">
-                      <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
-                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div>
-                    <div class="col-sm-4" style="margin-top: 2%">
-                      <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="" data-via="ComicsDealer" data-lang="es">Twittear</a>
-                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div>
-                  </div>
+                  
 
                   <ul class="pager">
                     <li id="anterior"></li>
