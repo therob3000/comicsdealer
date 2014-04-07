@@ -9,7 +9,7 @@
 	$articulo_id = $_GET['articulo_id'];
 	$json = new stdClass();
 
-	$queryArticulo 	= "SELECT * FROM articulos WHERE articulo_id = $articulo_id ORDER BY articulo_fecha ASC";
+	$queryArticulo 	= "SELECT * FROM articulos WHERE articulo_id = $articulo_id";
 	$queryResultado	= mysql_query($queryArticulo);
 	$num = mysql_num_rows($queryResultado);
 
