@@ -123,7 +123,7 @@
         <div class="catalogo">
           <div class="row">
             <div class="col-lg-12" >
-              <h2 style="margin-bottom: 0px;">Un Poco del Catálogo Privado de <strong>Dr. Lel.</strong>
+              <h2 style="margin-bottom: 0px;">Un Poco del Catálogo Privado de <strong>Dr. Death y Dr. V. Sarnavskiy</strong>
               <br><small>La pura nata consentrada de los cómics</small></h2>
             </div>  
           </div>
