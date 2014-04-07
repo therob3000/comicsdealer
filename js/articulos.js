@@ -18,6 +18,7 @@ function cargarArticulo(articulo_id){
 				$("#articulo_fecha_autor").text(data.articulo_fecha+" por "+data.articulo_autor);
 				$("#articulo_resumen").text(data.articulo_resumen);
 				$("#articulo_cita").text(data.articulo_cita);
+				$("#articulo_cita_autor").text(data.articulo_cita_autor);
 				$("#articulo_subtitulo").text(data.articulo_subtitulo);
 				$("#articulo_principal").html(data.articulo_principal);
 				$("#articulo_segundo_subtitulo").text(data.articulo_segundo_subtitulo);

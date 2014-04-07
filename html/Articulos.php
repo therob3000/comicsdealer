@@ -120,7 +120,7 @@ $articulo_id = $_GET['articulo_id'];
                     <p id="articulo_resumen" align="justify"></p>
                     <blockquote>
                       <p id="articulo_cita"></p>
-                      <cite><small>Quién lo dijo</small></cite>
+                      <cite><small id="articulo_cita_autor"></small></cite>
                     </blockquote>
 
                     <h3 id="articulo_subtitulo"></h3>
