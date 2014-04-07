@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Registro</title>
+    <title>Compra!</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,7 +104,7 @@
           <div class="row" id="entrega_df">
           <div class="col-lg-7">
           <div class="alert alert-info" >
-            <strong>Si eres del DF </strong>el pago es a contra entrega
+            <strong>Si eres del DF </strong>el pago es a contraentrega
           </div>
           
           </div>
