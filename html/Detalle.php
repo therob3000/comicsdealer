@@ -8,7 +8,7 @@ ini_set('display_errors',1);
 $comic_id = $_GET['comic_id'];
 $comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo from inventario as inv
 inner join cat_comics as cat on inv.inventario_cat_comic_unique_id = cat.cat_comic_unique_id
-inner join datos_comics as dat on cat.cat_comic_personaje_id = dat.datos_comic_personaje_id
+inner join datos_comics as dat on cat.cat_comic_descripcion_id = dat.datos_comic_id
 where inv.inventario_id = $comic_id";
 
 $queryResultado = mysql_query($comic_img_query);
