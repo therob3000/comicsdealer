@@ -13,7 +13,7 @@ $comic_id = $_GET['comic_id'];
     <head >
   <meta property="fb:app_id" content="655150577891800" /> 
   <meta property="og:type"   content="article" /> 
-  <?php echo "<meta property='og:url' content='http://www.comicsdealer.com/html/Catalogo.php?comic_id=$comic_id'/>"; ?>
+  <?php echo "<meta property='og:url' content='http://comicsdealertest.herokuapp.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
   
   <meta property="og:title"  content="Sample Article" /> 
   <meta property="og:image"  content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" />
