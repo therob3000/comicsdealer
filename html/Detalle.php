@@ -1,5 +1,19 @@
 <?php
+include '../php/conexion.php';
+$con = conexion();
+
+ini_set('display_errors',1); 
+  error_reporting(E_ALL);
+
 $comic_id = $_GET['comic_id'];
+$comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo from inventario as inv
+inner join cat_comics as cat on inv.inventario_cat_comic_unique_id = cat.cat_comic_unique_id
+inner join datos_comics as dat on cat.cat_comic_personaje_id = dat.datos_comic_personaje_id
+where inv.inventario_id = $comic_id";
+
+$queryResultado = mysql_query($comic_img_query);
+$comic_img = mysql_result($queryResultado, 0, "cat_comic_imagen_url");
+$comic_titulo = mysql_result($queryResultado , 0, "datos_comic_titulo");
 ?>
 
 <!DOCTYPE html>
@@ -14,9 +28,11 @@ $comic_id = $_GET['comic_id'];
   <meta property="fb:app_id" content="655150577891800" /> 
   <meta property="og:type"   content="article" /> 
   <?php echo "<meta property='og:url' content='http://comicsdealertest.herokuapp.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
+  <?php echo "<meta property='og:image'  content='$comic_img' />"; ?>
+  <?php echo "<meta property='og:title'  content='$comic_titulo' />";?>
   
-  <meta property="og:title"  content="Comics Dealer" /> 
-  <meta property="og:image"  content="http://s25.postimg.org/4ryihfzfz/superman_Action_Comics1_Ing.jpg" />
+
+  
     
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
