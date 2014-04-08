@@ -4,19 +4,18 @@ $comic_id = $_GET['comic_id'];
 
 <!DOCTYPE html>
 <html>
-  <head>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <title id="comic_title"></title><!-- Nombre del comic-->
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta property="og:title" content="About Our Company"/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content=""/>
-<meta property="og:image" content="http://www.mysite.com/articleimage.jpg"/>
-<meta property="og:site_name" content="My Company Name"/>
-<meta property="fb:app_id" content="655150577891800"/>
-<meta property="og:description" content="A description of our services and company profile."/>
+    <head >
+  <meta property="fb:app_id" content="655150577891800" /> 
+  <meta property="og:type"   content="article" /> 
+  <meta property="og:url"    content="" /> 
+  <meta property="og:title"  content="Sample Article" /> 
+  <meta property="og:image"  content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" />
     
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
