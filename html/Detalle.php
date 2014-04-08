@@ -9,6 +9,14 @@ $comic_id = $_GET['comic_id'];
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="About Our Company"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="http://www.mysite.com/article/"/>
+<meta property="og:image" content="http://www.mysite.com/articleimage.jpg"/>
+<meta property="og:site_name" content="My Company Name"/>
+<meta property="fb:app_id" content="655150577891800"/>
+<meta property="og:description" content="A description of our services and company profile."/>
     
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
