@@ -15,8 +15,8 @@ $comic_id = $_GET['comic_id'];
   <meta property="og:type"   content="article" /> 
   <?php echo "<meta property='og:url' content='http://comicsdealertest.herokuapp.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
   
-  <meta property="og:title"  content="Sample Article" /> 
-  <meta property="og:image"  content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" />
+  <meta property="og:title"  content="Comics Dealer" /> 
+  <meta property="og:image"  content="http://comicsdealertest.herokuapp.com/img/ComicDminiFB.jpg" />
     
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
