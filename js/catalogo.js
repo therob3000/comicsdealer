@@ -29,7 +29,9 @@ function cargarCatalogoComics (salto, rango) {
 					$("#"+val.inventario_id).find("#cat_personaje").text(val.cat_comic_personaje);
 					$("#"+val.inventario_id).find("#cat_titulo").text(val.cat_comic_titulo+" #"+val.cat_comic_numero_ejemplar);
 					$("#"+val.inventario_id).find("#cat_idioma").text(val.cat_comic_idioma);
-					$("#"+val.inventario_id).find("#cat_descripcion").text(val.cat_comic_descripcion);
+					texto = val.cat_comic_descripcion;
+					//$("#"+val.inventario_id).find("#cat_descripcion").text(val.cat_comic_descripcion);
+					$("#"+val.inventario_id).find("#cat_descripcion").text(texto.substr(0, 180)+" ...");
 					$("#"+val.inventario_id).find("#cat_precio_venta").text("$"+val.inventario_precio_salida+" MXN");
 				});
 				
@@ -64,7 +66,8 @@ function cargarCatalogoComics2(salto, rango) {
 					}
 					$("#"+val.inventario_id).find("#cat_detalle2").attr("href","/html/Detalle.php?comic_id="+val.inventario_id);
 					$("#"+val.inventario_id).find("#cat_titulo").text(val.cat_comic_titulo+" #"+val.cat_comic_numero_ejemplar);
-					$("#"+val.inventario_id).find("#cat_descripcion").text(val.cat_comic_descripcion);
+					texto = val.cat_comic_descripcion;
+					$("#"+val.inventario_id).find("#cat_descripcion").text(texto.substr(0, 180)+" ...");
 					$("#"+val.inventario_id).find("#cat_precio_venta").text("$"+val.inventario_precio_salida+" MXN");
 				});
 				
