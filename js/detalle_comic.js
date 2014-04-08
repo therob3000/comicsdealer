@@ -50,6 +50,7 @@ function cargarComic(comic_id){
 				}
 				$('#comic_personaje').text(data.comic.cat_comic_personaje);
 				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
+				$('meta[property="og:url"]').attr('content',"http://www.comicsdealer.com/html/Detalle.php?comic_id="+comic_id);
 				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
 				$('#comic_copias').html('<h4>Existencias: <small>'+data.comic.cat_comic_copias+' </small></h4>');
 				$('#comic_integridad').html('<h4>Integridad: <small>'+data.comic.inventario_integridad+"/10</small></h4>");

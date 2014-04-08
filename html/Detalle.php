@@ -12,7 +12,7 @@ $comic_id = $_GET['comic_id'];
 
     <meta property="og:title" content="About Our Company"/>
 <meta property="og:type" content="article"/>
-<meta property="og:url" content="http://www.mysite.com/article/"/>
+<meta property="og:url" content=""/>
 <meta property="og:image" content="http://www.mysite.com/articleimage.jpg"/>
 <meta property="og:site_name" content="My Company Name"/>
 <meta property="fb:app_id" content="655150577891800"/>
@@ -45,14 +45,13 @@ $comic_id = $_GET['comic_id'];
   </head>
   <body>
     <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <div id="nav_bar"></div>
     <div class="container">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
