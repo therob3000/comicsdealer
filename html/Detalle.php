@@ -27,7 +27,7 @@ $comic_titulo = mysql_result($queryResultado , 0, "datos_comic_titulo");
     <head >
   <meta property="fb:app_id" content="655150577891800" /> 
   <meta property="og:type"   content="article" /> 
-  <?php echo "<meta property='og:url' content='http://comicsdealertest.herokuapp.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
+  <?php echo "<meta property='og:url' content='http://www.comicsdealer.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
   <?php echo "<meta property='og:image'  content='$comic_img' />"; ?>
   <?php echo "<meta property='og:title'  content='$comic_titulo' />";?>
   
