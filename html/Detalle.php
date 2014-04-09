@@ -15,6 +15,7 @@ $queryResultado = mysql_query($comic_img_query);
 $comic_img = mysql_result($queryResultado, 0, "cat_comic_imagen_url");
 $comic_titulo = mysql_result($queryResultado , 0, "datos_comic_titulo");
 $comic_descripcion = mysql_result($queryResultado, 0, "descripcion");
+$comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
 ?>
 
 <!DOCTYPE html>
