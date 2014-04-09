@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 $articulo_id = $_GET['articulo_id'];
 
-$articulo_query = "SELECT articulo_titulo, articulo_imagen
+$articulo_query = "SELECT articulo_titulo, articulo_imagen, articulo_resumen
                   FROM articulos 
                   WHERE articulo_id = $articulo_id";
 
@@ -15,6 +15,7 @@ $queryResultado = mysql_query($articulo_query);
 
 $articulo_titulo = mysql_result($queryResultado, 0, "articulo_titulo");
 $articulo_imagen = mysql_result($queryResultado, 0, "articulo_imagen");
+$articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +31,7 @@ $articulo_imagen = mysql_result($queryResultado, 0, "articulo_imagen");
   <?php echo "<meta property='og:url' content='http://www.comicsdealer.com/html/Articulos.php?articulo_id=$articulo_id'/>"; ?>
   <?php echo "<meta property='og:image'  content='$articulo_imagen' />"; ?>
   <?php echo "<meta property='og:title'  content='$articulo_titulo' />";?>
+  <?php echo "<meta property='og:description'  content='$articulo_resumen'/>";?>
 
 
   <!-- Bootstrap -->

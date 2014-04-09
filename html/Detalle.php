@@ -6,7 +6,7 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 $comic_id = $_GET['comic_id'];
-$comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo from inventario as inv
+$comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo, SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion from inventario as inv
 inner join cat_comics as cat on inv.inventario_cat_comic_unique_id = cat.cat_comic_unique_id
 inner join datos_comics as dat on cat.cat_comic_descripcion_id = dat.datos_comic_id
 where inv.inventario_id = $comic_id";
@@ -14,6 +14,7 @@ where inv.inventario_id = $comic_id";
 $queryResultado = mysql_query($comic_img_query);
 $comic_img = mysql_result($queryResultado, 0, "cat_comic_imagen_url");
 $comic_titulo = mysql_result($queryResultado , 0, "datos_comic_titulo");
+$comic_descripcion = mysql_result($queryResultado, 0, "descripcion");
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +30,7 @@ $comic_titulo = mysql_result($queryResultado , 0, "datos_comic_titulo");
   <?php echo "<meta property='og:url' content='http://www.comicsdealer.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
   <?php echo "<meta property='og:image'  content='$comic_img' />"; ?>
   <?php echo "<meta property='og:title'  content='$comic_titulo' />";?>
+  <?php echo "<meta property='og:description'  content='$comic_descripcion'/>";?>
     
     
     <!-- Bootstrap -->
