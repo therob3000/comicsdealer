@@ -16,7 +16,7 @@ function cargarArticulo(articulo_id){
 			if(data.articulo == true){
 				$("#articulo_titulo").text(data.articulo_titulo);
 				$("#articulo_fecha_autor").text(data.articulo_fecha+" por "+data.articulo_autor);
-				$("#articulo_resumen").text(data.articulo_resumen);
+				$("#articulo_resumen").html(data.articulo_resumen);
 				$("#articulo_cita").text(data.articulo_cita);
 				$("#articulo_cita_autor").text(data.articulo_cita_autor);
 				$("#articulo_subtitulo").text(data.articulo_subtitulo);
