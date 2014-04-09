@@ -18,7 +18,7 @@
 								articulo_autor, 
 								articulo_resumen, 
 								articulo_imagen 
-								FROM articulos ORDER BY articulo_fecha ASC LIMIT $salto, $rango";
+								FROM articulos ORDER BY articulo_fecha DESC LIMIT $salto, $rango";
 	$queryResultado = mysql_query($queryArticulos);
 	$num = mysql_num_rows($queryResultado);
 

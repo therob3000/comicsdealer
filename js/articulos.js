@@ -21,7 +21,7 @@ function cargarArticulo(articulo_id){
 				$("#articulo_cita_autor").text(data.articulo_cita_autor);
 				$("#articulo_subtitulo").text(data.articulo_subtitulo);
 				$("#articulo_principal").html(data.articulo_principal);
-				$("#articulo_segundo_subtitulo").text(data.articulo_segundo_subtitulo);
+				$("#articulo_segundo_subtitulo").html(data.articulo_segundo_subtitulo);
 				$("#articulo_secundario").html(data.articulo_secundario);
 				$("#articulo_imagen").attr("src", data.articulo_imagen);
 				$(".twitter-share-button").attr("data-url", "http://www.comicsdealer.com/html/Articulos.php?articulo_id="+articulo_id);
