@@ -3,7 +3,7 @@ include '../php/conexion.php';
 $con = conexion();
 
 ini_set('display_errors',1); 
-  error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 $comic_id = $_GET['comic_id'];
 $comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo from inventario as inv
@@ -24,15 +24,12 @@ $comic_titulo = mysql_result($queryResultado , 0, "datos_comic_titulo");
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head >
   <meta property="fb:app_id" content="655150577891800" /> 
   <meta property="og:type"   content="article" /> 
   <?php echo "<meta property='og:url' content='http://www.comicsdealer.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
   <?php echo "<meta property='og:image'  content='$comic_img' />"; ?>
   <?php echo "<meta property='og:title'  content='$comic_titulo' />";?>
-  
-
-  
+    
     
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">

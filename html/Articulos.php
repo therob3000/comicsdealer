@@ -1,14 +1,36 @@
 <?php
+include '../php/conexion.php';
+$con = conexion();
+
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
+
 $articulo_id = $_GET['articulo_id'];
+
+$articulo_query = "SELECT articulo_titulo, articulo_imagen
+                  FROM articulos 
+                  WHERE articulo_id = $articulo_id";
+
+$queryResultado = mysql_query($articulo_query);
+
+$articulo_titulo = mysql_result($queryResultado, 0, "articulo_titulo");
+$articulo_imagen = mysql_result($queryResultado, 0, "articulo_imagen");
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <title>Artículos</title>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="fb:app_id" content="655150577891800" /> 
+  <meta property="og:type"   content="article" /> 
+  <?php echo "<meta property='og:url' content='http://www.comicsdealer.com/html/Articulos.php?articulo_id=$articulo_id'/>"; ?>
+  <?php echo "<meta property='og:image'  content='$articulo_imagen' />"; ?>
+  <?php echo "<meta property='og:title'  content='$articulo_titulo' />";?>
+
 
   <!-- Bootstrap -->
   <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
@@ -44,11 +66,12 @@ $articulo_id = $_GET['articulo_id'];
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+  <div id="nav_bar"></div>
       <div class="container">
-         <div id="nav_bar"></div>
+         
          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
