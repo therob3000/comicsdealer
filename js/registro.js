@@ -12,7 +12,7 @@ $(document).ready(function(){
 		password2 	= $('#password2').val();
 		chars1		= password.length;
 		chars2		= password2.length;
-		email		= $('#email').val().toLowerCase();
+		email		= $('#email').val();//.toLowerCase();
 		nombre		= $('#nombre').val();
 		var passwords = false;
 		alert(existe_email);
