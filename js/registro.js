@@ -8,16 +8,14 @@ $(document).ready(function(){
 	$.post("../php/cierra_sesion.php");
 	$.ajaxSetup({async:true});
 	$('#registro').submit(function(e){
-		password 	= $('#password').val();
+		password 	= $('#password_registro').val();
 		password2 	= $('#password2').val();
 		chars1		= password.length;
 		chars2		= password2.length;
 		email		= $('#email_registro').val().toLowerCase();
 		nombre		= $('#nombre').val();
 		var passwords = false;
-		alert(existe_email);
-		alert(nombre);
-		alert(email);
+		
 		$('.alert').remove();
 
 		if(!nombre){
@@ -95,7 +93,7 @@ $(document).ready(function(){
 			$('#registroContainer').append('<div class="alert alert-success"><strong>Tus datos han sido registrados</strong> te hemos enviado un correo de confirmación, revisa tu bandeja de entrada, te estamos redirigiendo a la página inicial.</div>');
 
 			var delay = 5000; //Your delay in milliseconds
-	        setTimeout(function(){ window.location.href = "../index.html"; }, delay);
+	        setTimeout(function(){ window.location.href = "../index.php"; }, delay);
 		}
 
 		e.preventDefault();

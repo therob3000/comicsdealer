@@ -106,7 +106,7 @@
                 </div>
                 <div class="form-group" id="formpass">
                   	<label for="Registro">Password de mínimo 8 caracteres</label>
-      				      <input type="password" class="form-control" id="password" placeholder="1234 no es un buen password" name="usuario_password" autocomplete="off">
+      				      <input type="password" class="form-control" id="password_registro" placeholder="1234 no es un buen password" name="usuario_password" autocomplete="off">
                 </div>
                 <div class="form-group" id="formpass2">
                   	<label for="Registro">Password otra vez</label>
