@@ -16,7 +16,7 @@ $(document).ready(function(){
 		nombre		= $('#nombre').val();
 		var passwords = false;
 		alert(existe_email);
-
+		alert(nombre);
 		$('.alert').remove();
 
 		if(!nombre){
