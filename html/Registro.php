@@ -114,8 +114,9 @@
                 </div>
                 <p></p>
                 <p align="right">
-                  <button type="submit" class="btn btn-lg btn-danger">Regístrame</button>
+                  
                 </p>
+                <button type="submit" class="btn btn-lg btn-danger">Regístrame</button>
               </div> 
             </form>
           </div>
