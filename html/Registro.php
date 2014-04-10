@@ -102,7 +102,7 @@
                 </div>
                 <div class="form-group" id="formemail">
                   	<label for="Registro">Dirección de e-mail</label>
-      				      <input type="email" class="form-control" id="email" placeholder="algo@aperture.com" name="usuario_email">
+      				      <input type="email" class="form-control" id="email_registro" placeholder="algo@aperture.com" name="usuario_email">
                 </div>
                 <div class="form-group" id="formpass">
                   	<label for="Registro">Password de mínimo 8 caracteres</label>
@@ -114,9 +114,8 @@
                 </div>
                 <p></p>
                 <p align="right">
-                  
+                  <button type="submit" class="btn btn-lg btn-danger">Regístrame</button>
                 </p>
-                <button type="submit" class="btn btn-lg btn-danger">Regístrame</button>
               </div> 
             </form>
           </div>
