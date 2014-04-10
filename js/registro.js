@@ -8,6 +8,7 @@ $(document).ready(function(){
 	$.post("../php/cierra_sesion.php");
 	$.ajaxSetup({async:true});
 	$('#registro').submit(function(e){
+		console.log($('#password').val());
 		password 	= $('#password').val();
 		password2 	= $('#password2').val();
 		chars1		= password.length;
@@ -80,7 +81,7 @@ $(document).ready(function(){
 			//console.log(cadena);
 
 			//Hacemos INSERT en la base de datos
-			$.post("../php/registro.php",
+			$.post("/php/registro.php",
 				cadena,
 				function(data){
 					exito = data.registro;
@@ -94,7 +95,7 @@ $(document).ready(function(){
 			$('#registroContainer').append('<div class="alert alert-success"><strong>Tus datos han sido registrados</strong> te hemos enviado un correo de confirmación, revisa tu bandeja de entrada, te estamos redirigiendo a la página inicial.</div>');
 
 			var delay = 5000; //Your delay in milliseconds
-	        setTimeout(function(){ window.location.href = "../index.html"; }, delay);
+	        setTimeout(function(){ window.location.href = "/index.php"; }, delay);
 		}
 
 		e.preventDefault();
