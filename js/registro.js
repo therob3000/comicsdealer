@@ -20,26 +20,26 @@ $(document).ready(function(){
 
 		if(!nombre){
 			$('#formnombre').append('<div class="alert alert-danger"><strong>Este campo es obligatorio</strong> vuelve a intentarlo.</div>');
-			$('#password').val('');
+			$('#password_registro').val('');
 			$('#password2').val('');	
 		}
 		
 		if(!email){
 			$('#formemail').append('<div class="alert alert-danger"><strong>Este campo es obligatorio</strong> vuelve a intentarlo.</div>');
-			$('#password').val('');
+			$('#password_registro').val('');
 			$('#password2').val('');
 		}
 		else{
 			$.ajaxSetup({async:false});
 			$.post("../php/verifica_correo.php",
-			$('#email').serialize(),
+			$('#email_registro').serialize(),
 			function(data){
 				existe_email = data.correo;
 				//alert(existe_email);
 				if(existe_email == true){
 					$('#formemail').append('<div class="alert alert-danger"><strong>Este correo ya está registrado</strong> vuelve a intentarlo.</div>');
-					$('#email').val('');
-					$('#password').val('');
+					$('#email_registro').val('');
+					$('#password_registro').val('');
 					$('#password2').val('');
 					ver_correo = true;
 				}
@@ -53,13 +53,13 @@ $(document).ready(function(){
 
 		if(chars1 < 8){
 			$('#formpass').append('<div class="alert alert-danger"><strong>La contraseña es menor a 8 caracteres</strong> vuelve a intentarlo.</div>');
-			$('#password').val('');
+			$('#password_registro').val('');
 			$('#password2').val('');
 		}
 
 		if(password != password2){
 			$('#formpass2').append('<div class="alert alert-danger"><strong>Las contraseñas no son iguales</strong> vuelve a intentarlo.</div>');
-			$('#password').val('');
+			$('#password_registro').val('');
 			$('#password2').val('');
 			passwords = false;
 		}
@@ -71,7 +71,7 @@ $(document).ready(function(){
 			//Cadena a pasar al archivo php
 			cadena = $('input[name!=usuario_email]', this).serialize();
 			//alert(cadena);
-			correo = $('#email').val().toLowerCase();
+			correo = $('#email_registro').val().toLowerCase();
 			//alert(correo);
 			cadena = cadena + '&usuario_email=' + correo;
 			//alert(cadena);
