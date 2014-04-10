@@ -17,6 +17,7 @@ $(document).ready(function(){
 		var passwords = false;
 		alert(existe_email);
 		alert(nombre);
+		alert(email);
 		$('.alert').remove();
 
 		if(!nombre){
