@@ -1,11 +1,15 @@
 <?php
+/*ini_set('display_errors',1); 
+error_reporting(E_ALL);*/
+
 include '../php/conexion.php';
+include '../php/cargarDetalleDinamico.php';
 $con = conexion();
 
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
 $comic_id = $_GET['comic_id'];
+
+obtenerDatos($comic_id);
+
 $comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo, SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion from inventario as inv
 inner join cat_comics as cat on inv.inventario_cat_comic_unique_id = cat.cat_comic_unique_id
 inner join datos_comics as dat on cat.cat_comic_descripcion_id = dat.datos_comic_id
@@ -21,13 +25,14 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
 <!DOCTYPE html>
 <html>
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-    <title id="comic_title"></title><!-- Nombre del comic-->
+    <title id="comic_title"><?php echo obtenerTitulo(); ?></title><!-- Nombre del comic-->
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta property="fb:app_id" content="655150577891800" /> 
   <meta property="og:type"   content="article" /> 
+
   <?php echo "<meta property='og:url' content='http://www.comicsdealer.com/html/Detalle.php?comic_id=$comic_id'/>"; ?>
   <?php echo "<meta property='og:image'  content='$comic_img' />"; ?>
   <?php echo "<meta property='og:title'  content='$comic_titulo' />";?>
@@ -61,6 +66,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
   </head>
   <body>
     <div id="fb-root"></div>
+
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -68,6 +74,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
     <div id="nav_bar"></div>
     <div class="container">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -102,26 +109,36 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
           </div><!-- /.modal -->
       <div class="container tres">
 
-        <div class="catalogo">
+        <div class="catalogo" itemscope itemtype="http://schema.org/Product">
           <div class="row">
             <div class="col-md-3">
-              <a target="_blank" id="comic_href" href="">
-                <img src="" class="img-responsive img-rounded" id="comic_img">
-              </a>
+              <?php
+                  $imagen = obtenerImagen();
+                  echo "<a target='_blank' id='comic_href' href=$imagen>
+                          <img itemprop='image' src=$imagen class='img-responsive img-rounded' id='comic_img'>
+                        </a>";
+              ?>
+              
               <h5 align="center"><small>Da click en la imagen para verla en grande</small></h5>
             </div>
             <div class="col-md-9">
-              <h1 class="blog-title" id="comic_personaje"></h1>
-              <h1><small><span class="label label-primary" id="comic_titulo"></span></strong></small><small id="comic_idioma"></small></h1>
+              <h1 class="blog-title" id="comic_personaje"><?php echo obtenerPersonaje();?></h1>
+
+              <h1>
+                <strong>
+                  <small>
+                    <span class="label label-primary" id="comic_titulo"><span itemprop="name"><?php echo obtenerTitulo()." #".obtenerNumero(); ?></span></span>
+                  </small>
+                </strong>
+                <small id="comic_idioma"><?php echo obtenerIdioma(); ?></small>
+              </h1>
             
               <hr></hr>
               <div class="row">
-                <div class="col-md-3" id="comic_copias" align="left">
-                  </div>
-                  <div class="col-md-3" id="comic_integridad" align="left">
-                  </div>
+                <div class="col-md-3" id="comic_copias" align="left"><h4>Existencias: <small><span itemprop="availability"><?php echo obtenerCopias(); ?></span></small></h4></div>
+                <div class="col-md-3" id="comic_integridad" align="left"><h4>Integridad: <small><?php echo obtenerIntegridad()."/10"; ?></small></h4></div>
               </div>
-              <p align="justify" style="font-size: 12pt" id="comic_descripcion"></p>
+              <p align="justify" style="font-size: 12pt" id="comic_descripcion"><span itemprop="description"><?php echo obtenerDescripcion(); ?></span></p>
               <!--<div class="row" align="center">
                 <div class="col-md-4"><h4>Estado: <small>Nuevo</small></h4></div>
                 <div class="col-md-4"><h4>Año: <small>1989</small></h4></div>
@@ -132,7 +149,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
               <div class="col-md-9 col-md-offset-3">
                 <div class="row">
                   <div class="col-md-6 col-md-offset-3">
-                    <h4 class="panel-title price" id="comic_precio"></h4>
+                    <h4 class="panel-title price" id="comic_precio"><?php echo '$'.obtenerPrecio()." MXN"; ?></h4>
                   </div>
                   <div class="col-md-3 ">
                     <div id="boton_comprar"><button class="btn btn-success btn-comprar" role="button">Comprar »</button></div>
@@ -163,6 +180,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
             </div>
           </div>
         </div>
+
       </div>
 
       <div id="infos"></div>

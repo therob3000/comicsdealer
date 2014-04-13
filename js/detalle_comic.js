@@ -35,29 +35,32 @@ function cargarComic(comic_id){
 	$(".fb-share-button").attr("data-href", "http://www.comicsdealer.com/html/Detalle.php?comic_id="+comic_id);
 	cadena = "comic_id="+comic_id;
 
-	$.get("../php/cargarComicDetalle.php",
-		cadena,
-		function(data){
-			if(data.comic_estado == true){
-				$('#comic_title').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
-				$('#comic_href').attr('href',data.comic.cat_comic_imagen_url);
-				$('#comic_img').attr('src',data.comic.cat_comic_imagen_url);
-				$('#comic_titulo').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
-				if(data.comic.cat_comic_idioma == "ing"){
-					$('#comic_idioma').text(" Idioma: Inglés");
-				}else if(data.comic.cat_comic_idioma == "esp"){
-					$('#comic_idioma').text(" Idioma: Español");
-				}
-				$('#comic_personaje').text(data.comic.cat_comic_personaje);
-				$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
-				$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
-				$('#comic_copias').html('<h4>Existencias: <small>'+data.comic.cat_comic_copias+' </small></h4>');
-				$('#comic_integridad').html('<h4>Integridad: <small>'+data.comic.inventario_integridad+"/10</small></h4>");
-				$('#boton_eliminar').hide();
-				$('#boton_comprar').hide();
-			}
-		},
-		'json');
+	$('#boton_eliminar').hide();
+	$('#boton_comprar').hide();
+
+	// $.get("../php/cargarComicDetalle.php",
+	// 	cadena,
+	// 	function(data){
+	// 		if(data.comic_estado == true){
+	// 			//$('#comic_title').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
+	// 			//$('#comic_href').attr('href',data.comic.cat_comic_imagen_url);
+	// 			//$('#comic_img').attr('src',data.comic.cat_comic_imagen_url);
+	// 			//$('#comic_titulo').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
+	// 			if(data.comic.cat_comic_idioma == "ing"){
+	// 				$('#comic_idioma').text(" Idioma: Inglés");
+	// 			}else if(data.comic.cat_comic_idioma == "esp"){
+	// 				$('#comic_idioma').text(" Idioma: Español");
+	// 			}
+	// 			//$('#comic_personaje').text(data.comic.cat_comic_personaje);
+	// 			//$('#comic_descripcion').text(data.comic.cat_comic_descripcion);
+	// 			//$('#comic_precio').text("$"+data.comic.inventario_precio_salida+" MXN");
+	// 			//$('#comic_copias').html('<h4>Existencias: <small>'+data.comic.cat_comic_copias+' </small></h4>');
+	// 			//$('#comic_integridad').html('<h4>Integridad: <small>'+data.comic.inventario_integridad+"/10</small></h4>");
+	// 			$('#boton_eliminar').hide();
+	// 			$('#boton_comprar').hide();
+	// 		}
+	// 	},
+	// 	'json');
 }
 
 //Cargar el comic cuando el usuario HA INICIADO SESION
@@ -68,7 +71,19 @@ function cargarComic2(comic_id){
 	$.get("../php/cargarComicDetalle2.php",
 		cadena,
 		function(data){
-			if(data.comic_estado == true){
+			if($.inArray(data.comic.inventario_id, data.agregados) != -1){
+					$('#boton_comprar_nologin').hide();					
+					$('#boton_comprar').hide();
+					$('.btn-eliminar').attr("id", data.comic.inventario_id);
+					$('.btn-comprar').attr("id", data.comic.inventario_id);
+				}
+				else{
+					$('#boton_comprar_nologin').hide();
+					$('#boton_eliminar').hide();
+					$('.btn-comprar').attr("id", data.comic.inventario_id);
+					$('.btn-eliminar').attr("id", data.comic.inventario_id);
+				}
+			/*if(data.comic_estado == true){
 				$('#comic_title').text(data.comic.cat_comic_titulo+" #"+data.comic.cat_comic_numero_ejemplar);
 				$('#comic_href').attr('href',data.comic.cat_comic_imagen_url);
 				$('#comic_img').attr('src',data.comic.cat_comic_imagen_url);
@@ -97,7 +112,7 @@ function cargarComic2(comic_id){
 					$('.btn-eliminar').attr("id", data.comic.inventario_id);
 				}
 
-			}
+			}*/
 		},
 		'json');
 }
