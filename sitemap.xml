@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9' xmlns:image='http://www.google.com/schemas/sitemap-image/1.1'>
-			<url>
+<?xml version='1.0' encoding='UTF-8'?><urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9' xmlns:image='http://www.google.com/schemas/sitemap-image/1.1'><url>
 				<loc>http://www.comicsdealer.com/html/ArticulosIndex.php</loc>
 				<changefreq>weekly</changefreq>
 			  </url>
@@ -24,123 +23,165 @@
 			  	<changefreq>never</changefreq>
 			  </url>
 			  <url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=131</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=131</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=141</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=141</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=201</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=201</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=61</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=61</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=71</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=71</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=81</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=81</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=31</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=31</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=214</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=214</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=215</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=215</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=216</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=216</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=220</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=220</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=219</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=219</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=41</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=41</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=218</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=218</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=217</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=217</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=51</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=51</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=236</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=236</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=237</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=237</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=91</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=242</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=101</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=243</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=111</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=91</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=121</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=101</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=221</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=111</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=222</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=121</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=229</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=221</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=230</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=222</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=232</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=229</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=233</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=230</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=234</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=232</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=235</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=233</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=151</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=234</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=161</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=235</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=171</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=238</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=181</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=239</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=191</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=240</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=225</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=244</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=227</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=245</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=226</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=246</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=228</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=247</loc>
 					<changefreq>weekly</changefreq>
 				  </url><url>
-					<loc>http://www.comicsdealer.com/html/Detalle.php?comid_id=231</loc>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=248</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=249</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=151</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=161</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=171</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=181</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=191</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=225</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=227</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=226</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=228</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=231</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Detalle.php?comic_id=241</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Articulos.php?articulo_id=1</loc>
+					<changefreq>weekly</changefreq>
+				  </url><url>
+					<loc>http://www.comicsdealer.com/html/Articulos.php?articulo_id=2</loc>
 					<changefreq>weekly</changefreq>
 				  </url></urlset>
