@@ -52,7 +52,7 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
 
   <style>
     .container {
-      background: url(../img/avengers.jpg) no-repeat center center fixed;
+      background: url(../img/spiderman1.jpg) no-repeat center center fixed;
       background-size: cover;
     }       
   </style>

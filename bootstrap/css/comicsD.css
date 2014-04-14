@@ -69,7 +69,7 @@ body {
 }
 
 .container {
-  max-width: 1024px;
+  max-width: 1152px;
   margin-top: 20px;
   margin-bottom: 20px;
   -webkit-background-size: contain;
@@ -77,8 +77,8 @@ body {
   -o-background-size: contain;
 }
 
-.container .tre {
-  max-width: 924px;
+.container .tres {
+  max-width: 1024px;
 }
 
 .highlight {
@@ -125,7 +125,7 @@ filter: alpha(opacity=50);
 }
 
 .segus {
-    max-width: 1024px;
+    max-width: 1152px;
     margin-bottom: 20px;
     margin-right: auto;
     margin-left: auto;

@@ -34,7 +34,7 @@
 
     <style>
       .container {
-        background: url(../img/spawn.jpg) no-repeat center center fixed;
+        background: url(../img/spawn1.jpg) no-repeat center center fixed;
         background-size: cover;
       }       
     </style>

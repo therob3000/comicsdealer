@@ -32,7 +32,7 @@
   </script>
   <style>
     .container {
-      background: url(../img/spiderman.jpg) no-repeat center center fixed;
+      background: url(../img/spiderman1.jpg) no-repeat center center fixed;
       background-size: cover;
     }       
   </style>
@@ -98,7 +98,6 @@
 
             <form role="form" id="pedido">
               <div class="highlight">
-
                 <div class="form-group">
                   <label for="Pedido">Paso 1: Selecciona la compañía</label>
                   <select class="form-control" name="compania_id" id="compania">
@@ -117,7 +116,6 @@
                     <textarea id="textolibre" class="form-control" rows="3" name="texto_libre" placeholder="Un par de buenos ejemplos serían: ''Monster Edition: The Avengers Versus The x-Men'', o bien ''Ultimate Comics: #11'' TRATA DE SER LO MAS ESPECIFICO POSIBLE."></textarea>
                   </div>
                 </div> 
-
               </div>
               <div class="highlight">
                 <p></p>
@@ -144,38 +142,42 @@
                 <div class="row">
                   <div class="form-group"><label for="Pedido"></label>
                     <div class="col-md-6">
-                      <p align="justify" style="font-size: 12pt">Recuerda que no pagas hasta que te mandemos un correo confirmando que encontramos tu pedido y cuánto te costará.</p></div>
-                      <div class="col-md-2">
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="pedido_forma_pago_id" id="pago1" value="1" checked="">
-                            <img src="../img/paypal.png" class="img-responsive text-center" width="100" height="31">
-                          </label>
-                        </div>
+                      <p align="justify" style="font-size: 12pt">Recuerda que no pagas hasta que te mandemos un correo confirmando que encontramos tu pedido y cuánto te costará.</p>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="pedido_forma_pago_id" id="pago1" value="1" checked="">
+                          <img src="../img/paypal.png" class="img-responsive text-center" width="100" height="31">
+                        </label>
                       </div>
-                      <div class="col-md-4">
-                        <div class="radio" id="f">
-                          <label>
-                            <input type="radio" name="pedido_forma_pago_id" id="pago2" value="2">
-                            <img class="img-responsive text-center" src="../img/logosBan.jpg" width="150" height="47">
-                          </label>
-                        </div>
-
+                    </div>
+                    <div class="col-md-3">
+                      <div class="radio" id="f">
+                        <label>
+                          <input type="radio" name="pedido_forma_pago_id" id="pago2" value="2">
+                          <img class="img-responsive text-center" src="../img/logosBan.jpg" width="150" height="47">
+                        </label>
                       </div>
-                    </div>  
+                    </div>
                   </div>
-                  <p align="right"><button type="submit" class="btn btn-lg btn-success">Realizar pedido</button></p>
+                  <div class="row">
+                    <div class="col-md-3 col-md-offset-8">
+                      <button type="submit" class="btn btn-lg btn-success">Realizar pedido</button>
+                    </div>
+                  </div>
                 </div>
-              </form>
+              </div>
               <div class="highlight">
-          <div class=" alert alert-info">
-            <p align="justify" style="font-size: 12pt" >
-              <strong>Nota: </strong>Al hacer tu pedido recibiras un <strong>CORREO ELECTRONICO</strong> en la direccion que hayas registrado. En este <strong>CORREO ELECTRONICO</strong> te daremos la fecha en la que recibiras noticias sobre tu <strong>PEDIDO.</strong> Una vez que decidas si te conviene o no el costo del pedido, tienes un maximo de <strong>5 dias</strong> para contestar, de lo contrario <strong>daremos por cancelado tu pedido</strong>. Gracias!.
-            </p>
+                <div class=" alert alert-info">
+                  <p align="justify" style="font-size: 12pt" >
+                    <strong>Nota: </strong>Al hacer tu pedido recibiras un <strong>CORREO ELECTRONICO</strong> en la direccion que hayas registrado. En este <strong>CORREO ELECTRONICO</strong> te daremos la fecha en la que recibiras noticias sobre tu <strong>PEDIDO.</strong> Una vez que decidas si te conviene o no el costo del pedido, tienes un maximo de <strong>5 dias</strong> para contestar, de lo contrario <strong>daremos por cancelado tu pedido</strong>. Gracias!.
+                  </p>
+                </div>
+              </div>
+            </form>  
           </div>
         </div>
-            </div>
-          </div>
 
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">

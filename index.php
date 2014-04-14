@@ -38,7 +38,7 @@
 
   <style>
     .container {
-      background: url(img/bg.jpg) no-repeat center center fixed;
+      background: url(img/bg1.jpg) no-repeat center center fixed;
       background-size: cover;
     }
   </style>
@@ -98,10 +98,10 @@
         <div class="jumbotron">
           <!--Aqui se inserta el contenido Principal-->
           <div id="layout"></div>
-          <div class="row"><p align="right">
+          <!--<div class="row"><p align="right">
             <strong>Haz Login o </strong>
             <a class="btn btn-lg btn-danger" href="html/preRegistro.html">Regístrate ya!</a></p>
-          </div>
+          </div>-->
           <div class="row">
             <div class="col-lg-3">
               <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
@@ -114,6 +114,11 @@
               <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
+            <div class="col-lg-4" style="margin-top: 2%">
+              <p align="right">
+            <strong>Haz Login o </strong>
+            <a class="btn btn-md btn-danger" href="html/preRegistro.html">Regístrate ya!</a></p>
+            </div>
           </div>
         </div>
       </div>
@@ -123,7 +128,7 @@
         <div class="catalogo">
           <div class="row">
             <div class="col-lg-12" >
-              <h2 style="margin-bottom: 0px;">Un Poco del Catálogo Privado de <strong>Dr. Death y Dr. V. Sarnavskiy</strong>
+              <h2 style="margin-bottom: 0px;">Un Poco del Catálogo Privado de <strong>Dr. Death</strong>
               <br><small>La pura nata concentrada de los cómics</small></h2>
             </div>  
           </div>
@@ -132,10 +137,9 @@
           <div class="row" id="catalogo_comics">
             
           </div><!-- /.row1 -->
-          <div class="row">
-             
+          <div class="row">             
             <div class="col-lg-4 col-lg-offset-8"> 
-              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php">Ver el catálogo completo <strong>»</strong></a></p>
+              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo <strong>»</strong></strong></a></p>
             </div> 
           </div>
           <hr></hr>

@@ -54,7 +54,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
 
     <style>
       .container {
-        background: url(../img/avengers.jpg) no-repeat center center fixed;
+        background: url(../img/fly1.jpg) no-repeat center center fixed;
         background-size: cover;
       }
     </style>
