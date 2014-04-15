@@ -47,6 +47,7 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
   </script>
   <script src="../bootstrap/assets/js/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/catalogo.js"></script>
   <script src="../js/login.js"></script>
   <script src="../js/articulos.js"></script>
   <script type="text/javascript">
@@ -105,6 +106,7 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
                       <label for="exampleInputPassword1">Password</label>
                       <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
                     </div>
+                    <a href="preRegistro.html"><strong>¿Aun no te registras?</strong></a>
                     <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
                   </div>
                   <div class="modal-footer navbar-inverse">
@@ -216,6 +218,28 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
 
             </div>
           </div><!-- /.Catalogo -->
+
+          <div class="container tres">
+        <div class="catalogo">
+          <div class="row">
+            <div class="col-lg-12" >
+              <h2 style="margin-bottom: 0px;">Tambien puedes revisar nuestro <strong>Catálogo</strong>
+              <br><small>La pura nata concentrada de los cómics</small></h2>
+            </div>  
+          </div>
+          
+          <hr></hr>
+          <div class="row" id="catalogo_comics">
+            
+          </div><!-- /.row1 -->
+          <div class="row">             
+            <div class="col-lg-4 col-lg-offset-8"> 
+              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo <strong>»</strong></strong></a></p>
+            </div> 
+          </div>
+          <hr></hr>
+        </div>
+      </div><!-- /.Catalogo Muestra-->
 
           <div id="infos"></div>
 

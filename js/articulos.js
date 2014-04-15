@@ -3,7 +3,8 @@ $(document).ready(function(){
 	modalIniciarSesion();
 	cargarArticulo(articulo_id);
 	cargarArticulosArchivo();
-	
+	cargarCatalogoComics2(0,6);
+	botonComprarNologin();
 });
 
 function cargarArticulo(articulo_id){
@@ -85,5 +86,11 @@ function modalIniciarSesion(){
 	$("#nav_bar").on("click", "#loginButton", function(e){
 		$('#myModal').modal('show');
 	});
+}
+
+function botonComprarNologin(){
+	$(".btn-comprar").on("click", function(){
+		$('#myModal').modal('show');
+	})
 }
 
