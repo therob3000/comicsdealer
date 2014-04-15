@@ -77,5 +77,4 @@ function cargarCatalogoComics2(salto, rango) {
 		},
 		'json');
 	$.ajaxSetup({async:true});
-
 }

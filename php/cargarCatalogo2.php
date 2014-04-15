@@ -53,6 +53,8 @@
     	CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1
     LIMIT $salto, $rango";
 
+    //echo $queryCatalogoComics;
+
 	$queryResultado = mysql_query($queryCatalogoComics);
 	$num = mysql_num_rows($queryResultado);
 	if($num>0){
