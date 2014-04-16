@@ -3,11 +3,11 @@
 <head>
   <title>Comics Dealer</title>
 
-  <link href="http://comicsdealer.zapto.org/img/ComicDminiFB.jpg" rel="image_src" />
+  <link href="/img/ComicDminiFB.jpg" rel="image_src" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="comics, cómics, bootstrap, marvel, dc, televisa, vid, méxico, bootstrap">
-  <meta name="description" content="Comics Dealer se especializa en buscar y encontrar cómics en México">
+  <meta name="description" content="Comics Dealer es una pagina hecha por desarrolladores mexicanos que se especializa en buscar y encontrar cómics en México, que cuenta con un catalogo de cómics tanto en ingles como en español. ¡Los buscamos por ti!">
 
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
