@@ -45,12 +45,13 @@
 		inventario_precio_salida,
 		inventario_cat_comic_unique_id,
 		inventario_existente,
-		inventario_fecha_entrada
+		inventario_fecha_entrada,
+		inventario_activo
     FROM
         inventario
     GROUP BY inventario_cat_comic_unique_id ORDER BY inventario_fecha_entrada DESC) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 	WHERE
-    	CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1 
+    	CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1 AND INV.inventario_activo = 1
     LIMIT $salto, $rango";
 
 	$queryResultado = mysql_query($queryCatalogoComics);
