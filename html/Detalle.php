@@ -49,6 +49,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
     </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/catalogo.js"></script>
     <script src="../js/detalle_comic.js"></script>
     <script src="../js/login.js"></script>
 
@@ -82,36 +83,35 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
   <body>
     <div id="fb-root"></div>
 
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
     <div id="nav_bar"></div>
     <div class="container">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Bienvenido, haz login!</h4>
-              </div>
-              <form role="form" id="login">
-                <div class="modal-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Correo Electrónico</label>
-                      <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="usuario_email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
-                    </div>
-                    <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">Bienvenido, haz login!</h4>
+            </div>
+            <form role="form" id="login">
+              <div class="modal-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="usuario_email">
                   </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
+                  </div>
+                  <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
                   <div class="modal-footer navbar-inverse">
                     <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
                     class="img-responsive text-center" width="207" height="26"/>
@@ -119,12 +119,53 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
                     <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                   </div>
                 </form>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
+              </div><!-- /.modal-body -->
+            </form>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
       <div class="container tres">
 
         <div class="catalogo" itemscope itemtype="http://schema.org/Product">
+
+          <div class="row">
+            <!--Aqui se inserta el logo Principal-->
+            <div class="col-sm-9">
+              <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
+            </div>
+            <div class="col-sm-3">
+              <div class="row" align="right">
+                <div class="row">
+                  <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
+                    <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
+                    <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12" style="margin-top: 3%">
+                    <a class="btn btn-md btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br>
+          <div id="searchnav"> 
+          </div>
+          <br>
+
           <div class="row">
             <div class="col-md-3">
               <?php
@@ -133,7 +174,6 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
                           <img itemprop='image' src=$imagen class='img-responsive img-rounded' id='comic_img'>
                         </a>";
               ?>
-              
               <h5 align="center"><small>Da click en la imagen para verla en grande</small></h5>
             </div>
             <div class="col-md-9">
@@ -175,16 +215,16 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
               </div>
             </div>
             <div class="row" align="right">
-            <div class="col-md-9 col-md-offset-3">
-                    <div class="col-sm-3 col-sm-offset-6" style="margin-top: 2%">
-                      <div class="fb-share-button" data-href="" data-type="button_count"></div>
-                    </div>
-                    <div class="col-sm-3" style="margin-top: 2%">
-                      <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="" data-via="ComicsDealer" data-lang="es">Twittear</a>
-                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div>
-                  </div>
+              <div class="col-md-9 col-md-offset-3">
+                <div class="col-sm-3 col-sm-offset-6" style="margin-top: 2%">
+                  <div class="fb-share-button" data-href="" data-type="button_count"></div>
                 </div>
+                <div class="col-sm-3" style="margin-top: 2%">
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="" data-via="ComicsDealer" data-lang="es">Twittear</a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
+              </div>
+            </div>
             <hr></hr>
             <div class="col-lg-4"> 
               <p style="font-size: 14pt"><a href="/html/Catalogo.php"><strong>«</strong> Regresar al catálogo</a></p>
@@ -193,10 +233,33 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
               <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
                       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
-          </div>
+          </div><!--Row del detalle-->
+
         </div>
 
       </div>
+
+      <div class="container tres">
+        <div class="catalogo">
+          <div class="row">
+            <div class="col-lg-12" >
+              <h2 style="margin-bottom: 0px;">Tambien puedes revisar nuestro <strong>Catálogo</strong>
+              <br><small>La pura nata concentrada de los cómics</small></h2>
+            </div>  
+          </div>
+          
+          <hr></hr>
+          <div class="row" id="catalogo_comics">
+            
+          </div><!-- /.row1 -->
+          <div class="row">             
+            <div class="col-lg-4 col-lg-offset-8"> 
+              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>
+            </div> 
+          </div>
+          <hr></hr>
+        </div>
+      </div><!-- /.Catalogo Muestra-->
 
       <div id="infos"></div>
 
