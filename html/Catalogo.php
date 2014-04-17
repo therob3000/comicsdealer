@@ -60,15 +60,6 @@ else{
       <![endif]-->
     </head>
     <body>
-      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-      </script>
 
       <div id="nav_bar"></div>
 
@@ -109,95 +100,27 @@ else{
 
           <div class="catalogo">
             <div class="row">
-              <!--Aqui se inserta el logo Principal-->
-              <div class="col-sm-9">
-                <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
-              </div>
-              <div class="col-sm-3">
-                <div class="row" align="right">
-                  <div class="row">
-                    <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
-                      <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
-                      <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
-                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
-                      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
-                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12" style="margin-top: 3%">
-                      <a class="btn btn-md btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <br><br>
-            <div id="searchnav"> 
-            </div><br>
-            
-            <div class="row">
-              <div class="col-md-2 blog-sidebar">
-                <!--<div class="sidebar-module sidebar-module-inset">
-                  <h4>Categorías</h4>
-                </div>-->
-                <h4>Categorías</h4>
-                <hr>
-                <div class="sidebar-module">
-                  <h4>DC</h4>
-                  <ol class="list-unstyled" id="marvel">
-                    <li><a href="#">Batman</a></li>
-                    <li><a href="#">Catwoman</a></li>
-                    <li><a href="#">Flash</a></li>
-                    <li><a href="#">Green Lantern</a></li>
-                  </ol>
-                </div>
-                <div class="sidebar-module">
-                  <h4>Marvel</h4>
-                  <ol class="list-unstyled" id="marvel">
-                    <li><a href="#">Avengers</a></li>
-                    <li><a href="#">Captain America</a></li>
-                    <li><a href="#">Daredevil</a></li>
-                    <li><a href="#">Spiderman</a></li>
-                  </ol>
-                </div>
-              </div>
-              <div class="col-md-10">
+              <div class="col-md-12">
                 <div class="row">
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <h2  style="margin-bottom: 0px;">Catálogo Privado de <strong>Dr. Death</strong>
-                          <br><small>Sólo la crema condensada del mundo del cómic.</small></h2>
-                      </div>
+                  <div class="col-lg-12">
+                    <h2 class="blog-title" style="margin-bottom: 0px;">Catálogo Privado de <strong>Dr. Death</strong>
+                      <br><small>Sólo la crema condensada del mundo del cómic.</small></h2>
                     </div>
-                    <hr></hr>
-
-                    <div class="rows"></div>
-                  
-                    <ul class="pager">
-                      <li id="anterior"></li>
-                      <li id="siguiente"></li>
-                    </ul>
-                    
                   </div>
+                  <hr></hr>
+
+                  <div class="rows"></div>
+                
+                    <ul class="pager">
+                    <li id="anterior"></li>
+                    <li id="siguiente"></li>
+                  </ul>
+                
                 </div>
-              </div>  
+              </div>
             </div>
 
-
-          </div>
-
-          <!--</div> /.Catalogo -->
+          </div><!-- /.Catalogo -->
 
           <div id="infos"></div>
 

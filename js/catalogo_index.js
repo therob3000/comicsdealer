@@ -38,9 +38,9 @@ function cargarComics(salto){
 	var sigSalto = salto;
 	for (var i = 0; i < 4; i++) {
 		$(".rows").append("<div class=row id=catalogo_comics></div>");
-		cargarCatalogoComics(sigSalto,4, "../html/layouts/catalogo_layout.html");
+		cargarCatalogoComics(sigSalto,3);
 		$("#catalogo_comics").attr("id", i);
-		sigSalto = +sigSalto+4;
+		sigSalto = +sigSalto+3;
 	};
 	if(salto==0){
 		$("#anterior").hide();
@@ -61,10 +61,9 @@ function cargarComicsNologin(salto){
 	var sigSalto = salto;
 	for (var i = 0; i < 4; i++) {
 		$(".rows").append("<div class=row id=catalogo_comics></div>");
-		cargarCatalogoComics2(sigSalto,4, "../html/layouts/catalogo_layout.html");
+		cargarCatalogoComics2(sigSalto,3);
 		$("#catalogo_comics").attr("id", i);
-		sigSalto = +sigSalto+4;
-		$(".rows").append("<hr></hr>");
+		sigSalto = +sigSalto+3;
 	};
 	if(salto==0){
 		$("#anterior").hide();

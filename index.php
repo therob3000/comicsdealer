@@ -56,8 +56,8 @@
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-      </script>
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div id="nav_bar"></div>
     <div class="container">
 
@@ -95,50 +95,41 @@
       
       <!--Aqui empieza el jumbotron Principal y de Fin de semana -->
       <div class="container tres" >
-        <!--<div class="jumbotron">-->
+        <div class="jumbotron">
+          <!--Aqui se inserta el contenido Principal-->
+          <div id="layout"></div>
+          <!--<div class="row"><p align="right">
+            <strong>Haz Login o </strong>
+            <a class="btn btn-lg btn-danger" href="html/preRegistro.html">Regístrate ya!</a></p>
+          </div>-->
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+            </div>
+            <div class="col-lg-3" style="margin-top: 2%">
+              <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+            <div class="col-lg-2" style="margin-top: 2%">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+            <div class="col-lg-4" style="margin-top: 2%">
+              <p align="right">
+            <strong>Haz Login o </strong>
+            <a class="btn btn-md btn-danger" href="html/preRegistro.html">Regístrate ya!</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Aqui termina el jumbotron Principal y de Fin de semana -->
+
+      <div class="container tres">
         <div class="catalogo">
           <div class="row">
-
-            <!--Aqui se inserta el contenido Principal-->
-            <div id="layout"></div>
-
-            <div class="col-sm-3">
-              <div class="row" align="right">
-                <div class="row">
-                  <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
-                    <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
-                    <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12" style="margin-top: 3%">
-                    <a class="btn btn-md btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <br><br>
-          <div id="searchnav"> 
-          </div>
-
-          <div class="row">
             <div class="col-lg-12" >
-              <h3 style="margin-bottom: 0px;">Novedades en el Catálogo Privado de <strong>Dr. Death</strong>
-              <br><small>La pura nata concentrada de los cómics</small></h3>
+              <h2 style="margin-bottom: 0px;">Un Poco del Catálogo Privado de <strong>Dr. Death</strong>
+              <br><small>La pura nata concentrada de los cómics</small></h2>
             </div>  
           </div>
           
@@ -148,7 +139,7 @@
           </div><!-- /.row1 -->
           <div class="row">             
             <div class="col-lg-4 col-lg-offset-8"> 
-              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>
+              <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo <strong>»</strong></strong></a></p>
             </div> 
           </div>
           <hr></hr>
@@ -158,13 +149,13 @@
       <div class="container tres">
         <div class="jumbotron">
           <h4>¿Quiénes somos?</h4>
-          <p style="font-size: 12pt" align="justify">Somos un grupo amante de los cómics, comprometido a conseguir los mejores precios para nuestros usuarios, pero también nos dedicamos a buscar y encontrar cómics que te hagan falta, de <strong>cualquier editorial</strong>, en <strong>cualquier idioma</strong> (inglés, alemán, zapoteco), o bien de <strong>cualquier país</strong> (Japón, Yugoslavia, <a href="http://es.wikipedia.org/wiki/Islas_Cook">Islas Cook</a>, etc). Con nuestra ayuda podrás tener en la puerta de tu casa todos los ejemplares que faltan en tu colección, sólo tienes que seguir estos tres simples pasos: 
+          <p style="font-size: 12pt" align="justify">Somos un grupo dedicado a buscar y encontrar cómics, cómics de <strong>cualquier editorial</strong>, por ejemplo, de Editorial Televisa o Editorial Vid, en <strong>cualquier idioma</strong> (inglés, alemán, zapoteco), o bien de <strong>cualquier país</strong> (Japón, Yugoslavia, <a href="http://es.wikipedia.org/wiki/Islas_Cook">Islas Cook</a>, etc). Con nuestra ayuda puedes tener todos los ejemplares que faltan en tu colección, sólo tienes que seguir estos tres simples pasos: 
           </p>
           <p class="text-default" align="center">
-            <span class="label label-info">Regístrate »</span>
-            <span class="label label-primary">Buscamos tus cómics »</span>
+            <span class="label label-info">Nos preguntas por tomos »</span>
+            <span class="label label-primary">Buscamos hasta encontrarlos »</span>
             <span class="label label-success">Los pagas y te los entregamos \o/</span></p>
-            <p style="font-size: 12pt" align="justify">Ahora, si eres un Jedi usa la fuerza pra pedirnos cómics, si no, no temas y...</p>        
+            <p style="font-size: 12pt" align="justify">Ahora, si eres un Jedi usa la fuerza y pídenos cómics, si no, no temas y...</p>        
             <p align="right">
               <a class="btn btn-lg btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
             </p>

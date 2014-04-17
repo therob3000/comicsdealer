@@ -2,8 +2,6 @@ $(document).ready(function(){
 	verificaSesion();
 	modalIniciarSesion();
 	cargarArticulos(pagina, 5);
-	cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
-	botonComprarNologin();
 });
 
 function cargarArticulos(salto, rango){
