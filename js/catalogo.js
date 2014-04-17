@@ -1,5 +1,5 @@
 
-function cargarCatalogoComics (salto, rango) {
+function cargarCatalogoComics (salto, rango, capa) {
 	cadena = "salto="+salto+"&rango="+rango;
 	$.ajaxSetup({async:false});
 	$.get("../php/cargarCatalogo.php",
@@ -7,7 +7,7 @@ function cargarCatalogoComics (salto, rango) {
 		function(data){
 			total = data.total;
 			$.each(data.catalogo, function(i, val){
-				$.get("../html/layouts/catalogo_layout.html", function(data2){
+				$.get(capa, function(data2){
 					$("#catalogo_comics").append(data2);
 					$("#catalogo_comics").find("#catalogo_comic").attr("id", val.inventario_id);
 					if($.inArray(val.inventario_id, data.agregados) != -1){
@@ -44,7 +44,7 @@ function cargarCatalogoComics (salto, rango) {
 
 }
 
-function cargarCatalogoComics2(salto, rango) {
+function cargarCatalogoComics2(salto, rango, capa) {
 	cadena = "salto="+salto+"&rango="+rango;
 	$.ajaxSetup({async:false});
 	$.get("../php/cargarCatalogo2.php",
@@ -52,7 +52,7 @@ function cargarCatalogoComics2(salto, rango) {
 		function(data){
 			total = data.total;
 			$.each(data.catalogo, function(i, val){
-				$.get("../html/layouts/catalogo_layout.html", function(data2){
+				$.get(capa, function(data2){
 					$("#catalogo_comics").append(data2);
 					$("#catalogo_comics").find("#catalogo_comic").attr("id", val.inventario_id);
 					$("#"+val.inventario_id).find('#boton_comprar').html("<button class='btn btn-success btn-comprar' role='button'>Comprar</button>");

@@ -3,7 +3,7 @@ $(document).ready(function(){
 	modalIniciarSesion();
 	cargarArticulo(articulo_id);
 	cargarArticulosArchivo();
-	cargarCatalogoComics2(0,6);
+	cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
 });
 
