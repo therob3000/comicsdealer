@@ -70,7 +70,7 @@ body {
 }
 
 .container {
-  max-width: 1152px;
+  max-width: 1088px;
   margin-top: 20px;
   margin-bottom: 20px;
   -webkit-background-size: contain;
@@ -79,7 +79,7 @@ body {
 }
 
 .container .tres {
-  max-width: 1024px;
+  /*max-width: 1024px;*/
 }
 
 .highlight {
@@ -128,7 +128,7 @@ filter: alpha(opacity=50);
 }
 
 .segus {
-    max-width: 1152px;
+    max-width: 1088px;
     margin-bottom: 20px;
     margin-right: auto;
     margin-left: auto;

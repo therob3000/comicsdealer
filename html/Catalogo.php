@@ -113,7 +113,7 @@ else{
               <div class="col-sm-9">
                 <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
               </div>
-              <div class="col-sm-3">
+              <div class="col-sm-3 hidden-xs">
                 <div class="row" align="right">
                   <div class="row">
                     <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
@@ -134,7 +134,7 @@ else{
                   </div>
                   <div class="row">
                     <div class="col-sm-12" style="margin-top: 3%">
-                      <a class="btn btn-md btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
+                      <a class="btn btn-xs btn-danger" href="/html/preRegistro.html">Regístrate ahora!</a>
                     </div>
                   </div>
                 </div>
@@ -143,13 +143,13 @@ else{
 
             <br><br>
             <div id="searchnav"> 
-            </div><br>
+            </div>
             
             <div class="row">
-              <div class="col-md-2 blog-sidebar">
+              <div class="col-md-2 blog-sidebar hidden-sm hidden-xs">
                 <!--<div class="sidebar-module sidebar-module-inset">
                   <h4>Categorías</h4>
-                </div>-->
+                </div>--><br>
                 <h4>Categorías</h4>
                 <hr>
                 <div class="sidebar-module">
@@ -171,13 +171,13 @@ else{
                   </ol>
                 </div>
               </div>
-              <div class="col-md-10">
+              <div class="col-sm-12 col-md-10">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="row">
                       <div class="col-lg-12">
-                        <h2  style="margin-bottom: 0px;">Catálogo Privado de <strong>Dr. Death</strong>
-                          <br><small>Sólo la crema condensada del mundo del cómic.</small></h2>
+                        <h3  style="margin-bottom: 0px;">Catálogo Privado de <strong>Dr. Death</strong>
+                          <br><small>Sólo la crema condensada del mundo del cómic.</small></h3>
                       </div>
                     </div>
                     <hr></hr>

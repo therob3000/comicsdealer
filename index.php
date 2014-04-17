@@ -102,7 +102,7 @@
             <!--Aqui se inserta el contenido Principal-->
             <div id="layout"></div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-3 hidden-xs">
               <div class="row" align="right">
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
@@ -123,7 +123,7 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-12" style="margin-top: 3%">
-                    <a class="btn btn-md btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
+                    <a class="btn btn-xs btn-danger" href="html/preRegistro.html">Regístrate ahora!</a>
                   </div>
                 </div>
               </div>
