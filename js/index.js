@@ -42,8 +42,6 @@ function facebookRegistro(){
                 console.log(nombre);
                 window.location.href = "/html/Registro.php?usuario="+nombre;
                 });
-              
- 
             } 
             else{
              console.log('Authorization failed.');
