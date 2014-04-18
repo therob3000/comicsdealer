@@ -85,7 +85,7 @@ $(document).ready(function(){
 			//alert(correo);
 			cadena = cadena + '&usuario_email=' + correo;
 			//alert(cadena);
-			cadena = cadena + '&tipo_registro=' + tipo_registro;
+			cadena = cadena + '&tipo_registro=0';
 			//console.log(cadena);
 
 			//Hacemos INSERT en la base de datos
