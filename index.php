@@ -51,13 +51,26 @@
     <body>
       <div id="fb-root"></div>
 <script>
-FB.Event.subscribe('auth.authResponseChange', function(response) {
+
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '655150577891800',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+
+  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+  // for any authentication related change, such as login, logout or session refresh. This means that
+  // whenever someone who was previously logged out tries to log in again, the correct case below 
+  // will be handled. 
+  FB.Event.subscribe('auth.authResponseChange', function(response) {
     // Here we specify what we do with the response anytime this event occurs. 
     if (response.status === 'connected') {
       // The response object is returned with a status field that lets the app know the current
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
-      alert("l2l");
+      testAPI();
     } else if (response.status === 'not_authorized') {
       // In this case, the person is logged into Facebook, but not into the app, so we call
       // FB.login() to prompt them to do so. 
@@ -76,6 +89,7 @@ FB.Event.subscribe('auth.authResponseChange', function(response) {
       FB.login();
     }
   });
+  };
 
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -84,7 +98,6 @@ FB.Event.subscribe('auth.authResponseChange', function(response) {
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-  </script>
 
       <!--<script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
