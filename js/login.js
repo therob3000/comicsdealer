@@ -69,17 +69,20 @@ function cargar_info() {
 }
 
 function registroFacebook(){
-	FB.Event.subscribe('auth.authResponseChange', function(response) {
-		if (response.status === 'connected') {
-			
-			alert("conectado");
-		} else if (response.status === 'not_authorized') {
-			
-			FB.login();
-		} else {
-			
-			FB.login();
-		}
+	$("#registro_facebook").click(function(){
+		alert("lel");
+		FB.Event.subscribe('auth.authResponseChange', function(response) {
+			if (response.status === 'connected') {
+
+				alert("conectado");
+			} else if (response.status === 'not_authorized') {
+
+				FB.login();
+			} else {
+
+				FB.login();
+			}
+		});
 	});
 
 }
