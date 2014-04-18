@@ -50,7 +50,7 @@ $(document).ready(function(){
 				if(existe_email == true){
 					alert(existe_email);
 					$('#formemail').append('<div class="alert alert-danger"><strong>Este correo ya está registrado</strong> vuelve a intentarlo.</div>');
-					$('#email_registro').val('');
+					//$('#email_registro').val('');
 					$('#password_registro').val('');
 					$('#password2').val('');
 					ver_correo = true;
