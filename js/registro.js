@@ -40,9 +40,10 @@ $(document).ready(function(){
 			$('#password2').val('');
 		}
 		else{
+			cadena = "usuario_email="+$('#email_registro').val().toLowerCase();
 			$.ajaxSetup({async:false});
 			$.post("/php/verifica_correo.php",
-			$('#email_registro').val().toLowerCase(),
+			cadena,
 			function(data){
 				existe_email = data.correo;
 				alert(existe_email);
