@@ -2,7 +2,11 @@ var existe_email = false;
 var ver_correo;
 
 $(document).ready(function(){
-	$("#nombre").val(nombre);
+	if(nombre != ""){
+		$("#nombre").val(nombre);
+		$("#nombre").attr("disabled", "disabled");
+	}
+	
 	$("#email_registro").val(correo);
 	cargarNavBar();
 	modalIniciarSesion();
