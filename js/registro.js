@@ -6,8 +6,12 @@ $(document).ready(function(){
 		$("#nombre").val(nombre);
 		$("#nombre").attr("disabled", "disabled");
 	}
+
+	if(correo != ""){
+		$("#email_registro").val(correo);
+		$("#email_registro").attr("disabled", "disabled");
+	}
 	
-	$("#email_registro").val(correo);
 	cargarNavBar();
 	modalIniciarSesion();
 	$.ajaxSetup({async:false});
