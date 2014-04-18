@@ -78,12 +78,13 @@ $(document).ready(function(){
 		}
 
 		if(nombre && ver_correo == false && passwords == true){
+			pass = $('#password2').val();
 			//Cadena a pasar al archivo php
-			cadena = $('input[name!=usuario_email]', this).serialize();
+			nombre = $('#nombre').val();
 			//alert(cadena);
 			correo = $('#email_registro').val().toLowerCase();
 			//alert(correo);
-			cadena = cadena + '&usuario_email=' + correo;
+			cadena = 'usuario_nombre='+nombre+ '&usuario_email=' + correo+'&usuario_password='+pass;
 			//alert(cadena);
 			cadena = cadena + '&tipo_registro=0';
 			//console.log(cadena);
