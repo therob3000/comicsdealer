@@ -1,3 +1,4 @@
+var nombre;
 $(document).ready(function(){
 	cargarNavBar();
 	cargarPromocionFinDeSemana('index');
@@ -32,7 +33,7 @@ function botonComprarNologin(){
 }
 
 function facebookRegistro(){
-	var nombre;
+	
 	$("#registro_facebook").click(function(e){
 		FB.login(function(response) {
            if (response.authResponse){
