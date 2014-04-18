@@ -3,7 +3,7 @@ var ver_correo;
 
 $(document).ready(function(){
 	$("#nombre").val(nombre);
-	$("#correo").val(correo);
+	$("#email_registro").val(correo);
 	cargarNavBar();
 	modalIniciarSesion();
 	$.ajaxSetup({async:false});
