@@ -46,7 +46,7 @@ $(document).ready(function(){
 			cadena,
 			function(data){
 				existe_email = data.correo;
-				/alert(existe_email);
+				//alert(existe_email);
 				if(existe_email == true){
 					//alert(existe_email);
 					$('#formemail').append('<div class="alert alert-danger"><strong>Este correo ya está registrado</strong> vuelve a intentarlo.</div>');
