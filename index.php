@@ -92,25 +92,7 @@ window.fbAsyncInit = function() {
   });
 };
 
-function facebookRegistro(){
-  
-  $("#registro_facebook").click(function(e){
-    FB.login(function(response) {
-           if (response.authResponse){
-              FB.api('/me', function(response){
-                console.log(response.name);
-                
-                });
-              //window.location.href = "/html/Registro.php?usuario="+nombre;
- 
-            } 
-            else{
-             console.log('Authorization failed.');
-            }
-         },{scope: 'email'});
-  });
-  
-}
+
   
 
 (function(d, s, id) {
