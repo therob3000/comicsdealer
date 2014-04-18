@@ -8,6 +8,13 @@
   else{
     $tipo_registro = $_GET['tipo_registro'];
   }
+
+  if(empty($_GET['usuario'])){
+    $usuario = "";
+  }
+  else{
+    $usuario = $_GET['usuario'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
     <script>
       var tipo_registro = <?php echo json_encode($tipo_registro); ?>;
+      var nombre = <?php echo json_encode($nombre); ?>;
     </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -88,14 +96,7 @@
             <!--Formulario de Registro-->
           	<form role="form" id="registro">
               <div class="highlight">
-              <?php 
-                if($tipo_registro == 0){
-                  echo "<h3>Registro Normal</h3>";
-                }
-                else{
-                  echo "<h3>Registro PRO</h3>";
-                }
-              ?>
+              
               	<div class="form-group" id="formnombre">
                   	<label for="Registro">Nombre o apodo</label>
       				      <input type="text" class="form-control" id="nombre" placeholder="Ej. Bruce Wayne" name="usuario_nombre">

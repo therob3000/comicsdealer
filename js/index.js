@@ -38,8 +38,8 @@ function facebookRegistro(){
            {
            		FB.api('/me', function(response){
            			alert(response.name);
-                	window.location.href = "/html/Registro.php";
                 });
+                window.location.href = "/html/Registro.php";
  
             } else
             {
