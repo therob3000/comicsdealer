@@ -89,6 +89,7 @@ window.fbAsyncInit = function() {
       window.location.href = "/index.php";
     }
   });
+};
   
 
 (function(d, s, id) {
