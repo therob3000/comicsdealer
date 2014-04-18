@@ -38,10 +38,10 @@ function facebookRegistro(){
     FB.login(function(response) {
            if (response.authResponse){
               FB.api('/me', function(response){
-                console.log(response.name);
+                nombre = console.log(response.name);
                 
                 });
-              //window.location.href = "/html/Registro.php?usuario="+nombre;
+              window.location.href = "/html/Registro.php?usuario="+nombre;
  
             } 
             else{
