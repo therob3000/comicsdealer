@@ -1,4 +1,8 @@
+var respuestaFacebook;
 $(document).ready(function(){
+	FB.Event.subscribe('auth.authResponseChange', function(response) {
+    	respuestaFacebook = response;
+    });
 	login();
 	cerrar_sesion();
 	cargar_info();
@@ -70,15 +74,15 @@ function cargar_info() {
 
 function registroFacebook(){
 	$("#registro_facebook").click(function(e){
-		FB.Event.subscribe('auth.authResponseChange', function(response) {
-          if (response.status === 'connected') {
+		alert("lel");
+          if (respuestaFacebook.status === 'connected') {
              window.location.href = "/html/Catalogo.php";
-          } else if (response.status === 'not_authorized') {
+          } else if (respuestaFacebook.status === 'not_authorized') {
             FB.login();
         } else {
           FB.login();
         }
-      });
+     
 	});
 	
 }
