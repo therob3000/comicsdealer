@@ -30,3 +30,19 @@ function botonComprarNologin(){
 	})
 }
 
+function facebookRegistro(){
+	$("#registro_facebook").click(function(e){
+		FB.login(function(response) {
+           if (response.authResponse)
+           {
+                window.location.href = "/html/Registro.php";
+ 
+            } else
+            {
+             console.log('Authorization failed.');
+            }
+         },{scope: 'email'});
+	});
+	
+}
+
