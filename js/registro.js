@@ -12,6 +12,10 @@ $(document).ready(function(){
 		$("#email_registro").attr("disabled", "disabled");
 	}
 	
+	if(fb_id != ""){
+		fb_id = 0;
+	}
+
 	cargarNavBar();
 	modalIniciarSesion();
 	$.ajaxSetup({async:false});
@@ -78,13 +82,14 @@ $(document).ready(function(){
 		}
 
 		if(nombre && ver_correo == false && passwords == true){
+			usuario_facebook_id = fb_id;
 			pass = $('#password2').val();
 			//Cadena a pasar al archivo php
 			nombre = $('#nombre').val();
 			//alert(cadena);
 			correo = $('#email_registro').val().toLowerCase();
 			//alert(correo);
-			cadena = 'usuario_nombre='+nombre+ '&usuario_email=' + correo+'&usuario_password='+pass;
+			cadena = 'usuario_nombre='+nombre+ '&usuario_email=' + correo+'&usuario_password='+pass+'&usuario_facebook_id='+usuario_facebook_id;
 			//alert(cadena);
 			cadena = cadena + '&tipo_registro=0';
 			//console.log(cadena);

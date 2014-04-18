@@ -40,8 +40,9 @@ function facebookRegistro(){
               FB.api('/me', function(response){
                 nombre = response.name;
                 correo = response.email;
-                console.log(nombre);
-                window.location.href = "/html/Registro.php?usuario="+nombre+"&correo="+correo;
+                usuarioid = response.id;
+                //console.log(nombre);
+                window.location.href = "/html/Registro.php?usuario="+nombre+"&correo="+correo+"&fb_id="+usuarioid;
                 });
             } 
             else{
