@@ -35,16 +35,15 @@ function facebookRegistro(){
 	var nombre;
 	$("#registro_facebook").click(function(e){
 		FB.login(function(response) {
-           if (response.authResponse)
-           {
+           if (response.authResponse){
            		FB.api('/me', function(response){
            			nombre = response.name;
            			console.log(nombre);
                 });
            		window.location.href = "/html/Registro.php?usuario="+nombre;
  
-            } else
-            {
+            } 
+            else{
              console.log('Authorization failed.');
             }
          },{scope: 'email'});

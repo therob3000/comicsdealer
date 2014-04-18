@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
     <script>
       var tipo_registro = <?php echo json_encode($tipo_registro); ?>;
-      var nombre = <?php echo json_encode($nombre); ?>;
+      var nombre = <?php echo json_encode($usuario); ?>;
     </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
