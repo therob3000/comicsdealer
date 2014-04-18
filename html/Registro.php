@@ -48,7 +48,7 @@
       var tipo_registro = <?php echo json_encode($tipo_registro); ?>;
       var nombre = <?php echo json_encode($usuario); ?>;
       var correo = <?php echo json_encode($correo); ?>;
-      var fb_id = <?php echo json_encode($usuario_facebook_id); ?>;
+      var usuario_facebook_id = <?php echo json_encode($usuario_facebook_id); ?>;
     </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>

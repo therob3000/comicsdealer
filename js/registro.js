@@ -12,8 +12,8 @@ $(document).ready(function(){
 		$("#email_registro").attr("disabled", "disabled");
 	}
 	
-	if(fb_id = ""){
-		fb_id = 0;
+	if(usuario_facebook_id = ""){
+		usuario_facebook_id = 0;
 	}
 
 	cargarNavBar();
@@ -82,7 +82,6 @@ $(document).ready(function(){
 		}
 
 		if(nombre && ver_correo == false && passwords == true){
-			usuario_facebook_id = fb_id;
 			pass = $('#password2').val();
 			//Cadena a pasar al archivo php
 			nombre = $('#nombre').val();
