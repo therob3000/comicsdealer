@@ -2,6 +2,7 @@ $(document).ready(function(){
 	cargarNavBar();
 	cargarPromocionFinDeSemana('index');
 	modalIniciarSesion();
+	modalRegistrar();
 	cargarCatalogoComics2(0,12, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
 });
@@ -9,6 +10,12 @@ $(document).ready(function(){
 function modalIniciarSesion(){
 	$("#nav_bar").on("click", "#loginButton", function(e){
 		$('#myModal').modal('show');
+	});
+}
+
+function modalRegistrar(){
+	$("#nav_bar").on("click", "#registroButton", function(e){
+		$('#myModal2').modal('show');
 	});
 }
 

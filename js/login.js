@@ -2,6 +2,7 @@ $(document).ready(function(){
 	login();
 	cerrar_sesion();
 	cargar_info();
+	registroFacebook();
 });
 
 function login () {
@@ -65,4 +66,19 @@ function cargar_info() {
 	$("#searchnav").load("../html/layouts/search_nav_layout.html");
 	$("#infos").load("../html/layouts/infos.html");
 	$("#footer").load("../html/layouts/pie_pagina.html");
+}
+
+function registroFacebook(){
+	$("#registro_facebook").click(function(e){
+		FB.Event.subscribe('auth.authResponseChange', function(response) {
+          if (response.status === 'connected') {
+             window.location.href = "/html/Catalogo.php";
+          } else if (response.status === 'not_authorized') {
+            FB.login();
+        } else {
+          FB.login();
+        }
+      });
+	});
+	
 }

@@ -58,15 +58,7 @@
           cookie     : true, // enable cookies to allow the server to access the session
           xfbml      : true  // parse XFBML
         });
-        FB.Event.subscribe('auth.authResponseChange', function(response) {
-          if (response.status === 'connected') {
-             testAPI();
-          } else if (response.status === 'not_authorized') {
-            FB.login();
-        } else {
-          FB.login();
-        }
-      });
+        
     };
     (function(d){
    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -107,7 +99,6 @@
             </div>
             <form role="form" id="login">
             <div class="modal-body">
-            <fb:login-button show-faces="true" width="200" max-rows="1" data-scope="email"></fb:login-button>
               <form role="form">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Correo Electrónico</label>
@@ -126,6 +117,33 @@
               <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
             </div>
             </form>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel2">Bienvenido, haz login!</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-success" id="registro_facebook">Registrarse con Facebook</button>
+                </div>
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-success">Registrarse sin Facebook</button>
+                </div>
+              </div> 
+            </div>
+            <div class="modal-footer navbar-inverse">
+              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
+              class="img-responsive text-center" width="207" height="26"/>
+              
+            </div>
+            
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
