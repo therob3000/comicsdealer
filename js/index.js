@@ -5,6 +5,7 @@ $(document).ready(function(){
 	modalRegistrar();
 	cargarCatalogoComics2(0,12, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
+	facebookRegistro();
 });
 
 function modalIniciarSesion(){
