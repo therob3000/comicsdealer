@@ -38,7 +38,7 @@ else{
 	}
 	$cadena_confirmacion = md5(uniqid(rand(), true));
 	//Generamos el INSERT
-	$queryRegistro	= "INSERT INTO usuarios VALUES (NULL, '$usuario_email', '$passwd', '$usuario_nombre','$cadena_confirmacion',0,0, CURDATE(), '$usuario_pro', '$usuario_facebook_id')";
+	$queryRegistro	= "INSERT INTO usuarios VALUES (NULL, '$usuario_email', '$passwd', '$usuario_nombre','$cadena_confirmacion',0,0, CURDATE(), '$usuario_pro', $usuario_facebook_id)";
 	//echo $queryRegistro;
 	//Pasamos el INSERT utilizando la conexion $con
 	mysql_query($queryRegistro, $con);
