@@ -41,7 +41,7 @@ function facebookRegistro(){
                 nombre = response.name;
                 correo = response.email;
                 console.log(nombre);
-                window.location.href = "/html/Registro.php?usuario="+nombre+"&email="+correo;
+                window.location.href = "/html/Registro.php?usuario="+nombre+"&correo="+correo;
                 });
             } 
             else{
