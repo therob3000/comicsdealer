@@ -11,10 +11,6 @@ $(document).ready(function(){
 		$("#email_registro").val(correo);
 		$("#email_registro").attr("disabled", "disabled");
 	}
-	
-	if(usuario_facebook_id = ""){
-		usuario_facebook_id = 0;
-	}
 
 	cargarNavBar();
 	modalIniciarSesion();

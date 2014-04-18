@@ -17,7 +17,7 @@
   }
 
   if(empty($_GET['fb_id'])){
-    $usuario_facebook_id = "";
+    $usuario_facebook_id = 0;
   }
   else{
     $usuario_facebook_id = $_GET['fb_id'];
