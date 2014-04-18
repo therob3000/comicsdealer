@@ -6,7 +6,7 @@ $(document).ready(function(){
 	modalRegistrar();
 	cargarCatalogoComics2(0,12, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
-	facebookRegistro();
+	//facebookRegistro();
 });
 
 function modalIniciarSesion(){
@@ -32,23 +32,5 @@ function botonComprarNologin(){
 	})
 }
 
-function facebookRegistro(){
-	
-	$("#registro_facebook").click(function(e){
-		FB.login(function(response) {
-           if (response.authResponse){
-           		FB.api('/me', function(response){
-           			console.log(response.name);
-           			
-                });
-           		//window.location.href = "/html/Registro.php?usuario="+nombre;
- 
-            } 
-            else{
-             console.log('Authorization failed.');
-            }
-         },{scope: 'email'});
-	});
-	
-}
+
 
