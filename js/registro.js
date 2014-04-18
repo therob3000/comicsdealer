@@ -86,7 +86,7 @@ $(document).ready(function(){
 			cadena = cadena + '&usuario_email=' + correo;
 			//alert(cadena);
 			cadena = cadena + '&tipo_registro=0';
-			//console.log(cadena);
+			console.log(cadena);
 
 			//Hacemos INSERT en la base de datos
 			$.post("../php/registro.php",
