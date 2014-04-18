@@ -39,8 +39,9 @@ function facebookRegistro(){
            if (response.authResponse){
               FB.api('/me', function(response){
                 nombre = response.name;
+                correo = response.email;
                 console.log(nombre);
-                window.location.href = "/html/Registro.php?usuario="+nombre;
+                window.location.href = "/html/Registro.php?usuario="+nombre+"&email="+correo;
                 });
             } 
             else{

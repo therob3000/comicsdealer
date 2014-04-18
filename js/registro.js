@@ -2,7 +2,8 @@ var existe_email = false;
 var ver_correo;
 
 $(document).ready(function(){
-	$("#nombre").val(nombre)
+	$("#nombre").val(nombre);
+	$("#correo").val(correo);
 	cargarNavBar();
 	modalIniciarSesion();
 	$.ajaxSetup({async:false});

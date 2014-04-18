@@ -15,6 +15,13 @@
   else{
     $usuario = $_GET['usuario'];
   }
+
+  if(empty($_GET['correo'])){
+    $correo = "";
+  }
+  else{
+    $correo = $_GET['correo'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +40,7 @@
     <script>
       var tipo_registro = <?php echo json_encode($tipo_registro); ?>;
       var nombre = <?php echo json_encode($usuario); ?>;
+      var correo = <?php echo json_encode($correo); ?>;
     </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
