@@ -12,7 +12,7 @@ $(document).ready(function(){
 		$("#email_registro").attr("disabled", "disabled");
 	}
 	
-	if(fb_id != ""){
+	if(fb_id = ""){
 		fb_id = 0;
 	}
 
