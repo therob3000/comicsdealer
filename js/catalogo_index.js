@@ -27,6 +27,7 @@ function verificaSesion(pagina){
 				$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
 				cargarComicsNologin(pagina);
 				botonComprarNologin();
+				cargarCarouselNologin(pagina);
 			}
 		},
 		'json');
@@ -41,6 +42,7 @@ function cargarComics(salto){
 		cargarCatalogoComics(sigSalto,4, "../html/layouts/catalogo_layout.html");
 		$("#catalogo_comics").attr("id", i);
 		sigSalto = +sigSalto+4;
+		$(".rows").append("<hr></hr>");
 	};
 	if(salto==0){
 		$("#anterior").hide();
@@ -79,6 +81,31 @@ function cargarComicsNologin(salto){
 		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+12)+"'>Siguiente</a>");
 	}
 }
+
+/*function cargarCarousel(salto){
+	console.log(total);
+	var sigSalto = salto;
+	for (var i = 0; i < 4; i++) {
+		if(i==0){
+			$(".carousels").append("<div class='item active'>
+          <img data-src='' alt='' src=''>
+          <div class='carousel-caption'>
+            <div class='row renglon' id='carousel_comics'></div></div></div>");
+		}
+		else{
+			$(".carousels").append("<div class='item'>
+          <img data-src='' alt='' src=''>
+          <div class='carousel-caption'>
+            <div class='row renglon' id='carousel_comics'></div></div></div>");
+		}
+		/*cargarCarouselComics estan en catalogo.js*/
+		/*cargarCarouselComics(sigSalto,4, "../html/layouts/catalogo_layout_index.html");
+		$("#carousel_comics").attr("id", i);
+		sigSalto = +sigSalto+4;
+	};
+}*/
+
+
 
 function botonComprar(){
 	$(".btn-comprar").on("click", function(){

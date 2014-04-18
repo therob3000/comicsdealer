@@ -30,6 +30,7 @@
 			$json->precio_portada 		= $precio_portada;
 			$json->precio_oferta		= $precio_oferta;
 			$json->promocion_imagen     = $promocion_imagen;
+			$json->porcentaje			= round((100)-((($precio_oferta)*100)/$precio_portada));
 			$json->promocion = TRUE;
 		}
 	}

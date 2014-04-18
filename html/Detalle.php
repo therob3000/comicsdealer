@@ -136,7 +136,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
               <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
             </div>
             <div class="col-sm-3 hidden-xs">
-              <div class="row" align="right">
+              <div align="right">
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
                     <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
@@ -169,40 +169,38 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
           <br>
 
           <div class="row">
-            <div class="row">
-              <div class="col-sm-4 col-md-3">
-                <?php
-                    $imagen = obtenerImagen();
-                    echo "<a target='_blank' id='comic_href' href=$imagen>
-                            <img itemprop='image' src=$imagen class='img-responsive img-rounded' id='comic_img'>
-                          </a>";
-                ?>
-                <h5 align="center"><small>Da click en la imagen para verla en grande</small></h5>
-              </div>
-              <div class="col-sm-8 col-md-9">
-                <h1 class="blog-title" id="comic_personaje"><?php echo obtenerPersonaje();?></h1>
+            <div class="col-sm-4 col-md-3">
+              <?php
+                  $imagen = obtenerImagen();
+                  echo "<a target='_blank' id='comic_href' href=$imagen>
+                          <img itemprop='image' src=$imagen class='img-responsive img-rounded' id='comic_img'>
+                        </a>";
+              ?>
+              <h5 align="center"><small>Da click en la imagen para verla en grande</small></h5>
+            </div>
+            <div class="col-sm-8 col-md-9">
+              <h1 class="blog-title" id="comic_personaje"><?php echo obtenerPersonaje();?></h1>
 
-                <h1>
-                  <strong>
-                    <small>
-                      <span class="label label-primary" id="comic_titulo"><span itemprop="name"><?php echo obtenerTitulo()." #".obtenerNumero(); ?></span></span>
-                    </small>
-                  </strong>
-                  <small id="comic_idioma"><?php echo obtenerIdioma(); ?></small>
-                </h1>
-              
-                <hr></hr>
-                <div class="row">
-                  <div class="col-md-3" id="comic_copias" align="left"><h4>Existencias: <small><span itemprop="availability"><?php echo obtenerCopias(); ?></span></small></h4></div>
-                  <div class="col-md-3" id="comic_integridad" align="left"><h4>Integridad: <small><?php echo obtenerIntegridad()."/10"; ?></small></h4></div>
-                </div>
-                <p align="justify" style="font-size: 12pt" id="comic_descripcion"><span itemprop="description"><?php echo obtenerDescripcion(); ?></span></p>
-                <!--<div class="row" align="center">
-                  <div class="col-md-4"><h4>Estado: <small>Nuevo</small></h4></div>
-                  <div class="col-md-4"><h4>Año: <small>1989</small></h4></div>
-                  <div class="col-md-4"><h4>Copias: <small>3</small></h4></div>
-                </div>-->
+              <h1>
+                <strong>
+                  <small>
+                    <span class="label label-primary" id="comic_titulo"><span itemprop="name"><?php echo obtenerTitulo()." #".obtenerNumero(); ?></span></span>
+                  </small>
+                </strong>
+                <small id="comic_idioma"><?php echo obtenerIdioma(); ?></small>
+              </h1>
+            
+              <hr></hr>
+              <div class="row">
+                <div class="col-md-3" id="comic_copias" align="left"><h4>Existencias: <small><span itemprop="availability"><?php echo obtenerCopias(); ?></span></small></h4></div>
+                <div class="col-md-3" id="comic_integridad" align="left"><h4>Integridad: <small><?php echo obtenerIntegridad()."/10"; ?></small></h4></div>
               </div>
+              <p align="justify" style="font-size: 12pt" id="comic_descripcion"><span itemprop="description"><?php echo obtenerDescripcion(); ?></span></p>
+              <!--<div class="row" align="center">
+                <div class="col-md-4"><h4>Estado: <small>Nuevo</small></h4></div>
+                <div class="col-md-4"><h4>Año: <small>1989</small></h4></div>
+                <div class="col-md-4"><h4>Copias: <small>3</small></h4></div>
+              </div>-->
             </div>
             <div class="row" align="right">
               <div class="col-sm-6 col-sm-offset-6 col-md-9 col-md-offset-3">

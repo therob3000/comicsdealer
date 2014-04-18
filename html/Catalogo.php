@@ -114,7 +114,7 @@ else{
                 <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
               </div>
               <div class="col-sm-3 hidden-xs">
-                <div class="row" align="right">
+                <div align="right">
                   <div class="row">
                     <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
                       <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>

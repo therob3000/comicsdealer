@@ -102,8 +102,8 @@
             <!--Aqui se inserta el contenido Principal-->
             <div id="layout"></div>
 
-            <div class="col-sm-3 hidden-xs">
-              <div class="row" align="right">
+            <div class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
+              <div align="right">
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
                     <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
@@ -138,14 +138,43 @@
           <div class="row">
             <div class="col-lg-12" >
               <h3 style="margin-bottom: 0px;">Novedades en el Catálogo Privado de <strong>Dr. Death</strong>
-              <br><small>La pura nata concentrada de los cómics</small></h3>
+              <br><small>La pura novedad en Comics Dealer</small></h3>
             </div>  
           </div>
-          
-          <hr></hr>
-          <div class="row" id="catalogo_comics">
+
+          <div class="row">
+            <div class="col-sm-9">
+              <div class="thumbnail hidden-xs hidden-sm">
+                <div id="carousel-comics-dealer" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-comics-dealer" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-comics-dealer" data-slide-to="1" class=""></li>
+                    <li data-target="#carousel-comics-dealer" data-slide-to="2" class=""></li>
+                  </ol>
+                  <div class="carousel-inner carousels">
+
+                  </div>
+                  <a class="left carousel-control" href="#carousel-comics-dealer" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-comics-dealer" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                  </a>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+          <div id="carousels_index">
+            
+          </div>
+
+          <br></br>
+
+          <div class="row hidden-md hidden-lg" id="catalogo_comics">
             
           </div><!-- /.row1 -->
+
           <div class="row">             
             <div class="col-lg-4 col-lg-offset-8"> 
               <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>

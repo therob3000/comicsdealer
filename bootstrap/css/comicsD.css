@@ -54,6 +54,48 @@ body {
   border-color: #eea236;
 }
 
+.carousel {
+  position: relative;
+  background-color: #ffffff;
+  height: 350px;
+}
+
+.carousel-control{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 7%;
+  opacity: 0.2;
+  filter: alpha(opacity=50);
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-caption {
+  color: #000;
+  position: static;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0);
+}
+
+.carousel-indicators {
+  bottom: 0px;
+}
+
+.carousel-indicators .active {
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  background-color: grey;
+}
+
+.carousel-indicators li {
+  display: inline-block;
+  border: 1px solid grey;
+}
+
 .catalogo{
   padding-left: 60px;
   padding-right: 60px;
@@ -90,7 +132,12 @@ body {
   border-radius: 9px;
 }
 
-hr{
+h5 {
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+hr {
   margin-top: 2px;
   border-top:1px solid rgb(183, 183, 183);
 }
@@ -127,6 +174,11 @@ filter: alpha(opacity=50);
     font-size: 50%;
 }
 
+.renglon {
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
 .segus {
     max-width: 1088px;
     margin-bottom: 20px;
@@ -150,6 +202,11 @@ filter: alpha(opacity=50);
 .sidebar-module-inset ul:last-child,
 .sidebar-module-inset ol:last-child {
   margin-bottom: 0;
+}
+
+.chico{
+  font-size: 14px;
+  color: gray;
 }
 
 .catal{
