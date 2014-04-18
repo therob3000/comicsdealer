@@ -1,16 +1,28 @@
+var nombre;
 $(document).ready(function(){
 	cargarNavBar();
 	cargarCarousels();
 	cargarPromocionFinDeSemana('index');
 	modalIniciarSesion();
+<<<<<<< HEAD
 	cargarCarouselNologin(0);
+=======
+	modalRegistrar();
+>>>>>>> FETCH_HEAD
 	cargarCatalogoComics2(0,12, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
+	facebookRegistro();
 });
 
 function modalIniciarSesion(){
 	$("#nav_bar").on("click", "#loginButton", function(e){
 		$('#myModal').modal('show');
+	});
+}
+
+function modalRegistrar(){
+	$("#nav_bar").on("click", "#registroButton", function(e){
+		$('#myModal2').modal('show');
 	});
 }
 
@@ -25,6 +37,7 @@ function botonComprarNologin(){
 	})
 }
 
+<<<<<<< HEAD
 function cargarCarousels(){
 	$("#carousels_index").load("html/layouts/carousels_index_layout.html");
 }
@@ -46,3 +59,28 @@ function cargarCarouselNologin(salto){
 		sigSalto = +sigSalto+4;
 	};
 }
+=======
+function facebookRegistro(){
+  
+  $("#registro_facebook").click(function(e){
+    FB.login(function(response) {
+           if (response.authResponse){
+              FB.api('/me', function(response){
+                nombre = response.name;
+                correo = response.email;
+                usuarioid = response.id;
+                //console.log(nombre);
+                window.location.href = "/html/Registro.php?usuario="+nombre+"&correo="+correo+"&fb_id="+usuarioid;
+                });
+            } 
+            else{
+             console.log('Authorization failed.');
+            }
+         },{scope: 'email'});
+  });
+  
+}
+
+
+
+>>>>>>> FETCH_HEAD

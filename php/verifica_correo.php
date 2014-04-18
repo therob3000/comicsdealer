@@ -28,7 +28,5 @@ $json->correo = $respuestaJSON;
 
 echo json_encode($json);
 
-mysql_close();
-
 
 ?>

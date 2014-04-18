@@ -2,6 +2,16 @@ var existe_email = false;
 var ver_correo;
 
 $(document).ready(function(){
+	if(nombre != ""){
+		$("#nombre").val(nombre);
+		$("#nombre").attr("disabled", "disabled");
+	}
+
+	if(correo != ""){
+		$("#email_registro").val(correo);
+		$("#email_registro").attr("disabled", "disabled");
+	}
+
 	cargarNavBar();
 	modalIniciarSesion();
 	$.ajaxSetup({async:false});
@@ -30,15 +40,17 @@ $(document).ready(function(){
 			$('#password2').val('');
 		}
 		else{
+			cadena = "usuario_email="+$('#email_registro').val().toLowerCase();
 			$.ajaxSetup({async:false});
-			$.post("../php/verifica_correo.php",
-			$('#email_registro').serialize(),
+			$.post("/php/verifica_correo.php",
+			cadena,
 			function(data){
 				existe_email = data.correo;
 				//alert(existe_email);
 				if(existe_email == true){
+					//alert(existe_email);
 					$('#formemail').append('<div class="alert alert-danger"><strong>Este correo ya está registrado</strong> vuelve a intentarlo.</div>');
-					$('#email_registro').val('');
+					//$('#email_registro').val('');
 					$('#password_registro').val('');
 					$('#password2').val('');
 					ver_correo = true;
@@ -68,15 +80,17 @@ $(document).ready(function(){
 		}
 
 		if(nombre && ver_correo == false && passwords == true){
+			pass = $('#password2').val();
 			//Cadena a pasar al archivo php
-			cadena = $('input[name!=usuario_email]', this).serialize();
+			nombre = $('#nombre').val();
 			//alert(cadena);
 			correo = $('#email_registro').val().toLowerCase();
 			//alert(correo);
-			cadena = cadena + '&usuario_email=' + correo;
+			cadena = 'usuario_nombre='+nombre+ '&usuario_email=' + correo+'&usuario_password='+pass+'&usuario_facebook_id='+usuario_facebook_id;
 			//alert(cadena);
-			cadena = cadena + '&tipo_registro=' + tipo_registro;
+			cadena = cadena + '&tipo_registro=0';
 			//console.log(cadena);
+			alert(cadena);
 
 			//Hacemos INSERT en la base de datos
 			$.post("../php/registro.php",

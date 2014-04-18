@@ -21,6 +21,7 @@ $usuario_email		= $_POST['usuario_email'];
 $usuario_password 	= $_POST['usuario_password'];
 $usuario_nombre		= $_POST['usuario_nombre'];
 $usuario_pro 		= $_POST['tipo_registro'];
+$usuario_facebook_id = $_POST['usuario_facebook_id'];
 
 $respuestaJSON		= NULL;
 
@@ -37,7 +38,7 @@ else{
 	}
 	$cadena_confirmacion = md5(uniqid(rand(), true));
 	//Generamos el INSERT
-	$queryRegistro	= "INSERT INTO usuarios VALUES (NULL, '$usuario_email', '$passwd', '$usuario_nombre','$cadena_confirmacion',0,0, CURDATE(), '$usuario_pro')";
+	$queryRegistro	= "INSERT INTO usuarios VALUES (NULL, '$usuario_email', '$passwd', '$usuario_nombre','$cadena_confirmacion',0,0, CURDATE(), '$usuario_pro', $usuario_facebook_id)";
 	//echo $queryRegistro;
 	//Pasamos el INSERT utilizando la conexion $con
 	mysql_query($queryRegistro, $con);

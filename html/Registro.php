@@ -8,6 +8,27 @@
   else{
     $tipo_registro = $_GET['tipo_registro'];
   }
+
+  if(empty($_GET['usuario'])){
+    $usuario = "";
+  }
+  else{
+    $usuario = $_GET['usuario'];
+  }
+
+  if(empty($_GET['fb_id'])){
+    $usuario_facebook_id = 0;
+  }
+  else{
+    $usuario_facebook_id = $_GET['fb_id'];
+  }
+
+  if(empty($_GET['correo'])){
+    $correo = "";
+  }
+  else{
+    $correo = $_GET['correo'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +46,9 @@
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
     <script>
       var tipo_registro = <?php echo json_encode($tipo_registro); ?>;
+      var nombre = <?php echo json_encode($usuario); ?>;
+      var correo = <?php echo json_encode($correo); ?>;
+      var usuario_facebook_id = <?php echo json_encode($usuario_facebook_id); ?>;
     </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -45,6 +69,59 @@
     <![endif]-->
   </head>
   <body>
+  <script>
+
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '655150577891800',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true,  // parse XFBML
+    oauth      : true,
+  });
+
+  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+  // for any authentication related change, such as login, logout or session refresh. This means that
+  // whenever someone who was previously logged out tries to log in again, the correct case below 
+  // will be handled. 
+  FB.Event.subscribe('auth.authResponseChange', function(response) {
+    // Here we specify what we do with the response anytime this event occurs. 
+    if (response.status === 'connected') {
+      // The response object is returned with a status field that lets the app know the current
+      // login status of the person. In this case, we're handling the situation where they 
+      // have logged in to the app.
+      //window.location.href = "/html/Catalogo.php";
+
+    } else if (response.status === 'not_authorized') {
+      // In this case, the person is logged into Facebook, but not into the app, so we call
+      // FB.login() to prompt them to do so. 
+      // In real-life usage, you wouldn't want to immediately prompt someone to login 
+      // like this, for two reasons:
+      // (1) JavaScript created popup windows are blocked by most browsers unless they 
+      // result from direct interaction from people using the app (such as a mouse click)
+      // (2) it is a bad experience to be continually prompted to login upon page load.
+      window.location.href = "/index.php";
+    } else {
+      // In this case, the person is not logged into Facebook, so we call the login() 
+      // function to prompt them to do so. Note that at this stage there is no indication
+      // of whether they are logged into the app. If they aren't then they'll see the Login
+      // dialog right after they log in to Facebook. 
+      // The same caveats as above apply to the FB.login() call here.
+      window.location.href = "/index.php";
+    }
+  });
+};
+
+
+  
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <div id="nav_bar">
     </div>
     <div class="container">
@@ -88,14 +165,7 @@
             <!--Formulario de Registro-->
           	<form role="form" id="registro">
               <div class="highlight">
-              <?php 
-                if($tipo_registro == 0){
-                  echo "<h3>Registro Normal</h3>";
-                }
-                else{
-                  echo "<h3>Registro PRO</h3>";
-                }
-              ?>
+              
               	<div class="form-group" id="formnombre">
                   	<label for="Registro">Nombre o apodo</label>
       				      <input type="text" class="form-control" id="nombre" placeholder="Ej. Bruce Wayne" name="usuario_nombre">
