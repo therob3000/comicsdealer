@@ -58,7 +58,7 @@ window.fbAsyncInit = function() {
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true,  // parse XFBML
-    oauth      : true
+    oauth      : true,
   });
 
   // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
