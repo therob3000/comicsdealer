@@ -32,15 +32,16 @@ function botonComprarNologin(){
 }
 
 function facebookRegistro(){
+	var nombre;
 	$("#registro_facebook").click(function(e){
 		FB.login(function(response) {
            if (response.authResponse)
            {
            		FB.api('/me', function(response){
-           			alert(response.name);
-           			window.location.href = "/html/Registro.php?usuario="+response.name;
+           			nombre = response.name;
+           			console.log(nombre);
                 });
-
+           		window.location.href = "/html/Registro.php?usuario="+nombre;
  
             } else
             {
