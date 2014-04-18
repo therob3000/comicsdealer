@@ -25,7 +25,9 @@ $(document).ready(function(){
       console.log('Good to see you, ' + response.name + '.');
     });
   }
-	
+	FB.Event.subscribe('auth.authResponseChange', function(response) {
+	    	respuestaFacebook = response;
+	    });
 	login();
 	cerrar_sesion();
 	cargar_info();
@@ -105,9 +107,7 @@ function registroFacebook(){
         } else {
           FB.login();
         }*/
-	    FB.Event.subscribe('auth.authResponseChange', function(response) {
-	    	respuestaFacebook = response;
-	    });
+	    
 	    if (respuestaFacebook.status === 'connected') {
              window.location.href = "/html/Catalogo.php";
           } else if (respuestaFacebook.status === 'not_authorized') {
