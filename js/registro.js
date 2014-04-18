@@ -42,7 +42,7 @@ $(document).ready(function(){
 		else{
 			$.ajaxSetup({async:false});
 			$.post("/php/verifica_correo.php",
-			$('#email_registro').serialize(),
+			$('#email_registro').val().toLowerCase(),
 			function(data){
 				existe_email = data.correo;
 				alert(existe_email);
