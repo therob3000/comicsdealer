@@ -16,7 +16,22 @@
   <link href="bootstrap/css/navbar.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="bootstrap/css/comicsD.css">
   <script>
+        window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '655150577891800',
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
         
+    };
+    (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
   </script>
   <script src="/bootstrap/assets/js/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
