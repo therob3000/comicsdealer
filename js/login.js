@@ -39,6 +39,7 @@ function login () {
 	});
 }
 
+
 /*function cerrar_sesion () {
 	$('#cerrar_sesion').click(function(e){
 		$.ajaxSetup({async:false});
