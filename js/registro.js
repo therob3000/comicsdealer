@@ -2,12 +2,12 @@ var existe_email = false;
 var ver_correo;
 
 $(document).ready(function(){
-	if(nombre != ""){
+	if(nombre !== ""){
 		$("#nombre").val(nombre);
 		$("#nombre").attr("disabled", "disabled");
 	}
 
-	if(correo != ""){
+	if(correo !== ""){
 		$("#email_registro").val(correo);
 		$("#email_registro").attr("disabled", "disabled");
 	}
