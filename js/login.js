@@ -35,7 +35,7 @@ function loginFacebook() {
     FB.api('/me', function(response) {
         correo = response.correo;
         usuario_id = response.id;
-        cadena = "usuario_facebook_id=" + usuario_facebook_id;
+        cadena = "usuario_facebook_id=" + usuario_id;
         $.post("/php/loginFacebook.php",
                 cadena,
                 function(data) {
