@@ -39,6 +39,20 @@ function login () {
 	});
 }
 
+function loginFacebook2(usuario_facebook_id){
+    cadena = "usuario_facebook_id="+usuario_facebook_id;
+    $.post("/php/loginFacebook.php",
+        cadena,
+        function(data){
+            if(data.usuario_existe){
+                alert("El usuario existe");
+            }
+            else{
+                alert("El usuario no se ha registrado con facebook");
+            }
+        }, 'json');
+}
+
 
 /*function cerrar_sesion () {
 	$('#cerrar_sesion').click(function(e){
@@ -69,10 +83,10 @@ function cargar_info() {
 }
 
 function loginFacebook(){
-    FB.Event.subscribe('auth.authResponseChange', function(response) {
-    if (response.status === 'connected') {
-        window.location.href = '/html/Catalogo.php';
-    }
-});
+    FB.api('/me', function(response){
+       correo = response.correo;
+       usuario_id = response.id;
+       loginFacebook2(usuario_id);
+    });
 }
  

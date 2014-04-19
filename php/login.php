@@ -20,11 +20,11 @@
 
 	if($num > 0){
 
-		$dbpasswd 				= mysql_result($queryResultado, 0, "usuario_password");
+		$dbpasswd 			= mysql_result($queryResultado, 0, "usuario_password");
 		$usuario_activado		= mysql_result($queryResultado, 0, "usuario_activado");
 		$usuario_nombre			= mysql_result($queryResultado, 0, "usuario_nombre");
 		$usuario_id 			= mysql_result($queryResultado, 0, "usuario_id");
-		$usuario_max_pedidos 	= mysql_result($queryResultado, 0, "usuario_max_pedidos");
+		$usuario_max_pedidos            = mysql_result($queryResultado, 0, "usuario_max_pedidos");
 		$usuario_pro 			= mysql_result($queryResultado, 0, "usuario_pro");
 
 		if($usuario_activado == 1){
