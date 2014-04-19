@@ -1,28 +1,32 @@
 <?php
   ini_set('display_errors',1); 
   error_reporting(E_ALL);
-
+  
+  //TIPO DE REGISTRO
   if(empty($_GET['tipo_registro'])){
     $tipo_registro = 0;
   }
   else{
     $tipo_registro = $_GET['tipo_registro'];
   }
-
+  
+  //NOMBRE DE USUARIO
   if(empty($_GET['usuario'])){
     $usuario = "";
   }
   else{
     $usuario = $_GET['usuario'];
   }
-
+  
+  //ID DE FACEBOOK
   if(empty($_GET['fb_id'])){
     $usuario_facebook_id = 0;
   }
   else{
     $usuario_facebook_id = $_GET['fb_id'];
   }
-
+  
+  //CORREO DEL USUARIO
   if(empty($_GET['correo'])){
     $correo = "";
   }

@@ -5,7 +5,7 @@ $(document).ready(function(){
 });
 
 function login () {
-	$('#login').submit(function(e){
+	$('#sesion_btn').click(function(e){
 		correo 		= $('#email').val().toLowerCase();
 		password 	= $('#password').serialize();
 		cadena		= 'usuario_email=' + correo + '&' + password;
@@ -67,3 +67,12 @@ function cargar_info() {
 	$("#infos").load("../html/layouts/infos.html");
 	$("#footer").load("../html/layouts/pie_pagina.html");
 }
+
+function loginFacebook(){
+    FB.Event.subscribe('auth.authResponseChange', function(response) {
+    if (response.status === 'connected') {
+        window.location.href = '/html/Catalogo.php';
+    }
+});
+}
+ 
