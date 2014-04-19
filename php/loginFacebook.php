@@ -7,6 +7,7 @@
         
         $usuario_facebook_id = $_REQUEST['usuario_facebook_id'];
         $json = new stdClass();
+        $comicsArray		= array();
         
         $queryFacebook = "SELECT * FROM usuarios WHERE usuario_facebook_id = $usuario_facebook_id";
         
@@ -20,11 +21,12 @@
             
             session_start();
             
-            $usuario_activado = mysql_result($queryResultado, 0, "usuario_activado");
-            $usuario_nombre = mysql_result($queryResultado, 0, "usuario_nombre");
-            $usuario_id = mysql_result($queryResultado, 0, "usuario_id");
-            $usuario_max_pedidos = mysql_result($queryResultado, 0, "usuario_max_pedidos");
-            $usuario_pro = mysql_result($queryResultado, 0, "usuario_pro");
+            $usuario_activado       = mysql_result($queryResultado, 0, "usuario_activado");
+            $usuario_email          = mysql_result($queryResultado, 0, "usuario_email");
+            $usuario_nombre         = mysql_result($queryResultado, 0, "usuario_nombre");
+            $usuario_id             = mysql_result($queryResultado, 0, "usuario_id");
+            $usuario_max_pedidos    = mysql_result($queryResultado, 0, "usuario_max_pedidos");
+            $usuario_pro            = mysql_result($queryResultado, 0, "usuario_pro");
             
             $_SESSION['usuario_email'] 		= $usuario_email;
             $_SESSION['usuario_nombre']		= $usuario_nombre;
