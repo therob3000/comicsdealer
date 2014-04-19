@@ -40,7 +40,7 @@
             }
             else{
                 $json->usuario_pro=FALSE;
-            }
+            }   
 }
         else{
             $json->usuario_existe = FALSE;
