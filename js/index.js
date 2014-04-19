@@ -8,7 +8,8 @@ $(document).ready(function(){
 	modalRegistrar();
 	cargarCatalogoComics2(0,12, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
-	facebookRegistro();
+	registroFacebook();
+        registroCorreo();
 });
 
 function modalIniciarSesion(){
@@ -22,7 +23,6 @@ function modalRegistrar(){
 		$('#myModal2').modal('show');
 	});
 }
-
 
 function cargarNavBar(){
 	$("#nav_bar").load("html/layouts/navbar_nologin_layout.html");
@@ -55,8 +55,8 @@ function cargarCarouselNologin(salto){
 		sigSalto = +sigSalto+4;
 	};
 }
-function facebookRegistro(){
-  
+
+function registroFacebook(){
   $("#registro_facebook").click(function(e){
     FB.login(function(response) {
            if (response.authResponse){
@@ -73,5 +73,10 @@ function facebookRegistro(){
             }
          },{scope: 'email'});
   });
-  
+}
+
+function registroCorreo(){
+    $("#registro_correo").click(function(e){
+        window.location.href = "/html/Registro.php";
+    });
 }
