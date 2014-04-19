@@ -41,6 +41,12 @@ function loginFacebook() {
                 function(data) {
                     if (data.usuario_existe) {
                         alert("El usuario existe");
+                        if(data.usuario_pro){
+                            window.location.href = "/html/Pedido.html";
+                        }
+                        else{
+                            window.location.href = "/html/Catalogo.php";
+                        }
                     }
                     else {
                         alert("El usuario no se ha registrado con facebook");
