@@ -16,7 +16,7 @@
 	$queryLogin 	= "SELECT * FROM usuarios WHERE usuario_email = '$usuario_email'";
 
 	$queryResultado			= mysql_query($queryLogin, $con);
-	$num					= mysql_num_rows($queryResultado);
+	$num				= mysql_num_rows($queryResultado);
 
 	if($num > 0){
 
@@ -34,12 +34,12 @@
 		
 				session_start();
 				//Generar una variable de Sesion
-				$_SESSION['usuario_email'] 			= $usuario_email;
-				$_SESSION['usuario_nombre']			= $usuario_nombre;
-				$_SESSION['usuario_id']				= $usuario_id;
+				$_SESSION['usuario_email'] 		= $usuario_email;
+				$_SESSION['usuario_nombre']		= $usuario_nombre;
+				$_SESSION['usuario_id']			= $usuario_id;
 				$_SESSION['usuario_max_pedidos']	= $usuario_max_pedidos;
 				$_SESSION['usuario_pro']      		= $usuario_pro;
-				$_SESSION['usuario_comics']			= $comicsArray;
+				$_SESSION['usuario_comics']		= $comicsArray;
 				
 				//$respuestaJSON = true;
 
