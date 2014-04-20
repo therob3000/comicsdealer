@@ -11,12 +11,18 @@ function verificaSesion(pagina){
 	$.post("../php/verifica_sesion.php",
 		function(data){
 			verifica = data.ver_sesion.estado;
+                        nombre = data.ver_sesion.usuario_nombre;
+                        //SI EL USUARIO INICIO SESION
 			if(verifica == true){
-
-				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+                                //CARGAMOS LAYOUT DE NAVBAR LOGIN
+				//$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+                                //SI NO ES USUARIO PRO REMOVEMOS EL BOTON DE PEDIDOS
 				if(data.ver_sesion.usuario_pro != 1){
 					$("#nav_bar").find("#nav_pedido").remove();
 				}
+      
+                                $("#nav_bar").find("#botonMenUsuario").append("<span class='glyphicon glyphicon-list-alt'></span> "+nombre);
+                                
 				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'><span class='glyphicon glyphicon-shopping-cart'></span> Finalizar Compra <span class='badge' id='compraTotal'></span></button>");
 				botonComprarInit();
 				cargarComics(pagina);
@@ -24,10 +30,10 @@ function verificaSesion(pagina){
 				botonEliminar();
 			}
 			else{
-				$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
+				//$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
 				cargarComicsNologin(pagina);
 				botonComprarNologin();
-				cargarCarouselNologin(pagina);
+				//cargarCarouselNologin(pagina);
 			}
 		},
 		'json');
@@ -82,29 +88,6 @@ function cargarComicsNologin(salto){
 	}
 }
 
-/*function cargarCarousel(salto){
-	console.log(total);
-	var sigSalto = salto;
-	for (var i = 0; i < 4; i++) {
-		if(i==0){
-			$(".carousels").append("<div class='item active'>
-          <img data-src='' alt='' src=''>
-          <div class='carousel-caption'>
-            <div class='row renglon' id='carousel_comics'></div></div></div>");
-		}
-		else{
-			$(".carousels").append("<div class='item'>
-          <img data-src='' alt='' src=''>
-          <div class='carousel-caption'>
-            <div class='row renglon' id='carousel_comics'></div></div></div>");
-		}
-		/*cargarCarouselComics estan en catalogo.js*/
-		/*cargarCarouselComics(sigSalto,4, "../html/layouts/catalogo_layout_index.html");
-		$("#carousel_comics").attr("id", i);
-		sigSalto = +sigSalto+4;
-	};
-}*/
-
 
 
 function botonComprar(){
@@ -140,7 +123,7 @@ function botonEliminar(){
 function botonComprarNologin(){
 	$(".btn-comprar").on("click", function(){
 		$('#myModal').modal('show');
-	})
+	});
 }
 
 function modalIniciarSesion(){
@@ -154,6 +137,7 @@ function finalizarCompra(){
 		window.location.href = "/html/Compra.php";
 	});
 }
+
 
 
 

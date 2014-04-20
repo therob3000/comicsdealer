@@ -1,5 +1,11 @@
+<?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    session_start();
+ ?>
+
 <!DOCTYPE html>
-<html>
+
 <head>
   <title>Comics Dealer</title>
 
@@ -48,7 +54,7 @@
       <script src="../../assets/js/respond.min.js"></script>
       <![endif]-->
     </head>
-    <body>
+    
       <div id="fb-root"></div>
 <script>
 
@@ -79,7 +85,21 @@ window.fbAsyncInit = function() {
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
       </script>-->
-    <div id="nav_bar"></div>
+
+      <?php  
+        if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+           $html = file_get_contents("html/layouts/navbar_login_layout.html"); 
+        }
+        else{
+            $html = file_get_contents("html/layouts/navbar_nologin_layout.html");
+        }
+        
+        
+        $doc = new DOMDocument();
+        $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+      ?>
+
+    <div id="nav_bar"><?php echo $doc->saveHTML(); ?></div>
     <div class="container">
 
       <!-- VENTANA MODAL DE INICIO DE SESION -->
@@ -272,12 +292,13 @@ window.fbAsyncInit = function() {
           <div class="jumbotron">
             <blockquote style="font-size:12pt">
               <p>"...with great power there must also come -- great responsibility!"</p>
-              <small><cite title="Amazing Spider-Man, Vol. 2, #38">Ben Parker</cite></small>
+              <small><cite title="Amazing Spider-Man2, #3Parker"></cite></small>
             </blockquote>
           </div>
+           
         </div>
-
-        <div id="footer"></div>
+        
+         <div id="footer"></div>
       </div>
     </body>
     </html>
