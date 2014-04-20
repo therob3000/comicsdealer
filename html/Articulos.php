@@ -1,6 +1,7 @@
 <?php
 include '../php/conexion.php';
 $con = conexion();
+include '../php/catalogoFunctions.php';
 
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
@@ -229,9 +230,9 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
               </div>
               
               <hr></hr>
-              <div class="row" id="catalogo_comics">
-                
-              </div><!-- /.row1 -->
+              <?php
+              cargarCatalogo(0, 3);
+              ?>
               <div class="row">             
                 <div class="col-lg-4 col-lg-offset-8"> 
                   <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>

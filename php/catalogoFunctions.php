@@ -1,6 +1,7 @@
 <?php
 
-function cargarCatalogo($pagina_catalogo) {
+function cargarCatalogo($pagina_catalogo, $renglones_catalogo) {
+    
     $campos = array("inventario_id",
         "cat_comic_titulo",
         "cat_comic_descripcion",
@@ -15,8 +16,8 @@ function cargarCatalogo($pagina_catalogo) {
     $salto_catalogo = $pagina_catalogo;
     $contador = $pagina_catalogo;
 
-    for ($i = 0; $i < 4; $i++) {
-        $arrayComics = lel2($campos, $contador, 4);
+    for ($i = 0; $i < $renglones_catalogo; $i++) {
+        $arrayComics = consulta_catalogo($campos, $contador, 4);
 
         echo "<div class='row' id='$i'>";
         for ($j = 0; $j < count($arrayComics); $j++) {
@@ -58,7 +59,7 @@ function cargarCatalogo($pagina_catalogo) {
     }
 }
 
-function lel2($camposArray, $salto, $rango) {
+function consulta_catalogo($camposArray, $salto, $rango) {
     $catalogoArray = array();
     $rowArray = array();
 

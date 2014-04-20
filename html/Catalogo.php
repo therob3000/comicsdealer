@@ -32,6 +32,32 @@ else{
   <link href="/bootstrap/css/navbar.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../bootstrap/css/comicsD.css">
   
+  <script>
+    var pagina = <?php echo json_encode($pagina); ?>;
+  </script>
+
+  <script src="../bootstrap/assets/js/jquery.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/login.js"></script>
+  <script src="../js/catalogo.js"></script>
+    <script src="../js/registro_login.js"></script>
+  <script src="../js/catalogo_index.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45620115-1']);
+    _gaq.push(['_setDomainName', 'comicsdealer.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  
   <style>
     .container {
       background: url(../img/AVXM31.jpg) no-repeat center center fixed;
@@ -46,14 +72,26 @@ else{
     </head>
     <body>
       <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-      </script>
+<script>
+
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '655150577891800',
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true,  // parse XFBML
+    oauth      : true
+  });
+
+};
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
       
       <?php  
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
@@ -164,11 +202,13 @@ else{
 
                     <div class="rows">
                         <?php
-                            cargarCatalogo($pagina);
+                            //FUNCION QUE CARGA EL HTML PARA EL CATALOGO: /php/catalogoFunctions.php
+                            cargarCatalogo($pagina,4);
                         ?>
                     </div>
                     <!--PAGINACION-->
                     <?php
+                        //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO: /php/catalogoFunctions.php
                         paginacion($pagina);
                     ?>
                     
@@ -202,29 +242,7 @@ else{
 
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-          <script>
-    var pagina = <?php echo json_encode($pagina); ?>;
-  </script>
-
-  <script src="../bootstrap/assets/js/jquery.js"></script>
-  <script src="../bootstrap/js/bootstrap.min.js"></script>
-  <script src="../js/login.js"></script>
-  <script src="../js/catalogo.js"></script>
-  <script src="../js/catalogo_index.js"></script>
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-45620115-1']);
-    _gaq.push(['_setDomainName', 'comicsdealer.com']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-  </script>
+          
 
           <!-- Include all compiled plugins (below), or include individual  files as needed -->
         </div> 

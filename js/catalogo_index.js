@@ -3,6 +3,10 @@ var total;
 $(document).ready(function(){
 	verificaSesion(pagina);
 	modalIniciarSesion();
+        //registro_login.js
+        modalRegistrar();
+        registroFacebook();
+        registroCorreo();
 	finalizarCompra();
 });
 
@@ -88,20 +92,3 @@ function botonComprarNologin(){
 		$('#myModal').modal('show');
 	});
 }
-
-function modalIniciarSesion(){
-	$("#nav_bar").on("click", "#loginButton", function(e){
-		$('#myModal').modal('show');
-	});
-}
-
-function finalizarCompra(){
-	$('#botonFinalizarCompra').on("click", function(){
-		window.location.href = "/html/Compra.php";
-	});
-}
-
-
-
-
-

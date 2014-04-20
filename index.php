@@ -27,6 +27,7 @@
   <script src="/js/promocion_index.js"></script>
   <script src="/js/index.js"></script>
   <script src="/js/login.js"></script>
+  <script src="/js/registro_login.js"></script>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
