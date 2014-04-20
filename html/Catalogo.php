@@ -176,31 +176,68 @@ $campos = array("inventario_id",
                         $contador = $pagina;
                         for ($i = 0; $i < 4; $i++) {
                             $arrayComics = lel2($campos, $contador, 4);
-                            echo "<div class='row' id='catalogo_comics'>";
-                            for ($j = 0; $j < 4; $j++) {
+                            
+                            echo "<div class='row' id='$i'>";
+                            for ($j = 0; $j < count($arrayComics); $j++) {
                                 $arrayComic2 = $arrayComics[$j];
-                                $catalogo_layout = new DOMDocument();
-                                $catalogo_layout->loadHTML(mb_convert_encoding($catalogo_html, 'HTML-ENTITIES', 'UTF-8'));
-                                $personaje = $catalogo_layout->createTextNode($arrayComic2[$campos[3]]);
-                                $titulo = $catalogo_layout->createTextNode($arrayComic2[$campos[1]].$arrayComic2[$campos[4]]);
-                                $catalogo_layout->getElementById("cat_detalle")->setAttribute("href", "/html/Detalle.php?comic_id=".$arrayComic2[$campos[0]]);
-                                $catalogo_layout->getElementById("cat_imagen")->setAttribute("src", $arrayComic2[$campos[5]]);
-                                $catalogo_layout->getElementById("catalogo_comic")->setAttribute("id", $arrayComic2[$campos[0]]);
-                                $catalogo_layout->getElementById("cat_personaje")->appendChild($personaje);
-                                $catalogo_layout->getElementById("cat_titulo")->appendChild($titulo);
                                 
-                                echo $catalogo_layout->saveHTML();
+                                $inventario_id = $arrayComic2[$campos[0]];
+                                $comic_titulo = $arrayComic2[$campos[1]];
+                                $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 180);
+                                $comic_personaje = $arrayComic2[$campos[3]];
+                                $comic_numero = $arrayComic2[$campos[4]];
+                                $comic_imagen = $arrayComic2[$campos[5]];
+                                $comic_precio = $arrayComic2[$campos[6]];
+                                $comic_idioma = $arrayComic2[$campos[7]];
+                                
+                                echo "<div align='center' class='col-xs-12 col-sm-6 col-md-6 col-lg-3' id='$inventario_id'>
+                                        <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
+                                            <img id='cat_imagen' src=$comic_imagen style='height: 180px; max-width: 150px;' class='img-rounded img-responsive' alt='120x180'>
+                                        </a>
+                                        <h4 id='cat_personaje'>$comic_personaje</h4>
+                                        <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>".$comic_titulo." #".$comic_numero."</span></h5></a>
+                                        <p id='cat_descripcion' class='catal' style='font-size: 10pt'>".$comic_descripcion." ...</p>
+                                        <h4 id='cat_precio_venta'>$comic_precio</h4>
+                                        <div id='boton_comprar'></div>
+                                        <div id='boton_eliminar'></div>
+                                    </div>";
                             }
                             echo "</div>";
                             $contador+=4;
                         }
                         ?>
                     </div>
-                  
-                    <ul class="pager">
+                    <?php
+                        if($pagina==0){
+                            $siguiente = $pagina+16;
+                            echo "<ul class='pager'>
+                                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente'>Siguiente</a></li>
+                                </ul>";
+                        }
+                        else{
+                            if($pagina+16>= obtenerTotalComics()){
+                            $anterior = $pagina-16;
+                            echo "<ul class='pager'>
+                                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior'>Anterior</a></li>
+                                </ul>";
+                        }
+                        else{
+                            $siguiente = $pagina+16;
+                            $anterior = $pagina-16;
+                             echo "<ul class='pager'>
+                                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior'>Anterior</a>
+                                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente'>Siguiente</a></li>
+                                </ul>";
+                        }
+                        } 
+                        
+                    ?>
+                    
+                    
+<!--                    <ul class="pager">
                       <li id="anterior"></li>
                       <li id="siguiente"></li>
-                    </ul>
+                    </ul>-->
                     
                   </div>
                 </div>
@@ -320,7 +357,7 @@ $campos = array("inventario_id",
 	}
 
 	function obtenerTotalComics(){
-		$queryTotal = "SELECT COUNT(*) AS total FROM cat_comics WHERE cat_comic_copias > 0";
+		$queryTotal = "SELECT COUNT(*) AS total FROM inventario WHERE inventario_activo = 1 AND inventario_existente > 0";
 		$queryResultado = mysql_query($queryTotal);
 		return mysql_result($queryResultado, 0, "total");
 	}

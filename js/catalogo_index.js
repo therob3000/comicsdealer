@@ -1,7 +1,7 @@
 var total;
 
 $(document).ready(function(){
-	verificaSesion(pagina);
+	//verificaSesion(pagina);
 	modalIniciarSesion();
 	finalizarCompra();
 });
@@ -54,13 +54,13 @@ function cargarComics(salto){
 		$("#anterior").hide();
 	}
 	else{
-		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-12)+"'>Anterior</a>");
+		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-16)+"'>Anterior</a>");
 	}
-	if(+salto+12 > total){
+	if(+salto+16 > total){
 		$("#siguiente").hide();
 	}
 	else{
-		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+12)+"'>Siguiente</a>");
+		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+16)+"'>Siguiente</a>");
 	}
 }
 
@@ -78,13 +78,13 @@ function cargarComicsNologin(salto){
 		$("#anterior").hide();
 	}
 	else{
-		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-12)+"'>Anterior</a>");
+		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-16)+"'>Anterior</a>");
 	}
-	if(+salto+12 >= total){
+	if(+salto+16 >= total){
 		$("#siguiente").hide();
 	}
 	else{
-		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+12)+"'>Siguiente</a>");
+		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+16)+"'>Siguiente</a>");
 	}
 }
 
