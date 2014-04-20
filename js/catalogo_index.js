@@ -1,7 +1,7 @@
 var total;
 
 $(document).ready(function(){
-	//verificaSesion(pagina);
+	verificaSesion(pagina);
 	modalIniciarSesion();
 	finalizarCompra();
 });
@@ -30,10 +30,9 @@ function verificaSesion(pagina){
 				botonEliminar();
 			}
 			else{
-				//$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
-				cargarComicsNologin(pagina);
+				
 				botonComprarNologin();
-				//cargarCarouselNologin(pagina);
+				
 			}
 		},
 		'json');
@@ -43,51 +42,15 @@ function verificaSesion(pagina){
 function cargarComics(salto){
 	console.log(total);
 	var sigSalto = salto;
-//	for (var i = 0; i < 4; i++) {
-//		$(".rows").append("<div class=row id=catalogo_comics></div>");
-//		cargarCatalogoComics(sigSalto,4, "../html/layouts/catalogo_layout.html");
-//		$("#catalogo_comics").attr("id", i);
-//		sigSalto = +sigSalto+4;
+	for (var i = 0; i < 4; i++) {
+//		
+		cargarCatalogoComics(sigSalto,4, "../html/layouts/catalogo_layout.html");
+//		
+		sigSalto = +sigSalto+4;
 //		$(".rows").append("<hr></hr>");
-//	};
-	if(salto==0){
-		$("#anterior").hide();
-	}
-	else{
-		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-16)+"'>Anterior</a>");
-	}
-	if(+salto+16 > total){
-		$("#siguiente").hide();
-	}
-	else{
-		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+16)+"'>Siguiente</a>");
-	}
+	};
+//	
 }
-
-function cargarComicsNologin(salto){
-	console.log(total);
-	var sigSalto = salto;
-//	for (var i = 0; i < 4; i++) {
-//		$(".rows").append("<div class=row id=catalogo_comics></div>");
-//		cargarCatalogoComics2(sigSalto,4, "../html/layouts/catalogo_layout.html");
-//		$("#catalogo_comics").attr("id", i);
-//		sigSalto = +sigSalto+4;
-//		$(".rows").append("<hr></hr>");
-//	};
-	if(salto==0){
-		$("#anterior").hide();
-	}
-	else{
-		$("#anterior").html("<a href='./Catalogo.php?pagina="+(+salto-16)+"'>Anterior</a>");
-	}
-	if(+salto+16 >= total){
-		$("#siguiente").hide();
-	}
-	else{
-		$("#siguiente").html("<a href='./Catalogo.php?pagina="+(+salto+16)+"'>Siguiente</a>");
-	}
-}
-
 
 
 function botonComprar(){

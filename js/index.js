@@ -7,7 +7,7 @@ $(document).ready(function(){
 	modalIniciarSesion();
 	cargarCarouselNologin(0);
 	modalRegistrar();
-	cargarCatalogoComics2(0,12, "../html/layouts/catalogo_layout_index.html");
+	//cargarCatalogoComics2(0,12, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
 	registroFacebook();
         registroCorreo();
@@ -32,7 +32,7 @@ function cargarNavBar(){
 function botonComprarNologin(){
 	$(".btn-comprar").on("click", function(){
 		$('#myModal').modal('show');
-	})
+	});
 }
 
 function cargarCarousels(){

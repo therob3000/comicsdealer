@@ -40,8 +40,8 @@ function loginFacebook() {
                 cadena,
                 function(data) {
                     if (data.usuario_existe) {
-                        alert("El usuario existe");
-                        alert(data.usuario_pro);
+                        //alert("El usuario existe");
+                        //alert(data.usuario_pro);
                         if(data.usuario_pro){
                             window.location.href = "/html/Pedido.html";
                         }

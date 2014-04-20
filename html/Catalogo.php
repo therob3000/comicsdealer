@@ -2,6 +2,7 @@
 
 include '../php/conexion.php';
 $con = conexion();
+include '../php/catalogoFunctions.php';
 
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
@@ -14,15 +15,7 @@ else{
   $pagina = $_GET['pagina'];
 }
 
-$campos = array("inventario_id",
-						"cat_comic_titulo",
-						"cat_comic_descripcion",
-						"cat_comic_personaje",
-						"cat_comic_numero_ejemplar",
-						"cat_comic_imagen_url",
-						"inventario_precio_salida",
-						"cat_comic_idioma"
-	);
+
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +94,7 @@ $campos = array("inventario_id",
                 <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
               </div>
               <div class="col-sm-3 hidden-xs">
-<!--                <div align="right">
+                <div align="right">
                   <div class="row">
                     <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
                       <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
@@ -124,7 +117,7 @@ $campos = array("inventario_id",
                       <a class="btn btn-xs btn-danger" href="/html/preRegistro.html">Regístrate ahora!</a>
                     </div>
                   </div>
-                </div>-->
+                </div>
               </div>
             </div>
 
@@ -171,68 +164,13 @@ $campos = array("inventario_id",
 
                     <div class="rows">
                         <?php
-                        $salto_catalogo = $pagina;
-                        $catalogo_html = file_get_contents("layouts/catalogo_layout.html");
-                        $contador = $pagina;
-                        for ($i = 0; $i < 4; $i++) {
-                            $arrayComics = lel2($campos, $contador, 4);
-                            
-                            echo "<div class='row' id='$i'>";
-                            for ($j = 0; $j < count($arrayComics); $j++) {
-                                $arrayComic2 = $arrayComics[$j];
-                                
-                                $inventario_id = $arrayComic2[$campos[0]];
-                                $comic_titulo = $arrayComic2[$campos[1]];
-                                $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 180);
-                                $comic_personaje = $arrayComic2[$campos[3]];
-                                $comic_numero = $arrayComic2[$campos[4]];
-                                $comic_imagen = $arrayComic2[$campos[5]];
-                                $comic_precio = $arrayComic2[$campos[6]];
-                                $comic_idioma = $arrayComic2[$campos[7]];
-                                
-                                echo "<div align='center' class='col-xs-12 col-sm-6 col-md-6 col-lg-3' id='$inventario_id'>
-                                        <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
-                                            <img id='cat_imagen' src=$comic_imagen style='height: 180px; max-width: 150px;' class='img-rounded img-responsive' alt='120x180'>
-                                        </a>
-                                        <h4 id='cat_personaje'>$comic_personaje</h4>
-                                        <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>".$comic_titulo." #".$comic_numero."</span></h5></a>
-                                        <p id='cat_descripcion' class='catal' style='font-size: 10pt'>".$comic_descripcion." ...</p>
-                                        <h4 id='cat_precio_venta'>$comic_precio</h4>
-                                        <div id='boton_comprar'></div>
-                                        <div id='boton_eliminar'></div>
-                                    </div>";
-                            }
-                            echo "</div>";
-                            $contador+=4;
-                        }
+                            cargarCatalogo($pagina);
                         ?>
                     </div>
+                    <!--PAGINACION-->
                     <?php
-                        if($pagina==0){
-                            $siguiente = $pagina+16;
-                            echo "<ul class='pager'>
-                                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente'>Siguiente</a></li>
-                                </ul>";
-                        }
-                        else{
-                            if($pagina+16>= obtenerTotalComics()){
-                            $anterior = $pagina-16;
-                            echo "<ul class='pager'>
-                                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior'>Anterior</a></li>
-                                </ul>";
-                        }
-                        else{
-                            $siguiente = $pagina+16;
-                            $anterior = $pagina-16;
-                             echo "<ul class='pager'>
-                                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior'>Anterior</a>
-                                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente'>Siguiente</a></li>
-                                </ul>";
-                        }
-                        } 
-                        
+                        paginacion($pagina);
                     ?>
-                    
                     
 <!--                    <ul class="pager">
                       <li id="anterior"></li>
@@ -293,72 +231,3 @@ $campos = array("inventario_id",
       </body>
       </html>
       
-      <?php
-        
-        function lel2($camposArray, $salto, $rango){
-            $catalogoArray = array();
-	$rowArray = array();
-
-	$queryCatalogoComics = "SELECT 
-    INV.inventario_id,
-    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
-    (SELECT datos_comic_descripcion FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_descripcion,
-    (SELECT 
-            personaje_nombre
-        FROM
-            personajes
-        WHERE
-            personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
-    CATALOGO.cat_comic_numero_ejemplar,
-	CATALOGO.cat_comic_imagen_url,
-    INV.inventario_precio_salida,
-    CATALOGO.cat_comic_idioma
-	FROM
-    cat_comics as CATALOGO
-        INNER JOIN
-    (SELECT 
-        inventario_id,
-		max(inventario_precio_entrada) as inventario_max_precio_entrada,
-		inventario_precio_salida,
-		inventario_cat_comic_unique_id,
-		inventario_existente,
-		inventario_fecha_entrada,
-		inventario_activo
-    FROM
-        inventario
-    GROUP BY inventario_cat_comic_unique_id ORDER BY inventario_fecha_entrada DESC) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
-	WHERE
-    	CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1 AND INV.inventario_activo = 1
-    LIMIT $salto, $rango";
-
-    //echo $queryCatalogoComics;
-
-	$queryResultado = mysql_query($queryCatalogoComics);
-    
-	$num = mysql_num_rows($queryResultado);
-	if($num>0){
-		for($i = 0; $i < $num; $i++){
-			$rowArray = array();
-			for ($j=0; $j < count($camposArray); $j++) {
-				$rowArray[$camposArray[$j]] = obtenerResultado($camposArray[$j], $i, $queryResultado);
-			}
-			$catalogoArray[] = $rowArray;
-		}
-	}
-	else{
-		$catalogoArray = array();
-	}
-    
-    return $catalogoArray;
-        }
-        
-        function obtenerResultado($nombreColumna, $indice, $queryRes){
-		return mysql_result($queryRes, $indice, "$nombreColumna");
-	}
-
-	function obtenerTotalComics(){
-		$queryTotal = "SELECT COUNT(*) AS total FROM inventario WHERE inventario_activo = 1 AND inventario_existente > 0";
-		$queryResultado = mysql_query($queryTotal);
-		return mysql_result($queryResultado, 0, "total");
-	}
-      ?>
