@@ -1,5 +1,9 @@
 <?php
 
+//FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+//Parametros: 
+//$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
+//$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
 function cargarCatalogo($pagina_catalogo, $renglones_catalogo) {
     
     $campos = array("inventario_id",
@@ -60,6 +64,11 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo) {
     }
 }
 
+//FUNCION QUE GENERA LA CONSULTA EN LA BASE PARA LLENAR EL CATALOGO
+//Parametros:
+//$camposArray = Arreglo de strings con los nombres de los campos que queremos obtener
+//$salto = Registro a partir del cual se obtendran los resultados
+//$rango = Numero de resultados regresados
 function consulta_catalogo($camposArray, $salto, $rango) {
     $catalogoArray = array();
     $rowArray = array();
@@ -116,16 +125,21 @@ function consulta_catalogo($camposArray, $salto, $rango) {
     return $catalogoArray;
 }
 
+//FUNCION QUE OBTIENE UN RESULTADO A PARTIR DE UN QUERY
 function obtenerResultado($nombreColumna, $indice, $queryRes) {
     return mysql_result($queryRes, $indice, "$nombreColumna");
 }
 
+//FUNCION QUE OBTIENE EL TOTAL DE COMICS EN INVENTARIO ACTIVOS Y EXISTENTES
 function obtenerTotalComics() {
     $queryTotal = "SELECT COUNT(*) AS total FROM inventario WHERE inventario_activo = 1 AND inventario_existente > 0";
     $queryResultado = mysql_query($queryTotal);
     return mysql_result($queryResultado, 0, "total");
 }
 
+//FUNCION QUE GENERA LOS ELEMENTOS DE PAGINACION
+//Parametros:
+//$pagina_paginacion = Valor a partir de cual se generara la paginacion
 function paginacion($pagina_paginacion) {
     if ($pagina_paginacion == 0) {
         $siguiente = $pagina_paginacion + 16;

@@ -202,13 +202,18 @@ window.fbAsyncInit = function() {
 
                     <div class="rows">
                         <?php
-                            //FUNCION QUE CARGA EL HTML PARA EL CATALOGO: /php/catalogoFunctions.php
+                            //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+                            //Parametros: 
+                            //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
+                            //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
                             cargarCatalogo($pagina,4);
                         ?>
                     </div>
                     <!--PAGINACION-->
                     <?php
-                        //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO: /php/catalogoFunctions.php
+                        //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+                        //Parametros: 
+                        //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                         paginacion($pagina);
                     ?>
                     
