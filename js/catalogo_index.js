@@ -3,7 +3,7 @@ var total;
 $(document).ready(function(){
 	verificaSesion(pagina);
 	modalIniciarSesion();
-        //registro_login.js
+        //Funciones ubicadas en registro_login.js
         modalRegistrar();
         registroFacebook();
         registroCorreo();

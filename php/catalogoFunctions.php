@@ -31,7 +31,8 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo) {
             $comic_imagen = $arrayComic2[$campos[5]];
             $comic_precio = $arrayComic2[$campos[6]];
             $comic_idioma = $arrayComic2[$campos[7]];
-
+            
+            //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
             echo "<div align='center' class='col-xs-12 col-sm-6 col-md-6 col-lg-3' id='$inventario_id'>
                                         <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
                                             <img id='cat_imagen' src=$comic_imagen style='height: 180px; max-width: 150px;' class='img-rounded img-responsive' alt='$comic_titulo'>
@@ -39,7 +40,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo) {
                                         <h4 id='cat_personaje'>$comic_personaje</h4>
                                         <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
                                         <p id='cat_descripcion' class='catal' style='font-size: 10pt'>" . $comic_descripcion . " ...</p>
-                                        <h4 id='cat_precio_venta'>$comic_precio</h4>
+                                        <h4 id='cat_precio_venta'>$ ".$comic_precio." MXN</h4>
                                         <p></p>";
 
             if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
