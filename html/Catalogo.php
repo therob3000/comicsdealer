@@ -16,7 +16,18 @@ if (empty($_GET['pagina'])){
 else{
   $pagina = $_GET['pagina'];
 }
-
+if(empty($_GET['compania_id'])){
+    $compania_id = 0;
+}
+else{
+    $compania_id = $_GET['compania_id'];
+}
+if(empty($_GET['idioma'])){
+    $idioma = 0;
+}
+ else {
+    $idioma = $_GET['idioma'];
+}
 
 ?>
 
@@ -95,8 +106,10 @@ window.fbAsyncInit = function() {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
       
-      //CODIGO PARA CARGAR DINAMICAMENTE EL NAV BAR
+      
       <?php
+        //CODIGO PARA CARGAR DINAMICAMENTE EL NAV BAR
+      
         //COMPROBAMOS QUE EXISTAN LAS VARIABLES DE USUARIO 'usuario_email' y 'usuario_nombre'
         //SI EXISTEN OBTENEMOS EL LAYOUT 'layouts/navbar_login_layout.html'
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
@@ -225,7 +238,7 @@ window.fbAsyncInit = function() {
                             //Parametros: 
                             //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                             //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-                            cargarCatalogo($pagina,4,1,0);
+                            cargarCatalogo($pagina,4,$compania_id,$idioma);
                             //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
                         ?>
                     </div>

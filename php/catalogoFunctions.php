@@ -118,27 +118,36 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
         switch ($idioma) {
             //1 PARA INGLES
             case 1:
-                $queryCatalogoComicsCondicion = "
+                $query = "
                 WHERE
                     CATALOGO.cat_comic_activo = 1 
                     AND CATALOGO.cat_comic_copias > 0 
                     AND INV.inventario_existente = 1 
                     AND INV.inventario_activo = 1
-                    AND CATALOGO.cat_comic_idioma = 'ing'
-                    AND PERS.personaje_compania_id = $compania_id
-                LIMIT $salto, $rango";
-
+                    AND CATALOGO.cat_comic_idioma = 'ing'";
+                if($compania_id == 0){
+                    $queryCatalogoComicsCondicion = $query." LIMIT $salto, $rango";
+                }
+                else{
+                    $queryCatalogoComicsCondicion = $query." AND PERS.personaje_compania_id = $compania_id
+                    LIMIT $salto, $rango";
+                }
                 break;
             case 2:
-                $queryCatalogoComicsCondicion = "
+                $query = "
                 WHERE
                     CATALOGO.cat_comic_activo = 1 
                     AND CATALOGO.cat_comic_copias > 0 
                     AND INV.inventario_existente = 1 
                     AND INV.inventario_activo = 1
-                    AND CATALOGO.cat_comic_idioma = 'esp'
-                    AND PERS.personaje_compania_id = $compania_id
-                LIMIT $salto, $rango";
+                    AND CATALOGO.cat_comic_idioma = 'esp'";
+                if($compania_id == 0){
+                    $queryCatalogoComicsCondicion = $query." LIMIT $salto, $rango";
+                }
+                else{
+                    $queryCatalogoComicsCondicion = $query." AND PERS.personaje_compania_id = $compania_id
+                    LIMIT $salto, $rango";
+                }
                 break;
             default:
                 $queryCatalogoComicsCondicion = "
