@@ -1,4 +1,6 @@
 <?php
+
+    include 'php/barraBusquedaFunctions.php';
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
     session_start();
@@ -218,7 +220,10 @@ window.fbAsyncInit = function() {
           </div>
 
           <br><br>
-          <div id="searchnav"> 
+          <div id="searchnav">
+              <?php
+                cargarBarraBusqueda();
+              ?>
           </div>
 
           <div class="row">

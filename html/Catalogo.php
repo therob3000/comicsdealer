@@ -203,7 +203,7 @@ window.fbAsyncInit = function() {
                     <div class="rows">
                         <?php
                             //FUNCION QUE CARGA EL HTML PARA EL CATALOGO: /php/catalogoFunctions.php
-                            cargarCatalogo($pagina,4);
+                            cargarCatalogo($pagina,4,1,0);
                         ?>
                     </div>
                     <!--PAGINACION-->
