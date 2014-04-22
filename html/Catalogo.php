@@ -2,6 +2,8 @@
 
 include '../php/conexion.php';
 $con = conexion();
+
+//ARCHIVO QUE INCLUYE LAS FUNCIONES NECESARIAS PARA CARGAR LOS ELEMENTOS DEL CATALOGO
 include '../php/catalogoFunctions.php';
 
 ini_set('display_errors',1); 
@@ -40,7 +42,7 @@ else{
   <script src="../bootstrap/js/bootstrap.min.js"></script>
   <script src="../js/login.js"></script>
   <script src="../js/catalogo.js"></script>
-    <script src="../js/registro_login.js"></script>
+  <script src="../js/registro_login.js"></script>
   <script src="../js/catalogo_index.js"></script>
 
   <script type="text/javascript">
@@ -93,30 +95,46 @@ window.fbAsyncInit = function() {
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
       
-      <?php  
+      //CODIGO PARA CARGAR DINAMICAMENTE EL NAV BAR
+      <?php
+        //COMPROBAMOS QUE EXISTAN LAS VARIABLES DE USUARIO 'usuario_email' y 'usuario_nombre'
+        //SI EXISTEN OBTENEMOS EL LAYOUT 'layouts/navbar_login_layout.html'
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
            $html = file_get_contents("layouts/navbar_login_layout.html"); 
         }
+        //SI NO EXISTEN OBTENEMOS EL LAYOUT 'layouts/navbar_nologin_layout.html'
         else{
             $html = file_get_contents("layouts/navbar_nologin_layout.html");
         }
         
-        
+        //PARA CARGAR DINAMICAMENTE SEGMENTOS DE HTML EN PHP CREAMOS UN OBJETO DOMDocument()
         $nav_bar = new DOMDocument();
+        //Y AGREGAMOS EL SEGMENTO QUE QUEREMOS CARGAR, EN ESTE CASO $html
         $nav_bar->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
       ?>
-
-      <div id="nav_bar"><?php echo $nav_bar->saveHTML(); ?></div>
+      
+      <div id="nav_bar">
+          
+          <?php 
+            //FINALMENTE CON ECHO IMPRIMIMOS LA CADENA DEL HTML CARGADO
+            //EL FUNCIONAMIENTO DEL HTML SE LLEVA ACABO CON JQUERY
+            echo $nav_bar->saveHTML(); 
+          ?>
+      </div>
 
 
       <div class="container">
-      
+         
           <?php 
+            //SIMILAR AL NAV BAR, CARGAMOS DINAMICAMENTE LOS LAYOUTS PARA LAS VENTANAS MODALES
+            
+            //CARGAR VENTANA MODAL PARA INICIO DE SESION
             $modal_sesion_html = file_get_contents("layouts/modal_login_layout.html");
             $modal_sesion = new DOMDocument();
             $modal_sesion->loadHTML(mb_convert_encoding($modal_sesion_html, 'HTML-ENTITIES', 'UTF-8'));
             echo $modal_sesion->saveHTML();
             
+            //CARGAR VENTANA MODAL PARA REGISTRO CON FACEBOOK Y CORREO
             $modal_registro_html = file_get_contents("layouts/modal_registro_layout.html");
             $modal_registro = new DOMDocument();
             $modal_registro->loadHTML(mb_convert_encoding($modal_registro_html, 'HTML-ENTITIES', 'UTF-8'));
@@ -201,21 +219,23 @@ window.fbAsyncInit = function() {
                     <hr></hr>
 
                     <div class="rows">
+                    <!--ELEMENTOS DEL CATALOGO-->
                         <?php
-                            //FUNCION QUE CARGA EL HTML PARA EL CATALOGO: /php/catalogoFunctions.php
+                            //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+                            //Parametros: 
+                            //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
+                            //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
                             cargarCatalogo($pagina,4,1,0);
+                            //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
                         ?>
                     </div>
                     <!--PAGINACION-->
                     <?php
-                        //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO: /php/catalogoFunctions.php
+                        //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+                        //Parametros: 
+                        //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                         paginacion($pagina);
                     ?>
-                    
-<!--                    <ul class="pager">
-                      <li id="anterior"></li>
-                      <li id="siguiente"></li>
-                    </ul>-->
                     
                   </div>
                 </div>
