@@ -110,13 +110,13 @@ window.fbAsyncInit = function() {
             //SIMILAR AL NAV BAR, CARGAMOS DINAMICAMENTE LOS LAYOUTS PARA LAS VENTANAS MODALES
             
             //CARGAR VENTANA MODAL PARA INICIO DE SESION
-            $modal_sesion_html = file_get_contents("layouts/modal_login_layout.html");
+            $modal_sesion_html = file_get_contents("html/layouts/modal_login_layout.html");
             $modal_sesion = new DOMDocument();
             $modal_sesion->loadHTML(mb_convert_encoding($modal_sesion_html, 'HTML-ENTITIES', 'UTF-8'));
             echo $modal_sesion->saveHTML();
             
             //CARGAR VENTANA MODAL PARA REGISTRO CON FACEBOOK Y CORREO
-            $modal_registro_html = file_get_contents("layouts/modal_registro_layout.html");
+            $modal_registro_html = file_get_contents("html/layouts/modal_registro_layout.html");
             $modal_registro = new DOMDocument();
             $modal_registro->loadHTML(mb_convert_encoding($modal_registro_html, 'HTML-ENTITIES', 'UTF-8'));
             echo $modal_registro->saveHTML();
