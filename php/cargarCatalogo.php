@@ -69,7 +69,7 @@
 		$catalogoArray = array();
 	}
 
-	session_start();
+	//session_start();
 
 	$json->catalogo = $catalogoArray;
 	$json->total = obtenerTotalComics();

@@ -1,6 +1,5 @@
 <?php
-
-
+ 
 function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $idioma) {
 
 //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
@@ -194,6 +193,7 @@ function obtenerTotalComics() {
     return mysql_result($queryResultado, 0, "total");
 }
 
+
 //FUNCION QUE GENERA LOS ELEMENTOS DE PAGINACION
 //Parametros:
 //$pagina_paginacion = Valor a partir de cual se generara la paginacion
@@ -219,5 +219,3 @@ function paginacion($pagina_paginacion) {
         }
     }
 }
-
-?>

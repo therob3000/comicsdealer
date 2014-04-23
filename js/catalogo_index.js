@@ -29,7 +29,8 @@ function verificaSesion(pagina){
                                 
 				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'><span class='glyphicon glyphicon-shopping-cart'></span> Finalizar Compra <span class='badge' id='compraTotal'></span></button>");
 				botonComprarInit();
-				cargarComics(pagina);
+				//cargarComics(pagina);
+                                cargarCatalogoComics();
 				botonComprar();
 				botonEliminar();
 			}
@@ -54,6 +55,35 @@ function cargarComics(salto){
 //		$(".rows").append("<hr></hr>");
 	};
 //	
+}
+
+function cargarCatalogoComics() {
+	cadena = "compania_id="+compania_id+"&idioma="+idioma+"&comics_ids=1&pagina="+pagina;
+        alert(cadena);
+	$.ajaxSetup({async:false});
+	$.post("/php/catalogoFunctions.php",
+		cadena,
+		function(data){
+			$.each(data.catalogo, function(i, val){
+                            if($.inArray(val.inventario_id, data.agregados) != -1){
+						$("#"+val.inventario_id).find('#boton_comprar').hide();
+						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
+						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
+						$("#"+val.inventario_id).find('#boton_comprar'+val.inventario_id).html("<button class='btn btn-success btn-comprar' role='button' id="+val.inventario_id+">Agregar</button>");
+						$("#"+val.inventario_id).find('#boton_eliminar'+val.inventario_id).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar</button>");
+					}
+					else{
+						$("#"+val.inventario_id).find('#boton_eliminar').hide();
+						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
+						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
+						$("#"+val.inventario_id).find('#boton_eliminar'+val.inventario_id).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar</button>");
+						$("#"+val.inventario_id).find('#boton_comprar'+val.inventario_id).html("<button class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar</button>");
+					}
+			});
+			
+		},
+		'json');
+	$.ajaxSetup({async:true});
 }
 
 

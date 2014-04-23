@@ -47,6 +47,8 @@ if(empty($_GET['idioma'])){
   
   <script>
     var pagina = <?php echo json_encode($pagina); ?>;
+    var compania_id = <?php echo json_encode($compania_id); ?>;
+    var idioma = <?php echo json_encode($idioma); ?>;
   </script>
 
   <script src="../bootstrap/assets/js/jquery.js"></script>

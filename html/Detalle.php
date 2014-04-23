@@ -7,7 +7,7 @@ include '../php/cargarDetalleDinamico.php';
 include '../php/barraBusquedaFunctions.php';
 $con = conexion();
 $comic_id = $_GET['comic_id'];
-
+session_start();
 obtenerDatos($comic_id);
 
 $comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo, SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion from inventario as inv
@@ -91,7 +91,6 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     <?php  
-        session_start();
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
            $html = file_get_contents("layouts/navbar_login_layout.html"); 
         }

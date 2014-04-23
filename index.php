@@ -4,7 +4,8 @@
     include 'php/barraBusquedaFunctions.php';
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
-    
+    session_start();
+
  ?>
 
 <!DOCTYPE html>
@@ -91,7 +92,6 @@ window.fbAsyncInit = function() {
       </script>-->
 
       <?php  
-        session_start();
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
            $html = file_get_contents("html/layouts/navbar_login_layout.html"); 
         }
