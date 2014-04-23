@@ -1,9 +1,10 @@
 <?php
-
+    include 'php/conexion.php';
+    $con = conexion();
     include 'php/barraBusquedaFunctions.php';
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
-    session_start();
+    
  ?>
 
 <!DOCTYPE html>
@@ -90,6 +91,7 @@ window.fbAsyncInit = function() {
       </script>-->
 
       <?php  
+        session_start();
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
            $html = file_get_contents("html/layouts/navbar_login_layout.html"); 
         }
@@ -104,83 +106,22 @@ window.fbAsyncInit = function() {
 
     <div id="nav_bar"><?php echo $doc->saveHTML(); ?></div>
     <div class="container">
-
-      <!-- VENTANA MODAL DE INICIO DE SESION -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="myModalLabel">Bienvenido, haz login!</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false" onlogin="loginFacebook();"></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="usuario_email">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
-                        </div>
-                        <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
-                        <button type="button" class="btn btn-success" id="sesion_btn" >Iniciar Sesión</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer navbar-inverse">
-              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-              class="img-responsive text-center" width="207" height="26"/>
-              
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
-      
-      <!-- VENTANA MODAL DE REGISTRO CON FACEBOOK Y MANUAL -->
-      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="myModalLabel2">Registrate en Comics Dealer: </h4>
-            </div>
-              <div class="modal-body">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <p>Ahora puedes elegir registrarte con tu perfil de Facebook o si lo prefieres solo con un correo electronico</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <p>Registrate con tu cuenta de Facebook: </p>
-                              <button type="button" class="btn btn-info" id="registro_facebook">Facebook</button>
-                          </div>
-                      </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <p>Registrate con tu cuenta de Facebook: </p>
-                              <button type="button" class="btn btn-success" id="registro_correo">Correo Electronico</button>
-                          </div>
-
-                      </div>
-                  </div>
-              </div>
-            <div class="modal-footer navbar-inverse">
-              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-              class="img-responsive text-center" width="207" height="26"/>
-            </div>
+        <?php 
+            //SIMILAR AL NAV BAR, CARGAMOS DINAMICAMENTE LOS LAYOUTS PARA LAS VENTANAS MODALES
             
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
-      
+            //CARGAR VENTANA MODAL PARA INICIO DE SESION
+            $modal_sesion_html = file_get_contents("layouts/modal_login_layout.html");
+            $modal_sesion = new DOMDocument();
+            $modal_sesion->loadHTML(mb_convert_encoding($modal_sesion_html, 'HTML-ENTITIES', 'UTF-8'));
+            echo $modal_sesion->saveHTML();
+            
+            //CARGAR VENTANA MODAL PARA REGISTRO CON FACEBOOK Y CORREO
+            $modal_registro_html = file_get_contents("layouts/modal_registro_layout.html");
+            $modal_registro = new DOMDocument();
+            $modal_registro->loadHTML(mb_convert_encoding($modal_registro_html, 'HTML-ENTITIES', 'UTF-8'));
+            echo $modal_registro->saveHTML();
+         ?>
+     
       <!--Aqui empieza el jumbotron Principal y de Fin de semana -->
       <div class="container tres" >
         <!--<div class="jumbotron">-->

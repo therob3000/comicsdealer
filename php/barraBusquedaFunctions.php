@@ -1,8 +1,41 @@
 <?php
 
+
 function cargarBarraBusqueda(){
+  
+  $queryCompanias = "SELECT * FROM companias WHERE compania_activo=1";
+  $queryResultado = mysql_query($queryCompanias);
+  $num = mysql_num_rows($queryResultado);
+  
+  if($num > 0 ){
+      cargarCodigoInicialBarra();
+      for ($i = 0; $i < $num; $i++){
+          $compania_id = mysql_result($queryResultado, $i, "compania_id");
+          $compania_nombre = mysql_result($queryResultado, $i, "compania_nombre");
+          
+          echo "<li class='dropdown'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'>$compania_nombre <b class='caret'></b></a>
+                    <ul class='dropdown-menu' role='menu'>
+                        <li><a href='../html/Catalogo.php?compania_id=$compania_id&idioma=1'>Inglés</a></li>
+                        <li><a href='../html/Catalogo.php?compania_id=$compania_id&idioma=2'>Español</a></li>
+                        <li class='divider'></li>
+                        <li><a href='../html/Catalogo.php?compania_id=$compania_id'>Todos</a></li>
+                    </ul>
+                </li>";
+      }
+      echo "</ul>
+         </div><!-- /.navbar-collapse -->
+        </div>
+       </nav>";
+  }
     
-  echo "<nav class='navbar navbar-default' style='margin-bottom: auto;'>
+ 
+  
+    
+}
+
+function cargarCodigoInicialBarra(){
+    echo "<nav class='navbar navbar-default' style='margin-bottom: auto;'>
   <div class='row'>
     <div class='col-md-12'>
       <form role='search'>
@@ -35,78 +68,6 @@ function cargarBarraBusqueda(){
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class='collapse navbar-collapse' id='busqueda'>
-      <ul class='nav navbar-nav'>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>DC <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Inglés</a></li>
-            <li><a href='#'>Español</a></li>
-            <li class='divider'></li>
-            <li><a href='#'>Todos</a></li>
-          </ul>
-        </li>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Marvel <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Inglés</a></li>
-            <li><a href='#'>Español</a></li>
-            <li class='divider'></li>
-            <li><a href='#'>Todos</a></li>
-          </ul>
-        </li>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Image <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Inglés</a></li>
-            <li><a href='#'>Español</a></li>
-            <li class='divider'></li>
-            <li><a href='#'>Todos</a></li>
-          </ul>
-        </li>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Dark Horse <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Inglés</a></li>
-            <li><a href='#'>Español</a></li>
-            <li class='divider'></li>
-            <li><a href='#'>Todos</a></li>
-          </ul>
-        </li>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Kamite <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Inglés</a></li>
-            <li><a href='#'>Español</a></li>
-            <li class='divider'></li>
-            <li><a href='#'>Todos</a></li>
-          </ul>
-        </li>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Vertigo <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Inglés</a></li>
-            <li><a href='#'>Español</a></li>
-            <li class='divider'></li>
-            <li><a href='#'>Todos</a></li>
-          </ul>
-        </li>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Otras <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Bruguera</a></li>
-            <li><a href='#'>IWD</a></li>
-          </ul>
-        </li>
-        <li class='dropdown'>
-          <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Idioma <b class='caret'></b></a>
-          <ul class='dropdown-menu' role='menu'>
-            <li><a href='#'>Inglés</a></li>
-            <li><a href='#'>Español</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div>
-</nav>";
+      <ul class='nav navbar-nav'>";
 }
-
+   

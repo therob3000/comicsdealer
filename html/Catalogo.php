@@ -2,7 +2,7 @@
 
 include '../php/conexion.php';
 $con = conexion();
-
+include '../php/barraBusquedaFunctions.php';
 //ARCHIVO QUE INCLUYE LAS FUNCIONES NECESARIAS PARA CARGAR LOS ELEMENTOS DEL CATALOGO
 include '../php/catalogoFunctions.php';
 
@@ -191,7 +191,10 @@ window.fbAsyncInit = function() {
             </div>
 
             <br><br>
-            <div id="searchnav"> 
+            <div id="searchnav">
+                <?php
+                    cargarBarraBusqueda();
+                ?>
             </div>
             
             <div class="row">
