@@ -84,6 +84,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
 
     $catalogoArray = array();
     $rowArray = array();
+    $inventarioArray = array();
 
     $queryCatalogoComics = "SELECT 
     INV.inventario_id,
@@ -174,7 +175,11 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
         for ($i = 0; $i < $num; $i++) {
             $rowArray = array();
             for ($j = 0; $j < count($camposArray); $j++) {
+                if($camposArray[$i] == 'inventario_id'){
+                    $inventarioArray[] = obtenerResultado($camposArray[$j], $i, $queryResultado);
+                }
                 $rowArray[$camposArray[$j]] = obtenerResultado($camposArray[$j], $i, $queryResultado);
+                
             }
             $catalogoArray[] = $rowArray;
         }
@@ -223,3 +228,4 @@ function paginacion($pagina_paginacion) {
         }
     }
 }
+
