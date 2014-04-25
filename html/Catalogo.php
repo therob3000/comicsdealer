@@ -227,9 +227,9 @@ window.fbAsyncInit = function() {
               </div>
               <div class="col-sm-12 col-md-10">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-xs-12">
                     <div class="row">
-                      <div class="col-lg-12">
+                      <div class="col-xs-12">
                         <h3  style="margin-bottom: 0px;">Catálogo Privado de <strong>Dr. Death</strong>
                           <br><small>Sólo la crema condensada del mundo del cómic.</small></h3>
                       </div>
