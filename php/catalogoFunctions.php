@@ -1,4 +1,8 @@
 <?php
+if(isset($_POST['inventario'])){
+    session_start();
+    obtenerInventario();
+}
  
 function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $idioma, $numero_resultados) {
 
@@ -6,6 +10,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
 //Parametros: 
 //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
 //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
+    $inventarioArray = array();
     
     $campos = array("inventario_id",
         "cat_comic_titulo",
@@ -43,6 +48,9 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
                 $comic_idioma = "Español";
             }
             
+            $inventarioArray[] = $inventario_id;
+               
+            
             //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
 
             echo "<div align='center' class='col-xs-8 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
@@ -73,6 +81,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
         echo "</div>";
         $contador+=4;
     }
+    $_SESSION['inventario'] = $inventarioArray;
 }
 
 function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) {
@@ -84,7 +93,6 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
 
     $catalogoArray = array();
     $rowArray = array();
-    $inventarioArray = array();
 
     $queryCatalogoComics = "SELECT 
     INV.inventario_id,
@@ -175,9 +183,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
         for ($i = 0; $i < $num; $i++) {
             $rowArray = array();
             for ($j = 0; $j < count($camposArray); $j++) {
-                if($camposArray[$i] == 'inventario_id'){
-                    $inventarioArray[] = obtenerResultado($camposArray[$j], $i, $queryResultado);
-                }
+                
                 $rowArray[$camposArray[$j]] = obtenerResultado($camposArray[$j], $i, $queryResultado);
                 
             }
@@ -186,7 +192,6 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
     } else {
         $catalogoArray = array();
     }
-
     return $catalogoArray;
 }
 
@@ -227,5 +232,13 @@ function paginacion($pagina_paginacion) {
                                 </ul>";
         }
     }
+}
+
+function obtenerInventario(){
+    $json = new stdClass;
+    $json->inventario = $_SESSION['inventario'];
+    $json->agregados = $_SESSION['usuario_comics'];
+    
+    echo json_encode($json);
 }
 

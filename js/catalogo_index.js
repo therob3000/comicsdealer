@@ -58,31 +58,31 @@ function cargarComics(salto){
 }
 
 function cargarCatalogoComics() {
-	cadena = "compania_id="+compania_id+"&idioma="+idioma+"&comics_ids=1&pagina="+pagina;
-        alert(cadena);
+	cadena = "inventario=1";
+        //alert(cadena);
 	$.ajaxSetup({async:false});
 	$.post("/php/catalogoFunctions.php",
 		cadena,
-		function(data){
-			$.each(data.catalogo, function(i, val){
-                            if($.inArray(val.inventario_id, data.agregados) != -1){
-						$("#"+val.inventario_id).find('#boton_comprar').hide();
-						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
-						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
-						$("#"+val.inventario_id).find('#boton_comprar'+val.inventario_id).html("<button class='btn btn-success btn-comprar' role='button' id="+val.inventario_id+">Agregar</button>");
-						$("#"+val.inventario_id).find('#boton_eliminar'+val.inventario_id).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar</button>");
-					}
-					else{
-						$("#"+val.inventario_id).find('#boton_eliminar').hide();
-						$("#"+val.inventario_id).find('#boton_comprar').attr("id","boton_comprar"+val.inventario_id);
-						$("#"+val.inventario_id).find('#boton_eliminar').attr("id","boton_eliminar"+val.inventario_id);
-						$("#"+val.inventario_id).find('#boton_eliminar'+val.inventario_id).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val.inventario_id+">Eliminar</button>");
-						$("#"+val.inventario_id).find('#boton_comprar'+val.inventario_id).html("<button class='btn btn-success btn-comprar' href='#' role='button' id="+val.inventario_id+">Agregar</button>");
-					}
-			});
-			
-		},
-		'json');
+            function(data){
+                //alert(data);
+                $.each(data.inventario, function(i, val){
+                    //alert(val);
+                    if($.inArray(val, data.agregados) != -1){
+                        $("#"+val).find('#boton_comprar').hide();
+                        $("#"+val).find('#boton_comprar').attr("id","boton_comprar"+val);
+                        $("#"+val).find('#boton_eliminar').attr("id","boton_eliminar"+val);
+                        $("#"+val).find('#boton_comprar'+val).html("<button class='btn btn-success btn-comprar' role='button' id="+val+">Agregar</button>");
+                        $("#"+val).find('#boton_eliminar'+val).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val+">Eliminar</button>");
+                    }
+                    else{
+                        $("#"+val).find('#boton_eliminar').hide();
+                        $("#"+val).find('#boton_comprar').attr("id","boton_comprar"+val);
+                        $("#"+val).find('#boton_eliminar').attr("id","boton_eliminar"+val);
+                        $("#"+val).find('#boton_eliminar'+val).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val+">Eliminar</button>");
+                        $("#"+val).find('#boton_comprar'+val).html("<button class='btn btn-success btn-comprar' href='#' role='button' id="+val+">Agregar</button>");
+                    }
+                });
+            }, 'json');
 	$.ajaxSetup({async:true});
 }
 
