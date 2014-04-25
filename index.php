@@ -206,7 +206,7 @@ window.fbAsyncInit = function() {
 
           <div class="row hidden-md hidden-lg" id="catalogo_comics">
               <?php
-                cargarCatalogo(0,2,0,0);
+                cargarCatalogo(0,2,0,0,3);
                ?>
           </div><!-- /.row1 -->
 

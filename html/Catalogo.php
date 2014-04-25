@@ -243,7 +243,7 @@ window.fbAsyncInit = function() {
                             //Parametros: 
                             //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                             //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-                            cargarCatalogo($pagina,4,$compania_id,$idioma);
+                            cargarCatalogo($pagina,4,$compania_id,$idioma, 3);
                             //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
                         ?>
                     </div>

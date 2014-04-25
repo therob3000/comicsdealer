@@ -1,6 +1,6 @@
 <?php
  
-function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $idioma) {
+function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $idioma, $numero_resultados) {
 
 //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
 //Parametros: 
@@ -22,7 +22,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
     $contador = $pagina_catalogo;
 
     for ($i = 0; $i < $renglones_catalogo; $i++) {
-        $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma);
+        $arrayComics = consulta_catalogo($campos, $contador, $numero_resultados, $compania_id, $idioma);
 
         echo "<div class='row' id='$i'>";
         for ($j = 0; $j < count($arrayComics); $j++) {
@@ -44,7 +44,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
             }
             
             //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
-            echo "<div align='center' class='col-xs-12 col-sm-6 col-md-6 col-lg-3' id='$inventario_id'>
+            echo "<div align='center' class='col-xs-12 col-sm-6 col-md-6 col-lg-4' id='$inventario_id'>
                                         <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
                                             <img id='cat_imagen' src=$comic_imagen style='height: 180px; max-width: 150px;' class='img-rounded img-responsive' alt='$comic_titulo'>
                                         </a>
