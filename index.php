@@ -2,6 +2,7 @@
     include 'php/conexion.php';
     $con = conexion();
     include 'php/barraBusquedaFunctions.php';
+    include 'php/catalogoFunctions.php';
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
     session_start();
@@ -204,7 +205,9 @@ window.fbAsyncInit = function() {
           <br></br>
 
           <div class="row hidden-md hidden-lg" id="catalogo_comics">
-            
+              <?php
+                cargarCatalogo(0,2,0,0);
+               ?>
           </div><!-- /.row1 -->
 
           <div class="row">             

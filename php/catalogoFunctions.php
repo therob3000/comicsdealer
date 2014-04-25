@@ -30,7 +30,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
 
             $inventario_id = $arrayComic2[$campos[0]];
             $comic_titulo = $arrayComic2[$campos[1]];
-            $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 180);
+            $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 90);
             $comic_personaje = $arrayComic2[$campos[3]];
             $comic_numero = $arrayComic2[$campos[4]];
             $comic_imagen = $arrayComic2[$campos[5]];
