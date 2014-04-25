@@ -1,13 +1,14 @@
 <?php
-/*ini_set('display_errors',1); 
-error_reporting(E_ALL);*/
-
+//ini_set('display_errors',1); 
+//error_reporting(E_ALL);
+session_start();
 include '../php/conexion.php';
 include '../php/cargarDetalleDinamico.php';
 include '../php/barraBusquedaFunctions.php';
+include '../php/catalogoFunctions.php';
 $con = conexion();
 $comic_id = $_GET['comic_id'];
-session_start();
+
 obtenerDatos($comic_id);
 
 $comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo, SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion from inventario as inv
@@ -254,6 +255,9 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
           
           <hr></hr>
           <div class="row" id="catalogo_comics">
+              <?php
+                cargarCatalogo(0,2,0,0,3);
+               ?>
             
           </div><!-- /.row1 -->
           <div class="row">             

@@ -184,7 +184,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
             $rowArray = array();
             for ($j = 0; $j < count($camposArray); $j++) {
                 
-                $rowArray[$camposArray[$j]] = obtenerResultado($camposArray[$j], $i, $queryResultado);
+                $rowArray[$camposArray[$j]] = obtenerResultado2($camposArray[$j], $i, $queryResultado);
                 
             }
             $catalogoArray[] = $rowArray;
@@ -196,7 +196,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
 }
 
 //FUNCION QUE OBTIENE UN RESULTADO A PARTIR DE UN QUERY
-function obtenerResultado($nombreColumna, $indice, $queryRes) {
+function obtenerResultado2($nombreColumna, $indice, $queryRes) {
     return mysql_result($queryRes, $indice, "$nombreColumna");
 }
 
