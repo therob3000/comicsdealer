@@ -44,7 +44,11 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
             }
             
             //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
+<<<<<<< HEAD
             echo "<div align='center' class='col-xs-8 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
+=======
+            echo "<div align='center' class='col-xs-12 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
+>>>>>>> FETCH_HEAD
                                         <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
                                             <img id='cat_imagen' src=$comic_imagen style='height: 180px; max-width: 150px;' class='img-rounded img-responsive' alt='$comic_titulo'>
                                         </a>
