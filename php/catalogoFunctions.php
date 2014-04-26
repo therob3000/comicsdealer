@@ -276,14 +276,14 @@ function obtenerInventario() {
 
 function paginacion($pagina_paginacion, $compania_id, $idioma, $personaje_id) {
     if ($pagina_paginacion == 0) {
-        if ($pagina_paginacion + 12 <= obtenerTotalComicsPaginacion($compania_id, $idioma)) {
+        if ($pagina_paginacion + 12 <= obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id)) {
             $siguiente = $pagina_paginacion + 12;
             echo "<ul class='pager'>
                     <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&compania_id=$compania_id&idioma=$idioma&personaje_id=$personaje_id'>Siguiente</a></li>
                   </ul>";
         }
     } else {
-        if ($pagina_paginacion + 12 >= obtenerTotalComicsPaginacion($compania_id, $idioma)) {
+        if ($pagina_paginacion + 12 >= obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id)) {
             $anterior = $pagina_paginacion - 12;
             echo "<ul class='pager'>
                     <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idioma&personaje_id=$personaje_id'>Anterior</a></li>
@@ -299,14 +299,14 @@ function paginacion($pagina_paginacion, $compania_id, $idioma, $personaje_id) {
     }
 }
 
-function obtenerTotalComicsPaginacion($compania_id, $idioma) {
+function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
     $queryCatalogoComics = "
         SELECT INV.inventario_id FROM inventario AS INV
             INNER JOIN cat_comics AS CAT ON CAT.cat_comic_unique_id = INV.inventario_cat_comic_unique_id
             INNER JOIN datos_comics AS DAT ON CAT.cat_comic_personaje_id = DAT.datos_comic_personaje_id
             INNER JOIN personajes AS PERS ON PERS.personaje_id = DAT.datos_comic_personaje_id
             INNER JOIN companias AS COM ON PERS.personaje_compania_id = COM.compania_id";
-    if ($idioma == 0 && $compania_id == 0) {
+    if ($idioma == 0 && $compania_id == 0 && $personaje_id == 0) {
         $queryCatalogoComicsCondicion = "
             WHERE
                 CAT.cat_comic_activo = 1 
@@ -326,8 +326,14 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma) {
                     AND INV.inventario_activo = 1
                     AND CAT.cat_comic_idioma = 'ing'";
                 if ($compania_id == 0) {
-                    $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
-                } else {
+                    if($personaje_id == 0){
+                        $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
+                    }
+                    else {
+                        $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
+                    }
+                } 
+                else {
                     $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id
                     GROUP BY inventario_id";
                 }
@@ -341,8 +347,14 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma) {
                     AND INV.inventario_activo = 1
                     AND CAT.cat_comic_idioma = 'esp'";
                 if ($compania_id == 0) {
-                    $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
-                } else {
+                    if($personaje_id == 0){
+                        $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
+                    }
+                    else {
+                        $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
+                    }
+                } 
+                else {
                     $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id
                     GROUP BY inventario_id";
                 }
@@ -365,7 +377,7 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma) {
     $queryResultado = mysql_query("$queryCatalogoComics" . "$queryCatalogoComicsCondicion");
 
     $num = mysql_num_rows($queryResultado);
-    if ($num > 0) {
+    if ($num >= 0) {
         $total = $num;
     }
     return $total;
