@@ -5,7 +5,7 @@ if (isset($_POST['inventario'])) {
     obtenerInventario();
 }
 
-function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $idioma, $numero_resultados) {
+function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $idioma, $numero_resultados,$personaje_id) {
 
 //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
 //Parametros: 
@@ -22,13 +22,11 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
         "inventario_precio_salida",
         "cat_comic_idioma"
     );
-
-
     $salto_catalogo = $pagina_catalogo;
     $contador = $pagina_catalogo;
 
     for ($i = 0; $i < $renglones_catalogo; $i++) {
-        $arrayComics = consulta_catalogo($campos, $contador, $numero_resultados, $compania_id, $idioma);
+        $arrayComics = consulta_catalogo($campos, $contador, $numero_resultados, $compania_id, $idioma, $personaje_id);
 
         echo "<div class='row' id='$i'>";
         for ($j = 0; $j < count($arrayComics); $j++) {
@@ -84,7 +82,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
     $_SESSION['inventario'] = $inventarioArray;
 }
 
-function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) {
+function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, $personaje_id) {
 //FUNCION QUE GENERA LA CONSULTA EN LA BASE PARA LLENAR EL CATALOGO
 //Parametros:
 //$camposArray = Arreglo de strings con los nombres de los campos que queremos obtener
@@ -121,7 +119,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
     
     INNER JOIN personajes as PERS ON CATALOGO.cat_comic_personaje_id = PERS.personaje_id ";
 
-    if ($idioma == 0 && $compania_id == 0) {
+    if ($idioma == 0 && $compania_id == 0 && $personaje_id == 0) {
         $queryCatalogoComicsCondicion = "
             WHERE
                 CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1 AND INV.inventario_activo = 1
@@ -129,7 +127,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
             LIMIT $salto, $rango";
     } 
     else {
-        $queryCatalogoComicsCondicion = generaQueryPorIdioma($idioma, $compania_id, $salto, $rango);
+        $queryCatalogoComicsCondicion = generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id);
     }
 
     //echo $queryCatalogoComics . $queryCatalogoComicsCondicion;
@@ -153,7 +151,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma) 
     return $catalogoArray;
 }
 
-function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango) {
+function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id) {
     switch ($idioma) {
         //1 PARA INGLES
         case 1:
@@ -164,14 +162,23 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango) {
                     AND INV.inventario_existente = 1 
                     AND INV.inventario_activo = 1
                     AND CATALOGO.cat_comic_idioma = 'ing'";
-            if ($compania_id == 0) {
-                $queryCatalogoComicsCondicion = $query . " ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango ";
-            } else {
-                $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id
-                    ORDER BY INV.inventario_fecha_entrada DESC
+            if ($compania_id == 0 ) {
+                $queryCatalogoComicsCondicion = $query . " ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+            } 
+            else {
+                if($personaje_id == 0){
+                    $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
                     LIMIT $salto, $rango";
+                }
+                else{
+                $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_id = $personaje_id AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
+                    LIMIT $salto, $rango";
+                }
             }
             break;
+        //2 PARA ESPAÑOL LATINO DE SANGRE CALIENTE
         case 2:
             $query = "
                 WHERE
@@ -180,23 +187,44 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango) {
                     AND INV.inventario_existente = 1 
                     AND INV.inventario_activo = 1
                     AND CATALOGO.cat_comic_idioma = 'esp'";
-            if ($compania_id == 0) {
+            if ($compania_id == 0 ) {
                 $queryCatalogoComicsCondicion = $query . "ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
-            } else {
-                $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
+            } 
+            else {
+                if($personaje_id == 0){
+                    $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
                     LIMIT $salto, $rango";
+                }
+                else{
+                $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_id = $personaje_id AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
+                    LIMIT $salto, $rango";
+                }
             }
             break;
         default:
-            $queryCatalogoComicsCondicion = "
+            $query = "
                 WHERE
                     CATALOGO.cat_comic_activo = 1 
                     AND CATALOGO.cat_comic_copias > 0 
                     AND INV.inventario_existente = 1 
-                    AND INV.inventario_activo = 1
-                    AND PERS.personaje_compania_id = $compania_id
-                ORDER BY INV.inventario_fecha_entrada DESC
-                LIMIT $salto, $rango";
+                    AND INV.inventario_activo = 1";
+            if ($compania_id == 0 ) {
+                $queryCatalogoComicsCondicion = $query . "ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+            } 
+            else {
+                if($personaje_id == 0){
+                    $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
+                    LIMIT $salto, $rango";
+                }
+                else{
+                $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_id = $personaje_id AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
+                    LIMIT $salto, $rango";
+                }
+            }
             break;
     }
     return $queryCatalogoComicsCondicion;
@@ -311,7 +339,7 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma) {
                 break;
         }
     }
-
+    
     //echo "$queryCatalogoComics" . "$queryCatalogoComicsCondicion";
 
     $queryResultado = mysql_query("$queryCatalogoComics" . "$queryCatalogoComicsCondicion");
@@ -321,4 +349,119 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma) {
         $total = $num;
     }
     return $total;
+}
+
+function generaCategorias($idioma,$compania_id){
+    if($compania_id == 0){
+        $queryCompanias = "SELECT * FROM companias WHERE compania_activo=1";
+        $queryResultado = mysql_query($queryCompanias);
+        $num = mysql_num_rows($queryResultado);
+        for($i = 0; $i<$num; $i++){
+            $compania_id_categoria = mysql_result($queryResultado, $i, "compania_id");
+            $compania_nombre_categoria = mysql_result($queryResultado, $i, "compania_nombre");
+            //echo "COMPAÑIA: ".$compania_nombre_categoria;
+            echo "<div class='sidebar-module'>
+                  <h4>$compania_nombre_categoria</h4>
+                  <ol class='list-unstyled' id='$compania_nombre_categoria'>";
+            $categorias = cargarCategorias($idioma, $compania_id_categoria);
+            for($j = 0; $j<count($categorias); $j++){
+                //echo $categorias[$j];
+                $cat = $categorias[$j];
+                echo "
+                    <li><a href='./Catalogo.php?idioma=$idioma&compania_id=$compania_id&personaje_id=$cat[personaje_id]'>$cat[personaje_nombre]</a></li>";   
+            }
+            echo "</ol>
+                </div>";
+        }
+    }
+    else{
+        $queryCompanias = "SELECT * FROM companias WHERE compania_activo=1 AND compania_id=$compania_id";
+        $queryResultado = mysql_query($queryCompanias);
+        $num = mysql_num_rows($queryResultado);
+        for($i = 0; $i<$num; $i++){
+            $compania_id_categoria = mysql_result($queryResultado, $i, "compania_id");
+            $compania_nombre_categoria = mysql_result($queryResultado, $i, "compania_nombre");
+            //echo "COMPAÑIA: ".$compania_nombre_categoria;
+            echo "<div class='sidebar-module'>
+                  <h4>$compania_nombre_categoria</h4>
+                  <ol class='list-unstyled' id='$compania_nombre_categoria'>";
+            $categorias = cargarCategorias($idioma, $compania_id_categoria);
+            for($j = 0; $j<count($categorias); $j++){
+                //echo $categorias[$j];
+                $cat = $categorias[$j];
+                echo "
+                    <li><a href='./Catalogo.php?idioma=$idioma&compania_id=$compania_id&personaje_id=$cat[personaje_id]'>$cat[personaje_nombre]</a></li>";   
+            }
+            echo "</ol>
+                </div>";
+        }
+    }
+}
+
+function cargarCategorias($idioma,$compania_id){ 
+    $queryCategorias = "
+        select PERS.personaje_nombre, PERS.personaje_id from inventario as INV
+        inner join cat_comics as CAT 
+            ON CAT.cat_comic_unique_id = INV.inventario_cat_comic_unique_id
+        inner join personajes as PERS
+            ON CAT.cat_comic_personaje_id = PERS.personaje_id";
+        
+    if ($idioma == 0) {
+        $queryCategoriasCondicion = " WHERE
+                CAT.cat_comic_activo = 1 
+                AND CAT.cat_comic_copias > 0 
+                AND INV.inventario_existente = 1 
+                AND INV.inventario_activo = 1
+                AND PERS.personaje_compania_id = $compania_id GROUP BY PERS.personaje_id";
+    }
+    else{
+        switch ($idioma) {
+        //1 PARA INGLES
+        case 1:
+            $query = " 
+                WHERE
+                    CAT.cat_comic_activo = 1 
+                    AND CAT.cat_comic_copias > 0 
+                    AND INV.inventario_existente = 1 
+                    AND INV.inventario_activo = 1
+                    AND CAT.cat_comic_idioma = 'ing'";
+            if ($compania_id == 0) {
+                $queryCategoriasCondicion = $query." GROUP BY PERS.personaje_id";
+            } 
+            else {
+                $queryCategoriasCondicion = $query . 
+                    " AND PERS.personaje_compania_id = $compania_id GROUP BY PERS.personaje_id";
+            }
+            break;
+        case 2:
+                $query = " 
+                WHERE
+                    CAT.cat_comic_activo = 1 
+                    AND CAT.cat_comic_copias > 0 
+                    AND INV.inventario_existente = 1 
+                    AND INV.inventario_activo = 1
+                    AND CAT.cat_comic_idioma = 'esp'";
+                if ($compania_id == 0 && $personaje_id ==0) {
+                    $queryCategoriasCondicion = $query." GROUP BY PERS.personaje_id";
+                } else {
+                    $queryCategoriasCondicion = $query . 
+                        " AND PERS.personaje_compania_id = $compania_id GROUP BY PERS.personaje_id";
+                }
+                break;
+        }
+    }
+    $queryResultado = mysql_query($queryCategorias.$queryCategoriasCondicion);
+    
+    //echo $queryCategorias.$queryCategoriasCondicion." ORDER BY 1";
+    $num = mysql_num_rows($queryResultado);
+    
+    if($num > 0){
+        for ($i = 0; $i < $num; $i++) {
+            $categoria[] = array( "personaje_nombre" => obtenerResultado2("personaje_nombre", $i, $queryResultado),
+                                   "personaje_id" => obtenerResultado2("personaje_id", $i, $queryResultado)
+                );
+        }
+    }
+    
+    return $categoria;
 }

@@ -28,6 +28,12 @@ if(empty($_GET['idioma'])){
  else {
     $idioma = $_GET['idioma'];
 }
+if(empty($_GET['personaje_id'])){
+    $personaje_id = 0;
+}
+ else {
+    $personaje_id = $_GET['personaje_id'];
+}
 
 ?>
 
@@ -206,24 +212,10 @@ window.fbAsyncInit = function() {
                 </div>--><br>
                 <h4>Categorías</h4>
                 <hr>
-                <div class="sidebar-module">
-                  <h4>DC</h4>
-                  <ol class="list-unstyled" id="marvel">
-                    <li><a href="#">Batman</a></li>
-                    <li><a href="#">Catwoman</a></li>
-                    <li><a href="#">Flash</a></li>
-                    <li><a href="#">Green Lantern</a></li>
-                  </ol>
-                </div>
-                <div class="sidebar-module">
-                  <h4>Marvel</h4>
-                  <ol class="list-unstyled" id="marvel">
-                    <li><a href="#">Avengers</a></li>
-                    <li><a href="#">Captain America</a></li>
-                    <li><a href="#">Daredevil</a></li>
-                    <li><a href="#">Spiderman</a></li>
-                  </ol>
-                </div>
+                <?php
+                    generaCategorias($idioma,$compania_id);
+                ?>
+                
               </div>
               <div class="col-sm-12 col-md-10">
                 <div class="row">
@@ -243,7 +235,7 @@ window.fbAsyncInit = function() {
                             //Parametros: 
                             //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                             //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-                            cargarCatalogo($pagina,4,$compania_id,$idioma, 3);
+                            cargarCatalogo($pagina,4,$compania_id,$idioma, 3,$personaje_id);
                             //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
                         ?>
                     </div>
