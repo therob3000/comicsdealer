@@ -252,7 +252,7 @@ window.fbAsyncInit = function() {
                         //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
                         //Parametros: 
                         //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
-                        paginacion($pagina);
+                        paginacion($pagina, $compania_id, $idioma);
                     ?>
                     
                   </div>
