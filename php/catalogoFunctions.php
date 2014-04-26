@@ -286,14 +286,14 @@ function paginacion($pagina_paginacion, $compania_id, $idioma, $personaje_id) {
         if ($pagina_paginacion + 12 >= obtenerTotalComicsPaginacion($compania_id, $idioma)) {
             $anterior = $pagina_paginacion - 12;
             echo "<ul class='pager'>
-                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idiomapersonaje_id=$personaje_id'>Anterior</a></li>
+                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idioma&personaje_id=$personaje_id'>Anterior</a></li>
                   </ul>";
         } else {
             $siguiente = $pagina_paginacion + 12;
             $anterior = $pagina_paginacion - 12;
             echo "<ul class='pager'>
-                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idiomapersonaje_id=$personaje_id'>Anterior</a>
-                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&compania_id=$compania_id&idioma=$idiomapersonaje_id=$personaje_id'>Siguiente</a></li>
+                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idioma&personaje_id=$personaje_id'>Anterior</a>
+                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&compania_id=$compania_id&idioma=$idioma&personaje_id=$personaje_id'>Siguiente</a></li>
                  </ul>";
         }
     }
