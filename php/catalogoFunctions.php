@@ -122,8 +122,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, 
     if ($idioma == 0 && $compania_id == 0 && $personaje_id == 0) {
         $queryCatalogoComicsCondicion = "
             WHERE
-                CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1 AND INV.inventario_activo = 1
-                ORDER BY INV.inventario_fecha_entrada DESC
+                CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1 AND INV.inventario_activo = 1 ORDER BY INV.inventario_fecha_entrada DESC
             LIMIT $salto, $rango";
     } 
     else {
@@ -163,7 +162,14 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                     AND INV.inventario_activo = 1
                     AND CATALOGO.cat_comic_idioma = 'ing'";
             if ($compania_id == 0 ) {
-                $queryCatalogoComicsCondicion = $query . " ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+                if($personaje_id == 0){
+                    $queryCatalogoComicsCondicion = $query . " ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+                }
+                else{
+                    $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_id = $personaje_id ORDER BY INV.inventario_fecha_entrada DESC
+                    LIMIT $salto, $rango";
+                }
             } 
             else {
                 if($personaje_id == 0){
@@ -188,7 +194,14 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                     AND INV.inventario_activo = 1
                     AND CATALOGO.cat_comic_idioma = 'esp'";
             if ($compania_id == 0 ) {
-                $queryCatalogoComicsCondicion = $query . "ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+                if($personaje_id == 0){
+                    $queryCatalogoComicsCondicion = $query . " ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+                }
+                else{
+                    $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_id = $personaje_id ORDER BY INV.inventario_fecha_entrada DESC
+                    LIMIT $salto, $rango";
+                }
             } 
             else {
                 if($personaje_id == 0){
@@ -211,7 +224,14 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                     AND INV.inventario_existente = 1 
                     AND INV.inventario_activo = 1";
             if ($compania_id == 0 ) {
-                $queryCatalogoComicsCondicion = $query . "ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+                if($personaje_id == 0){
+                    $queryCatalogoComicsCondicion = $query . " ORDER BY INV.inventario_fecha_entrada DESC LIMIT $salto, $rango";
+                }
+                else{
+                    $queryCatalogoComicsCondicion = $query . 
+                        " AND PERS.personaje_id = $personaje_id ORDER BY INV.inventario_fecha_entrada DESC
+                    LIMIT $salto, $rango";
+                }
             } 
             else {
                 if($personaje_id == 0){
@@ -254,26 +274,26 @@ function obtenerInventario() {
     echo json_encode($json);
 }
 
-function paginacion($pagina_paginacion, $compania_id, $idioma) {
+function paginacion($pagina_paginacion, $compania_id, $idioma, $personaje_id) {
     if ($pagina_paginacion == 0) {
         if ($pagina_paginacion + 12 <= obtenerTotalComicsPaginacion($compania_id, $idioma)) {
             $siguiente = $pagina_paginacion + 12;
             echo "<ul class='pager'>
-                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&compania_id=$compania_id&idioma=$idioma'>Siguiente</a></li>
+                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&compania_id=$compania_id&idioma=$idioma&personaje_id=$personaje_id'>Siguiente</a></li>
                   </ul>";
         }
     } else {
         if ($pagina_paginacion + 12 >= obtenerTotalComicsPaginacion($compania_id, $idioma)) {
             $anterior = $pagina_paginacion - 12;
             echo "<ul class='pager'>
-                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idioma'>Anterior</a></li>
+                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idiomapersonaje_id=$personaje_id'>Anterior</a></li>
                   </ul>";
         } else {
             $siguiente = $pagina_paginacion + 12;
             $anterior = $pagina_paginacion - 12;
             echo "<ul class='pager'>
-                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idioma'>Anterior</a>
-                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&compania_id=$compania_id&idioma=$idioma'>Siguiente</a></li>
+                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&compania_id=$compania_id&idioma=$idiomapersonaje_id=$personaje_id'>Anterior</a>
+                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&compania_id=$compania_id&idioma=$idiomapersonaje_id=$personaje_id'>Siguiente</a></li>
                  </ul>";
         }
     }
