@@ -248,7 +248,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
         <div class="catalogo">
           <div class="row">
             <div class="col-lg-12" >
-              <h2 style="margin-bottom: 0px;">Tambien puedes revisar nuestro <strong>Catálogo</strong>
+              <h2 style="margin-bottom: 0px;">Tambien puedes revisar el resto de nuestro <strong>Catálogo</strong>
               <br><small>La pura nata concentrada de los cómics</small></h2>
             </div>  
           </div>
@@ -256,7 +256,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
           <hr></hr>
           <div class="row" id="catalogo_comics">
               <?php
-                cargarCatalogo(0,2,0,0,3);
+                cargarCatalogo(0,2,obtenerCompania(),0,3,0);
                ?>
             
           </div><!-- /.row1 -->

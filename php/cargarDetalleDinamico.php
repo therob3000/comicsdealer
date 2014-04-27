@@ -8,6 +8,7 @@
 						"cat_comic_titulo",
 						"cat_comic_descripcion",
 						"cat_comic_personaje",
+                        "compania_id",
 						"cat_comic_numero_ejemplar",
 						"cat_comic_imagen_url",
 						"inventario_precio_salida",
@@ -39,6 +40,12 @@ function obtenerDatos($comic_id){
 		personajes
 		WHERE
 		personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
+    (SELECT 
+		personaje_compania_id
+		FROM
+		personajes
+		WHERE
+		personaje_id = CATALOGO.cat_comic_personaje_id) as compania_id,
 CATALOGO.cat_comic_numero_ejemplar,
 CATALOGO.cat_comic_imagen_url,
 INV.inventario_precio_salida,
@@ -130,4 +137,9 @@ function obtenerPrecio(){
 function obtenerNumero(){
 	global $rowArray;
 	return $rowArray["cat_comic_numero_ejemplar"];
+}
+
+function obtenerCompania(){
+    global $rowArray;
+    return $rowArray["compania_id"];
 }

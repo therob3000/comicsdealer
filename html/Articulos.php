@@ -231,8 +231,9 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
               
               <hr></hr>
               <?php
-              cargarCatalogo(0, 3);
-              ?>
+                cargarCatalogo(0,1,1,0,3,0);
+                cargarCatalogo(0,1,2,0,3,0);
+               ?>
               <div class="row">             
                 <div class="col-lg-4 col-lg-offset-8"> 
                   <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>

@@ -34,6 +34,12 @@ if(empty($_GET['personaje_id'])){
  else {
     $personaje_id = $_GET['personaje_id'];
 }
+if(empty($_GET['busqueda'])){
+    $busqueda = "0";
+}
+ else {
+    $busqueda = $_GET['busqueda'];
+}
 
 ?>
 
