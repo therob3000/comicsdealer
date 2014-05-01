@@ -497,3 +497,5 @@ function cargarCategorias($idioma,$compania_id){
     
     return $categoria;
 }
+
+
