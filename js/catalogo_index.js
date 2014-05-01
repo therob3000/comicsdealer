@@ -8,6 +8,9 @@ $(document).ready(function(){
         registroFacebook();
         registroCorreo();
 	finalizarCompra();
+        busquedaporPersonaje();
+        busquedaporTitulo();
+        busquedaporDescripcion();
 });
 
 function verificaSesion(pagina){
@@ -121,4 +124,25 @@ function botonComprarNologin(){
 	$(".btn-comprar").on("click", function(){
 		$('#myModal').modal('show');
 	});
+}
+
+function busquedaporPersonaje(){
+    $('#busqueda_personaje').on("click",function(){
+        parametro = $('#txtBusqueda').val();
+        window.location.href = "/html/Catalogo.php?busqueda=1&parametro_busqueda="+parametro;
+    });
+}
+
+function busquedaporTitulo(){
+    $('#busqueda_titulo').on("click", function(){
+        parametro = $('#txtBusqueda').val();
+        window.location.href = "/html/Catalogo.php?busqueda=2&parametro_busqueda="+parametro;
+    });
+}
+
+function busquedaporDescripcion(){
+    $('#busqueda_descripcion').on("click", function(){
+        parametro = $('#txtBusqueda').val();
+        window.location.href = "/html/Catalogo.php?busqueda=3&parametro_busqueda="+parametro;
+    });
 }

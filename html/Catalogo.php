@@ -35,10 +35,17 @@ if(empty($_GET['personaje_id'])){
     $personaje_id = $_GET['personaje_id'];
 }
 if(empty($_GET['busqueda'])){
-    $busqueda = "0";
+    $busqueda = 0;
 }
  else {
     $busqueda = $_GET['busqueda'];
+}
+
+if(empty($_GET['parametro_busqueda'])){
+    $parametro_busqueda = "0";
+}
+else{
+    $parametro_busqueda = $_GET['parametro_busqueda'];
 }
 
 ?>
@@ -241,7 +248,13 @@ window.fbAsyncInit = function() {
                             //Parametros: 
                             //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                             //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-                            cargarCatalogo($pagina,4,$compania_id,$idioma, 3,$personaje_id);
+                            if($busqueda != 0){
+                                cargarCatalogoporBusqueda($pagina, 4, 3, $busqueda, $parametro_busqueda);
+                            }
+                            else{
+                                cargarCatalogo($pagina,4,$compania_id,$idioma, 3,$personaje_id);
+                            }
+                            
                             //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
                         ?>
                     </div>

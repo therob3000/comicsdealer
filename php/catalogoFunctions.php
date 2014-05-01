@@ -82,6 +82,83 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
     $_SESSION['inventario'] = $inventarioArray;
 }
 
+function cargarCatalogoporBusqueda($pagina_catalogo, $renglones_catalogo, $numero_resultados,$busqueda,$parametro_busqueda) {
+
+//FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+//Parametros: 
+//$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
+//$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
+    $inventarioArray = array();
+
+    $campos = array("inventario_id",
+        "cat_comic_titulo",
+        "cat_comic_descripcion",
+        "cat_comic_personaje",
+        "cat_comic_numero_ejemplar",
+        "cat_comic_imagen_url",
+        "inventario_precio_salida",
+        "cat_comic_idioma"
+    );
+    $salto_catalogo = $pagina_catalogo;
+    $contador = $pagina_catalogo;
+
+    for ($i = 0; $i < $renglones_catalogo; $i++) {
+        $arrayComics = consulta_especifica($busqueda, $parametro_busqueda, $campos, $contador, $numero_resultados);
+
+        echo "<div class='row' id='$i'>";
+        for ($j = 0; $j < count($arrayComics); $j++) {
+            $arrayComic2 = $arrayComics[$j];
+
+            $inventario_id = $arrayComic2[$campos[0]];
+            $comic_titulo = $arrayComic2[$campos[1]];
+            $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 90);
+            $comic_personaje = $arrayComic2[$campos[3]];
+            $comic_numero = $arrayComic2[$campos[4]];
+            $comic_imagen = $arrayComic2[$campos[5]];
+            $comic_precio = $arrayComic2[$campos[6]];
+            $comic_idioma = $arrayComic2[$campos[7]];
+            if ($comic_idioma == "ing") {
+                $comic_idioma = "Inglés";
+            } else {
+                $comic_idioma = "Español";
+            }
+
+            $inventarioArray[] = $inventario_id;
+
+
+            //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
+
+            echo "<div align='center' class='cuadro col-xs-12 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
+
+                                        <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
+                                            <img id='cat_imagen' src=$comic_imagen style='max-width: 60%;' class='img-rounded img-responsive' alt='$comic_titulo'>
+                                        </a>
+                                        <h4 id='cat_personaje'>$comic_personaje<small> $comic_idioma</small></h4>
+                                        <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
+                                        <p id='cat_descripcion' class='catal' style='font-size: 10pt'>" . $comic_descripcion . " ...</p>
+                                        <div class='row'>
+                                            <div class='col-sm-12 col-xs-12'>
+                                                <h4 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h4>
+                                            </div>";
+
+            if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'></div>
+                                        <div id='boton_eliminar'></div>
+                                        <p></p>
+                                    </div></div>";
+            } else {
+                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'><button class='btn btn-success btn-comprar' role='button'>Comprar</button></div>
+                                        
+                                        <p></p>
+                                    </div></div>";
+            }
+        }
+        echo "</div>";
+        $contador+=3;
+    }
+    $_SESSION['inventario'] = $inventarioArray;
+}
+
 function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, $personaje_id) {
 //FUNCION QUE GENERA LA CONSULTA EN LA BASE PARA LLENAR EL CATALOGO
 //Parametros:
@@ -92,32 +169,7 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, 
     $catalogoArray = array();
     $rowArray = array();
 
-    $queryCatalogoComics = "SELECT 
-    INV.inventario_id,
-    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
-    (SELECT datos_comic_descripcion FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_descripcion,
-    (SELECT personaje_nombre FROM personajes WHERE personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
-    CATALOGO.cat_comic_numero_ejemplar,
-    CATALOGO.cat_comic_imagen_url,
-    INV.inventario_precio_salida,
-    CATALOGO.cat_comic_idioma,
-    PERS.personaje_compania_id
-    FROM cat_comics as CATALOGO
-    INNER JOIN
-    (SELECT 
-        inventario_id,
-        max(inventario_precio_entrada) as inventario_max_precio_entrada,
-        inventario_precio_salida,
-        inventario_cat_comic_unique_id,
-        inventario_existente,
-        inventario_fecha_entrada,
-        inventario_activo
-    FROM
-        inventario
-    GROUP BY inventario_cat_comic_unique_id 
-    ) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
-    
-    INNER JOIN personajes as PERS ON CATALOGO.cat_comic_personaje_id = PERS.personaje_id ";
+    $queryCatalogoComics = generaQueryGeneral();
 
     if ($idioma == 0 && $compania_id == 0 && $personaje_id == 0) {
         $queryCatalogoComicsCondicion = "
@@ -148,6 +200,152 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, 
         $catalogoArray = array();
     }
     return $catalogoArray;
+}
+
+function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salto, $rango){
+    $queryGeneral = generaQueryGeneral2();
+    
+    switch ($busqueda) {
+        //Personaje
+        case 1:
+            $query = $queryGeneral . " WHERE cat_comic_personaje LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
+            $queryResultado = mysql_query($query);
+            
+            //echo $query;
+            $num = mysql_num_rows($queryResultado);
+            
+            if ($num > 0) {
+                for ($i = 0; $i < $num; $i++) {
+                    $rowArray = array();
+                    for ($j = 0; $j < count($camposArray); $j++) {
+
+                        $rowArray[$camposArray[$j]] = obtenerResultado2($camposArray[$j], $i, $queryResultado);
+                    }
+                    $catalogoArray[] = $rowArray;
+                }
+            } 
+            else {
+                $catalogoArray = array();
+            }
+            
+            return $catalogoArray;
+
+            break;
+        case 2:
+            $query = $queryGeneral . " WHERE cat_comic_titulo LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
+            $queryResultado = mysql_query($query);
+            
+            //echo $query;
+            $num = mysql_num_rows($queryResultado);
+            
+            if ($num > 0) {
+                for ($i = 0; $i < $num; $i++) {
+                    $rowArray = array();
+                    for ($j = 0; $j < count($camposArray); $j++) {
+
+                        $rowArray[$camposArray[$j]] = obtenerResultado2($camposArray[$j], $i, $queryResultado);
+                    }
+                    $catalogoArray[] = $rowArray;
+                }
+            } 
+            else {
+                $catalogoArray = array();
+            }
+            
+            return $catalogoArray;
+
+            break;
+        case 3:
+            $query = $queryGeneral . " WHERE cat_comic_descripcion LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
+            $queryResultado = mysql_query($query);
+            
+            //echo $query;
+            $num = mysql_num_rows($queryResultado);
+            
+            if ($num > 0) {
+                for ($i = 0; $i < $num; $i++) {
+                    $rowArray = array();
+                    for ($j = 0; $j < count($camposArray); $j++) {
+
+                        $rowArray[$camposArray[$j]] = obtenerResultado2($camposArray[$j], $i, $queryResultado);
+                    }
+                    $catalogoArray[] = $rowArray;
+                }
+            } 
+            else {
+                $catalogoArray = array();
+            }
+            
+            return $catalogoArray;
+
+            break;
+
+        default:
+            break;
+    }
+}
+
+function generaQueryGeneral(){
+    $queryCatalogoComics = "SELECT 
+    INV.inventario_id,
+    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
+    (SELECT datos_comic_descripcion FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_descripcion,
+    (SELECT personaje_nombre FROM personajes WHERE personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
+    CATALOGO.cat_comic_numero_ejemplar,
+    CATALOGO.cat_comic_imagen_url,
+    INV.inventario_precio_salida,
+    CATALOGO.cat_comic_idioma,
+    PERS.personaje_compania_id
+    FROM cat_comics as CATALOGO
+    INNER JOIN
+    (SELECT 
+        inventario_id,
+        max(inventario_precio_entrada) as inventario_max_precio_entrada,
+        inventario_precio_salida,
+        inventario_cat_comic_unique_id,
+        inventario_existente,
+        inventario_fecha_entrada,
+        inventario_activo
+    FROM
+        inventario
+    GROUP BY inventario_cat_comic_unique_id 
+    ) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
+    
+    INNER JOIN personajes as PERS ON CATALOGO.cat_comic_personaje_id = PERS.personaje_id ";
+    
+    return $queryCatalogoComics;
+}
+
+function generaQueryGeneral2(){
+    $queryCatalogoComics = "SELECT * FROM (
+        SELECT
+    INV.inventario_id,
+    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
+    (SELECT datos_comic_descripcion FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_descripcion,
+    (SELECT personaje_nombre FROM personajes WHERE personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
+    CATALOGO.cat_comic_numero_ejemplar,
+    CATALOGO.cat_comic_imagen_url,
+    INV.inventario_precio_salida,
+    CATALOGO.cat_comic_idioma,
+    PERS.personaje_compania_id
+    FROM cat_comics as CATALOGO
+    INNER JOIN
+    (SELECT 
+        inventario_id,
+        max(inventario_precio_entrada) as inventario_max_precio_entrada,
+        inventario_precio_salida,
+        inventario_cat_comic_unique_id,
+        inventario_existente,
+        inventario_fecha_entrada,
+        inventario_activo
+    FROM
+        inventario
+    GROUP BY inventario_cat_comic_unique_id 
+    ) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
+    
+    INNER JOIN personajes as PERS ON CATALOGO.cat_comic_personaje_id = PERS.personaje_id ) as COMICS";
+    
+    return $queryCatalogoComics;
 }
 
 function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id) {

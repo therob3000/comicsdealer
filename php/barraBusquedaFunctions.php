@@ -40,13 +40,13 @@ function cargarCodigoInicialBarra(){
     <div class='col-md-12'>
       <form role='search'>
         <div class='input-group'>
-          <input type='search' class='form-control input-sm' placeholder='Busqueda específica'>
+          <input type='search' class='form-control input-sm' placeholder='Busqueda específica' id='txtBusqueda'>
           <div class='input-group-btn'>
             <button type='button' class='btn btn-default dropdown-toggle btn-sm' data-toggle='dropdown'>Buscar <span class='caret'></span></button>
             <ul class='dropdown-menu pull-right' role='menu'>
-              <li><a href='#'>Personaje</a></li>
-              <li><a href='#'>Título</a></li>
-              <li><a href='#'>Descripción</a></li>
+              <li id='busqueda_personaje'><a>Personaje</a></li>
+              <li id='busqueda_titulo'><a>Título</a></li>
+              <li id='busqueda_descripcion'><a>Descripción</a></li>
               <li><a href='#'>Con el texto</a></li>
             </ul>
           </div>
