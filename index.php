@@ -16,7 +16,7 @@ session_start();
   <link href="/img/ComicDminiFB.jpg" rel="image_src" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="comics, cómics, bootstrap, marvel, dc, televisa, vid, méxico, bootstrap">
+  <meta name="keywords" content="comics, cómics, tienda de comics en mexico, tienda online de comics, bootstrap, marvel, dc, televisa, vid, méxico, bootstrap">
   <meta name="description" content="Comics Dealer es una pagina hecha por desarrolladores mexicanos que se especializa en buscar y encontrar cómics en México, que cuenta con un catalogo de cómics tanto en ingles como en español. ¡Los buscamos por ti!">
 
   <!-- Bootstrap -->
@@ -53,6 +53,10 @@ session_start();
   <style>
     .container {
       background: url(img/AVXM31.jpg) no-repeat center center fixed;
+      background-size: cover;
+    }
+    body {
+      background: url(/img/AVXM3.jpg) no-repeat center center fixed;
       background-size: cover;
     }
   </style>
@@ -130,8 +134,25 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
     <!--<div class="jumbotron">-->
     <div class="catalogo">
       <div class="row">
-        <div class="col-sm-9">
-          <img style="height: 150px;" src="img/ComicDLogo-10.svg" class="img-responsive" />
+        <div class="col-sm-6">
+          <div id="carousel-logo" class="carousel slide logo" data-ride="carousel" data-interval="6000">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-logo" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-logo" data-slide-to="1" class=""></li>
+              <li data-target="#carousel-logo" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item">
+                <img style="height: 130px;" src="img/ComicDLogo-09.svg" class="img-responsive" />
+              </div>
+              <div class="item active">
+                <img style="height: 130px;" src="img/ComicDLogo-09.svg" class="img-responsive" />
+              </div>
+              <div class="item">
+                <img style="height: 130px;" src="img/ComicDLogo-09.svg" class="img-responsive" />
+              </div>
+            </div>
+          </div>
         </div>
         <!--Aqui se inserta el contenido Principal-->
         <div id="layout"></div>
@@ -165,7 +186,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
       </div>
 
-      <br><br>
+      <br>
       <div id="searchnav">
         <?php
         cargarBarraBusqueda();
@@ -173,10 +194,10 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
       </div>
 
       <div class="row">
-        <div class="col-lg-12" >
+        <div class="col-sm-12">
           <h3 style="margin-bottom: 0px;">Novedades en el Catálogo Privado de <strong>Dr. Death</strong>
             <br><small>La pura novedad en Comics Dealer</small></h3>
-        </div>  
+        </div>
       </div>
 
       <div class="row">
@@ -199,6 +220,9 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
               </a>
             </div>  
           </div>
+        </div>
+        <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
+          Anuncio
         </div>
       </div>
 

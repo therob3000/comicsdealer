@@ -54,7 +54,7 @@ button,input,select[multiple],textarea{background-image:none;}
 a{color:#428bca;text-decoration:none;}a:hover,a:focus{color:#2a6496;text-decoration:underline;}
 a:focus{outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
 img{vertical-align:middle;}
-.img-responsive{display:block;max-width:100%;/* height:auto; */}
+.img-responsive{display:block;max-width: 100%;/* height:auto; */}
 .img-rounded{border-radius:6px;}
 .img-thumbnail{padding:4px;line-height:1.428571429;background-color:#ffffff;border:1px solid #dddddd;border-radius:4px;-webkit-transition:all 0.2s ease-in-out;transition:all 0.2s ease-in-out;display:inline-block;max-width:100%;height:auto;}
 .img-circle{border-radius:50%;}
