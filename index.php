@@ -135,21 +135,21 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
     <div class="catalogo">
       <div class="row">
         <div class="col-sm-6">
-          <div id="carousel-logo" class="carousel slide logo" data-ride="carousel" data-interval="6000">
+          <div id="carousel-logo" class="carousel slide logo" data-ride="carousel" data-interval="7000">
             <ol class="carousel-indicators">
               <li data-target="#carousel-logo" data-slide-to="0" class="active"></li>
               <li data-target="#carousel-logo" data-slide-to="1" class=""></li>
               <li data-target="#carousel-logo" data-slide-to="2" class=""></li>
             </ol>
             <div class="carousel-inner">
-              <div class="item">
-                <img style="height: 130px;" src="img/ComicDLogo-09.svg" class="img-responsive" />
-              </div>
               <div class="item active">
-                <img style="height: 130px;" src="img/ComicDLogo-09.svg" class="img-responsive" />
+                <img style="height: 130px;" src="img/Carousel-Logo-1.svg" class="img-responsive" />
               </div>
               <div class="item">
-                <img style="height: 130px;" src="img/ComicDLogo-09.svg" class="img-responsive" />
+                <img style="height: 130px;" src="img/Carousel-Logo-2.svg" class="img-responsive" />
+              </div>
+              <div class="item">
+                <img style="height: 130px;" src="img/Carousel-Logo-3.svg" class="img-responsive" />
               </div>
             </div>
           </div>
