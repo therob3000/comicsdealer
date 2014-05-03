@@ -62,7 +62,7 @@ body {
 .carousel {
   position: relative;
   background-color: #ffffff;
-  height: 350px;
+  height: 326px;
 }
 
 .carousel-control{
@@ -83,6 +83,7 @@ body {
   color: #000;
   position: static;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0);
+  padding-top: 1%;
 }
 
 .carousel-indicators {
