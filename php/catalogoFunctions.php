@@ -58,8 +58,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
 	<a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5 align='center'><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
 	<h5 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h5>
 	<p>
-		<div id='boton_comprar'></div>
-		<div id='boton_eliminar'></div>
+		<a type='button' href='/html/Detalle.php?comic_id=$inventario_id' class='btn btn-success btn-comprar' role='button'>Vagina mojada</a>
 	</p>
 </div>";
            

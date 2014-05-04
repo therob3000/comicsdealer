@@ -13,7 +13,7 @@ function cargarCarouselComics(salto, rango, capa) {
 				$.get(capa, function(data2){
 					$("#carousel_comics").append(data2);
 					$("#carousel_comics").find("#catalogo_comic").attr("id", val.inventario_id);
-					$("#"+val.inventario_id).find('#boton_comprar').html("<button class='btn btn-success btn-comprar' role='button'>Vagina mojada</button>");
+					$("#"+val.inventario_id).find('#boton_comprar').html("<a type='button' href='/html/Detalle.php?comic_id="+val.inventario_id+"' class='btn btn-success btn-comprar' role='button'>Vagina mojada</a>");
 					$("#"+val.inventario_id).find('#cat_detalle').attr('href', "/html/Detalle.php?comic_id="+val.inventario_id);
 					$("#"+val.inventario_id).find("#cat_imagen").attr("src", val.cat_comic_imagen_url);
 					if(val.cat_comic_idioma == "ing"){

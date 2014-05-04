@@ -6,7 +6,7 @@ $(document).ready(function(){
 	modalIniciarSesion();
 	cargarCarouselNologin(0);
 	modalRegistrar();
-	botonComprarNologin();
+	//botonComprarNologin();
 	registroFacebook();
         registroCorreo();
 });
