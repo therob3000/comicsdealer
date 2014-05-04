@@ -226,8 +226,9 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         </div>
       </div>
 
-      <!-- Aquí va lo del artículo más reciente -->
-   <div class="row hidden-xs hidden-sm">
+   <!-- Aquí va lo del artículo más reciente -->
+   <!-- EL ARTICULO ESTA ESTATICO -->
+   <div class="row">
           <div class="col-lg-12" >
               <h3 style="margin-bottom: 0px;">Articulos y noticias de <strong>La liga de la Maldad</strong>
                   <br><small>Reviews, noticias y mas.</small></h3>
@@ -258,7 +259,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
       
       <!--Esta parte sustituye a carousels_index-->
       <!--LOS MAS VENDIDOS, REGLA AUN POR DEFINIR-->
-      <div class="row hidden-xs hidden-sm">
+      <div class="row">
           <div class="col-lg-12" >
               <h3 style="margin-bottom: 0px;">Lo más vendido de las reservas de <strong>Dr. Death</strong>
                   <br><small>La pura nata concentrada de los cómics</small></h3>
@@ -275,8 +276,15 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
           </div>
       </div>
       
+      <div class="row">             
+        <div class="col-lg-4 col-lg-offset-8"> 
+          <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>
+        </div> 
+      </div>
+      
       <!--LOS MAS BUSCADOS-->
-      <div class="row hidden-xs hidden-sm">
+      <!--LOS MAS VENDIDOS, REGLA AUN POR DEFINIR-->
+      <div class="row">
           <div class="col-lg-12" >
               <h3 style="margin-bottom: 0px;">Lo más <strong>buscado</strong> por los verdaderos 
                   <br><small>COLECCIONISTAS</small></h3>
