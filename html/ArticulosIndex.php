@@ -1,10 +1,12 @@
 <?php
 include '../php/conexion.php';
 $con = conexion();
+
 include '../php/catalogoFunctions.php';
 
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
+session_start();
 
 if (empty($_GET['pagina'])){
   $pagina = 0; 
@@ -38,6 +40,7 @@ else{
   <script src="../bootstrap/js/bootstrap.min.js"></script>
   <script src="../js/catalogo.js"></script>
   <script src="../js/login.js"></script>
+  <script src="../js/registro_login.js"></script>
   <script src="../js/articulos_index.js"></script>
   <script type="text/javascript">
 
@@ -74,8 +77,20 @@ else{
         js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));</script>
+      
+      <?php
+      if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+          $html = file_get_contents("layouts/navbar_login_layout.html");
+      } else {
+          $html = file_get_contents("layouts/navbar_nologin_layout.html");
+      }
 
-      <div id="nav_bar"></div>
+
+      $doc = new DOMDocument();
+      $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+      ?>
+
+      <div id="nav_bar"><?php echo $doc->saveHTML(); ?></div>
       <div class="container">
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">

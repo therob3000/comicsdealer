@@ -4,6 +4,7 @@ $(document).ready(function(){
 	cargarArticulos(pagina, 5);
 	//cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
+        botonComprarInit();
 });
 
 function cargarArticulos(salto, rango){
@@ -46,14 +47,16 @@ function verificaSesion(){
 	$.post("../php/verifica_sesion.php",
 		function(data){
 			verifica = data.ver_sesion.estado;
+                        nombre = data.ver_sesion.usuario_nombre;
+                        //SI EL USUARIO INICIO SESION
 			if(verifica == true){
-				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+                                
 				if(data.ver_sesion.usuario_pro != 1){
 					$("#nav_bar").find("#nav_pedido").remove();
 				}
-			}
-			else{
-				$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
+                                $("#nav_bar").find("#botonMenUsuario").append("<span class='glyphicon glyphicon-list-alt'></span> "+nombre);
+				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'><span class='glyphicon glyphicon-shopping-cart'></span> Finalizar Compra <span class='badge' id='compraTotal'></span></button>");
+                                botonComprarInit();
 			}
 		},
 		'json');
@@ -64,5 +67,11 @@ function modalIniciarSesion(){
 	$("#nav_bar").on("click", "#loginButton", function(e){
 		$('#myModal').modal('show');
 	});
+}
+
+function botonComprarInit(){
+	$.post("/php/elementosComprados.php", function(data){
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
 }
 

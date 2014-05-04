@@ -210,7 +210,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 <li data-target="#carousel-comics-dealer" data-slide-to="2" class=""></li>
               </ol>
               <div class="carousel-inner carousels">
-
+                  
               </div>
               <a class="left carousel-control" href="#carousel-comics-dealer" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -227,16 +227,81 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
       </div>
 
       <!-- Aquí va lo del artículo más reciente -->
-      
-      <div id="carousels_index">
-
+   <div class="row hidden-xs hidden-sm">
+          <div class="col-lg-12" >
+              <h3 style="margin-bottom: 0px;">Articulos y noticias de <strong>La liga de la Maldad</strong>
+                  <br><small>Reviews, noticias y mas.</small></h3>
+          </div>  
       </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <li class="media">
+        <a id="img_href" class="pull-left" href="/html/Articulos.php?articulo_id=4">
+          <img id="articulo_imagen" class="media-object" style="width: 100px; height: 150px;" src="http://img4.wikia.nocookie.net/__cb20131107202615/marvel_dc/images/thumb/f/fe/Damian_Son_of_Batman_Vol_1_1.jpg/300px-Damian_Son_of_Batman_Vol_1_1.jpg" alt="...">
+        </a>
+        <div class="media-body">
+        <h2 id="articulo_titulo" class="media-heading">Damian, son of Batman</h2>
+          <p id="articulo_fecha_autor">Miercoles 16 de Abril, 2014 por Dr. Aldo Wolfgang</p>
+          <p id="articulo_resumen" align="justify">En la vida hay cosas que se heredan y otras que se ganan —¿Y la cheyene, ‘apa?—, y bueno, haciendo de lado la camioneta, lo que quiero decir es que muchas veces se piensa que las posesiones de los padres les pertenecen a los hijos por decreto, pero ¿qué pasa cuando no es dinero, empresas, casas, ni nada material, cuando de hecho es un símbolo, que inspira justicia a los que la buscan y terror a quienes violan la ley?, qué pasa cuando hablamos del hijo de <strong>Bruce Wayne —Damian Wayne—</strong>, que no quiere ni más ni menos que el título del caballero de la noche, BATMAN.</p>
+          <div class="row">
+            <div class="col-md-3 col-md-offset-8">
+              <a id="articulo_boton" type="button" href="/html/Articulos.php?articulo_id=4" class="btn btn-info">Seguir Leyendo ...</a>
+            </div>
+          </div>
+          
+        </div>
+      </li>
+
+    </div>
+  </div>
+
+      
+      <!--Esta parte sustituye a carousels_index-->
+      <!--LOS MAS VENDIDOS, REGLA AUN POR DEFINIR-->
+      <div class="row hidden-xs hidden-sm">
+          <div class="col-lg-12" >
+              <h3 style="margin-bottom: 0px;">Lo más vendido de las reservas de <strong>Dr. Death</strong>
+                  <br><small>La pura nata concentrada de los cómics</small></h3>
+          </div>  
+      </div>
+      <div class="row">
+          <div class="col-md-9">
+              <?php
+              cargarCatalogo(0, 1, 0, 0, 3, 0);
+              ?>
+          </div>
+          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
+              Anuncio
+          </div>
+      </div>
+      
+      <!--LOS MAS BUSCADOS-->
+      <div class="row hidden-xs hidden-sm">
+          <div class="col-lg-12" >
+              <h3 style="margin-bottom: 0px;">Lo más <strong>buscado</strong> por los verdaderos 
+                  <br><small>COLECCIONISTAS</small></h3>
+          </div>  
+      </div>
+      <div class="row">
+          <div class="col-md-9">
+              <?php
+              cargarCatalogo(0, 1, 0, 0, 3, 0);
+              ?>
+          </div>
+          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
+              Anuncio
+          </div>
+      </div>
+      
+      <!--<div id="carousels_index">
+
+      </div>-->
 
       <br></br>
 
       <div class="row hidden-md hidden-lg" id="catalogo_comics">
         <?php
-        cargarCatalogo(0, 2, 0, 0, 3);
+            cargarCatalogo(0, 0, 0, 0, 5, 0);
         ?>
       </div><!-- /.row1 -->
 

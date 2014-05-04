@@ -1,7 +1,7 @@
 var nombre;
 $(document).ready(function(){
         verificaSesion();
-	cargarCarousels();
+	//cargarCarousels();
 	cargarPromocionFinDeSemana('index');
 	modalIniciarSesion();
 	cargarCarouselNologin(0);
@@ -67,3 +67,4 @@ function botonComprarInit(){
 			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
 		}, 'json');
 }
+
