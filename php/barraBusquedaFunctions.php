@@ -35,7 +35,7 @@ function cargarBarraBusqueda(){
 }
 
 function cargarCodigoInicialBarra(){
-    echo "<nav class='navbar navbar-default' style='margin-bottom: auto;'>
+    echo "<nav class='navbar navbar-default' style='margin-bottom: auto;background-color: #d2322d;border-color: #ac2925;'>
   <div class='row'>
     <div class='col-md-12'>
       <form role='search'>

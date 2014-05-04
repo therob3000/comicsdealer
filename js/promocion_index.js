@@ -10,7 +10,7 @@ function cargarPromocionFinDeSemana(paginaOrigen){
 				$("#descripcion").text(texto.substr(0, 130)+" ...");
 			
 				if(data.precio_portada != 0){
-					$("#campos_promocion").html("<strike style='color: grey; font-weight: 400;'>$"+data.precio_portada+"</strike><strong style='font-weight: 400;'>  $"+data.precio_oferta+"</strong> <span class='label label-descuento'>-"+data.porcentaje+"%</span>");
+					$("#campos_promocion").html("<strike style='color: grey; font-weight: 400;'>$"+data.precio_portada+"</strike><strong style='font-weight: 400;color: #5cb85c;'>  $"+data.precio_oferta+"</strong> <span class='label label-descuento'>-"+data.porcentaje+"%</span>");
 					//$("#campos_promocion").append("<li id='precio_portada'><strike><strong>Precio de portada: $"+data.precio_portada+"</strong></strike></li>");
 					//$("#campos_promocion").append("<li id='precio_promocion'><strong>Precio de promocion: $"+data.precio_oferta+"</strong></li>");
 				}
