@@ -50,33 +50,46 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
 
 
             //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
+            
+            
+                echo "<div align='center' class='col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
+	<a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 180px' class='img-rounded img-responsive'></a>
+	<h5 id='cat_personaje'>$comic_personaje</h5>
+	<a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5 align='center'><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
+	<h5 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h5>
+	<p>
+		<div id='boton_comprar'></div>
+		<div id='boton_eliminar'></div>
+	</p>
+</div>";
+           
 
-            echo "<div align='center' class='cuadro col-xs-12 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
+//            echo "<div align='center' class='cuadro col-xs-12 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
+//
+//                                        <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
+//                                            <img id='cat_imagen' src=$comic_imagen style='max-width: 60%;' class='img-rounded img-responsive' alt='$comic_titulo'>
+//                                        </a>
+//                                        <h4 id='cat_personaje'>$comic_personaje<small> $comic_idioma</small></h4>
+//                                        <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
+//                                        <p id='cat_descripcion' class='catal' style='font-size: 10pt'>" . $comic_descripcion . " ...</p>
+//                                        <div class='row'>
+//                                            <div class='col-sm-12 col-xs-12'>
+//                                                <h4 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h4>
+//                                            </div>";
 
-                                        <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
-                                            <img id='cat_imagen' src=$comic_imagen style='max-width: 60%;' class='img-rounded img-responsive' alt='$comic_titulo'>
-                                        </a>
-                                        <h4 id='cat_personaje'>$comic_personaje<small> $comic_idioma</small></h4>
-                                        <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
-                                        <p id='cat_descripcion' class='catal' style='font-size: 10pt'>" . $comic_descripcion . " ...</p>
-                                        <div class='row'>
-                                            <div class='col-sm-12 col-xs-12'>
-                                                <h4 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h4>
-                                            </div>";
-
-            if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
-                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'></div>
-                                        <div id='boton_eliminar'></div>
-                                        <p></p>
-                                    </div></div>";
-            } else {
-                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'><button class='btn btn-success btn-comprar' role='button'>Comprar</button></div>
-                                        
-                                        <p></p>
-                                    </div></div>";
-            }
-        }
-        echo "</div>";
+//            if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+//                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'></div>
+//                                        <div id='boton_eliminar'></div>
+//                                        <p></p>
+//                                    </div></div>";
+//            } else {
+//                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'><button class='btn btn-success btn-comprar' role='button'>Comprar</button></div>
+//                                        
+//                                        <p></p>
+//                                    </div></div>";
+//            }
+       }
+       echo "</div>";
         $contador+=3;
     }
     $_SESSION['inventario'] = $inventarioArray;

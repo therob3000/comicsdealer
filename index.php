@@ -266,14 +266,21 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
           </div>  
       </div>
       <div class="row">
+          
           <div class="col-md-9">
+              <div class="panel panel-default">
+              <div class="panel-body">
               <?php
-              cargarCatalogo(0, 1, 0, 0, 3, 0);
+              cargarCatalogo(0, 2, 0, 0, 4, 0);
               ?>
           </div>
-          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
-              Anuncio
+                  
           </div>
+      </div>
+          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
+          Anuncio
+        </div>
+          
       </div>
       
       <div class="row">             
@@ -290,16 +297,12 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                   <br><small>COLECCIONISTAS</small></h3>
           </div>  
       </div>
-      <div class="row">
-          <div class="col-md-9">
-              <?php
-              cargarCatalogo(0, 1, 0, 0, 3, 0);
-              ?>
-          </div>
-          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
+      
+          
+<!--          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
               Anuncio
-          </div>
-      </div>
+          </div>-->
+      
       
       <!--<div id="carousels_index">
 
