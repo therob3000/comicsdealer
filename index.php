@@ -51,14 +51,14 @@ session_start();
   </script>
 
   <style>
-    .container {
+    /*.container {
       background: url(img/AVXM31.jpg) no-repeat center center fixed;
       background-size: cover;
     }
     body {
-      background: url(/img/AVXM3.jpg) no-repeat center center fixed;
-      background-size: cover;
-    }
+      //background: url(/img/AVXM3.jpg) no-repeat center center fixed;
+      //background-size: cover;
+    }*/
   </style>
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -210,7 +210,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 <li data-target="#carousel-comics-dealer" data-slide-to="2" class=""></li>
               </ol>
               <div class="carousel-inner carousels">
-                  
+
               </div>
               <a class="left carousel-control" href="#carousel-comics-dealer" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -226,84 +226,84 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         </div>
       </div>
 
-   <!-- Aquí va lo del artículo más reciente -->
-   <!-- EL ARTICULO ESTA ESTATICO -->
-   <div class="row">
-          <div class="col-lg-12" >
-              <h3 style="margin-bottom: 0px;">Articulos y noticias de <strong>La liga de la Maldad</strong>
-                  <br><small>Reviews, noticias y mas.</small></h3>
-          </div>  
+      <!-- Aquí va lo del artículo más reciente -->
+      <!-- EL ARTICULO ESTA ESTATICO ¿SE CARGARA DINAMICAMENTE?-->
+      <div class="row">
+        <div class="col-lg-12" >
+          <h3 style="margin-bottom: 0px;">Articulos y noticias de <strong>La liga de la Maldad</strong>
+            <br><small>Reviews, noticias y mas.</small></h3>
+        </div>  
       </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <li class="media">
-        <a id="img_href" class="pull-left" href="/html/Articulos.php?articulo_id=4">
-          <img id="articulo_imagen" class="media-object" style="width: 100px; height: 150px;" src="http://img4.wikia.nocookie.net/__cb20131107202615/marvel_dc/images/thumb/f/fe/Damian_Son_of_Batman_Vol_1_1.jpg/300px-Damian_Son_of_Batman_Vol_1_1.jpg" alt="...">
-        </a>
-        <div class="media-body">
-        <h2 id="articulo_titulo" class="media-heading">Damian, son of Batman</h2>
-          <p id="articulo_fecha_autor">Miercoles 16 de Abril, 2014 por Dr. Aldo Wolfgang</p>
-          <p id="articulo_resumen" align="justify">En la vida hay cosas que se heredan y otras que se ganan —¿Y la cheyene, ‘apa?—, y bueno, haciendo de lado la camioneta, lo que quiero decir es que muchas veces se piensa que las posesiones de los padres les pertenecen a los hijos por decreto, pero ¿qué pasa cuando no es dinero, empresas, casas, ni nada material, cuando de hecho es un símbolo, que inspira justicia a los que la buscan y terror a quienes violan la ley?, qué pasa cuando hablamos del hijo de <strong>Bruce Wayne —Damian Wayne—</strong>, que no quiere ni más ni menos que el título del caballero de la noche, BATMAN.</p>
-          <div class="row">
-            <div class="col-md-3 col-md-offset-8">
-              <a id="articulo_boton" type="button" href="/html/Articulos.php?articulo_id=4" class="btn btn-info">Seguir Leyendo ...</a>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <li class="media">
+            <a id="img_href" class="pull-left" href="/html/Articulos.php?articulo_id=4">
+              <img id="articulo_imagen" class="media-object" style="width: 100px; height: 150px;" src="http://img4.wikia.nocookie.net/__cb20131107202615/marvel_dc/images/thumb/f/fe/Damian_Son_of_Batman_Vol_1_1.jpg/300px-Damian_Son_of_Batman_Vol_1_1.jpg" alt="...">
+            </a>
+            <div class="media-body">
+              <h2 id="articulo_titulo" class="media-heading">Damian, son of Batman</h2>
+              <p id="articulo_fecha_autor">Miercoles 16 de Abril, 2014 por Dr. Aldo Wolfgang</p>
+              <p id="articulo_resumen" align="justify">En la vida hay cosas que se heredan y otras que se ganan —¿Y la cheyene, ‘apa?—, y bueno, haciendo de lado la camioneta, lo que quiero decir es que muchas veces se piensa que las posesiones de los padres les pertenecen a los hijos...</p>
+              <div class="row">
+                <div class="col-md-3 col-md-offset-9" align="right">
+                  <a id="articulo_boton" type="button" href="/html/Articulos.php?articulo_id=4" class="btn btn-primary btn-sm">Seguir Leyendo <span class="glyphicon glyphicon-forward"></span></a>
+                </div>
+              </div>
+
             </div>
-          </div>
-          
+          </li>
+
         </div>
-      </li>
+      </div>
 
-    </div>
-  </div>
 
-      
       <!--Esta parte sustituye a carousels_index-->
       <!--LOS MAS VENDIDOS, REGLA AUN POR DEFINIR-->
       <div class="row">
-          <div class="col-lg-12" >
-              <h3 style="margin-bottom: 0px;">Lo más vendido de las reservas de <strong>Dr. Death</strong>
-                  <br><small>La pura nata concentrada de los cómics</small></h3>
-          </div>  
+        <div class="col-lg-12" >
+          <h3 style="margin-bottom: 0px;">Lo más vendido de las reservas de <strong>Dr. Death</strong>
+            <br><small>La pura nata concentrada de los cómics</small></h3>
+        </div>  
       </div>
       <div class="row">
-          
-          <div class="col-md-9">
-              <div class="panel panel-default">
-              <div class="panel-body">
-              <?php
-              cargarCatalogo(0, 2, 0, 0, 4, 0);
-              ?>
+
+        <div class="col-md-9">
+
+          <div>
+            <?php
+            cargarCatalogo(0, 2, 0, 0, 4, 0);
+            ?>
           </div>
-                  
+          <div class="row">             
+            <div class="col-lg-4 col-lg-offset-8"> 
+              <p style="font-size: 14pt" align="right"><a href="html/Catalogo.php" class="btn btn-primary btn-sm"><strong>Ver el catálogo completo </strong> <span class="glyphicon glyphicon-forward"></span></a></p>
+            </div> 
           </div>
-      </div>
-          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
+
+        </div>
+        <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
           Anuncio
         </div>
-          
+
       </div>
-      
-      <div class="row">             
-        <div class="col-lg-4 col-lg-offset-8"> 
-          <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>
-        </div> 
-      </div>
-      
+
+
+
       <!--LOS MAS BUSCADOS-->
       <!--LOS MAS VENDIDOS, REGLA AUN POR DEFINIR-->
       <div class="row">
-          <div class="col-lg-12" >
-              <h3 style="margin-bottom: 0px;">Lo más <strong>buscado</strong> por los verdaderos 
-                  <br><small>COLECCIONISTAS</small></h3>
-          </div>  
+        <div class="col-lg-12" >
+          <h3 style="margin-bottom: 0px;">Lo más <strong>buscado</strong> por los verdaderos 
+            <br><small>COLECCIONISTAS</small></h3>
+        </div>  
       </div>
-      
-          
-<!--          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
-              Anuncio
-          </div>-->
-      
-      
+
+
+      <!--          <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
+                    Anuncio
+                </div>-->
+
+
       <!--<div id="carousels_index">
 
       </div>-->
@@ -312,7 +312,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
       <div class="row hidden-md hidden-lg" id="catalogo_comics">
         <?php
-            cargarCatalogo(0, 0, 0, 0, 5, 0);
+        cargarCatalogo(0, 0, 0, 0, 5, 0);
         ?>
       </div><!-- /.row1 -->
 

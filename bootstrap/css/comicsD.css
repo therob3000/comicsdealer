@@ -13,7 +13,7 @@
 }
 
 body { 
-  //background: url(../../img/spiderman.jpg) no-repeat center center fixed;
+  background: url(../../img/marvelbg1.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -57,6 +57,11 @@ body {
   color: #ffffff;
   background-color: #f0ad4e;
   border-color: #eea236;
+}
+
+.btn-small {
+padding: 1px 10px;
+font-weight: bold;
 }
 
 .carousel {
@@ -124,10 +129,12 @@ body {
   max-width: 1300px;
   margin-top: 20px;
   margin-bottom: 20px;
+  background: url(../../img/marvelbg2.jpg) no-repeat center center fixed;
   -webkit-background-size: contain;
   /* background-color: rgba(255, 255, 255, 0.36); */
   -moz-background-size: contain;
   -o-background-size: contain;
+  background-size: cover;
 }
 
 .container .tres {
@@ -138,20 +145,20 @@ body {
 .cuadro{
     border: 1px solid rgb(241, 241, 241);
     
-    background-color: #FAFAFA;
+    background-color: #FFFFFF;
     border-radius: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
     margin-left: 2%;
     margin-bottom: 2%;
-    width: 30%;
+    width: 22%;
     box-shadow: 2px 2px 2px #888888;
 }
 
 .cuadro2{
-    border: 1px solid rgb(228, 228, 228);
+    border: 1px solid #000000;
     
-    background-color: #FFFFFF;
+    background-color: #222222;
     border-radius: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -160,6 +167,7 @@ body {
     /* height: 130px; */
     /* width: 23%; */
     box-shadow: 4px 4px 4px #888888;
+    color: white;
 }
 
 .highlight {
@@ -188,10 +196,10 @@ hr {
 }
 
 .label-descuento{
-    background-color: white;
+    background-color: #d2322d;
   
     border: 2px solid #d9534f;
-    color: #d9534f;
+    color: white;
 }
 
 .navbar-brand { font-size: 22px;}
@@ -199,6 +207,23 @@ hr {
 .navbar {
   /*margin-top: 20px;*/
   margin-bottom: 20px;
+}
+
+.navbar-default .navbar-nav>li>a {
+color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav>.dropdown>a .caret {
+border-top-color: #FFFFFF;
+border-bottom-color: #FFFFFF;
+}
+
+.navbar-default .navbar-toggle {
+border-color: #FFFFFF;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+background-color: #FFFFFF;
 }
 
 .modal-backdrop.fade {
