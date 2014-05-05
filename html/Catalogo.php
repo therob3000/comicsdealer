@@ -249,10 +249,10 @@ window.fbAsyncInit = function() {
                             //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                             //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
                             if($busqueda != 0){
-                                cargarCatalogoporBusqueda($pagina, 4, 3, $busqueda, $parametro_busqueda);
+                                cargarCatalogoporBusqueda($pagina, 4, 4, $busqueda, $parametro_busqueda);
                             }
                             else{
-                                cargarCatalogo($pagina,4,$compania_id,$idioma, 3,$personaje_id);
+                                cargarCatalogo($pagina,4,$compania_id,$idioma,4,$personaje_id,0);
                             }
                             
                             //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION

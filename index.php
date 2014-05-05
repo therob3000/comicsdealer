@@ -271,7 +271,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
           <div>
             <?php
-            cargarCatalogo(0, 2, 0, 0, 4, 0);
+            cargarCatalogo(0, 2, 0, 0, 4, 0,1);
             ?>
           </div>
           <div class="row">             
