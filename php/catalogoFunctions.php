@@ -47,20 +47,32 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
       }
 
       $inventarioArray[] = $inventario_id;
+      
+      
+      //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
+      
+      echo "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
+	<a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
+              . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
+                  <h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5>
+                </div>
+        </a>
+        <br>
+      </div>";
 
 
       //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
 
 
-      echo "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-	<a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 180px' class='img-rounded img-responsive'></a>
-	<h5 id='cat_personaje'>$comic_personaje</h5>
-	<a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5 align='center'><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
-	<h5 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h5>
-	<p>
-		<a type='button' href='/html/Detalle.php?comic_id=$inventario_id' class='btn btn-success btn-comprar' role='button'>Vagina mojada</a>
-	</p>
-</div>";
+//      echo "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
+//	<a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 180px' class='img-rounded img-responsive'></a>
+//	<h5 id='cat_personaje'>$comic_personaje</h5>
+//	<a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5 align='center'><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
+//	<h5 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h5>
+//	<p>
+//		<a type='button' href='/html/Detalle.php?comic_id=$inventario_id' class='btn btn-success btn-comprar' role='button'>Vagina mojada</a>
+//	</p>
+//</div>";
 
 
 //            echo "<div align='center' class='cuadro col-xs-12 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
