@@ -3,7 +3,7 @@
 
 
 function cargarCarouselComics(salto, rango, capa) {
-<<<<<<< HEAD
+
   cadena = "salto=" + salto + "&rango=" + rango;
   $.ajaxSetup({async: false});
   $.get("../php/cargarCatalogo2.php",
@@ -54,7 +54,7 @@ function cargarCarouselComics(salto, rango, capa) {
           },
           'json');
   $.ajaxSetup({async: true});
-=======
+
 	cadena = "salto="+salto+"&rango="+rango;
 	$.ajaxSetup({async:false});
 	$.get("../php/cargarCatalogo2.php",
@@ -87,5 +87,5 @@ function cargarCarouselComics(salto, rango, capa) {
 		},
 		'json');
 	$.ajaxSetup({async:true});
->>>>>>> FETCH_HEAD
+
 }

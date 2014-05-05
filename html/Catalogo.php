@@ -248,7 +248,7 @@ cargarBarraBusqueda();
 
                   <div class="rows">
                     <!--ELEMENTOS DEL CATALOGO-->
-<<<<<<< HEAD
+
 <?php
 //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
 //Parametros: 
@@ -264,7 +264,7 @@ if ($busqueda != 0) {
 ?>
                   </div>
                   <!--PAGINACION-->
-=======
+
                         <?php
                             //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
                             //Parametros: 
@@ -281,7 +281,7 @@ if ($busqueda != 0) {
                         ?>
                     </div>
                     <!--PAGINACION-->
->>>>>>> FETCH_HEAD
+
                     <?php
                     //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
                     //Parametros: 
