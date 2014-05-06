@@ -279,7 +279,7 @@ function cargarCatalogoporBusqueda($pagina_catalogo, $renglones_catalogo, $numer
 //      }
     }
     echo "</div>";
-    $contador+=3;
+    $contador+=$numero_resultados;
   }
   $_SESSION['inventario'] = $inventarioArray;
 }
