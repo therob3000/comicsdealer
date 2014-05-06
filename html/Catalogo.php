@@ -249,22 +249,6 @@ cargarBarraBusqueda();
                   <div class="rows">
                     <!--ELEMENTOS DEL CATALOGO-->
 
-<?php
-//FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
-//Parametros: 
-//$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
-//$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-if ($busqueda != 0) {
-  cargarCatalogoporBusqueda($pagina, 4, 4, $busqueda, $parametro_busqueda);
-} else {
-  cargarCatalogo($pagina, 4, $compania_id, $idioma, 4, $personaje_id);
-}
-
-//CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
-?>
-                  </div>
-                  <!--PAGINACION-->
-
                         <?php
                             //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
                             //Parametros: 
@@ -281,7 +265,6 @@ if ($busqueda != 0) {
                         ?>
                     </div>
                     <!--PAGINACION-->
-
                     <?php
                     //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
                     //Parametros: 

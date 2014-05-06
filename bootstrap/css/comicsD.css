@@ -143,8 +143,7 @@ body {
 }
 
 .cuadro{
-  border: 1px solid rgb(241, 241, 241);
-
+  /* border: 1px solid rgb(241, 241, 241); */
   background-color: #FFFFFF;
   border-radius: 8px;
   padding-top: 8px;
@@ -152,7 +151,7 @@ body {
   margin-left: 2%;
   margin-bottom: 2%;
   width: 22%;
-  box-shadow: 2px 2px 2px #888888;
+  /* box-shadow: 2px 2px 2px #888888; */
 }
 
 .cuadro2{
@@ -174,7 +173,7 @@ body {
   padding: 9px 14px;
   margin-bottom: 14px;
   background-color: #fff;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   border-radius: 9px;
 }
 
@@ -285,8 +284,8 @@ hr {
 }
 
 .image { 
-  position: relative; 
-  /* width: 100%; */ /* for IE 6 */
+  position: relative;  /* for IE 6 */
+  margin-bottom: 2%;
 }
 
 .textoimg { 
@@ -308,12 +307,12 @@ h5 precio{
 }
 
 h5 titulo{
-    font-size: 14px;
-  
+  font-size: 14px;
+
 }
 
 h5 idioma{
-    font-size: 15px;
-  
-    color: #5bc0de;
+  font-size: 15px;
+
+  color: #5bc0de;
 }

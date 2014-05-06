@@ -74,15 +74,15 @@ function cargarCatalogoComics() {
                         $("#"+val).find('#boton_comprar').hide();
                         $("#"+val).find('#boton_comprar').attr("id","boton_comprar"+val);
                         $("#"+val).find('#boton_eliminar').attr("id","boton_eliminar"+val);
-                        $("#"+val).find('#boton_comprar'+val).html("<button class='btn btn-success btn-comprar' role='button' id="+val+">Agregar</button>");
-                        $("#"+val).find('#boton_eliminar'+val).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val+">Eliminar</button>");
+                        $("#"+val).find('#boton_comprar'+val).html("<button class='btn btn-success btn-comprar btn-sm btn-block' role='button' id="+val+">Agregar</button>");
+                        $("#"+val).find('#boton_eliminar'+val).html("<button class='btn btn-danger btn-eliminar btn-sm btn-block' href='#' role='button' id="+val+">Eliminar</button>");
                     }
                     else{
                         $("#"+val).find('#boton_eliminar').hide();
                         $("#"+val).find('#boton_comprar').attr("id","boton_comprar"+val);
                         $("#"+val).find('#boton_eliminar').attr("id","boton_eliminar"+val);
-                        $("#"+val).find('#boton_eliminar'+val).html("<button class='btn btn-danger btn-eliminar' href='#' role='button' id="+val+">Eliminar</button>");
-                        $("#"+val).find('#boton_comprar'+val).html("<button class='btn btn-success btn-comprar' href='#' role='button' id="+val+">Agregar</button>");
+                        $("#"+val).find('#boton_eliminar'+val).html("<button class='btn btn-danger btn-eliminar btn-sm btn-block' href='#' role='button' id="+val+">Eliminar</button>");
+                        $("#"+val).find('#boton_comprar'+val).html("<button class='btn btn-success btn-comprar btn-sm btn-block' href='#' role='button' id="+val+">Agregar</button>");
                     }
                 });
             }, 'json');
