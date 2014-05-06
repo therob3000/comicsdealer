@@ -67,7 +67,7 @@ body {
 .carousel {
   position: relative;
   background-color: #ffffff;
-  height: 326px;
+  /* height: 326px; */
 }
 
 .carousel-control{
@@ -315,4 +315,8 @@ h5 idioma{
   font-size: 15px;
 
   color: #5bc0de;
+}
+
+.cuadro3{
+  padding: 1%;
 }
