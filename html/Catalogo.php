@@ -254,11 +254,45 @@ cargarBarraBusqueda();
                             //Parametros: 
                             //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
                             //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
+                        
+                            //MODIFICACION DEL 6/05/2014
+                            /*Se modifico la forma en que se carga el catalago para evitar repetir codigo en el archivo
+                             * catalogoFunctions
+                             */
+                            
+                            $campos = array("inventario_id",
+                                            "cat_comic_titulo",
+                                            "cat_comic_descripcion",
+                                            "cat_comic_personaje",
+                                            "cat_comic_numero_ejemplar",
+                                            "cat_comic_imagen_url",
+                                            "inventario_precio_salida",
+                                            "cat_comic_idioma"
+                            );
+                            $contador = $pagina;
+                            
                             if($busqueda != 0){
-                                cargarCatalogoporBusqueda($pagina, 4, 4, $busqueda, $parametro_busqueda);
+                                //$i = 4 por que queremos desplegar 4 renglones en el catalogo
+                                for($i=0; $i<4; $i++){
+                                    $arrayComics = consulta_especifica($busqueda, $parametro_busqueda, $campos, $contador, 4);
+                                    $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
+                                    $contador+=4;
+                                    for($j=0; $j<count($inventarioArray); $j++){
+                                        $inventario[] = $inventarioArray[$j];
+                                    }
+                                }
+                                $_SESSION['inventario'] = $inventario;
                             }
                             else{
-                                cargarCatalogo($pagina,4,$compania_id,$idioma,4,$personaje_id,0);
+                                for($i=0; $i<4; $i++){
+                                    $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma, $personaje_id);
+                                    $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
+                                    $contador+=4;
+                                    for($j=0; $j<count($inventarioArray); $j++){
+                                        $inventario[] = $inventarioArray[$j];
+                                    }
+                                }
+                                $_SESSION['inventario'] = $inventario;
                             }
                             
                             //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION

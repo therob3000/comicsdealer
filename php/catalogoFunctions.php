@@ -5,103 +5,9 @@ if (isset($_POST['inventario'])) {
   obtenerInventario();
 }
 
-function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $idioma, $numero_resultados, $personaje_id, $layout) {
-
-//FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
-//Parametros: 
-//$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
-//$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-//<<<<<<< HEAD
-//  //ESTA PARTE DEL HEAD QUIERO QUE VIVA Y QUE LA DE ABAJO MUERA, PERO TIENE CONFLICTOS CON LA LLAVE } PARA CERRAR LA FUNCTION CARGARCATALOGO
-//  $inventarioArray = array();
-//
-//  $campos = array("inventario_id",
-//      "cat_comic_titulo",
-//      "cat_comic_descripcion",
-//      "cat_comic_personaje",
-//      "cat_comic_numero_ejemplar",
-//      "cat_comic_imagen_url",
-//      "inventario_precio_salida",
-//      "cat_comic_idioma"
-//  );
-//  $salto_catalogo = $pagina_catalogo;
-//  $contador = $pagina_catalogo;
-//
-//  for ($i = 0; $i < $renglones_catalogo; $i++) {
-//    $arrayComics = consulta_catalogo($campos, $contador, $numero_resultados, $compania_id, $idioma, $personaje_id);
-//
-//    echo "<div class='row' id='$i'>";
-//    for ($j = 0; $j < count($arrayComics); $j++) {
-//      $arrayComic2 = $arrayComics[$j];
-//
-//      $inventario_id = $arrayComic2[$campos[0]];
-//      $comic_titulo = $arrayComic2[$campos[1]];
-//      $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 90);
-//      $comic_personaje = $arrayComic2[$campos[3]];
-//      $comic_numero = $arrayComic2[$campos[4]];
-//      $comic_imagen = $arrayComic2[$campos[5]];
-//      $comic_precio = $arrayComic2[$campos[6]];
-//      $comic_idioma = $arrayComic2[$campos[7]];
-//      if ($comic_idioma == "ing") {
-//        $comic_idioma = "Inglés";
-//      } else {
-//        $comic_idioma = "Español";
-//      }
-//
-//      $inventarioArray[] = $inventario_id;
-//      
-//      
-//      //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
-//      
-//      echo "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-//	<a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
-//              . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
-//                  <h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5>
-//                </div>
-//        </a>
-//        <br>
-//      </div>";
-//
-//
-//      //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
-//
-//
-////      echo "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-////	<a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 180px' class='img-rounded img-responsive'></a>
-////	<h5 id='cat_personaje'>$comic_personaje</h5>
-////	<a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5 align='center'><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
-////	<h5 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h5>
-////	<p>
-////		<a type='button' href='/html/Detalle.php?comic_id=$inventario_id' class='btn btn-success btn-comprar' role='button'>Vagina mojada</a>
-////	</p>
-////</div>";
-//
-//
-////            echo "<div align='center' class='cuadro col-xs-12 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
-////
-////                                        <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
-////                                            <img id='cat_imagen' src=$comic_imagen style='max-width: 60%;' class='img-rounded img-responsive' alt='$comic_titulo'>
-////                                        </a>
-////                                        <h4 id='cat_personaje'>$comic_personaje<small> $comic_idioma</small></h4>
-////                                        <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
-////                                        <p id='cat_descripcion' class='catal' style='font-size: 10pt'>" . $comic_descripcion . " ...</p>
-////                                        <div class='row'>
-////                                            <div class='col-sm-12 col-xs-12'>
-////                                                <h4 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h4>
-////                                            </div>";
-////            if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
-////                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'></div>
-////                                        <div id='boton_eliminar'></div>
-////                                        <p></p>
-////                                    </div></div>";
-////            } else {
-////                echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'><button class='btn btn-success btn-comprar' role='button'>Comprar</button></div>
-////                                        
-////                                        <p></p>
-////                                    </div></div>";
-////            }
-//=======
+function cargarCatalogo($arrayComics, $rowid, $layout) {
   $inventarioArray = array();
+  
   $campos = array("inventario_id",
       "cat_comic_titulo",
       "cat_comic_descripcion",
@@ -111,13 +17,9 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
       "inventario_precio_salida",
       "cat_comic_idioma"
   );
-  $salto_catalogo = $pagina_catalogo;
-  $contador = $pagina_catalogo;
 
-  for ($i = 0; $i < $renglones_catalogo; $i++) {
-    $arrayComics = consulta_catalogo($campos, $contador, $numero_resultados, $compania_id, $idioma, $personaje_id);
-
-    echo "<div class='row' id='$i'>";
+    echo "<div class='row' id='$rowid'>";
+    
     for ($j = 0; $j < count($arrayComics); $j++) {
       $arrayComic2 = $arrayComics[$j];
       $codigohtml = "";
@@ -142,8 +44,8 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
       //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
 
       if ($layout == 0) {
+        //LA VARIABLE $layout determina el HTML que se cargara para mostrar los elementos en
         //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
-
         $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
                 <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
                 . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
@@ -151,17 +53,6 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
                     </div>
                 </a>
               ";
-//        echo "<div align='center' class='cuadro col-xs-12 col-sm-8 col-md-4 col-lg-4' id='$inventario_id'>
-//                          <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
-//                            <img id='cat_imagen' src=$comic_imagen style='max-width: 60%;' class='img-rounded img-responsive' alt='$comic_titulo'>
-//                          </a>
-//                          <h4 id='cat_personaje'>$comic_personaje<small> $comic_idioma</small></h4>
-//                          <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
-//                          <p id='cat_descripcion' class='catal' style='font-size: 10pt'>" . $comic_descripcion . " ...</p>
-//                          <div class='row'>
-//                          <div class='col-sm-12 col-xs-12'>
-//                          <h4 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h4>
-//                      </div>";
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
           $codigohtml = $codigohtml . "<div id='boton_comprar'></div>
                 <div id='boton_eliminar'></div>
@@ -171,7 +62,8 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
                 </div>";
         }
         echo $codigohtml;
-      } else {
+      } 
+      else {
         $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
                 <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
                 . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
@@ -183,105 +75,7 @@ function cargarCatalogo($pagina_catalogo, $renglones_catalogo, $compania_id, $id
       }
     }
     echo "</div>";
-    $contador+=$numero_resultados;
-  }
-  $_SESSION['inventario'] = $inventarioArray;
-}
-
-function cargarCatalogoporBusqueda($pagina_catalogo, $renglones_catalogo, $numero_resultados, $busqueda, $parametro_busqueda) {
-
-//FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
-//Parametros: 
-//$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
-//$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-  $inventarioArray = array();
-
-  $campos = array("inventario_id",
-      "cat_comic_titulo",
-      "cat_comic_descripcion",
-      "cat_comic_personaje",
-      "cat_comic_numero_ejemplar",
-      "cat_comic_imagen_url",
-      "inventario_precio_salida",
-      "cat_comic_idioma"
-  );
-  $salto_catalogo = $pagina_catalogo;
-  $contador = $pagina_catalogo;
-
-  for ($i = 0; $i < $renglones_catalogo; $i++) {
-    $arrayComics = consulta_especifica($busqueda, $parametro_busqueda, $campos, $contador, $numero_resultados);
-    $codigohtml = "";
-    
-    echo "<div class='row' id='$i'>";
-    for ($j = 0; $j < count($arrayComics); $j++) {
-      $arrayComic2 = $arrayComics[$j];
-       $codigohtml = "";
-
-      $inventario_id = $arrayComic2[$campos[0]];
-      $comic_titulo = $arrayComic2[$campos[1]];
-      $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 90);
-      $comic_personaje = $arrayComic2[$campos[3]];
-      $comic_numero = $arrayComic2[$campos[4]];
-      $comic_imagen = $arrayComic2[$campos[5]];
-      $comic_precio = $arrayComic2[$campos[6]];
-      $comic_idioma = $arrayComic2[$campos[7]];
-      if ($comic_idioma == "ing") {
-        $comic_idioma = "Inglés";
-      } else {
-        $comic_idioma = "Español";
-      }
-
-      $inventarioArray[] = $inventario_id;
-
-
-      //AQUI INICIA EL HTML NUEVO FUNCIONA IGUAL QUE EL DEL CATALOGO; NO ENTIENDO QUE FALLE PORQUE AQUÏ SOLO PUSE STRINGS A CAMBIO DE STRINGS :/
-
-      $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-                      <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
-                    . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
-                                <h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5>
-                          </div>
-                      </a>
-                    ";
-      if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
-        $codigohtml = $codigohtml . "<div id='boton_comprar'></div>
-                <div id='boton_eliminar'></div>
-                </div>";
-      } else {
-        $codigohtml = $codigohtml . "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-sm btn-block' role='button'>AGREGAR <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
-                </div>";
-      }
-      echo $codigohtml;
-
-//      echo "<div align='center' class='cuadro col-xs-12 col-sm-4 col-md-4 col-lg-4' id='$inventario_id'>
-//
-//                                        <a href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>
-//                                            <img id='cat_imagen' src=$comic_imagen style='max-width: 60%;' class='img-rounded img-responsive' alt='$comic_titulo'>
-//                                        </a>
-//                                        <h4 id='cat_personaje'>$comic_personaje<small> $comic_idioma</small></h4>
-//                                        <a id='cat_detalle2' href='/html/Detalle.php?comic_id=$inventario_id'><h5><span id='cat_titulo' class='label label-primary'>" . $comic_titulo . " #" . $comic_numero . "</span></h5></a>
-//                                        <p id='cat_descripcion' class='catal' style='font-size: 10pt'>" . $comic_descripcion . " ...</p>
-//                                        <div class='row'>
-//                                            <div class='col-sm-12 col-xs-12'>
-//                                                <h4 id='cat_precio_venta'>$ " . $comic_precio . "<small> MXN</small></h4>
-//                                            </div>";
-//
-//      if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
-//        echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'></div>
-//                                        <div id='boton_eliminar'></div>
-//                                        <p></p>
-//                                    </div></div>";
-//      } else {
-//        echo "<div class='col-sm-12 col-xs-12' id='boton_comprar'><button class='btn btn-success btn-comprar' role='button'>Comprar</button></div>
-//                                        
-//                                        <p></p>
-//                                    </div></div>";
-//      }
-    }
-    echo "</div>";
-    $contador+=$numero_resultados;
-  }
-  $_SESSION['inventario'] = $inventarioArray;
+  return $inventarioArray;
 }
 
 function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, $personaje_id) {

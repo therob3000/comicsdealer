@@ -2,7 +2,7 @@ var nombre;
 $(document).ready(function(){
         verificaSesion();
 	//cargarCarousels();
-	cargarPromocionFinDeSemana('index');
+	//cargarPromocionFinDeSemana('index');
 	modalIniciarSesion();
 	cargarCarouselNologin(0);
 	modalRegistrar();

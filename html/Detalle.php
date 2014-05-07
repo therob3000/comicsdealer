@@ -284,9 +284,27 @@ echo "<a target='_blank' id='comic_href' href=$imagen>
 
           <hr></hr>
           <div class="row" id="catalogo_comics">
-<?php
-cargarCatalogo(0, 2, obtenerCompania(), 0, 3, 0);
-?>
+            
+                <?php
+                    $campos = array("inventario_id",
+                                            "cat_comic_titulo",
+                                            "cat_comic_descripcion",
+                                            "cat_comic_personaje",
+                                            "cat_comic_numero_ejemplar",
+                                            "cat_comic_imagen_url",
+                                            "inventario_precio_salida",
+                                            "cat_comic_idioma"
+                            );
+              
+                    $contador = 0;
+
+                    for ($i = 0; $i < 2; $i++) {
+                        $arrayComics = consulta_catalogo($campos, $contador, 4, obtenerCompania(), 0, 0);
+                        cargarCatalogo($arrayComics, $i, 1);
+                        $contador+=4;
+                    }
+              ?>
+            
 
           </div><!-- /.row1 -->
           <div class="row">             

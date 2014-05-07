@@ -231,9 +231,24 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
               
               <hr></hr>
               <?php
-                cargarCatalogo(0,1,1,0,3,0);
-                cargarCatalogo(0,1,2,0,3,0);
-               ?>
+                    $campos = array("inventario_id",
+                                            "cat_comic_titulo",
+                                            "cat_comic_descripcion",
+                                            "cat_comic_personaje",
+                                            "cat_comic_numero_ejemplar",
+                                            "cat_comic_imagen_url",
+                                            "inventario_precio_salida",
+                                            "cat_comic_idioma"
+                            );
+              
+                    $contador = 0;
+
+                    for ($i = 0; $i < 2; $i++) {
+                        $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
+                        cargarCatalogo($arrayComics, $i, 1);
+                        $contador+=4;
+                    }
+              ?>
               <div class="row">             
                 <div class="col-lg-4 col-lg-offset-8"> 
                   <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>

@@ -19,24 +19,25 @@ function verificaSesion(){
 			verifica 	= data.ver_sesion.estado;
 			pro 		= data.ver_sesion.usuario_pro;
 			if(verifica == true && pro == true){
-				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
-				if(data.ver_sesion.usuario_pro != 1){
-					$("#nav_bar").find("#nav_pedido").remove();
-				}
-				usuario_nombre 		= data.ver_sesion.usuario_nombre;
+                                nombre 		= data.ver_sesion.usuario_nombre;
 				usuario_correo 		= data.ver_sesion.usuario_email;
-				usuario_id			= data.ver_sesion.usuario_id;
+				usuario_id		= data.ver_sesion.usuario_id;
 				usuario_max_pedidos	= data.ver_sesion.usuario_max_pedidos;
 				usuario_pro 		= data.ver_sesion.usuario_pro;
+				//$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+				$("#nav_bar").find("#botonMenUsuario").append("<span class='glyphicon glyphicon-list-alt'></span> "+nombre);
+				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'><span class='glyphicon glyphicon-shopping-cart'></span> Finalizar Compra <span class='badge' id='compraTotal'></span></button>");
+                                botonComprarInit();
+				
 
-				$('#usuario').text(usuario_nombre);
+				$('#usuario').text(nombre);
 				if(usuario_max_pedidos == 3){
 					$('#pedido').hide();
 					$('#pedido_form').append('<div class="alert alert-danger"><strong>Lo sentimos :(</strong> por el momento solo podemos manejar 3 peticiones por usuario.</div>');
 				}
 			}
 			else{
-				alert("No ha iniciado sesion");
+				alert("No ha iniciado sesion o no eres usuario PRO amiguito");
 				window.location.href = "../index.html";
 			}
 		},
@@ -143,4 +144,10 @@ function aceptarCompra(){
 
 function cargarNavBar(){
 	$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+}
+
+function botonComprarInit(){
+	$.post("/php/elementosComprados.php", function(data){
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
 }
