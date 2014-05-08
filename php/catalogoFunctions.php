@@ -337,7 +337,9 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                   " AND PERS.personaje_id = $personaje_id ORDER BY INV.inventario_fecha_entrada DESC
                     LIMIT $salto, $rango";
         }
-      } else {
+      } 
+      
+      else {
         if ($personaje_id == 0) {
           $queryCatalogoComicsCondicion = $query .
                   " AND PERS.personaje_compania_id = $compania_id ORDER BY INV.inventario_fecha_entrada DESC
@@ -402,6 +404,63 @@ function paginacion($pagina_paginacion, $compania_id, $idioma, $personaje_id) {
   }
 }
 
+function paginacionBusqueda($pagina_paginacion, $busqueda, $parametro_busqueda){
+    if ($pagina_paginacion == 0) {
+    if ($pagina_paginacion + 16 <= obtenerTotalComicsBusqueda($busqueda, $parametro_busqueda)) {
+      $siguiente = $pagina_paginacion + 16;
+      echo "<ul class='pager'>
+                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&busqueda=$busqueda&parametro_busqueda=$parametro_busqueda'>Siguiente</a></li>
+                  </ul>";
+    }
+  } else {
+    if ($pagina_paginacion + 16 >= obtenerTotalComicsBusqueda($busqueda, $parametro_busqueda)) {
+      $anterior = $pagina_paginacion - 16;
+      echo "<ul class='pager'>
+                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&busqueda=$busqueda&parametro_busqueda=$parametro_busqueda'>Anterior</a></li>
+                  </ul>";
+    } else {
+      $siguiente = $pagina_paginacion + 16;
+      $anterior = $pagina_paginacion - 16;
+      echo "<ul class='pager'>
+                    <li id='anterior'><a href='./Catalogo.php?pagina=$anterior&busqueda=$busqueda&parametro_busqueda=$parametro_busqueda'>Anterior</a>
+                    <li id='siguiente'><a href='./Catalogo.php?pagina=$siguiente&busqueda=$busqueda&parametro_busqueda=$parametro_busqueda'>Siguiente</a></li>
+                 </ul>";
+    }
+  }
+}
+
+function obtenerTotalComicsBusqueda($busqueda, $parametro_busqueda){
+  $queryGeneral = generaQueryGeneral2();
+
+  switch ($busqueda) {
+    //Personaje
+    case 1:
+      $query = $queryGeneral . " WHERE cat_comic_personaje LIKE '%" . $parametro_busqueda . "%'";
+      $queryResultado = mysql_query($query);
+      //echo $query;
+      $num = mysql_num_rows($queryResultado);
+      return $num;
+      break;
+    case 2:
+      $query = $queryGeneral . " WHERE cat_comic_titulo LIKE '%" . $parametro_busqueda . "%'";
+      $queryResultado = mysql_query($query);
+      //echo $query;
+      $num = mysql_num_rows($queryResultado);
+      return $num;
+      break;
+    case 3:
+      $query = $queryGeneral . " WHERE cat_comic_descripcion LIKE '%" . $parametro_busqueda . "%'";
+      $queryResultado = mysql_query($query);
+      //echo $query;
+      $num = mysql_num_rows($queryResultado);
+      return $num;
+      break;
+
+    default:
+      break;
+  }
+}
+
 function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
   $queryCatalogoComics = "
         SELECT INV.inventario_id FROM inventario AS INV
@@ -417,7 +476,8 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
                 AND INV.inventario_existente = 1 
                 AND INV.inventario_activo = 1
             GROUP BY inventario_id";
-  } else {
+  } 
+  else {
     switch ($idioma) {
       //1 PARA INGLES
       case 1:
@@ -431,10 +491,12 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
         if ($compania_id == 0) {
           if ($personaje_id == 0) {
             $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
-          } else {
+          } 
+          else {
             $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
           }
-        } else {
+        } 
+        else {
           $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id
                     GROUP BY inventario_id";
         }
@@ -454,19 +516,33 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
             $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
           }
         } else {
-          $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id
-                    GROUP BY inventario_id";
+          $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id GROUP BY inventario_id";
         }
         break;
       default:
-        $queryCatalogoComicsCondicion = "
+        $query = "
                 WHERE
                     CAT.cat_comic_activo = 1 
                     AND CAT.cat_comic_copias > 0 
                     AND INV.inventario_existente = 1 
-                    AND INV.inventario_activo = 1
-                    AND PERS.personaje_compania_id = $compania_id
-                GROUP BY inventario_id";
+                    AND INV.inventario_activo = 1";
+        if ($compania_id == 0) {
+            if ($personaje_id == 0) {
+                $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
+            } 
+            else {
+                $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
+        }
+      } 
+      
+      else {
+        if ($personaje_id == 0) {
+          $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id GROUP BY inventario_id";
+        } 
+        else {
+          $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id AND PERS.personaje_compania_id = $compania_id  GROUP BY inventario_id";
+        }
+      }
         break;
     }
   }

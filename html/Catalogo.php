@@ -300,10 +300,15 @@ cargarBarraBusqueda();
                     </div>
                     <!--PAGINACION-->
                     <?php
-                    //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
-                    //Parametros: 
-                    //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
-                    paginacion($pagina, $compania_id, $idioma, $personaje_id);
+                        //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+                        //Parametros: 
+                        //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
+                        if($busqueda != 0){
+                            paginacionBusqueda($pagina, $busqueda, $parametro_busqueda);
+                        }
+                        else{
+                            paginacion($pagina, $compania_id, $idioma, $personaje_id);
+                        }
                     ?>
 
                 </div>

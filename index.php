@@ -3,6 +3,7 @@ include 'php/conexion.php';
 $con = conexion();
 include 'php/barraBusquedaFunctions.php';
 include 'php/catalogoFunctions.php';
+include 'php/articulosFunctions.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 session_start();
@@ -225,27 +226,9 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
             <br><small>Reviews, noticias y mas.</small></h3>
         </div>  
       </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <li class="media">
-            <a id="img_href" class="pull-left" href="/html/Articulos.php?articulo_id=4">
-              <img id="articulo_imagen" class="media-object" style="width: 100px; height: 150px;" src="http://img4.wikia.nocookie.net/__cb20131107202615/marvel_dc/images/thumb/f/fe/Damian_Son_of_Batman_Vol_1_1.jpg/300px-Damian_Son_of_Batman_Vol_1_1.jpg" alt="...">
-            </a>
-            <div class="media-body">
-              <h2 id="articulo_titulo" class="media-heading">Damian, son of Batman</h2>
-              <p id="articulo_fecha_autor">Miercoles 16 de Abril, 2014 por Dr. Aldo Wolfgang</p>
-              <p id="articulo_resumen" align="justify">En la vida hay cosas que se heredan y otras que se ganan —¿Y la cheyene, ‘apa?—, y bueno, haciendo de lado la camioneta, lo que quiero decir es que muchas veces se piensa que las posesiones de los padres les pertenecen a los hijos...</p>
-              <div class="row">
-                <div class="col-md-3 col-md-offset-9" align="right">
-                  <a id="articulo_boton" type="button" href="/html/Articulos.php?articulo_id=4" class="btn btn-primary btn-sm">Seguir Leyendo <span class="glyphicon glyphicon-forward"></span></a>
-                </div>
-              </div>
-
-            </div>
-          </li>
-
-        </div>
-      </div>
+      <?php
+        cargarArticuloReciente();
+      ?>
 
 
       <!--Esta parte sustituye a carousels_index-->
