@@ -11,19 +11,20 @@ function verificaSesion(){
 	$.ajaxSetup({async:false});
 	$.post("../php/verifica_sesion.php",
 		function(data){
-			verifica = data.ver_sesion.estado;
-			if(verifica == true){
-				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
-				if(data.ver_sesion.usuario_pro != 1){
-					$("#nav_bar").find("#nav_pedido").remove();
-				}
-				usuario_nombre 		= data.ver_sesion.usuario_nombre;
+			verifica 	= data.ver_sesion.estado;
+			pro 		= data.ver_sesion.usuario_pro;
+			if(verifica == true && pro == true){
+                                nombre 		= data.ver_sesion.usuario_nombre;
 				usuario_correo 		= data.ver_sesion.usuario_email;
-				usuario_id			= data.ver_sesion.usuario_id;
-				usuario_max_pedidos	= data.ver_sesion.usuario_max_pedidos;
+				usuario_id		= data.ver_sesion.usuario_id;
+				usuario_pro 		= data.ver_sesion.usuario_pro;
+				//$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
+				$("#nav_bar").find("#botonMenUsuario").append("<span class='glyphicon glyphicon-list-alt'></span> "+nombre);
+				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'><span class='glyphicon glyphicon-shopping-cart'></span> Finalizar Compra <span class='badge' id='compraTotal'></span></button>");
+                                botonComprarInit();
 			}
 			else{
-				alert("No ha iniciado sesion");
+				alert("No ha iniciado sesion o no eres usuario PRO amiguito");
 				window.location.href = "../index.html";
 			}
 		},
@@ -92,7 +93,7 @@ function cambiarCorreo(){
 					$('#cambio_email').hide();
 					$('#mensajemail').append('<div class="alert alert-success"><strong>Tu correo ha sido cambiado con éxito</strong> te hemos enviado un correo, revisa tu bandeja de entrada y verificalo. Tu sesión se cerrara.</div>');
 					var delay = 5000; //Your delay in milliseconds
-	        		setTimeout(function(){ window.location.href = "../index.html"; }, delay);
+	        		setTimeout(function(){ window.location.href = "../index.php"; }, delay);
 				} 
 				else{
 					alert("Algo horrible paso :(");
@@ -109,5 +110,11 @@ function cargarNavBar(){
 	$("#nav_bar").load("../html/layouts/navbar_login_layout.html", function(){
 		$("#nav_bar").find(".menu_opcion#2").html("<a href='Pedido.html'>Pide Comics!</a>");
 	});
+}
+
+function botonComprarInit(){
+	$.post("/php/elementosComprados.php", function(data){
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
 }
 

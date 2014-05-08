@@ -1,3 +1,7 @@
+<?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,11 +34,14 @@
     <![endif]-->
   </head>
   <body>
+      <?php
+        $html = file_get_contents("layouts/navbar_login_layout.html");
+        $doc = new DOMDocument();
+        
+        $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+      ?>
+    <div id="nav_bar"><?php echo $doc->saveHTML(); ?></div>
     <div class="container">
-      <div class="container tres">
-        <div id="nav_bar"></div>
-      </div>
-      
       <div class="container tres">
         <div class="jumbotron">
           <img src="../img/Cambios.svg" vspace="10" hspace="10"
