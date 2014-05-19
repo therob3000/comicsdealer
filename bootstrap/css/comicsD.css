@@ -283,23 +283,25 @@ hr {
   text-align: justify;
 }
 
-.image { 
+.image {
+  border-color: beige; 
   position: relative;  /* for IE 6 */
-  margin-bottom: 2%;
 }
 
 .textoimg { 
   position: absolute; 
+  text-shadow: 0 0 4px #000000;
   bottom: 0%; 
   width: 100%;
   color: white; 
   font: 400 16px helvetica, sans-serif; 
   letter-spacing: -1px;  
-  background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(0, 0, 0, 0.7);
+  /* background: rgb(0, 0, 0); */ /* fallback color */
+  /* background: rgba(0, 0, 0, 0.7); */
   padding: 10px; 
   margin-bottom: 0px;
   border-radius: 0px 0px 6px 6px;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0) 99%);
 }
 
 h5 precio{
@@ -319,4 +321,17 @@ h5 idioma{
 
 .cuadro3{
   padding: 1%;
+}
+
+.paquete{
+    position: absolute;    
+    text-shadow: 2px 3px 1px black;   bottom: 0%;    width: 100%;   
+    color: white;    
+    font: 400 16px helvetica, sans-serif;    
+    letter-spacing: -1px;   
+    padding: 10px;    
+    margin-bottom: 0px;   
+    border-radius: 0px 0px 6px 6px;   
+    background-image: linear-gradient(to top, rgba(66, 139, 202, 0.75) 50%, rgba(0, 0, 0, 0) 99%);
+       /* fallback color */  
 }
