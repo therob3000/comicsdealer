@@ -45,20 +45,13 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
 
 
       //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
+      
+      if(!is_null($inventario_paquete)){
+          //AQUI REVISAMOS SI EL INVENTARIO ES PAQUETE
+      }
 
       if ($layout == 0) {
-          //AQUI REVISAMOS SI EL ELEMENTO ES PAQUETE Y YA SEA QUE CARGUE UN HTML O UNA CLASE CSS COMO DICES
-          if(!is_null($inventario_paquete)){
-              $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-                <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
-                . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-responsive'>
-                          <h2>PAQUETE SIN ALBUR</h2>
-                          <h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5>
-                    </div>
-                </a>
-              ";
-          }
-          else{
+         
         //LA VARIABLE $layout determina el HTML que se cargara para mostrar los elementos en
         //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
         $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
@@ -68,12 +61,12 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
                     </div>
                 </a>
               ";
-          }
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
           $codigohtml = $codigohtml . "<div id='boton_comprar'></div>
                 <div id='boton_eliminar'></div>
                 </div>";
-        } else {
+        } 
+        else {
           $codigohtml = $codigohtml . "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-sm btn-block' role='button'>AGREGAR <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
                 </div>";
         }
