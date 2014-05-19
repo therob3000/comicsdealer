@@ -267,7 +267,8 @@ cargarBarraBusqueda();
                                             "cat_comic_numero_ejemplar",
                                             "cat_comic_imagen_url",
                                             "inventario_precio_salida",
-                                            "cat_comic_idioma"
+                                            "cat_comic_idioma",
+                                            "inventario_paquete"
                             );
                             $contador = $pagina;
                             

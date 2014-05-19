@@ -15,7 +15,8 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
       "cat_comic_numero_ejemplar",
       "cat_comic_imagen_url",
       "inventario_precio_salida",
-      "cat_comic_idioma"
+      "cat_comic_idioma",
+      "inventario_paquete"
   );
 
     echo "<div class='row' id='$rowid'>";
@@ -32,6 +33,8 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
       $comic_imagen = $arrayComic2[$campos[5]];
       $comic_precio = $arrayComic2[$campos[6]];
       $comic_idioma = $arrayComic2[$campos[7]];
+      $inventario_paquete = $arrayComic2[$campos[8]];
+      
       if ($comic_idioma == "ing") {
         $comic_idioma = "Inglés";
       } else {
@@ -44,6 +47,18 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
       //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
 
       if ($layout == 0) {
+          //AQUI REVISAMOS SI EL ELEMENTO ES PAQUETE Y YA SEA QUE CARGUE UN HTML O UNA CLASE CSS COMO DICES
+          if(!is_null($inventario_paquete)){
+              $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
+                <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
+                . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-responsive'>
+                          <h2>PAQUETE SIN ALBUR</h2>
+                          <h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5>
+                    </div>
+                </a>
+              ";
+          }
+          else{
         //LA VARIABLE $layout determina el HTML que se cargara para mostrar los elementos en
         //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
         $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
@@ -53,6 +68,7 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
                     </div>
                 </a>
               ";
+          }
         if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
           $codigohtml = $codigohtml . "<div id='boton_comprar'></div>
                 <div id='boton_eliminar'></div>
@@ -277,14 +293,17 @@ function generaQueryGeneral() {
       cat_comic_numero_ejemplar,
       cat_comic_imagen_url,
       inventario_precio_salida,
-      cat_comic_idioma
+      cat_comic_idioma,
+      inventario_paquete
         FROM 
         (SELECT * FROM inventario as INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
+            INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id
             WHERE INV.inventario_paquete IS NULL
             UNION
             SELECT * FROM inventario AS INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
+            INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id
             GROUP BY INV.inventario_paquete
             HAVING INV.inventario_paquete != 0) AS LEL";
 
