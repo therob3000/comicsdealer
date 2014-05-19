@@ -180,8 +180,8 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
       <br>
       <div id="searchnav">
         <?php
-            //Esta funcion se encuentra en el archivo barraBusquedaFunctions.php
-            cargarBarraBusqueda();
+        //Esta funcion se encuentra en el archivo barraBusquedaFunctions.php
+        cargarBarraBusqueda();
         ?>
       </div>
 
@@ -227,7 +227,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         </div>  
       </div>
       <?php
-        cargarArticuloReciente();
+      cargarArticuloReciente();
       ?>
 
 
@@ -244,26 +244,26 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         <div class="col-md-9">
 
           <div>
-              <?php
-              //cargarCatalogo(0, 2, 0, 0, 4, 0,1);
-              $campos = array("inventario_id",
-                                            "cat_comic_titulo",
-                                            "cat_comic_descripcion",
-                                            "cat_comic_personaje",
-                                            "cat_comic_numero_ejemplar",
-                                            "cat_comic_imagen_url",
-                                            "inventario_precio_salida",
-                                            "cat_comic_idioma"
-                            );
-              
-              $contador = 0;
-              
-              for ($i = 0; $i < 2; $i++) {
-                  $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
-                  cargarCatalogo($arrayComics, $i, 1);
-                  $contador+=4;
-              }
-              ?>
+            <?php
+            //cargarCatalogo(0, 2, 0, 0, 4, 0,1);
+            $campos = array("inventario_id",
+                "cat_comic_titulo",
+                "cat_comic_descripcion",
+                "cat_comic_personaje",
+                "cat_comic_numero_ejemplar",
+                "cat_comic_imagen_url",
+                "inventario_precio_salida",
+                "cat_comic_idioma"
+            );
+
+            $contador = 0;
+
+            for ($i = 0; $i < 2; $i++) {
+              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
+              cargarCatalogo($arrayComics, $i, 1);
+              $contador+=4;
+            }
+            ?>
           </div>
           <div class="row">             
             <div class="col-lg-4 col-lg-offset-8"> 
@@ -293,26 +293,27 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         <div class="col-md-9">
 
           <div>
-              <?php
-              //cargarCatalogo(0, 2, 0, 0, 4, 0,1);
-              $campos = array("inventario_id",
-                                            "cat_comic_titulo",
-                                            "cat_comic_descripcion",
-                                            "cat_comic_personaje",
-                                            "cat_comic_numero_ejemplar",
-                                            "cat_comic_imagen_url",
-                                            "inventario_precio_salida",
-                                            "cat_comic_idioma"
-                            );
-              
-              $contador = 0;
-              
-              for ($i = 0; $i < 2; $i++) {
-                  $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
-                  cargarCatalogo($arrayComics, $i, 1);
-                  $contador+=4;
-              }
-              ?>
+            <?php
+            //cargarCatalogo(0, 2, 0, 0, 4, 0,1);
+            $campos = array("inventario_id",
+                "cat_comic_titulo",
+                "cat_comic_descripcion",
+                "cat_comic_personaje",
+                "cat_comic_numero_ejemplar",
+                "cat_comic_imagen_url",
+                "inventario_precio_salida",
+                "cat_comic_idioma",
+                "inventario_paquete"
+            );
+
+            $contador = 0;
+
+            for ($i = 0; $i < 2; $i++) {
+              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
+              cargarCatalogo($arrayComics, $i, 1);
+              $contador+=4;
+            }
+            ?>
           </div>
           <div class="row">             
             <div class="col-lg-4 col-lg-offset-8"> 
@@ -332,25 +333,26 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
       <div class="row hidden-md hidden-lg" id="catalogo_comics">
         <?php
-              //cargarCatalogo(0, 2, 0, 0, 4, 0,1);
-              $campos = array("inventario_id",
-                                            "cat_comic_titulo",
-                                            "cat_comic_descripcion",
-                                            "cat_comic_personaje",
-                                            "cat_comic_numero_ejemplar",
-                                            "cat_comic_imagen_url",
-                                            "inventario_precio_salida",
-                                            "cat_comic_idioma"
-                            );
-              
-              $contador = 0;
-              
-              for ($i = 0; $i < 2; $i++) {
-                  $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
-                  cargarCatalogo($arrayComics, $i, 1);
-                  $contador+=4;
-              }
-              ?>
+        //cargarCatalogo(0, 2, 0, 0, 4, 0,1);
+        $campos = array("inventario_id",
+            "cat_comic_titulo",
+            "cat_comic_descripcion",
+            "cat_comic_personaje",
+            "cat_comic_numero_ejemplar",
+            "cat_comic_imagen_url",
+            "inventario_precio_salida",
+            "cat_comic_idioma",
+            "inventario_paquete"
+        );
+
+        $contador = 0;
+
+        for ($i = 0; $i < 2; $i++) {
+          $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
+          cargarCatalogo($arrayComics, $i, 1);
+          $contador+=4;
+        }
+        ?>
       </div><!-- /.row1 -->
 
       <div class="row">             

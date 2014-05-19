@@ -119,31 +119,31 @@ if (empty($_GET['parametro_busqueda'])) {
       }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<?php
+    <?php
 //CODIGO PARA CARGAR DINAMICAMENTE EL NAV BAR
 //COMPROBAMOS QUE EXISTAN LAS VARIABLES DE USUARIO 'usuario_email' y 'usuario_nombre'
 //SI EXISTEN OBTENEMOS EL LAYOUT 'layouts/navbar_login_layout.html'
-if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
-  $html = file_get_contents("layouts/navbar_login_layout.html");
-}
+    if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+      $html = file_get_contents("layouts/navbar_login_layout.html");
+    }
 //SI NO EXISTEN OBTENEMOS EL LAYOUT 'layouts/navbar_nologin_layout.html'
-else {
-  $html = file_get_contents("layouts/navbar_nologin_layout.html");
-}
+    else {
+      $html = file_get_contents("layouts/navbar_nologin_layout.html");
+    }
 
 //PARA CARGAR DINAMICAMENTE SEGMENTOS DE HTML EN PHP CREAMOS UN OBJETO DOMDocument()
-$nav_bar = new DOMDocument();
+    $nav_bar = new DOMDocument();
 //Y AGREGAMOS EL SEGMENTO QUE QUEREMOS CARGAR, EN ESTE CASO $html
-$nav_bar->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
-?>
+    $nav_bar->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+    ?>
 
     <div id="nav_bar">
 
-    <?php
-    //FINALMENTE CON ECHO IMPRIMIMOS LA CADENA DEL HTML CARGADO
-    //EL FUNCIONAMIENTO DEL HTML SE LLEVA ACABO CON JQUERY
-    echo $nav_bar->saveHTML();
-    ?>
+      <?php
+      //FINALMENTE CON ECHO IMPRIMIMOS LA CADENA DEL HTML CARGADO
+      //EL FUNCIONAMIENTO DEL HTML SE LLEVA ACABO CON JQUERY
+      echo $nav_bar->saveHTML();
+      ?>
     </div>
 
 
@@ -183,28 +183,28 @@ $nav_bar->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                   <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
                     <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
                     <script>!function(d, s, id) {
-                          var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                          if (!d.getElementById(id)) {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = p + '://platform.twitter.com/widgets.js';
-                            fjs.parentNode.insertBefore(js, fjs);
-                          }
-                        }(document, 'script', 'twitter-wjs');</script>
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                          js = d.createElement(s);
+                          js.id = id;
+                          js.src = p + '://platform.twitter.com/widgets.js';
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }
+                      }(document, 'script', 'twitter-wjs');</script>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
                     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
                     <script>!function(d, s, id) {
-                          var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                          if (!d.getElementById(id)) {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = p + '://platform.twitter.com/widgets.js';
-                            fjs.parentNode.insertBefore(js, fjs);
-                          }
-                        }(document, 'script', 'twitter-wjs');</script>
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                          js = d.createElement(s);
+                          js.id = id;
+                          js.src = p + '://platform.twitter.com/widgets.js';
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }
+                      }(document, 'script', 'twitter-wjs');</script>
                   </div>
                 </div>
                 <div class="row">
@@ -218,9 +218,9 @@ $nav_bar->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
           <br><br>
           <div id="searchnav">
-<?php
-cargarBarraBusqueda();
-?>
+            <?php
+            cargarBarraBusqueda();
+            ?>
           </div>
 
           <div class="row">
@@ -230,9 +230,9 @@ cargarBarraBusqueda();
               </div>--><br>
               <h4>Categorías</h4>
               <hr>
-            <?php
-            generaCategorias($idioma, $compania_id);
-            ?>
+              <?php
+              generaCategorias($idioma, $compania_id);
+              ?>
 
             </div>
             <div class="col-sm-12 col-md-10">
@@ -249,68 +249,65 @@ cargarBarraBusqueda();
                   <div class="rows">
                     <!--ELEMENTOS DEL CATALOGO-->
 
-                        <?php
-                            //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
-                            //Parametros: 
-                            //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
-                            //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
-                        
-                            //MODIFICACION DEL 6/05/2014
-                            /*Se modifico la forma en que se carga el catalago para evitar repetir codigo en el archivo
-                             * catalogoFunctions
-                             */
-                            
-                            $campos = array("inventario_id",
-                                            "cat_comic_titulo",
-                                            "cat_comic_descripcion",
-                                            "cat_comic_personaje",
-                                            "cat_comic_numero_ejemplar",
-                                            "cat_comic_imagen_url",
-                                            "inventario_precio_salida",
-                                            "cat_comic_idioma",
-                                            "inventario_paquete"
-                            );
-                            $contador = $pagina;
-                            
-                            if($busqueda != 0){
-                                //$i = 4 por que queremos desplegar 4 renglones en el catalogo
-                                for($i=0; $i<4; $i++){
-                                    $arrayComics = consulta_especifica($busqueda, $parametro_busqueda, $campos, $contador, 4);
-                                    $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
-                                    $contador+=4;
-                                    for($j=0; $j<count($inventarioArray); $j++){
-                                        $inventario[] = $inventarioArray[$j];
-                                    }
-                                }
-                                $_SESSION['inventario'] = $inventario;
-                            }
-                            else{
-                                for($i=0; $i<4; $i++){
-                                    $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma, $personaje_id);
-                                    $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
-                                    $contador+=4;
-                                    for($j=0; $j<count($inventarioArray); $j++){
-                                        $inventario[] = $inventarioArray[$j];
-                                    }
-                                }
-                                $_SESSION['inventario'] = $inventario;
-                            }
-                            
-                            //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
-                        ?>
-                    </div>
-                    <!--PAGINACION-->
                     <?php
-                        //FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
-                        //Parametros: 
-                        //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
-                        if($busqueda != 0){
-                            paginacionBusqueda($pagina, $busqueda, $parametro_busqueda);
+                    //FUNCION QUE CARGA EL HTML PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+                    //Parametros: 
+                    //$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
+                    //$renglones = Numero de renglones que queremos mostrar por pagina, en este caso 4
+                    //MODIFICACION DEL 6/05/2014
+                    /* Se modifico la forma en que se carga el catalago para evitar repetir codigo en el archivo
+                     * catalogoFunctions
+                     */
+
+                    $campos = array("inventario_id",
+                        "cat_comic_titulo",
+                        "cat_comic_descripcion",
+                        "cat_comic_personaje",
+                        "cat_comic_numero_ejemplar",
+                        "cat_comic_imagen_url",
+                        "inventario_precio_salida",
+                        "cat_comic_idioma",
+                        "inventario_paquete"
+                    );
+                    $contador = $pagina;
+
+                    if ($busqueda != 0) {
+                      //$i = 4 por que queremos desplegar 4 renglones en el catalogo
+                      for ($i = 0; $i < 4; $i++) {
+                        $arrayComics = consulta_especifica($busqueda, $parametro_busqueda, $campos, $contador, 4);
+                        $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
+                        $contador+=4;
+                        for ($j = 0; $j < count($inventarioArray); $j++) {
+                          $inventario[] = $inventarioArray[$j];
                         }
-                        else{
-                            paginacion($pagina, $compania_id, $idioma, $personaje_id);
+                      }
+                      $_SESSION['inventario'] = $inventario;
+                    } else {
+                      for ($i = 0; $i < 4; $i++) {
+                        $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma, $personaje_id);
+                        $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
+                        $contador+=4;
+                        for ($j = 0; $j < count($inventarioArray); $j++) {
+                          $inventario[] = $inventarioArray[$j];
                         }
+                      }
+                      $_SESSION['inventario'] = $inventario;
+                    }
+
+                    //CUALQUER MODIFICACION AL HTML DE LOS ELEMENTOS DEL CATALOGO SE HACE EN ESTA FUNCION
                     ?>
+                  </div>
+                  <!--PAGINACION-->
+<?php
+//FUNCION QUE CARGA LA PAGINACION PARA EL CATALOGO SE ENCUENTRA EN: /php/catalogoFunctions.php
+//Parametros: 
+//$pagina = Registro en la base a partir del cual queremos que empiece el catalogo
+if ($busqueda != 0) {
+  paginacionBusqueda($pagina, $busqueda, $parametro_busqueda);
+} else {
+  paginacion($pagina, $compania_id, $idioma, $personaje_id);
+}
+?>
 
                 </div>
               </div>

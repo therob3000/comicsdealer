@@ -7,7 +7,7 @@ if (isset($_POST['inventario'])) {
 
 function cargarCatalogo($arrayComics, $rowid, $layout) {
   $inventarioArray = array();
-  
+
   $campos = array("inventario_id",
       "cat_comic_titulo",
       "cat_comic_descripcion",
@@ -19,71 +19,72 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
       "inventario_paquete"
   );
 
-    echo "<div class='row' id='$rowid'>";
-    
-    for ($j = 0; $j < count($arrayComics); $j++) {
-      $arrayComic2 = $arrayComics[$j];
-      $codigohtml = "";
+  echo "<div class='row' id='$rowid'>";
 
-      $inventario_id = $arrayComic2[$campos[0]];
-      $comic_titulo = $arrayComic2[$campos[1]];
-      $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 90);
-      $comic_personaje = $arrayComic2[$campos[3]];
-      $comic_numero = $arrayComic2[$campos[4]];
-      $comic_imagen = $arrayComic2[$campos[5]];
-      $comic_precio = $arrayComic2[$campos[6]];
-      $comic_idioma = $arrayComic2[$campos[7]];
-      $inventario_paquete = $arrayComic2[$campos[8]];
-      
-      if ($comic_idioma == "ing") {
-        $comic_idioma = "Inglés";
-      } else {
-        $comic_idioma = "Español";
-      }
+  for ($j = 0; $j < count($arrayComics); $j++) {
+    $arrayComic2 = $arrayComics[$j];
+    $codigohtml = "";
 
-      $inventarioArray[] = $inventario_id;
+    $inventario_id = $arrayComic2[$campos[0]];
+    $comic_titulo = $arrayComic2[$campos[1]];
+    $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 90);
+    $comic_personaje = $arrayComic2[$campos[3]];
+    $comic_numero = $arrayComic2[$campos[4]];
+    $comic_imagen = $arrayComic2[$campos[5]];
+    $comic_precio = $arrayComic2[$campos[6]];
+    $comic_idioma = $arrayComic2[$campos[7]];
+    $inventario_paquete = $arrayComic2[$campos[8]];
+
+    if ($comic_idioma == "ing") {
+      $comic_idioma = "Inglés";
+    } else {
+      $comic_idioma = "Español";
+    }
+
+    $inventarioArray[] = $inventario_id;
 
 
-      //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
-      
-      if(!is_null($inventario_paquete)){
-          //AQUI REVISAMOS SI EL INVENTARIO ES PAQUETE
-      }
+    //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
+//      if(!is_null($inventario_paquete)){
+//          //AQUI REVISAMOS SI EL INVENTARIO ES PAQUETE
+//      }
 
-      if ($layout == 0) {
-         
-        //LA VARIABLE $layout determina el HTML que se cargara para mostrar los elementos en
-        //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
-        $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
+    if ($layout == 0) {
+
+      //LA VARIABLE $layout determina el HTML que se cargara para mostrar los elementos en
+      //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
+      $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
                 <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
-                . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
-                          <h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5>
-                    </div>
-                </a>
-              ";
-        if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
-          $codigohtml = $codigohtml . "<div id='boton_comprar'></div>
+              . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
+
+      if (is_null($inventario_paquete)) {
+        $codigohtml = $codigohtml . "<h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
+      } else { //HTML para PAQUETES
+        $codigohtml = $codigohtml . "<h5 class='paquete col-xs-12'>" . "PAQUETE" . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
+      }
+
+      if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+        $codigohtml = $codigohtml . "<div id='boton_comprar'></div>
                 <div id='boton_eliminar'></div>
                 </div>";
-        } 
-        else {
-          $codigohtml = $codigohtml . "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-sm btn-block' role='button'>AGREGAR <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+      } else {
+        $codigohtml = $codigohtml . "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-sm btn-block' role='button'>AGREGAR <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
                 </div>";
-        }
-        echo $codigohtml;
-      } 
-      else {
-        $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-                <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
-                . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
-                          <h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5>
-                    </div>
-                </a>
-              </div>";
-        echo $codigohtml;
       }
+      echo $codigohtml;
+    } else {
+      $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
+                <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
+              . "<div class='image'><img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
+      if (is_null($inventario_paquete)) {
+        $codigohtml = $codigohtml . "<h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
+      } else { //HTML para PAQUETES
+        $codigohtml = $codigohtml . "<h5 class='paquete col-xs-12'>" . "PAQUETE" . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
+      }
+      echo $codigohtml;
     }
-    echo "</div>";
+  }
+  echo "</div>";
   return $inventarioArray;
 }
 
@@ -277,7 +278,7 @@ function generaQueryGeneral() {
 //    ) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 //    
 //    INNER JOIN personajes as PERS ON CATALOGO.cat_comic_personaje_id = PERS.personaje_id ";
-  
+
   $queryCatalogoComics = "SELECT 
         inventario_id,
         (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = cat_comic_descripcion_id) as cat_comic_titulo,
@@ -331,8 +332,8 @@ function generaQueryGeneral2() {
     ) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
     
     INNER JOIN personajes as PERS ON CATALOGO.cat_comic_personaje_id = PERS.personaje_id ) as COMICS";
-    
-    
+
+
 
   return $queryCatalogoComics;
 }
@@ -505,9 +506,7 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                   " AND cat_comic_personaje_id = $personaje_id ORDER BY inventario_fecha_entrada DESC
                     LIMIT $salto, $rango";
         }
-      } 
-      
-      else {
+      } else {
         if ($personaje_id == 0) {
           $queryCatalogoComicsCondicion = $query .
                   " AND personaje_compania_id = $compania_id ORDER BY inventario_fecha_entrada DESC
@@ -572,8 +571,8 @@ function paginacion($pagina_paginacion, $compania_id, $idioma, $personaje_id) {
   }
 }
 
-function paginacionBusqueda($pagina_paginacion, $busqueda, $parametro_busqueda){
-    if ($pagina_paginacion == 0) {
+function paginacionBusqueda($pagina_paginacion, $busqueda, $parametro_busqueda) {
+  if ($pagina_paginacion == 0) {
     if ($pagina_paginacion + 16 <= obtenerTotalComicsBusqueda($busqueda, $parametro_busqueda)) {
       $siguiente = $pagina_paginacion + 16;
       echo "<ul class='pager'>
@@ -597,7 +596,7 @@ function paginacionBusqueda($pagina_paginacion, $busqueda, $parametro_busqueda){
   }
 }
 
-function obtenerTotalComicsBusqueda($busqueda, $parametro_busqueda){
+function obtenerTotalComicsBusqueda($busqueda, $parametro_busqueda) {
   $queryGeneral = generaQueryGeneral2();
 
   switch ($busqueda) {
@@ -644,8 +643,7 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
                 AND INV.inventario_existente = 1 
                 AND INV.inventario_activo = 1
             GROUP BY inventario_id";
-  } 
-  else {
+  } else {
     switch ($idioma) {
       //1 PARA INGLES
       case 1:
@@ -659,12 +657,10 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
         if ($compania_id == 0) {
           if ($personaje_id == 0) {
             $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
-          } 
-          else {
+          } else {
             $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
           }
-        } 
-        else {
+        } else {
           $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id
                     GROUP BY inventario_id";
         }
@@ -695,22 +691,18 @@ function obtenerTotalComicsPaginacion($compania_id, $idioma, $personaje_id) {
                     AND INV.inventario_existente = 1 
                     AND INV.inventario_activo = 1";
         if ($compania_id == 0) {
-            if ($personaje_id == 0) {
-                $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
-            } 
-            else {
-                $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
+          if ($personaje_id == 0) {
+            $queryCatalogoComicsCondicion = $query . " GROUP BY inventario_id";
+          } else {
+            $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id GROUP BY inventario_id";
+          }
+        } else {
+          if ($personaje_id == 0) {
+            $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id GROUP BY inventario_id";
+          } else {
+            $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id AND PERS.personaje_compania_id = $compania_id  GROUP BY inventario_id";
+          }
         }
-      } 
-      
-      else {
-        if ($personaje_id == 0) {
-          $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_compania_id = $compania_id GROUP BY inventario_id";
-        } 
-        else {
-          $queryCatalogoComicsCondicion = $query . " AND PERS.personaje_id = $personaje_id AND PERS.personaje_compania_id = $compania_id  GROUP BY inventario_id";
-        }
-      }
         break;
     }
   }
