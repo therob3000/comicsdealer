@@ -57,8 +57,11 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
 
             if (is_null($inventario_paquete)) {
                 $codigohtml = $codigohtml . "<h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
-            } else { //HTML para PAQUETES
-                $codigohtml = $codigohtml . "<h5 class='paquete col-xs-12'>" . "PAQUETE" . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
+            } 
+            else { //HTML para PAQUETES
+                //FUNCION QUE OBTIENE EL NOMBRE DEL PAQUETE
+                $nombrePaquete = obtenerNombrePaquete($inventario_paquete);
+                $codigohtml = $codigohtml . "<h5 class='paquete col-xs-12'>PAQUETE<br><titulo>$nombrePaquete</titulo><br><idioma>$comic_idioma</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
             }
 
             if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
@@ -70,15 +73,18 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
                 </div>";
             }
             echo $codigohtml;
-        } else {
+        } 
+    else {
             $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
                            <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
                             ."<div class='image'>"
                                 . "<img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
             if (is_null($inventario_paquete)) {
                 $codigohtml = $codigohtml . "<h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a></div>";
-            } else { //HTML para PAQUETES
-                $codigohtml = $codigohtml . "<h5 class='paquete col-xs-12'>" . "PAQUETE" . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a></div>";
+            } 
+            else { //HTML para PAQUETES
+                $nombrePaquete = obtenerNombrePaquete($inventario_paquete);
+                $codigohtml = $codigohtml . "<h5 class='paquete col-xs-12'>PAQUETE<br><titulo>$nombrePaquete</titulo><br><idioma>$comic_idioma</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a></div>";
             }
             echo $codigohtml;
         }
@@ -668,4 +674,11 @@ function cargarCategorias($idioma, $compania_id) {
   }
 
   return $categoria;
+}
+
+function obtenerNombrePaquete($paquete_id){
+    $query = "SELECT cat_paquete_descripcion FROM cat_paquetes WHERE cat_paquete_id = $paquete_id";
+    $queryResultado = mysql_query($query);
+    
+    return mysql_result($queryResultado, 0, "cat_paquete_descripcion");
 }
