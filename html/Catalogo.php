@@ -282,7 +282,8 @@ if (empty($_GET['parametro_busqueda'])) {
                         }
                       }
                       $_SESSION['inventario'] = $inventario;
-                    } else {
+                    } 
+                    else {
                       for ($i = 0; $i < 4; $i++) {
                         $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma, $personaje_id);
                         $inventarioArray = cargarCatalogo($arrayComics, $i, 0);

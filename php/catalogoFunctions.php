@@ -1,5 +1,7 @@
 <?php
 
+//"Do you think that flattery will keep you alive?" - Smaug
+
 if (isset($_POST['inventario'])) {
   session_start();
   obtenerInventario();
@@ -40,10 +42,15 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
     } else {
       $comic_idioma = "Español";
     }
-
     $inventarioArray[] = $inventario_id;
-
-
+    
+    if(is_null($inventario_paquete)){
+        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id&paquete_id=$inventario_paquete";
+    }
+    else{
+        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id";
+    }
+    
     //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
 
     if ($layout == 0) {
@@ -51,7 +58,7 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
             //LA VARIABLE $layout determina el HTML que se cargara para mostrar los elementos en
             //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
             $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-                           <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
+                           <a target='blank' href='$hrefDetalle' id='cat_detalle'>"
                             . "<div class='image'>"
                                 . "<img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
 
@@ -66,17 +73,21 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
 
             if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
                 $codigohtml = $codigohtml . "<div id='boton_comprar'></div>
-                <div id='boton_eliminar'></div>
-                </div>";
+                                             <div id='boton_eliminar'></div>
+                                            </div>";
             } else {
-                $codigohtml = $codigohtml . "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-sm btn-block' role='button'>AGREGAR <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+                $codigohtml = $codigohtml . "<div id='boton_comprar'>
+                    <button class='btn btn-success btn-comprar btn-sm btn-block' role='button'>
+                        AGREGAR <span class='glyphicon glyphicon-shopping-cart'></span>
+                    </button>
+                  </div>
                 </div>";
             }
             echo $codigohtml;
         } 
     else {
             $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
-                           <a target='blank' href='/html/Detalle.php?comic_id=$inventario_id' id='cat_detalle'>"
+                           <a target='blank' href='$hrefDetalle' id='cat_detalle'>"
                             ."<div class='image'>"
                                 . "<img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
             if (is_null($inventario_paquete)) {
@@ -136,12 +147,14 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, 
 }
 
 function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salto, $rango) {
-  $queryGeneral = generaQueryGeneral2();
+  //$queryGeneral = generaQueryGeneral2();
+    $queryGeneral = generaQueryGeneral();
 
   switch ($busqueda) {
     //Personaje
     case 1:
-      $query = $queryGeneral . " WHERE cat_comic_personaje LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
+      //$query = $queryGeneral . " WHERE cat_comic_personaje LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
+      $query = $queryGeneral . " WHERE personaje_nombre LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
       $queryResultado = mysql_query($query);
 
       //echo $query;
@@ -159,12 +172,11 @@ function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salt
       } else {
         $catalogoArray = array();
       }
-
       return $catalogoArray;
-
       break;
+      
     case 2:
-      $query = $queryGeneral . " WHERE cat_comic_titulo LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
+      $query = $queryGeneral . " WHERE datos_comic_titulo LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
       $queryResultado = mysql_query($query);
 
       //echo $query;
@@ -187,7 +199,7 @@ function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salt
 
       break;
     case 3:
-      $query = $queryGeneral . " WHERE cat_comic_descripcion LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
+      $query = $queryGeneral . " WHERE datos_comic_descripcion LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
       $queryResultado = mysql_query($query);
 
       //echo $query;
@@ -231,51 +243,18 @@ function generaQueryGeneral() {
         (SELECT * FROM inventario as INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
             INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id
+            INNER JOIN datos_comics as DAT ON CAT.cat_comic_descripcion_id = DAT.datos_comic_id
             WHERE INV.inventario_paquete IS NULL
             UNION
             SELECT * FROM inventario AS INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
             INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id
+            INNER JOIN datos_comics as DAT ON CAT.cat_comic_descripcion_id = DAT.datos_comic_id
             GROUP BY INV.inventario_paquete
             HAVING INV.inventario_paquete != 0) AS LEL";
 
     return $queryCatalogoComics;
 }
-
-function generaQueryGeneral2() {
-  $queryCatalogoComics = "SELECT * FROM (
-        SELECT
-    INV.inventario_id,
-    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
-    (SELECT datos_comic_descripcion FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_descripcion,
-    (SELECT personaje_nombre FROM personajes WHERE personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
-    CATALOGO.cat_comic_numero_ejemplar,
-    CATALOGO.cat_comic_imagen_url,
-    INV.inventario_precio_salida,
-    CATALOGO.cat_comic_idioma,
-    PERS.personaje_compania_id
-    FROM cat_comics as CATALOGO
-    INNER JOIN
-    (SELECT 
-        inventario_id,
-        max(inventario_precio_entrada) as inventario_max_precio_entrada,
-        inventario_precio_salida,
-        inventario_cat_comic_unique_id,
-        inventario_existente,
-        inventario_fecha_entrada,
-        inventario_activo
-    FROM
-        inventario
-    GROUP BY inventario_cat_comic_unique_id 
-    ) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
-    
-    INNER JOIN personajes as PERS ON CATALOGO.cat_comic_personaje_id = PERS.personaje_id ) as COMICS";
-
-
-
-  return $queryCatalogoComics;
-}
-
 
 function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id) {
   switch ($idioma) {
@@ -443,26 +422,26 @@ function paginacionBusqueda($pagina_paginacion, $busqueda, $parametro_busqueda) 
 }
 
 function obtenerTotalComicsBusqueda($busqueda, $parametro_busqueda) {
-  $queryGeneral = generaQueryGeneral2();
+  $queryGeneral = generaQueryGeneral();
 
   switch ($busqueda) {
     //Personaje
     case 1:
-      $query = $queryGeneral . " WHERE cat_comic_personaje LIKE '%" . $parametro_busqueda . "%'";
+      $query = $queryGeneral . " WHERE personaje_nombre LIKE '%" . $parametro_busqueda . "%'";
       $queryResultado = mysql_query($query);
       //echo $query;
       $num = mysql_num_rows($queryResultado);
       return $num;
       break;
     case 2:
-      $query = $queryGeneral . " WHERE cat_comic_titulo LIKE '%" . $parametro_busqueda . "%'";
+      $query = $queryGeneral . " WHERE datos_comic_titulo LIKE '%" . $parametro_busqueda . "%'";
       $queryResultado = mysql_query($query);
       //echo $query;
       $num = mysql_num_rows($queryResultado);
       return $num;
       break;
     case 3:
-      $query = $queryGeneral . " WHERE cat_comic_descripcion LIKE '%" . $parametro_busqueda . "%'";
+      $query = $queryGeneral . " WHERE datos_comic_descripcion LIKE '%" . $parametro_busqueda . "%'";
       $queryResultado = mysql_query($query);
       //echo $query;
       $num = mysql_num_rows($queryResultado);
