@@ -70,6 +70,12 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
         s.parentNode.insertBefore(ga, s);
       })();
 
+      $(document).ready(function() {
+        $(".tip-top").tooltip({placement: 'top'});
+        $(".tip-right").tooltip({placement: 'right'});
+        $(".tip-bottom").tooltip({placement: 'bottom'});
+        $(".tip-left").tooltip({placement: 'left'});
+      });
     </script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -174,100 +180,87 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
 
           <br><br>
           <div id="searchnav">
-<?php
-cargarBarraBusqueda();
-?>
+            <?php
+            cargarBarraBusqueda();
+            ?>
           </div>
           <br>
 
           <div class="row">
             <div class="col-sm-4 col-md-3">
-<?php
-$imagen = obtenerImagen();
-echo "<a target='_blank' id='comic_href' href=$imagen>
+              <?php
+              $imagen = obtenerImagen();
+              echo "<a target='_blank' id='comic_href' href=$imagen>
                           <img itemprop='image' src=$imagen class='img-responsive img-rounded' id='comic_img'>
                         </a>";
-?>
-              <h5 align="center"><small>Da click en la imagen para verla en grande</small></h5>
+              ?>
+              <h5 align="center"><small>Da click en la imagen para ampliar <span class="glyphicon glyphicon-zoom-in"></span></small></h5>
             </div>
             <div class="col-sm-8 col-md-9">
               <h1 class="blog-title" id="comic_personaje"><?php echo obtenerPersonaje(); ?></h1>
 
-              <h1>
+              <h1 style="margin-top: 5px">
                 <strong>
                   <small>
-                    <span class="label label-primary" id="comic_titulo"><span itemprop="name"><?php echo obtenerTitulo() . " #" . obtenerNumero(); ?></span></span>
+                    <span class="label label-primary tip-top" id="comic_titulo" data-toggle="tooltip" data-placement="top" title="La serie y el número"><span itemprop="name"><?php echo obtenerTitulo() . " #" . obtenerNumero(); ?></span></span>
+                  </small>
+                  <small>
+                    <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
+                    <span class="label label-comun tip-top" data-toggle="tooltip" data-placement="top" title="Es normal">Común</span>
                   </small>
                 </strong>
-                <small id="comic_idioma"><?php echo obtenerIdioma(); ?></small>
+                <small id="comic_idioma" class="tip-right" data-toggle="tooltip" data-placement="right" title="Idioma del cómic"><?php echo obtenerIdioma(); ?></small>
               </h1>
 
-              <hr></hr>
+              <hr style="margin-bottom: 0px"></hr>
               <div class="row">
-                <div class="col-md-3" id="comic_copias" align="left"><h4>Existencias: <small><span itemprop="availability"><?php echo obtenerCopias(); ?></span></small></h4></div>
-                <div class="col-md-3" id="comic_integridad" align="left"><h4>Integridad: <small><?php echo obtenerIntegridad() . "/10"; ?></small></h4></div>
+                <div class="col-md-3 tip-bottom" id="comic_copias" align="left" data-toggle="tooltip" data-placement="bottom" title="Todos los que tenemos en este momento"><h4>Existencias: <small><span itemprop="availability"><?php echo obtenerCopias(); ?></span></small></h4></div>
+                <div class="col-md-3 tip-bottom" id="comic_integridad" align="left" data-toggle="tooltip" data-placement="bottom" title="10 si está nuevo, y 0 si está 'pal boiler"><h4>Integridad: <small><?php echo obtenerIntegridad() . "/10"; ?></small></h4></div>
+                <div class="col-md-6" id="comic_fecha" align="left"><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>
               </div>
               <p align="justify" style="font-size: 12pt" id="comic_descripcion"><span itemprop="description"><?php echo obtenerDescripcion(); ?></span></p>
-              <!--<div class="row" align="center">
-                <div class="col-md-4"><h4>Estado: <small>Nuevo</small></h4></div>
-                <div class="col-md-4"><h4>Año: <small>1989</small></h4></div>
-                <div class="col-md-4"><h4>Copias: <small>3</small></h4></div>
-              </div>-->
-            </div>
-            <div class="row" align="right">
-              <div class="col-sm-6 col-sm-offset-6 col-md-9 col-md-offset-3">
-                <div class="row">
-                  <div class="col-md-6 col-md-offset-3">
-                    <h4 class="panel-title price" id="comic_precio"><?php echo '$' . obtenerPrecio() . " MXN"; ?></h4>
-                  </div>
-                  <div class="col-md-3" style="margin-top: 1%">
-                    <div id="boton_comprar"><button class="btn btn-success btn-comprar" role="button">Comprar »</button></div>
-                    <div id="boton_eliminar"><button class="btn btn-danger btn-eliminar" role="button">Eliminar »</button></div>
-                    <div id="boton_comprar_nologin"><button class="btn btn-success btn-comprar-nologin" role="button">Comprar »</button></div>
-                  </div>
+              <table style="margin-bottom: 2px" class="table table-condensed">
+                <thead>
+                  <tr>
+                    <td class="text-primary tip-bottom" data-toggle="tooltip" data-placement="bottom" title="Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares"><strong>Precio de Portada</strong><p class="precio" align="right">$40.00 MXN  </p></td>
+                    <td class="text-danger tip-bottom" data-toggle="tooltip" data-placement="bottom" title="En este precio lo tienen en otras tiendas"><strong>Precio en Tiendas</strong><p class="precio" align="right">$60.00 MXN  </p></td>
+                    <td class="tip-top" data-toggle="tooltip" data-placement="top" title="Sí, nos volvimos locos!"><strong>Precio Comics Dealer</strong><p class="precio" align="right">$30.00 MXN  </p></td>
+                    <td class="tip-top" data-toggle="tooltip" data-placement="top" title="Ahorro total con respecto a las otras tiendas"><strong>Ahorro</strong><p style="margin-top: 6px" align="right"><span class="label label-descuento label-lg">-50%</span>  </p></td>
+                  </tr>
+                </thead>
+              </table>
+              <div class="row" align="right">
+                <div style="margin-top: 1%" class="col-sm-6 col-sm-offset-6 col-md-5 col-md-offset-7">
+                  <div id="boton_comprar"><button class="btn btn-success btn-comprar btn-block" role="button">AGREGAR AL <span class="glyphicon glyphicon-shopping-cart"></span></button></div>
+                  <div id="boton_eliminar"><button class="btn btn-danger btn-eliminar btn-block" role="button">ELIMINAR DEL <span class="glyphicon glyphicon-shopping-cart"></span></button></div>
+                  <div id="boton_comprar_nologin"><button class="btn btn-success btn-comprar-nologin btn-block">AGREGAR AL <span class="glyphicon glyphicon-shopping-cart"></span></button></div>  
                 </div>
               </div>
+
             </div>
-            <div class="row" align="right">
-              <div class="col-md-9 col-md-offset-3">
-                <div class="row">
-                  <div class="col-sm-2 col-sm-offset-7" style="margin-top: 2%">
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="" data-via="ComicsDealer" data-lang="es">Twittear</a>
-                    <script>!function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                        if (!d.getElementById(id)) {
-                          js = d.createElement(s);
-                          js.id = id;
-                          js.src = p + '://platform.twitter.com/widgets.js';
-                          fjs.parentNode.insertBefore(js, fjs);
-                        }
-                      }(document, 'script', 'twitter-wjs');</script>
-                  </div>
-                  <div class="col-sm-3" style="margin-top: 2%">
-                    <div class="fb-share-button" data-href="" data-type="button_count"></div>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <hr></hr>
+          <div class="row">
+            <div class="col-sm-4"> 
+              <p style="font-size: 14pt"><a style="font: 300 20px helvetica, sans-serif;" href="/html/Catalogo.php"><span class="glyphicon glyphicon-circle-arrow-left"></span> Regresar al catálogo</a></p>
             </div>
-            <hr></hr>
-            <div class="row">
-              <div class="col-lg-4"> 
-                <p style="font-size: 14pt"><a href="/html/Catalogo.php"><strong>«</strong> Regresar al catálogo</a></p>
-              </div>
-              <div class="col-lg-4 col-lg-offset-4" align="right">
-                <a href="https://twitter.com/ComicsDealer" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ComicsDealer</a>
-                <script>!function(d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                            if (!d.getElementById(id)) {
-                              js = d.createElement(s);
-                              js.id = id;
-                              js.src = p + '://platform.twitter.com/widgets.js';
-                              fjs.parentNode.insertBefore(js, fjs);
-                            }
-                          }(document, 'script', 'twitter-wjs');</script>
-              </div>
-            </div>  
-          </div><!--Row del detalle-->
+            <div class="col-sm-2 col-sm-offset-4" align="right" style="vertical-align: middle">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="" data-via="ComicsDealer" data-lang="es">Twittear</a>
+              <script>!function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                  if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = p + '://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                  }
+                }(document, 'script', 'twitter-wjs');</script>
+            </div>
+            <div class="col-sm-2" align="right" style="vertical-align: middle">
+              <div class="fb-share-button" data-href="" data-type="button_count"></div>
+            </div>
+          </div>  
+          <!-- detalle-->
 
         </div>
 
@@ -284,27 +277,27 @@ echo "<a target='_blank' id='comic_href' href=$imagen>
 
           <hr></hr>
           <div class="row" id="catalogo_comics">
-            
-                <?php
-                    $campos = array("inventario_id",
-                                            "cat_comic_titulo",
-                                            "cat_comic_descripcion",
-                                            "cat_comic_personaje",
-                                            "cat_comic_numero_ejemplar",
-                                            "cat_comic_imagen_url",
-                                            "inventario_precio_salida",
-                                            "cat_comic_idioma"
-                            );
-              
-                    $contador = 0;
 
-                    for ($i = 0; $i < 2; $i++) {
-                        $arrayComics = consulta_catalogo($campos, $contador, 4, obtenerCompania(), 0, 0);
-                        cargarCatalogo($arrayComics, $i, 1);
-                        $contador+=4;
-                    }
-              ?>
-            
+            <?php
+            $campos = array("inventario_id",
+                "cat_comic_titulo",
+                "cat_comic_descripcion",
+                "cat_comic_personaje",
+                "cat_comic_numero_ejemplar",
+                "cat_comic_imagen_url",
+                "inventario_precio_salida",
+                "cat_comic_idioma"
+            );
+
+            $contador = 0;
+
+            for ($i = 0; $i < 2; $i++) {
+              $arrayComics = consulta_catalogo($campos, $contador, 4, obtenerCompania(), 0, 0);
+              cargarCatalogo($arrayComics, $i, 1);
+              $contador+=4;
+            }
+            ?>
+
 
           </div><!-- /.row1 -->
           <div class="row">             
