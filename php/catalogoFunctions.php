@@ -45,10 +45,11 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
     $inventarioArray[] = $inventario_id;
     
     if(is_null($inventario_paquete)){
-        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id&paquete_id=$inventario_paquete";
+        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id";
+        
     }
     else{
-        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id";
+        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id&paquete_id=$inventario_paquete";
     }
     
     //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO

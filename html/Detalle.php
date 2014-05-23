@@ -7,10 +7,15 @@ include '../php/cargarDetalleDinamico.php';
 include '../php/barraBusquedaFunctions.php';
 include '../php/catalogoFunctions.php';
 $con = conexion();
+
 $comic_id = $_GET['comic_id'];
 
-obtenerDatos($comic_id);
-
+if (empty($_GET['paquete_id'])) {
+  $paquete_id = 0;
+} else {
+  $paquete_id = $_GET['paquete_id'];
+}
+//Datos para las meta etiquetas de FACEBOOK
 $comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo, SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion from inventario as inv
 inner join cat_comics as cat on inv.inventario_cat_comic_unique_id = cat.cat_comic_unique_id
 inner join datos_comics as dat on cat.cat_comic_descripcion_id = dat.datos_comic_id
@@ -21,12 +26,13 @@ $comic_img = mysql_result($queryResultado, 0, "cat_comic_imagen_url");
 $comic_titulo = mysql_result($queryResultado, 0, "datos_comic_titulo");
 $comic_descripcion = mysql_result($queryResultado, 0, "descripcion");
 $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
+
 ?>
 
 <!DOCTYPE html>
 <html>
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-    <title id="comic_title"><?php echo obtenerTitulo(); ?></title><!-- Nombre del comic-->
+    <title id="comic_title"><?php echo $comic_titulo; ?></title><!-- Nombre del comic-->
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +59,9 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
     <script src="../js/catalogo.js"></script>
     <script src="../js/detalle_comic.js"></script>
     <script src="../js/login.js"></script>
+    
+    <script type="text/javascript" src="/coin-slider/coin-slider.min.js"></script>
+    <link rel="stylesheet" href="/coin-slider/coin-slider-styles.css" type="text/css" />
 
     <script type="text/javascript">
 
@@ -185,60 +194,19 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
             ?>
           </div>
           <br>
-
-          <div class="row">
-            <div class="col-sm-4 col-md-3">
-              <?php
-              $imagen = obtenerImagen();
-              echo "<a target='_blank' id='comic_href' href=$imagen>
-                          <img itemprop='image' src=$imagen class='img-responsive img-rounded' id='comic_img'>
-                        </a>";
-              ?>
-              <h5 align="center"><small>Da click en la imagen para ampliar <span class="glyphicon glyphicon-zoom-in"></span></small></h5>
-            </div>
-            <div class="col-sm-8 col-md-9">
-              <h1 class="blog-title" id="comic_personaje"><?php echo obtenerPersonaje(); ?></h1>
-
-              <h1 style="margin-top: 5px">
-                <strong>
-                  <small>
-                    <span class="label label-primary tip-top" id="comic_titulo" data-toggle="tooltip" data-placement="top" title="La serie y el número"><span itemprop="name"><?php echo obtenerTitulo() . " #" . obtenerNumero(); ?></span></span>
-                  </small>
-                  <small>
-                    <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
-                    <span class="label label-comun tip-top" data-toggle="tooltip" data-placement="top" title="Es normal">Común</span>
-                  </small>
-                </strong>
-                <small id="comic_idioma" class="tip-right" data-toggle="tooltip" data-placement="right" title="Idioma del cómic"><?php echo obtenerIdioma(); ?></small>
-              </h1>
-
-              <hr style="margin-bottom: 0px"></hr>
-              <div class="row">
-                <div class="col-md-3 tip-bottom" id="comic_copias" align="left" data-toggle="tooltip" data-placement="bottom" title="Todos los que tenemos en este momento"><h4>Existencias: <small><span itemprop="availability"><?php echo obtenerCopias(); ?></span></small></h4></div>
-                <div class="col-md-3 tip-bottom" id="comic_integridad" align="left" data-toggle="tooltip" data-placement="bottom" title="10 si está nuevo, y 0 si está 'pal boiler"><h4>Integridad: <small><?php echo obtenerIntegridad() . "/10"; ?></small></h4></div>
-                <div class="col-md-6" id="comic_fecha" align="left"><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>
-              </div>
-              <p align="justify" style="font-size: 12pt" id="comic_descripcion"><span itemprop="description"><?php echo obtenerDescripcion(); ?></span></p>
-              <table style="margin-bottom: 2px" class="table table-condensed">
-                <thead>
-                  <tr>
-                    <td class="text-primary tip-bottom" data-toggle="tooltip" data-placement="bottom" title="Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares"><strong>Precio de Portada</strong><p class="precio" align="right">$40.00 MXN  </p></td>
-                    <td class="text-danger tip-bottom" data-toggle="tooltip" data-placement="bottom" title="En este precio lo tienen en otras tiendas"><strong>Precio en Tiendas</strong><p class="precio" align="right">$60.00 MXN  </p></td>
-                    <td class="tip-top" data-toggle="tooltip" data-placement="top" title="Sí, nos volvimos locos!"><strong>Precio Comics Dealer</strong><p class="precio" align="right">$30.00 MXN  </p></td>
-                    <td class="tip-top" data-toggle="tooltip" data-placement="top" title="Ahorro total con respecto a las otras tiendas"><strong>Ahorro</strong><p style="margin-top: 6px" align="right"><span class="label label-descuento label-lg">-50%</span>  </p></td>
-                  </tr>
-                </thead>
-              </table>
-              <div class="row" align="right">
-                <div style="margin-top: 1%" class="col-sm-6 col-sm-offset-6 col-md-5 col-md-offset-7">
-                  <div id="boton_comprar"><button class="btn btn-success btn-comprar btn-block" role="button">AGREGAR AL <span class="glyphicon glyphicon-shopping-cart"></span></button></div>
-                  <div id="boton_eliminar"><button class="btn btn-danger btn-eliminar btn-block" role="button">ELIMINAR DEL <span class="glyphicon glyphicon-shopping-cart"></span></button></div>
-                  <div id="boton_comprar_nologin"><button class="btn btn-success btn-comprar-nologin btn-block">AGREGAR AL <span class="glyphicon glyphicon-shopping-cart"></span></button></div>  
-                </div>
-              </div>
-
-            </div>
-          </div>
+          <?php
+            if($paquete_id != 0){
+                generarHTMLComicsPaquete($paquete_id);
+                //Generar HTML para los paquetes
+                //Funcion contenida en cargarDetalleDinamico.php
+            }
+            else {
+                generarHTMLComicIndividual($comic_id);
+                //obtenerDatos($comic_id);
+                //Generar HTML para comic individual
+                //Funcion contenida en cargarDetalleDinamico.php
+            }
+           ?>          
           <hr></hr>
           <div class="row">
             <div class="col-sm-4"> 
@@ -286,7 +254,8 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
                 "cat_comic_numero_ejemplar",
                 "cat_comic_imagen_url",
                 "inventario_precio_salida",
-                "cat_comic_idioma"
+                "cat_comic_idioma",
+                "inventario_paquete"
             );
 
             $contador = 0;

@@ -6,6 +6,7 @@ $(document).ready(function(){
 	finalizarCompra();
 	botonComprarNologin();
 	//cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
+        $('#coin-slider').coinslider();
 });
 
 function verificaSesion(comic_id){
