@@ -14,7 +14,9 @@ $camposArray = array("inventario_id",
     "inventario_precio_salida",
     "cat_comic_copias",
     "cat_comic_idioma",
-    "inventario_integridad"
+    "inventario_integridad",
+    "cat_comic_precio_portada",
+    "cat_comic_precio_tienda"
     //"existe"
 );
 
@@ -71,7 +73,9 @@ CATALOGO.cat_comic_imagen_url,
 INV.inventario_precio_salida,
 CATALOGO.cat_comic_copias,
 CATALOGO.cat_comic_idioma,
-INV.inventario_integridad
+INV.inventario_integridad,
+CATALOGO.cat_comic_precio_portada,
+CATALOGO.cat_comic_precio_tienda
 FROM
 cat_comics as CATALOGO
 INNER JOIN
@@ -166,6 +170,16 @@ function obtenerCompania(){
     return $rowArray["compania_id"];
 }
 
+function obtenerPrecioTienda(){
+    global $rowArray;
+    return $rowArray["cat_comic_precio_tienda"];
+}
+
+function obtenerPrecioPortada(){
+    global $rowArray;
+    return $rowArray["cat_comic_precio_portada"];
+}
+
 function generarHTMLComicIndividual($comic_id){
     
     obtenerDatos($comic_id);
@@ -178,6 +192,9 @@ function generarHTMLComicIndividual($comic_id){
     $numero_copias = obtenerCopias();
     $integridad = obtenerIntegridad();
     $descripcion = obtenerDescripcion();
+    $precio_salida = obtenerPrecio();
+    $precio_portada = obtenerPrecioPortada();
+    $precio_tiendas = obtenerPrecioTienda();
     
     echo "<div class='row'>
             <div class='col-sm-4 col-md-3'>
@@ -214,9 +231,9 @@ function generarHTMLComicIndividual($comic_id){
               <table style='margin-bottom: 2px' class='table table-condensed'>
                 <thead>
                   <tr>
-                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$40.00 MXN  </p></td>
-                    <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$60.00 MXN  </p></td>
-                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$30.00 MXN  </p></td>
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$'$precio_portada'</p></td>
+                    <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$'$precio_tiendas'</p></td>
+                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$'$precio_salida'</p></td>
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>-50%</span>  </p></td>
                   </tr>
                 </thead>
