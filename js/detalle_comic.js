@@ -51,13 +51,13 @@ function cargarComic2(comic_id){
 		cadena,
 		function(data){
 			if($.inArray(data.comic.inventario_id, data.agregados) != -1){
-					$('#boton_comprar_nologin').hide();					
+					//$('#boton_comprar_nologin').hide();					
 					$('#boton_comprar').hide();
 					$('.btn-eliminar').attr("id", data.comic.inventario_id);
 					$('.btn-comprar').attr("id", data.comic.inventario_id);
 				}
 				else{
-					$('#boton_comprar_nologin').hide();
+					//$('#boton_comprar_nologin').hide();
 					$('#boton_eliminar').hide();
 					$('.btn-comprar').attr("id", data.comic.inventario_id);
 					$('.btn-eliminar').attr("id", data.comic.inventario_id);
@@ -83,6 +83,7 @@ function botonEliminar(){
 		$.post("/php/eliminarCompra.php",cadena);
 		$("#boton_eliminar").hide();
 		$("#boton_comprar").show();
+                botonComprarInit();
 	});
 }
 

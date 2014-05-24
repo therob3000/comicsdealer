@@ -239,15 +239,25 @@ function generarHTMLComicIndividual($comic_id){
                 </thead>
               </table>
               <div class='row' align='right'>
-                <div style='margin-top: 1%' class='col-sm-6 col-sm-offset-6 col-md-5 col-md-offset-7'>
-                  <div id='boton_comprar'><button class='btn btn-success btn-comprar btn-block' role='button'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+                <div style='margin-top: 1%' class='col-sm-6 col-sm-offset-6 col-md-5 col-md-offset-7'>";
+    if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+        echo "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-block' role='button'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
                   <div id='boton_eliminar'><button class='btn btn-danger btn-eliminar btn-block' role='button'>ELIMINAR DEL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
-                  <div id='boton_comprar_nologin'><button class='btn btn-success btn-comprar-nologin btn-block'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>  
                 </div>
               </div>
-
             </div>
           </div>";
+    }
+    else{
+        echo "<div id='boton_comprar_nologin'><button class='btn btn-success btn-comprar-nologin btn-block'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+                </div>
+              </div>
+            </div>
+          </div>";
+    }
+                  
+                  
+                
 }
 
 function generarHTMLComicsPaquete($paquete_id){
@@ -276,7 +286,16 @@ function generarHTMLComicsPaquete($paquete_id){
             </span>
         </a>";
     }
-    $html = $html . "</div>";
+    
+    if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+        $botones =  "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-block' role='button'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+                  <div id='boton_eliminar'><button class='btn btn-danger btn-eliminar btn-block' role='button'>ELIMINAR DEL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>";
+    }
+    else{
+        $botones = "<div id='boton_comprar_nologin'><button class='btn btn-success btn-comprar-nologin btn-block'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>";
+    }
+    
+    $html = $html . " </div><div>$botones</div>";
     
     echo $html;   
 }

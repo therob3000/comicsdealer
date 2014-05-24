@@ -10,6 +10,7 @@ $con = conexion();
 
 $comic_id = $_GET['comic_id'];
 
+//Verificamos si es paquete
 if (empty($_GET['paquete_id'])) {
   $paquete_id = 0;
 } else {
