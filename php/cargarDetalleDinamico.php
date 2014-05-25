@@ -259,6 +259,9 @@ function generarHTMLComicIndividual($comic_id){
 
 function generarHTMLComicsPaquete($paquete_id){
     $arrayComics = obtenerComicsPaquete($paquete_id);
+    $suma_precio_portada = 0;
+    $suma_precio_salida = 0;
+    $cuma_precio_tienda = 0;
     
     $visor = "<div id='coin-slider'>";
     for($i = 0; $i < count($arrayComics); $i++){
@@ -277,6 +280,10 @@ function generarHTMLComicsPaquete($paquete_id){
                 $personaje
             </span>
         </a>";
+        
+        $suma_precio_portada += obtenerPrecioPortada();
+        $suma_precio_salida += obtenerPrecio();
+        $suma_precio_tienda += obtenerPrecioTienda();
     }
     
        $titulo = obtenerTitulo();
@@ -285,9 +292,16 @@ function generarHTMLComicsPaquete($paquete_id){
        $numero_copias = obtenerCopias();
        $integridad = obtenerIntegridad();
        $descripcion = obtenerDescripcion();
-       $precio_salida = obtenerPrecio();
-    $precio_portada = obtenerPrecioPortada();
-    $precio_tiendas = obtenerPrecioTienda();
+       $precio_salida = $suma_precio_salida;
+       $precio_portada = $suma_precio_portada;
+       $precio_tiendas = $suma_precio_tienda;
+       
+       if($idioma == "Español"){
+           $moneda = "MXN";
+       }
+       else{
+           $moneda = "USD";
+       }
     
     $visor = $visor . " </div>";
     
@@ -322,7 +336,7 @@ function generarHTMLComicsPaquete($paquete_id){
               <table style='margin-bottom: 2px' class='table table-condensed'>
                 <thead>
                   <tr>
-                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada MXN</p></td>
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada $moneda</p></td>
                     <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas MXN</p></td>
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida MXN</p></td>
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>-50%</span>  </p></td>

@@ -273,6 +273,7 @@ if (empty($_GET['parametro_busqueda'])) {
 
                     if ($busqueda != 0) {
                       //$i = 4 por que queremos desplegar 4 renglones en el catalogo
+                      //CONSULTA ESPECIFICA DE CATALOGO
                       for ($i = 0; $i < 4; $i++) {
                         $arrayComics = consulta_especifica($busqueda, $parametro_busqueda, $campos, $contador, 4);
                         $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
@@ -283,6 +284,7 @@ if (empty($_GET['parametro_busqueda'])) {
                       }
                       $_SESSION['inventario'] = $inventario;
                     } 
+                    //CONSULTA GENERAL DE CATALOGO
                     else {
                       for ($i = 0; $i < 4; $i++) {
                         $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma, $personaje_id);

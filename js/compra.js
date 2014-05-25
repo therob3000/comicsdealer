@@ -24,7 +24,13 @@ function cargarComicsCompra(){
 					$("#compras").find("#compra_comic").attr("id", val.inventario_id);
 					$("#"+val.inventario_id).find("#imagen").attr("src", val.cat_comic_imagen_url);
 					$("#"+val.inventario_id).find("#catal").text(val.cat_comic_descripcion);
-					$("#"+val.inventario_id).find("#titulo").text(val.cat_comic_titulo);
+                                        if(val.inventario_paquete != 0){
+                                            titulo = val.cat_comic_titulo + " PAQUETE";
+                                        }
+                                        else{
+                                            titulo = val.cat_comic_titulo;
+                                        }
+					$("#"+val.inventario_id).find("#titulo").text(titulo);
 					$("#"+val.inventario_id).find("#precio").text("$"+val.inventario_precio_salida+" MXN");
 					$("#"+val.inventario_id).find(".eliminaComic").attr("id", val.inventario_id);
 				});
