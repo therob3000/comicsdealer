@@ -254,48 +254,96 @@ function generarHTMLComicIndividual($comic_id){
               </div>
             </div>
           </div>";
-    }
-                  
-                  
-                
+    }              
 }
 
 function generarHTMLComicsPaquete($paquete_id){
     $arrayComics = obtenerComicsPaquete($paquete_id);
     
-    $html = "<div id='coin-slider'>";
+    $visor = "<div id='coin-slider'>";
     for($i = 0; $i < count($arrayComics); $i++){
         obtenerDatos($arrayComics[$i]);
         
         //Estas variables nos permiten obtener los datos de cada comic
        $imagen = obtenerImagen();
        $personaje = obtenerPersonaje();
+       
+    
+        //echo $imagen;
+        $visor = $visor .
+        "<a href='#' target='_blank'>
+            <img src='$imagen' style='max-width: 100%;max-height: 100%'>
+            <span>
+                $personaje
+            </span>
+        </a>";
+    }
+    
        $titulo = obtenerTitulo();
        $numero = obtenerNumero();
        $idioma = obtenerIdioma();
        $numero_copias = obtenerCopias();
        $integridad = obtenerIntegridad();
        $descripcion = obtenerDescripcion();
+       $precio_salida = obtenerPrecio();
+    $precio_portada = obtenerPrecioPortada();
+    $precio_tiendas = obtenerPrecioTienda();
     
-        //echo $imagen;
-        $html = $html . "
-        <a href='#' target='_blank'>
-            <img src='$imagen' >
-            <span>
-                $descripcion
-            </span>
-        </a>";
-    }
+    $visor = $visor . " </div>";
     
+    echo "<div class='row'>
+            <div class='col-sm-4 col-md-3'>
+              $visor
+              <h5 align='center'><small>Da click en la imagen para ampliar <span class='glyphicon glyphicon-zoom-in'></span></small></h5>
+            </div>
+            <div class='col-sm-8 col-md-9'>
+              <h1 class='blog-title' id='comic_personaje'>$personaje</h1>
+
+              <h1 style='margin-top: 5px'>
+                <strong>
+                  <small>
+                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$titulo #$numero</span></span>
+                  </small>
+                  <small>
+                    <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
+                    <span class='label label-comun tip-top' data-toggle='tooltip' data-placement='top' title='Es normal'>Común</span>
+                  </small>
+                </strong>
+                <small id='comic_idioma' class='tip-right' data-toggle='tooltip' data-placement='right' title='Idioma del cómic'>$idioma</small>
+              </h1>
+
+              <hr style='margin-bottom: 0px'></hr>
+              <div class='row'>
+                <div class='col-md-3 tip-bottom' id='comic_copias' align='left' data-toggle='tooltip' data-placement='bottom' title='Todos los que tenemos en este momento'><h4>Existencias: <small><span itemprop='availability'>$numero_copias</span></small></h4></div>
+                <div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si está nuevo, y 0 si está 'pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>
+                <div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>
+              </div>
+              <p align='justify' style='font-size: 12pt' id='comic_descripcion'><span itemprop='description'>$descripcion</span></p>
+              <table style='margin-bottom: 2px' class='table table-condensed'>
+                <thead>
+                  <tr>
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada MXN</p></td>
+                    <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas MXN</p></td>
+                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida MXN</p></td>
+                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>-50%</span>  </p></td>
+                  </tr>
+                </thead>
+              </table>
+              <div class='row' align='right'>
+                <div style='margin-top: 1%' class='col-sm-6 col-sm-offset-6 col-md-5 col-md-offset-7'>";
     if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
-        $botones =  "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-block' role='button'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
-                  <div id='boton_eliminar'><button class='btn btn-danger btn-eliminar btn-block' role='button'>ELIMINAR DEL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>";
+        echo "<div id='boton_comprar'><button class='btn btn-success btn-comprar btn-block' role='button'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+                  <div id='boton_eliminar'><button class='btn btn-danger btn-eliminar btn-block' role='button'>ELIMINAR DEL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+                </div>
+              </div>
+            </div>
+          </div>";
     }
     else{
-        $botones = "<div id='boton_comprar_nologin'><button class='btn btn-success btn-comprar-nologin btn-block'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>";
+        echo "<div id='boton_comprar_nologin'><button class='btn btn-success btn-comprar-nologin btn-block'>AGREGAR AL <span class='glyphicon glyphicon-shopping-cart'></span></button></div>
+                </div>
+              </div>
+            </div>
+          </div>";
     }
-    
-    $html = $html . " </div><div>$botones</div>";
-    
-    echo $html;   
 }
