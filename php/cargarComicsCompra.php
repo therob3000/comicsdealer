@@ -86,7 +86,12 @@
         for($i = 0; $i < $num; $i++){
             $rowArray = array();
             for ($j=0; $j < count($camposArray); $j++) {
+                
                 $rowArray[$camposArray[$j]] = obtenerResultado($camposArray[$j], $i);
+                
+            }
+            if($rowArray['inventario_paquete'] != 0){
+                $rowArray['inventario_precio_salida'] = obtenerPrecioPaquete($rowArray['inventario_paquete']);
             }
             $catalogoArray[] = $rowArray;
         }
@@ -102,6 +107,13 @@
     function obtenerResultado($nombreColumna, $indice){
         global $queryResultado;
         return mysql_result($queryResultado, $indice, "$nombreColumna");
+    }
+    
+    function obtenerPrecioPaquete($inventario_paquete){
+        $queryPrecioPaquete = "SELECT SUM(inventario_precio_salida) as precio_salida FROM inventario WHERE inventario_paquete = $inventario_paquete";
+        //echo $queryPrecioPaquete;
+        $queryPrecio = mysql_query($queryPrecioPaquete);
+        return mysql_result($queryPrecio, 0, "precio_salida");
     }
 
 ?>
