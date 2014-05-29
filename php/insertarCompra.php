@@ -17,14 +17,35 @@
 
 	$forma_pago_id = $_REQUEST['forma_pago_id'];
 	$codigo_postal = $_REQUEST['codigo_postal'];
-	$inventario_id = $_SESSION['usuario_comics'];
+	$inventario_id_compra = $_SESSION['usuario_comics'];
 	$usuario_id = $_SESSION['usuario_id'];
 	$usuario_nombre = $_SESSION['usuario_nombre'];
 	$usuario_correo = $_SESSION['usuario_email'];
 
 	$json = new stdClass();
+        
+        $inventario_ids = implode(",", $inventario_id_compra);
+        
+        $queryPaquetes =    "select inventario_id from inventario 
+                            where inventario_paquete in 
+                                (select inventario_paquete from inventario
+                                where inventario_id in ($inventario_ids)
+                                and inventario_paquete is not null)
+                            union
+                            select inventario_id from inventario 
+                            where inventario_id in ($inventario_ids)
+                            and inventario_paquete is null;";
+        
+        $queryResultadoIds = mysql_query($queryPaquetes);
+        $num = mysql_num_rows($queryResultadoIds);
+        
+        if($num >=0 ){
+            for($i = 0; $i < $num; $i++){
+		$inventario_id[] = mysql_result($queryResultadoIds, $i, "inventario_id");
+            }
+        }
 
-	for ($i=0; $i < count($inventario_id) ; $i++) { 
+        for ($i=0; $i < count($inventario_id) ; $i++) { 
 		//Actualizamos el inventario del comic poniendo existente en 0 
 		$queryActInventario = "UPDATE inventario SET inventario_existente = 0 WHERE inventario_existente = 1 AND inventario_id = $inventario_id[$i]";
 		$resultados[] = mysql_query($queryActInventario);	
