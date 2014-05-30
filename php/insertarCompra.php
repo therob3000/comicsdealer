@@ -17,6 +17,7 @@
 
 	$forma_pago_id = $_REQUEST['forma_pago_id'];
 	$codigo_postal = $_REQUEST['codigo_postal'];
+    
 	$inventario_id_compra = $_SESSION['usuario_comics'];
 	$usuario_id = $_SESSION['usuario_id'];
 	$usuario_nombre = $_SESSION['usuario_nombre'];
@@ -41,7 +42,7 @@
         
         if($num >=0 ){
             for($i = 0; $i < $num; $i++){
-		$inventario_id[] = mysql_result($queryResultadoIds, $i, "inventario_id");
+                $inventario_id[] = mysql_result($queryResultadoIds, $i, "inventario_id");
             }
         }
 
@@ -105,7 +106,7 @@
 
 	if($exitoFinal){
 
-		$comicsNombre = obtenerComics();
+		$comicsNombre = obtenerComics($inventario_id);
 		$comicsImplode = implode($comicsNombre);
 
 		//print_r($comicsNombre);
@@ -139,9 +140,9 @@
 	
 	echo json_encode($json);
 
-	function obtenerComics(){
+	function obtenerComics($inventario){
 
-		$comicsIds = implode(",", $_SESSION['usuario_comics']);
+		$comicsIds = implode(",", $inventario);
 		$camposArray = array(
 						"cat_comic_titulo",
 						"cat_comic_numero_ejemplar",

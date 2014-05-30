@@ -27,7 +27,7 @@
 }*/
 
 //funcion para la conexion Free MySQL Hosting
-/*function conexion(){
+function conexion(){
 	//Definimos los parametros de conexion, host, usuario, password
 	$con = mysql_connect("sql4.freemysqlhosting.net","sql435018","eP9*fH2%");
 
@@ -41,11 +41,11 @@
 		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
-}*/
+}
 
 
 //funcion para la conexion local MAMP
-function conexion(){
+/*function conexion(){
 	//Definimos los parametros de conexion, host, usuario, password
 	$con = mysql_connect("localhost","root","root");
 
@@ -59,7 +59,7 @@ function conexion(){
 		mysql_query('SET CHARACTER SET utf8');
 		return($con);
 	}
-}
+}*/
 
 //funcion para la conexion local WAMP
 /*function conexion(){
