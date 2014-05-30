@@ -24,7 +24,7 @@ function cargarComicsCompra(){
 					$("#compras").find("#compra_comic").attr("id", val.inventario_id);
 					$("#"+val.inventario_id).find("#imagen").attr("src", val.cat_comic_imagen_url);
 					$("#"+val.inventario_id).find("#catal").text(val.cat_comic_descripcion);
-                                        alert(val.inventario_paquete);
+                                        //alert(val.inventario_paquete);
                                         if(val.inventario_paquete !== null){
                                             titulo = val.cat_comic_titulo + " PAQUETE";
                                         }

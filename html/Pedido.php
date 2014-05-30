@@ -77,10 +77,10 @@
 
       <div class="container tres" id="promocion"><!--ESto es lo NUEVO-->
         <div class="jumbotron">
-          <div id="layout"></div>
+          <div id="layout"></div> <!--Aqui se carga la promocion de fin de semana
           <div class="row"><p align="right">
               <!--<a class="btn btn-lg btn-info">Más información</a>-->
-              <a class="btn btn-lg btn-success" id="pedidofinde">Comprar!</a>
+              <!--<a class="btn btn-lg btn-success" id="pedidofinde">Comprar!</a>-->
             </p></div>
           <div class="row">
             <div class="col-lg-3">
