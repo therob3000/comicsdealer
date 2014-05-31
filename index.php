@@ -254,7 +254,8 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 "cat_comic_imagen_url",
                 "inventario_precio_salida",
                 "cat_comic_idioma",
-                "inventario_paquete"
+                "inventario_paquete",
+                "cat_comic_imagen_mini"
             );
 
             $contador = 0;
@@ -304,7 +305,8 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 "cat_comic_imagen_url",
                 "inventario_precio_salida",
                 "cat_comic_idioma",
-                "inventario_paquete"
+                "inventario_paquete",
+                "cat_comic_imagen_mini"
             );
 
             $contador = 0;
