@@ -18,7 +18,8 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
       "cat_comic_imagen_url",
       "inventario_precio_salida",
       "cat_comic_idioma",
-      "inventario_paquete"
+      "inventario_paquete",
+      "cat_comic_imagen_mini"
   );
 
   echo "<div class='row' id='$rowid'>";
@@ -36,6 +37,7 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
     $comic_precio = $arrayComic2[$campos[6]];
     $comic_idioma = $arrayComic2[$campos[7]];
     $inventario_paquete = $arrayComic2[$campos[8]];
+    $cat_comic_imagen_mini = $arrayComic2[$campos[9]];
 
     if ($comic_idioma == "ing") {
       $comic_idioma = "Inglés";
@@ -61,7 +63,7 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
             $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
                            <a target='blank' href='$hrefDetalle' id='cat_detalle'>"
                             . "<div class='image'>"
-                                . "<img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
+                                . "<img id='cat_imagen' src=$cat_comic_imagen_mini style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
 
             if (is_null($inventario_paquete)) {
                 $codigohtml = $codigohtml . "<h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a>";
@@ -90,7 +92,7 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
             $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
                            <a target='blank' href='$hrefDetalle' id='cat_detalle'>"
                             ."<div class='image'>"
-                                . "<img id='cat_imagen' src=$comic_imagen style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
+                            . "<img id='cat_imagen' src=$cat_comic_imagen_mini style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
             if (is_null($inventario_paquete)) {
                 $codigohtml = $codigohtml . "<h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br><titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br><idioma>" . $comic_idioma . "</idioma><br><precio>" . $comic_precio . "<small> MXN</small></precio></h5></div></a></div>";
             } 
@@ -239,7 +241,8 @@ function generaQueryGeneral() {
         cat_comic_imagen_url,
         inventario_precio_salida,
         cat_comic_idioma,
-        inventario_paquete
+        inventario_paquete,
+        cat_comic_imagen_mini
         FROM 
         (SELECT * FROM inventario as INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id

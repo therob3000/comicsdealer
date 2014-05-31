@@ -16,7 +16,8 @@ $camposArray = array("inventario_id",
     "cat_comic_idioma",
     "inventario_integridad",
     "cat_comic_precio_portada",
-    "cat_comic_precio_tienda"
+    "cat_comic_precio_tienda",
+    "cat_comic_imagen_mini"
     //"existe"
 );
 
@@ -75,7 +76,8 @@ CATALOGO.cat_comic_copias,
 CATALOGO.cat_comic_idioma,
 INV.inventario_integridad,
 CATALOGO.cat_comic_precio_portada,
-CATALOGO.cat_comic_precio_tienda
+CATALOGO.cat_comic_precio_tienda,
+CATALOGO.cat_comic_imagen_mini
 FROM
 cat_comics as CATALOGO
 INNER JOIN
@@ -127,6 +129,11 @@ function obtenerTitulo(){
 function obtenerImagen(){
 	global $rowArray;
 	return $rowArray["cat_comic_imagen_url"];
+}
+
+function obtenerImagenMini(){
+    global $rowArray;
+    return $rowArray["cat_comic_imagen_mini"];
 }
 
 function obtenerIdioma(){
@@ -231,9 +238,9 @@ function generarHTMLComicIndividual($comic_id){
               <table style='margin-bottom: 2px' class='table table-condensed'>
                 <thead>
                   <tr>
-                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$'$precio_portada'</p></td>
-                    <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$'$precio_tiendas'</p></td>
-                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$'$precio_salida'</p></td>
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada</p></td>
+                    <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas</p></td>
+                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida</p></td>
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>-50%</span>  </p></td>
                   </tr>
                 </thead>
@@ -268,14 +275,14 @@ function generarHTMLComicsPaquete($paquete_id){
         obtenerDatos($arrayComics[$i]);
         
         //Estas variables nos permiten obtener los datos de cada comic
-       $imagen = obtenerImagen();
+       $imagen = obtenerImagenMini();
        $personaje = obtenerPersonaje();
        
     
         //echo $imagen;
         $visor = $visor .
         "<a href='#' target='_blank'>
-            <img src='$imagen' style='max-width: 100%;max-height: 100%'>
+            <img src='$imagen' style='max-width: 100%;max-height: 100%; repeat: no-repeat;'>
             <span>
                 $personaje
             </span>

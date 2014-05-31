@@ -81,7 +81,7 @@
           <div class="row"><p align="right">
               <!--<a class="btn btn-lg btn-info">Más información</a>-->
               <!--<a class="btn btn-lg btn-success" id="pedidofinde">Comprar!</a>-->
-            </p></div>
+            
           <div class="row">
             <div class="col-lg-3">
               <div class="fb-like" data-href="https://www.facebook.com/ComicsDealer" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>

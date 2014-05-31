@@ -256,7 +256,8 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
                 "cat_comic_imagen_url",
                 "inventario_precio_salida",
                 "cat_comic_idioma",
-                "inventario_paquete"
+                "inventario_paquete",
+                "cat_comic_imagen_mini"
             );
 
             $contador = 0;
