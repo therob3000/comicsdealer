@@ -255,13 +255,15 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 "inventario_precio_salida",
                 "cat_comic_idioma",
                 "inventario_paquete",
-                "cat_comic_imagen_mini"
+                "cat_comic_imagen_mini",
+                "cat_comic_unique_id",
+                "cat_comic_numero_visitas"
             );
 
             $contador = 0;
 
             for ($i = 0; $i < 2; $i++) {
-              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
+              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0, 0);
               cargarCatalogo($arrayComics, $i, 1);
               $contador+=4;
             }
@@ -306,13 +308,15 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 "inventario_precio_salida",
                 "cat_comic_idioma",
                 "inventario_paquete",
-                "cat_comic_imagen_mini"
+                "cat_comic_imagen_mini",
+                "cat_comic_unique_id",
+                "cat_comic_numero_visitas"
             );
 
             $contador = 0;
 
             for ($i = 0; $i < 2; $i++) {
-              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
+              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0, 1);
               cargarCatalogo($arrayComics, $i, 1);
               $contador+=4;
             }

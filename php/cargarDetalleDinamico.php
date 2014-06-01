@@ -29,7 +29,7 @@ $rowArray = array();
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 
 function obtenerComicsPaquete($paquete_id){
-    $queryComicsPaquete = "SELECT inventario_id FROM inventario WHERE inventario_paquete = $paquete_id";
+    $queryComicsPaquete = "SELECT inventario_cat_comic_unique_id FROM inventario WHERE inventario_paquete = $paquete_id";
     $queryResultado = mysql_query($queryComicsPaquete);
     $num = mysql_num_rows($queryResultado);
     
@@ -37,7 +37,7 @@ function obtenerComicsPaquete($paquete_id){
     
     if($num>=0){
         for ($i = 0; $i < $num; $i++) {
-            $arrayComics[] = obtenerResultado($queryResultado, $i, "inventario_id");
+            $arrayComics[] = obtenerResultado($queryResultado, $i, "inventario_cat_comic_unique_id");
         }
     }
     else{
@@ -77,7 +77,8 @@ CATALOGO.cat_comic_idioma,
 INV.inventario_integridad,
 CATALOGO.cat_comic_precio_portada,
 CATALOGO.cat_comic_precio_tienda,
-CATALOGO.cat_comic_imagen_mini
+CATALOGO.cat_comic_imagen_mini,
+CATALOGO.cat_comic_unique_id
 FROM
 cat_comics as CATALOGO
 INNER JOIN
@@ -94,7 +95,8 @@ INNER JOIN
 WHERE
 CATALOGO.cat_comic_activo = 1 
 AND INV.inventario_existente = 1
-AND INV.inventario_id = $comic_id";
+AND CATALOGO.cat_comic_unique_id = $comic_id";
+//AND INV.inventario_id = $comic_id";
         
 //echo $queryComic;
 
@@ -367,4 +369,9 @@ function generarHTMLComicsPaquete($paquete_id){
             </div>
           </div>";
     }
+}
+
+function insertarVisita($comic_id){
+    $queryVisita = "UPDATE cat_comics SET cat_comic_numero_visitas = cat_comic_numero_visitas + 1 WHERE cat_comic_unique_id = $comic_id";
+    mysql_query($queryVisita);
 }

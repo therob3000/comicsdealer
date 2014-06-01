@@ -268,7 +268,9 @@ if (empty($_GET['parametro_busqueda'])) {
                         "inventario_precio_salida",
                         "cat_comic_idioma",
                         "inventario_paquete",
-                        "cat_comic_imagen_mini"
+                        "cat_comic_imagen_mini",
+                        "cat_comic_unique_id",
+                        "cat_comic_numero_visitas"
                     );
                     $contador = $pagina;
 
@@ -288,7 +290,7 @@ if (empty($_GET['parametro_busqueda'])) {
                     //CONSULTA GENERAL DE CATALOGO
                     else {
                       for ($i = 0; $i < 4; $i++) {
-                        $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma, $personaje_id);
+                        $arrayComics = consulta_catalogo($campos, $contador, 4, $compania_id, $idioma, $personaje_id, 0);
                         $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
                         $contador+=4;
                         for ($j = 0; $j < count($inventarioArray); $j++) {

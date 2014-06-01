@@ -19,7 +19,9 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
       "inventario_precio_salida",
       "cat_comic_idioma",
       "inventario_paquete",
-      "cat_comic_imagen_mini"
+      "cat_comic_imagen_mini",
+      "cat_comic_unique_id",
+      "cat_comic_numero_visitas"
   );
 
   echo "<div class='row' id='$rowid'>";
@@ -38,20 +40,22 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
     $comic_idioma = $arrayComic2[$campos[7]];
     $inventario_paquete = $arrayComic2[$campos[8]];
     $cat_comic_imagen_mini = $arrayComic2[$campos[9]];
+    $cat_comic_unique_id = $arrayComic2{$campos{10}};
+    $cat_comic_numero_visitas = $arrayComic2[$campos[11]];
 
     if ($comic_idioma == "ing") {
       $comic_idioma = "Inglés";
     } else {
       $comic_idioma = "Español";
     }
-    $inventarioArray[] = $inventario_id;
+    $inventarioArray[] = $cat_comic_unique_id;
     
     if(is_null($inventario_paquete)){
-        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id";
+        $hrefDetalle = "/html/Detalle.php?comic_id=$cat_comic_unique_id";
         
     }
     else{
-        $hrefDetalle = "/html/Detalle.php?comic_id=$inventario_id&paquete_id=$inventario_paquete";
+        $hrefDetalle = "/html/Detalle.php?comic_id=$cat_comic_unique_id&paquete_id=$inventario_paquete";
     }
     
     //AQUI INICIA EL HTML DE CADA ELEMENTO DEL CATALOGO
@@ -108,7 +112,7 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
   
 }
 
-function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, $personaje_id) {
+function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, $personaje_id, $orden) {
 //FUNCION QUE GENERA LA CONSULTA EN LA BASE PARA LLENAR EL CATALOGO
 //Parametros:
 //$camposArray = Arreglo de strings con los nombres de los campos que queremos obtener
@@ -117,21 +121,29 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, 
 
   $catalogoArray = array();
   $rowArray = array();
+  
+  switch ($orden){
+      case 0:
+          $cadena_orden = " ORDER BY inventario_fecha_entrada DESC ";
+          break;
+      case 1:
+          $cadena_orden = " ORDER BY cat_comic_numero_visitas DESC ";
+  }
 
   $queryCatalogoComics = generaQueryGeneral();
 
   if ($idioma == 0 && $compania_id == 0 && $personaje_id == 0) {
     $queryCatalogoComicsCondicion = "
             WHERE
-                cat_comic_activo = 1 AND cat_comic_copias > 0 AND inventario_existente = 1 AND inventario_activo = 1 ORDER BY inventario_fecha_entrada DESC
+                cat_comic_activo = 1 AND cat_comic_copias > 0 AND inventario_existente = 1 AND inventario_activo = 1 $cadena_orden
             LIMIT $salto, $rango";
   } else {
-    $queryCatalogoComicsCondicion = generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id);
+    $queryCatalogoComicsCondicion = generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id, $cadena_orden);
   }
 
   //echo $queryCatalogoComics . $queryCatalogoComicsCondicion;
-
-  $queryResultado = mysql_query($queryCatalogoComics . $queryCatalogoComicsCondicion);
+  
+    $queryResultado = mysql_query($queryCatalogoComics . $queryCatalogoComicsCondicion);
 
   $num = mysql_num_rows($queryResultado);
   if ($num > 0) {
@@ -242,7 +254,9 @@ function generaQueryGeneral() {
         inventario_precio_salida,
         cat_comic_idioma,
         inventario_paquete,
-        cat_comic_imagen_mini
+        cat_comic_imagen_mini,
+        cat_comic_unique_id,
+        cat_comic_numero_visitas
         FROM 
         (SELECT * FROM inventario as INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
@@ -260,7 +274,7 @@ function generaQueryGeneral() {
     return $queryCatalogoComics;
 }
 
-function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id) {
+function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id, $cadena_orden) {
   switch ($idioma) {
     //1 PARA INGLES
     case 1:
@@ -273,20 +287,20 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                     AND cat_comic_idioma = 'ing'";
       if ($compania_id == 0) {
         if ($personaje_id == 0) {
-          $queryCatalogoComicsCondicion = $query . " ORDER BY inventario_fecha_entrada DESC LIMIT $salto, $rango";
+          $queryCatalogoComicsCondicion = $query . " $cadena_orden LIMIT $salto, $rango";
         } else {
           $queryCatalogoComicsCondicion = $query .
-                  " AND cat_comic_personaje_id = $personaje_id ORDER BY inventario_fecha_entrada DESC
+                  " AND cat_comic_personaje_id = $personaje_id $cadena_orden
                     LIMIT $salto, $rango";
         }
       } else {
         if ($personaje_id == 0) {
           $queryCatalogoComicsCondicion = $query .
-                  " AND personaje_compania_id = $compania_id ORDER BY inventario_fecha_entrada DESC
+                  " AND personaje_compania_id = $compania_id $cadena_orden
                     LIMIT $salto, $rango";
         } else {
           $queryCatalogoComicsCondicion = $query .
-                  " AND cat_comic_personaje_id = $personaje_id AND personaje_compania_id = $compania_id ORDER BY inventario_fecha_entrada DESC
+                  " AND cat_comic_personaje_id = $personaje_id AND personaje_compania_id = $compania_id $cadena_orden
                     LIMIT $salto, $rango";
         }
       }
@@ -302,20 +316,20 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                     AND cat_comic_idioma = 'esp'";
       if ($compania_id == 0) {
         if ($personaje_id == 0) {
-          $queryCatalogoComicsCondicion = $query . " ORDER BY inventario_fecha_entrada DESC LIMIT $salto, $rango";
+          $queryCatalogoComicsCondicion = $query . " $cadena_orden LIMIT $salto, $rango";
         } else {
           $queryCatalogoComicsCondicion = $query .
-                  " AND cat_comic_personaje_id = $personaje_id ORDER BY inventario_fecha_entrada DESC
+                  " AND cat_comic_personaje_id = $personaje_id $cadena_orden
                     LIMIT $salto, $rango";
         }
       } else {
         if ($personaje_id == 0) {
           $queryCatalogoComicsCondicion = $query .
-                  " AND personaje_compania_id = $compania_id ORDER BY inventario_fecha_entrada DESC
+                  " AND personaje_compania_id = $compania_id $cadena_orden
                     LIMIT $salto, $rango";
         } else {
           $queryCatalogoComicsCondicion = $query .
-                  " AND cat_comic_personaje_id = $personaje_id AND personaje_compania_id = $compania_id ORDER BY inventario_fecha_entrada DESC
+                  " AND cat_comic_personaje_id = $personaje_id AND personaje_compania_id = $compania_id $cadena_orden
                     LIMIT $salto, $rango";
         }
       }
@@ -329,20 +343,20 @@ function generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_
                     AND inventario_activo = 1";
       if ($compania_id == 0) {
         if ($personaje_id == 0) {
-          $queryCatalogoComicsCondicion = $query . " ORDER BY inventario_fecha_entrada DESC LIMIT $salto, $rango";
+          $queryCatalogoComicsCondicion = $query . " $cadena_orden LIMIT $salto, $rango";
         } else {
           $queryCatalogoComicsCondicion = $query .
-                  " AND cat_comic_personaje_id = $personaje_id ORDER BY inventario_fecha_entrada DESC
+                  " AND cat_comic_personaje_id = $personaje_id $cadena_orden
                     LIMIT $salto, $rango";
         }
       } else {
         if ($personaje_id == 0) {
           $queryCatalogoComicsCondicion = $query .
-                  " AND personaje_compania_id = $compania_id ORDER BY inventario_fecha_entrada DESC
+                  " AND personaje_compania_id = $compania_id $cadena_orden
                     LIMIT $salto, $rango";
         } else {
           $queryCatalogoComicsCondicion = $query .
-                  " AND cat_comic_personaje_id = $personaje_id AND personaje_compania_id = $compania_id ORDER BY inventario_fecha_entrada DESC
+                  " AND cat_comic_personaje_id = $personaje_id AND personaje_compania_id = $compania_id $cadena_orden
                     LIMIT $salto, $rango";
         }
       }

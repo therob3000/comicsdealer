@@ -16,6 +16,9 @@ if (empty($_GET['paquete_id'])) {
 } else {
   $paquete_id = $_GET['paquete_id'];
 }
+
+insertarVisita($comic_id);
+
 //Datos para las meta etiquetas de FACEBOOK
 $comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo, SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion from inventario as inv
 inner join cat_comics as cat on inv.inventario_cat_comic_unique_id = cat.cat_comic_unique_id
@@ -257,7 +260,8 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
                 "inventario_precio_salida",
                 "cat_comic_idioma",
                 "inventario_paquete",
-                "cat_comic_imagen_mini"
+                "cat_comic_imagen_mini",
+                "cat_comic_unique_id"
             );
 
             $contador = 0;

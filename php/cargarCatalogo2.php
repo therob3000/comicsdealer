@@ -16,7 +16,8 @@
 						"cat_comic_numero_ejemplar",
 						"cat_comic_imagen_url",
 						"inventario_precio_salida",
-						"cat_comic_idioma"
+						"cat_comic_idioma",
+                                                "cat_comic_imagen_mini"
 	);
 
 	$catalogoArray = array();
@@ -35,7 +36,8 @@
     CATALOGO.cat_comic_numero_ejemplar,
 	CATALOGO.cat_comic_imagen_url,
     INV.inventario_precio_salida,
-    CATALOGO.cat_comic_idioma
+    CATALOGO.cat_comic_idioma,
+    CATALOGO.cat_comic_imagen_mini
 	FROM
     cat_comics as CATALOGO
         INNER JOIN
@@ -46,12 +48,15 @@
 		inventario_cat_comic_unique_id,
 		inventario_existente,
 		inventario_fecha_entrada,
-		inventario_activo
+		inventario_activo,
+                inventario_paquete
     FROM
         inventario
-    GROUP BY inventario_cat_comic_unique_id ORDER BY inventario_fecha_entrada DESC) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
+    GROUP BY inventario_cat_comic_unique_id
+    ORDER BY inventario_fecha_entrada DESC) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 	WHERE
     	CATALOGO.cat_comic_activo = 1 AND CATALOGO.cat_comic_copias > 0 AND INV.inventario_existente = 1 AND INV.inventario_activo = 1
+   
     LIMIT $salto, $rango";
 
     //echo $queryCatalogoComics;

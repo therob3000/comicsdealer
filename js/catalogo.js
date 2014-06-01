@@ -19,7 +19,7 @@ function cargarCarouselComics(salto, rango, capa) {
                 $("#" + val.inventario_id).find('#boton_comprar').html("<a type='button' href='/html/Detalle.php?comic_id=" + val.inventario_id + "' class='btn btn-success btn-comprar' role='button'>Vagina mojada</a>");
                 //$("#"+val.inventario_id).find('#boton_comprar').html("<button class='btn btn-success btn-comprar btn-small' role='button'>$"+val.inventario_precio_salida+"<small>MXN</small></button>");
                 $("#" + val.inventario_id).find('#cat_detalle').attr('href', "/html/Detalle.php?comic_id=" + val.inventario_id);
-                $("#" + val.inventario_id).find("#cat_imagen").attr("src", val.cat_comic_imagen_url);
+                $("#" + val.inventario_id).find("#cat_imagen").attr("src", val.cat_comic_imagen_mini);
                 $("#" + val.inventario_id).find("#cat_personaje").html(val.cat_comic_personaje + "<br><titulo>" + val.cat_comic_titulo + " #" + val.cat_comic_numero_ejemplar + "</titulo>" + 
                         "<br><idioma>" + idioma + "</idioma>" + "<br><precio>$" + val.inventario_precio_salida + "<small> MXN</small></precio>");
                 //$("#" + val.inventario_id).find("#cat_titulo").html(val.cat_comic_titulo + " #" + val.cat_comic_numero_ejemplar);
