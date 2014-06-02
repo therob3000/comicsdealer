@@ -263,7 +263,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
             $contador = 0;
 
             for ($i = 0; $i < 2; $i++) {
-              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0, 0);
+              $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0, 2);
               cargarCatalogo($arrayComics, $i, 1);
               $contador+=4;
             }

@@ -64,7 +64,7 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
 
             //LA VARIABLE $layout determina el HTML que se cargara para mostrar los elementos en
             //AQUI INICIA LO NUEVO PARA CARGAR LOS COMICS LEL
-            $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$inventario_id'>
+            $codigohtml = "<div align='center' class='cuadro col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$cat_comic_unique_id'>
                            <a target='blank' href='$hrefDetalle' id='cat_detalle'>"
                             . "<div class='image'>"
                                 . "<img id='cat_imagen' src=$cat_comic_imagen_mini style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
@@ -128,6 +128,10 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, 
           break;
       case 1:
           $cadena_orden = " ORDER BY cat_comic_numero_visitas DESC ";
+          break;
+      case 2:
+          $cadena_orden = " ORDER BY cat_comic_numero_compras DESC";
+          break;
   }
 
   $queryCatalogoComics = generaQueryGeneral();

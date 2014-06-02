@@ -19,7 +19,8 @@
                         "cat_comic_numero_ejemplar",
                         "cat_comic_imagen_url",
                         "inventario_precio_salida",
-                        "inventario_paquete"
+                        "inventario_paquete",
+                        "cat_comic_unique_id"
     );
 
     $catalogoArray = array();
@@ -39,7 +40,7 @@
 //            personaje_id = CATALOGO.cat_comic_personaje_id) as cat_comic_personaje,
 //    CATALOGO.cat_comic_numero_ejemplar,
 //	CATALOGO.cat_comic_imagen_url,
-//    INV.inventario_precio_salida
+//    INV.inventario_precio_salida,
 //	FROM
 //    cat_comics as CATALOGO
 //        INNER JOIN
@@ -64,7 +65,8 @@
         cat_comic_imagen_url,
         inventario_precio_salida,
         cat_comic_idioma,
-        inventario_paquete
+        inventario_paquete,
+        cat_comic_unique_id
         FROM 
         (SELECT * FROM inventario as INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
@@ -78,8 +80,10 @@
             INNER JOIN datos_comics as DAT ON CAT.cat_comic_descripcion_id = DAT.datos_comic_id
             GROUP BY INV.inventario_paquete
             HAVING INV.inventario_paquete != 0) AS LEL
-            WHERE inventario_id IN ($cadenaInventarioId)";
+            WHERE cat_comic_unique_id IN ($cadenaInventarioId)";
 
+    //echo $queryComics;
+    
     $queryResultado = mysql_query($queryComics);
     $num = mysql_num_rows($queryResultado);
     if($num>0){

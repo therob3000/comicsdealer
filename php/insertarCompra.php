@@ -64,7 +64,7 @@
 	if($exito){
 		for ($i=0; $i < count($inventario_id); $i++) { 
 			//Actualizamos el catalogo de comics restando una unidad al numero de copias
-			$queryComics = "UPDATE cat_comics SET cat_comic_copias = cat_comic_copias - 1 WHERE cat_comic_copias NOT IN (0) AND cat_comic_unique_id = (SELECT inventario_cat_comic_unique_id FROM inventario WHERE inventario_id = $inventario_id[$i])";
+			$queryComics = "UPDATE cat_comics SET cat_comic_copias = cat_comic_copias - 1, cat_comic_numero_compras = cat_comic_numero_compras + 1 WHERE cat_comic_copias NOT IN (0) AND cat_comic_unique_id = (SELECT inventario_cat_comic_unique_id FROM inventario WHERE inventario_id = $inventario_id[$i])";
 			$resultados2[] = mysql_query($queryComics);
 		}
 		foreach ($resultados2 as $resultado2) {

@@ -5,6 +5,7 @@
 
 	$comic_inventario_id = $_REQUEST['cat_comic_inventario_id'];
 	$arrayExistente = $_SESSION['usuario_comics'];
+      
 	$arrayNuevo = array();
 
 	$json = new stdClass();
@@ -15,9 +16,5 @@
 	}
 
 	$_SESSION['usuario_comics'] = $arrayNuevo;
-
-	$json->totalCompra = count($arrayNuevo);
-
-	echo json_encode($json);
 
 ?>

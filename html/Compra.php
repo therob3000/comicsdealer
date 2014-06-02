@@ -1,3 +1,9 @@
+<?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    session_start();
+   ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,8 +36,19 @@
     <![endif]-->
   </head>
   <body>
-    <div id="nav_bar">
-    </div>
+    <?php
+if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+  $html = file_get_contents("layouts/navbar_login_layout.html");
+} else {
+  $html = file_get_contents("layouts/navbar_nologin_layout.html");
+}
+
+
+$doc = new DOMDocument();
+$doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+?>
+
+<div id="nav_bar"><?php echo $doc->saveHTML(); ?></div>
     <div class="container">
       <!-- Inicia ventana modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

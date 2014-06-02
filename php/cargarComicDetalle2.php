@@ -17,7 +17,8 @@
 						"inventario_precio_salida",
 						"cat_comic_copias",
 						"cat_comic_idioma",
-						"inventario_integridad"
+						"inventario_integridad",
+                                                "cat_comic_unique_id"
 	);
 
 	$queryComic = "SELECT 
@@ -35,7 +36,8 @@
     INV.inventario_precio_salida,
     CATALOGO.cat_comic_copias,
     CATALOGO.cat_comic_idioma,
-    INV.inventario_integridad
+    INV.inventario_integridad,
+    CATALOGO.cat_comic_unique_id
 	FROM
     cat_comics as CATALOGO
         INNER JOIN
@@ -52,7 +54,7 @@
 	WHERE
     	CATALOGO.cat_comic_activo = 1 
     	AND INV.inventario_existente = 1
-    	AND INV.inventario_id = $comic_id";
+    	AND CATALOGO.cat_comic_unique_id = $comic_id";
 $queryResultado = mysql_query($queryComic);
 $num = mysql_num_rows($queryResultado);
 if($num>=0){

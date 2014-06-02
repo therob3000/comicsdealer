@@ -21,9 +21,9 @@ function cargarComicsCompra(){
 				totalComics += Number(val.inventario_precio_salida);
 				$.get("/html/layouts/compra_final_layout.html", function(data2){
 					$("#compras").append(data2);
-					$("#compras").find("#compra_comic").attr("id", val.inventario_id);
-					$("#"+val.inventario_id).find("#imagen").attr("src", val.cat_comic_imagen_url);
-					$("#"+val.inventario_id).find("#catal").text(val.cat_comic_descripcion);
+					$("#compras").find("#compra_comic").attr("id", val.cat_comic_unique_id);
+					$("#"+val.cat_comic_unique_id).find("#imagen").attr("src", val.cat_comic_imagen_url);
+					$("#"+val.cat_comic_unique_id).find("#catal").text(val.cat_comic_descripcion);
                                         //alert(val.inventario_paquete);
                                         if(val.inventario_paquete !== null){
                                             titulo = val.cat_comic_titulo + " PAQUETE";
@@ -31,9 +31,9 @@ function cargarComicsCompra(){
                                         else{
                                             titulo = val.cat_comic_titulo;
                                         }
-					$("#"+val.inventario_id).find("#titulo").text(titulo);
-					$("#"+val.inventario_id).find("#precio").text("$"+val.inventario_precio_salida+" MXN");
-					$("#"+val.inventario_id).find(".eliminaComic").attr("id", val.inventario_id);
+					$("#"+val.cat_comic_unique_id).find("#titulo").text(titulo);
+					$("#"+val.cat_comic_unique_id).find("#precio").text("$"+val.inventario_precio_salida+" MXN");
+					$("#"+val.cat_comic_unique_id).find(".eliminaComic").attr("id", val.cat_comic_unique_id);
 				});
 			});
 			$('#totalComics').html('<h2>Total: $'+totalComics+'</h2>');
@@ -41,19 +41,20 @@ function cargarComicsCompra(){
 		'json');
 }
 
-function verificaSesion(pagina){
+function verificaSesion(){
 	$.ajaxSetup({async:false});
-	$.post("/php/verifica_sesion.php",
+	$.post("../php/verifica_sesion.php",
 		function(data){
 			verifica = data.ver_sesion.estado;
+                        nombre = data.ver_sesion.usuario_nombre;
 			if(verifica == true){
-				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
-				if(data.ver_sesion.usuario_pro != 1){
+			if(data.ver_sesion.usuario_pro != 1){
 					$("#nav_bar").find("#nav_pedido").remove();
 				}
-				cargarComicsCompra();
-			
-				//botonEliminar();
+                                $("#nav_bar").find("#botonMenUsuario").append("<span class='glyphicon glyphicon-list-alt'></span> "+nombre);
+				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'><span class='glyphicon glyphicon-shopping-cart'></span> Finalizar Compra <span class='badge' id='compraTotal'></span></button>");
+                                botonComprarInit();
+                                cargarComicsCompra();
 			}
 			else{
 				alert("No ha iniciado sesion");
@@ -62,6 +63,12 @@ function verificaSesion(pagina){
 		},
 		'json');
 	$.ajaxSetup({async:true});
+}
+
+function botonComprarInit(){
+	$.post("/php/elementosComprados.php", function(data){
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
 }
 
 function eliminaComic(){

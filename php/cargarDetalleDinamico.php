@@ -17,7 +17,8 @@ $camposArray = array("inventario_id",
     "inventario_integridad",
     "cat_comic_precio_portada",
     "cat_comic_precio_tienda",
-    "cat_comic_imagen_mini"
+    "cat_comic_imagen_mini",
+    "cat_comic_unique_id"
     //"existe"
 );
 

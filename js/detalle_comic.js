@@ -50,17 +50,17 @@ function cargarComic2(comic_id){
 	$.get("../php/cargarComicDetalle2.php",
 		cadena,
 		function(data){
-			if($.inArray(data.comic.inventario_id, data.agregados) != -1){
+			if($.inArray(data.comic.cat_comic_unique_id, data.agregados) != -1){
 					//$('#boton_comprar_nologin').hide();					
 					$('#boton_comprar').hide();
-					$('.btn-eliminar').attr("id", data.comic.inventario_id);
-					$('.btn-comprar').attr("id", data.comic.inventario_id);
+					$('.btn-eliminar').attr("id", data.comic.cat_comic_unique_id);
+					$('.btn-comprar').attr("id", data.comic.cat_comic_unique_id);
 				}
 				else{
 					//$('#boton_comprar_nologin').hide();
 					$('#boton_eliminar').hide();
-					$('.btn-comprar').attr("id", data.comic.inventario_id);
-					$('.btn-eliminar').attr("id", data.comic.inventario_id);
+					$('.btn-comprar').attr("id", data.comic.cat_comic_unique_id);
+					$('.btn-eliminar').attr("id", data.comic.cat_comic_unique_id);
 				}
 		},
 		'json');
@@ -79,7 +79,7 @@ function botonComprar(){
 
 function botonEliminar(){
 	$(".btn-eliminar").on("click", function(){
-		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		cadena = "cat_comic_unique_id="+$(this).attr('id');
 		$.post("/php/eliminarCompra.php",cadena);
 		$("#boton_eliminar").hide();
 		$("#boton_comprar").show();
