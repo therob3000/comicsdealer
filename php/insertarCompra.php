@@ -137,6 +137,7 @@ echo json_encode($json);
 function obtenerComics($inventario) {
 
     $comicsIds = implode(",", $inventario);
+    
     $camposArray = array(
         "cat_comic_titulo",
         "cat_comic_numero_ejemplar",
@@ -159,7 +160,7 @@ function obtenerComics($inventario) {
 	        inventario
 	    GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 		WHERE
-	    	CATALOGO.cat_comic_activo = 1 AND INV.inventario_id IN ($comicsIds)";
+	    	CATALOGO.cat_comic_activo = 1 AND INV.inventario_cat_comic_unique_id IN ($comicsIds)";
 
     //echo $queryCatalogoComics;
 
