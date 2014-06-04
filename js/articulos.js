@@ -1,6 +1,10 @@
 $(document).ready(function(){
 	verificaSesion();
 	modalIniciarSesion();
+        modalRegistrar();
+        registroFacebook();
+        registroCorreo();
+        finalizarCompra();
 	cargarArticulo(articulo_id);
 	cargarArticulosArchivo();
 	//cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
@@ -41,7 +45,7 @@ function cargarArticulo(articulo_id){
 				$("#anterior").html("<a href='./Articulos.php?articulo_id="+(+articulo_id-1)+"'>Anterior</a>");
 			}
 			if(articulo_id >= data.total){
-				$("#siguiente").togglehide();
+				$("#siguiente").hide();
 			}
 			else{
 				$("#siguiente").html("<a href='./Articulos.php?articulo_id="+(+articulo_id+1)+"'>Siguiente</a>");
@@ -68,14 +72,15 @@ function verificaSesion(){
 	$.post("../php/verifica_sesion.php",
 		function(data){
 			verifica = data.ver_sesion.estado;
+                        nombre = data.ver_sesion.usuario_nombre;
+                        //SI EL USUARIO YA INICIO SESION
 			if(verifica == true){
-				$("#nav_bar").load("../html/layouts/navbar_login_layout.html");
-				if(data.ver_sesion.usuario_pro != 1){
-					$("#nav_bar").find("#nav_pedido").remove();
-				}
-			}
-			else{
-				$("#nav_bar").load("../html/layouts/navbar_nologin_layout.html");
+                            if(data.ver_sesion.usuario_pro != 1){
+				$("#nav_bar").find("#nav_pedido").remove();
+                            }
+                                $("#nav_bar").find("#botonMenUsuario").append("<span class='glyphicon glyphicon-list-alt'></span> "+nombre);
+				$("#nav_bar").find("#botonFinalizarCompra").html("<button class='btn btn-success' type='button'><span class='glyphicon glyphicon-shopping-cart'></span> Finalizar Compra <span class='badge' id='compraTotal'></span></button>");
+                                botonComprarInit();
 			}
 		},
 		'json');
@@ -94,3 +99,8 @@ function botonComprarNologin(){
 	})
 }
 
+function botonComprarInit(){
+	$.post("/php/elementosComprados.php", function(data){
+			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
+		}, 'json');
+}

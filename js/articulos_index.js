@@ -1,10 +1,13 @@
 $(document).ready(function(){
 	verificaSesion();
 	modalIniciarSesion();
+        modalRegistrar();
+        registroFacebook();
+        registroCorreo();
+        finalizarCompra();
 	cargarArticulos(pagina, 5);
 	//cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
 	botonComprarNologin();
-        botonComprarInit();
 });
 
 function cargarArticulos(salto, rango){

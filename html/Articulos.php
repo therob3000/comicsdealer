@@ -5,6 +5,7 @@ include '../php/catalogoFunctions.php';
 
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
+session_start();
 
 $articulo_id = $_GET['articulo_id'];
 
@@ -48,9 +49,10 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
   </script>
   <script src="../bootstrap/assets/js/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/articulos.js"></script>
   <script src="../js/catalogo.js"></script>
   <script src="../js/login.js"></script>
-  <script src="../js/articulos.js"></script>
+  <script src="../js/registro_login.js"></script>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -65,6 +67,29 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
     })();
 
   </script>
+   <div id="fb-root"></div>
+<script>
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '655150577891800',
+      status: true, // check login status
+      cookie: true, // enable cookies to allow the server to access the session
+      xfbml: true, // parse XFBML
+      oauth: true
+    });
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id))
+      return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
   <style>
     .container {
       background: url(../img/spiderman1.jpg) no-repeat center center fixed;
@@ -78,48 +103,34 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
       <![endif]-->
     </head>
     <body>
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-  <div id="nav_bar"></div>
+        <?php
+      if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+          $html = file_get_contents("layouts/navbar_login_layout.html");
+      } else {
+          $html = file_get_contents("layouts/navbar_nologin_layout.html");
+      }
+
+
+      $doc = new DOMDocument();
+      $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+      ?>
+
+      <div id="nav_bar"><?php echo $doc->saveHTML(); ?></div>
       <div class="container">
-         
-         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Bienvenido, haz login!</h4>
-              </div>
-              <form role="form" id="login">
-                <div class="modal-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Correo Electrónico</label>
-                      <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="usuario_email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
-                    </div>
-                    <a href="preRegistro.html"><strong>¿Aun no te registras?</strong></a>
-                    <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
-                  </div>
-                  <div class="modal-footer navbar-inverse">
-                    <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-                    class="img-responsive text-center" width="207" height="26"/>
-                    <button type="submit" class="btn btn-success" >Iniciar Sesión</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                  </div>
-                </form>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
+          <?php
+  //SIMILAR AL NAV BAR, CARGAMOS DINAMICAMENTE LOS LAYOUTS PARA LAS VENTANAS MODALES
+  //CARGAR VENTANA MODAL PARA INICIO DE SESION
+  $modal_sesion_html = file_get_contents("../html/layouts/modal_login_layout.html");
+  $modal_sesion = new DOMDocument();
+  $modal_sesion->loadHTML(mb_convert_encoding($modal_sesion_html, 'HTML-ENTITIES', 'UTF-8'));
+  echo $modal_sesion->saveHTML();
+
+  //CARGAR VENTANA MODAL PARA REGISTRO CON FACEBOOK Y CORREO
+  $modal_registro_html = file_get_contents("../html/layouts/modal_registro_layout.html");
+  $modal_registro = new DOMDocument();
+  $modal_registro->loadHTML(mb_convert_encoding($modal_registro_html, 'HTML-ENTITIES', 'UTF-8'));
+  echo $modal_registro->saveHTML();
+  ?>
           <div class="container tres">
             <div class="highlight">
 
