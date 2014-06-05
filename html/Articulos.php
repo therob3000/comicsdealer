@@ -243,19 +243,23 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
               <hr></hr>
               <?php
                     $campos = array("inventario_id",
-                                            "cat_comic_titulo",
-                                            "cat_comic_descripcion",
-                                            "cat_comic_personaje",
-                                            "cat_comic_numero_ejemplar",
-                                            "cat_comic_imagen_url",
-                                            "inventario_precio_salida",
-                                            "cat_comic_idioma"
-                            );
+                        "cat_comic_titulo",
+                        "cat_comic_descripcion",
+                        "cat_comic_personaje",
+                        "cat_comic_numero_ejemplar",
+                        "cat_comic_imagen_url",
+                        "inventario_precio_salida",
+                        "cat_comic_idioma",
+                        "inventario_paquete",
+                        "cat_comic_imagen_mini",
+                        "cat_comic_unique_id",
+                        "cat_comic_numero_visitas"
+                    );
               
                     $contador = 0;
 
                     for ($i = 0; $i < 2; $i++) {
-                        $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0);
+                        $arrayComics = consulta_catalogo($campos, $contador, 4, 0, 0, 0, 2);
                         cargarCatalogo($arrayComics, $i, 1);
                         $contador+=4;
                     }
