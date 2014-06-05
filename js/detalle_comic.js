@@ -68,7 +68,7 @@ function cargarComic2(comic_id){
 
 function botonComprar(){
 	$(".btn-comprar").on("click", function(){
-		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		cadena = "cat_comic_unique_id="+$(this).attr('id');
 		$.post("/php/agregarCompra.php",cadena,function(data){
 			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
 		}, 'json');

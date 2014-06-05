@@ -110,7 +110,7 @@ function botonComprarInit(){
 function botonEliminar(){
 	$(".btn-eliminar").on("click", function(){
 
-		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		cadena = "cat_comic_unique_id="+$(this).attr('id');
 		$.post("/php/eliminarCompra.php",cadena, function(data){
 			
 			$("#nav_bar").find("#compraTotal").text(data.totalCompra);
