@@ -1,6 +1,6 @@
 <?php
-//	ini_set('display_errors',1); 
-//	error_reporting(E_ALL);
+	/*ini_set('display_errors',1); 
+	error_reporting(E_ALL);*/
 
 	//$comic_id = $_GET['comic_id'];
 
@@ -18,8 +18,7 @@ $camposArray = array("inventario_id",
     "cat_comic_precio_portada",
     "cat_comic_precio_tienda",
     "cat_comic_imagen_mini",
-    "cat_comic_unique_id",
-    "cat_paquete_descripcion"
+    "cat_comic_unique_id"
     //"existe"
 );
 
@@ -80,8 +79,7 @@ INV.inventario_integridad,
 CATALOGO.cat_comic_precio_portada,
 CATALOGO.cat_comic_precio_tienda,
 CATALOGO.cat_comic_imagen_mini,
-CATALOGO.cat_comic_unique_id,
-PAQUETES.cat_paquete_descripcion
+CATALOGO.cat_comic_unique_id
 FROM
 cat_comics as CATALOGO
 INNER JOIN
@@ -91,12 +89,10 @@ INNER JOIN
 	inventario_precio_salida,
 	inventario_cat_comic_unique_id,
 	inventario_existente,
-	inventario_integridad,
-        inventario_paquete
+	inventario_integridad
 	FROM
 	inventario
 	GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
-INNER JOIN cat_paquetes as PAQUETES ON PAQUETES.cat_paquete_id = INV.inventario_paquete
 WHERE
 CATALOGO.cat_comic_activo = 1 
 AND INV.inventario_existente = 1
@@ -194,11 +190,6 @@ function obtenerPrecioPortada(){
     return $rowArray["cat_comic_precio_portada"];
 }
 
-function obtenerPaquete(){
-    global $rowArray;
-    return $rowArray["cat_paquete_descripcion"];
-}
-
 function generarHTMLComicIndividual($comic_id){
     
     obtenerDatos($comic_id);
@@ -280,21 +271,21 @@ function generarHTMLComicsPaquete($paquete_id){
     $arrayComics = obtenerComicsPaquete($paquete_id);
     $suma_precio_portada = 0;
     $suma_precio_salida = 0;
-    $suma_precio_tienda = 0;
+    $cuma_precio_tienda = 0;
     
-    $visor = "<div id='banner_slideshow' class='col-md-3'>";
+    $visor = "<div id='coin-slider'>";
     for($i = 0; $i < count($arrayComics); $i++){
         obtenerDatos($arrayComics[$i]);
         
         //Estas variables nos permiten obtener los datos de cada comic
        $imagen = obtenerImagenMini();
        $personaje = obtenerPersonaje();
-       $imagenGrandeLel = obtenerImagen();
+       
     
         //echo $imagen;
         $visor = $visor .
-        "<a href='$imagenGrandeLel' target='_blank' style='background-repeat: no-repeat;'>
-            <img src='$imagenGrandeLel'>
+        "<a href='#' target='_blank'>
+            <img src='$imagen' style='max-width: 100%;max-height: 100%; repeat: no-repeat;'>
             <span>
                 $personaje
             </span>
@@ -305,8 +296,8 @@ function generarHTMLComicsPaquete($paquete_id){
         $suma_precio_tienda += obtenerPrecioTienda();
     }
     
-       //$titulo = obtenerTitulo();
-       $numero = obtenerPaquete();
+       $titulo = obtenerTitulo();
+       $numero = obtenerNumero();
        $idioma = obtenerIdioma();
        $numero_copias = obtenerCopias();
        $integridad = obtenerIntegridad();
@@ -335,7 +326,7 @@ function generarHTMLComicsPaquete($paquete_id){
               <h1 style='margin-top: 5px'>
                 <strong>
                   <small>
-                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$numero</span></span>
+                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$titulo #$numero</span></span>
                   </small>
                   <small>
                     <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->

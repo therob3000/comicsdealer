@@ -6,15 +6,7 @@ $(document).ready(function(){
 	finalizarCompra();
 	botonComprarNologin();
 	//cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
-        $('#coin-slider').coinslider({hoverPause: true});
-        $('#banner_slideshow').coinslider({
-    width: 220, // width of slider panel
-    //height: 350, // height of slider panel
-});
-
-// Resize picture.
-$('.cs-banner_slideshow').css('background-size', '220px');
-       
+        $('#coin-slider').coinslider();
 });
 
 function verificaSesion(comic_id){
