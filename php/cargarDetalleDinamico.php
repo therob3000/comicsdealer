@@ -268,24 +268,25 @@ function generarHTMLComicIndividual($comic_id){
 }
 
 function generarHTMLComicsPaquete($paquete_id){
+    //OBTENEMOS LOS COMICS PERTENECIENTES A UN PAQUETE
     $arrayComics = obtenerComicsPaquete($paquete_id);
     $suma_precio_portada = 0;
     $suma_precio_salida = 0;
-    $cuma_precio_tienda = 0;
+    $suma_precio_tienda = 0;
     
-    $visor = "<div id='coin-slider'>";
+    $visor = "<div id='slider'>";
     for($i = 0; $i < count($arrayComics); $i++){
         obtenerDatos($arrayComics[$i]);
         
         //Estas variables nos permiten obtener los datos de cada comic
-       $imagen = obtenerImagenMini();
+       $imagen = obtenerImagen();
        $personaje = obtenerPersonaje();
-       
-    
+ 
         //echo $imagen;
         $visor = $visor .
-        "<a href='#' target='_blank'>
-            <img src='$imagen' style='max-width: 100%;max-height: 100%; repeat: no-repeat;'>
+        "
+            <a href='#' target='_blank'>
+            <img src='$imagen'>
             <span>
                 $personaje
             </span>
@@ -297,11 +298,12 @@ function generarHTMLComicsPaquete($paquete_id){
     }
     
        $titulo = obtenerTitulo();
-       $numero = obtenerNumero();
+       //$numero = obtenerNumero();
        $idioma = obtenerIdioma();
        $numero_copias = obtenerCopias();
        $integridad = obtenerIntegridad();
        $descripcion = obtenerDescripcion();
+       $nombre_paquete = obtenerNombrePaquete($paquete_id);
        $precio_salida = $suma_precio_salida;
        $precio_portada = $suma_precio_portada;
        $precio_tiendas = $suma_precio_tienda;
@@ -326,7 +328,7 @@ function generarHTMLComicsPaquete($paquete_id){
               <h1 style='margin-top: 5px'>
                 <strong>
                   <small>
-                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$titulo #$numero</span></span>
+                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$nombre_paquete</span></span>
                   </small>
                   <small>
                     <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
@@ -376,3 +378,4 @@ function insertarVisita($comic_id){
     $queryVisita = "UPDATE cat_comics SET cat_comic_numero_visitas = cat_comic_numero_visitas + 1 WHERE cat_comic_unique_id = $comic_id";
     mysql_query($queryVisita);
 }
+
