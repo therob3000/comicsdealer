@@ -15,7 +15,7 @@ function login() {
 
                     if (data.usuario_existe && data.usuario_pass && data.usuario_activado) {
                         if (data.usuario_pro == true) {
-                            window.location.href = "/html/Pedido.php";
+                            window.location.href = "/html/Catalogo.php";
                         }
                         else {
                             window.location.href = "/html/Catalogo.php";
@@ -43,7 +43,7 @@ function loginFacebook() {
                         //alert("El usuario existe");
                         //alert(data.usuario_pro);
                         if(data.usuario_pro){
-                            window.location.href = "/html/Pedido.php";
+                            window.location.href = "/html/Catalogo.php";
                         }
                         else{
                             window.location.href = "/html/Catalogo.php";

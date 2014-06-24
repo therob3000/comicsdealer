@@ -205,6 +205,16 @@ function generarHTMLComicIndividual($comic_id){
     $precio_salida = obtenerPrecio();
     $precio_portada = obtenerPrecioPortada();
     $precio_tiendas = obtenerPrecioTienda();
+    $descuento = (($precio_salida * 100) / $precio_tiendas) - 100;
+    
+    //CONDICIONAMOS EL DESCUENTO
+    if($descuento >= 0 ){
+        $etiquetaDescuento = "";
+    }
+    else{
+        
+        $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>$descuento%</span>  </p></td>";
+    }
     
     echo "<div class='row'>
             <div class='col-sm-4 col-md-3'>
@@ -244,7 +254,7 @@ function generarHTMLComicIndividual($comic_id){
                     <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada</p></td>
                     <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas</p></td>
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida</p></td>
-                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>-50%</span>  </p></td>
+                    $etiquetaDescuento
                   </tr>
                 </thead>
               </table>
@@ -308,6 +318,17 @@ function generarHTMLComicsPaquete($paquete_id){
        $precio_portada = $suma_precio_portada;
        $precio_tiendas = $suma_precio_tienda;
        
+       $descuento = (($precio_salida * 100) / $precio_tiendas) - 100;
+    
+        //CONDICIONAMOS EL DESCUENTO
+        if($descuento >= 0 ){
+            $etiquetaDescuento = "";
+        }
+        else{
+
+            $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>$descuento%</span>  </p></td>";
+        }
+       
        if($idioma == "Español"){
            $moneda = "MXN";
        }
@@ -351,7 +372,7 @@ function generarHTMLComicsPaquete($paquete_id){
                     <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada $moneda</p></td>
                     <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas MXN</p></td>
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida MXN</p></td>
-                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>-50%</span>  </p></td>
+                    $etiquetaDescuento
                   </tr>
                 </thead>
               </table>
