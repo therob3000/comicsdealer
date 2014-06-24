@@ -1,6 +1,12 @@
 <?php
-  ini_set('display_errors',1); 
-  error_reporting(E_ALL);
+    include '../php/conexion.php';
+    $con = conexion();
+    include '../php/barraBusquedaFunctions.php';
+    include '../php/catalogoFunctions.php';
+    include '../php/articulosFunctions.php';
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    session_start();
   
   //TIPO DE REGISTRO
   if(empty($_GET['tipo_registro'])){
@@ -33,6 +39,8 @@
   else{
     $correo = $_GET['correo'];
   }
+  
+  
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +80,9 @@
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
   </head>
+  
   <body>
+  <div id="fb-root"></div>
   <script>
 
 window.fbAsyncInit = function() {
@@ -83,42 +93,7 @@ window.fbAsyncInit = function() {
     xfbml      : true,  // parse XFBML
     oauth      : true,
   });
-
-  // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
-  // for any authentication related change, such as login, logout or session refresh. This means that
-  // whenever someone who was previously logged out tries to log in again, the correct case below 
-  // will be handled. 
-  FB.Event.subscribe('auth.authResponseChange', function(response) {
-    // Here we specify what we do with the response anytime this event occurs. 
-    if (response.status === 'connected') {
-      // The response object is returned with a status field that lets the app know the current
-      // login status of the person. In this case, we're handling the situation where they 
-      // have logged in to the app.
-      //window.location.href = "/html/Catalogo.php";
-
-    } else if (response.status === 'not_authorized') {
-      // In this case, the person is logged into Facebook, but not into the app, so we call
-      // FB.login() to prompt them to do so. 
-      // In real-life usage, you wouldn't want to immediately prompt someone to login 
-      // like this, for two reasons:
-      // (1) JavaScript created popup windows are blocked by most browsers unless they 
-      // result from direct interaction from people using the app (such as a mouse click)
-      // (2) it is a bad experience to be continually prompted to login upon page load.
-      window.location.href = "/index.php";
-    } else {
-      // In this case, the person is not logged into Facebook, so we call the login() 
-      // function to prompt them to do so. Note that at this stage there is no indication
-      // of whether they are logged into the app. If they aren't then they'll see the Login
-      // dialog right after they log in to Facebook. 
-      // The same caveats as above apply to the FB.login() call here.
-      window.location.href = "/index.php";
-    }
-  });
 };
-
-
-  
-
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -126,40 +101,36 @@ window.fbAsyncInit = function() {
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <div id="nav_bar">
-    </div>
+  
+  
+    <?php
+if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
+  $html = file_get_contents("../html/layouts/navbar_login_layout.html");
+} else {
+  $html = file_get_contents("../html/layouts/navbar_nologin_layout.html");
+}
+
+
+$doc = new DOMDocument();
+$doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+?>
+
+<div id="nav_bar"><?php echo $doc->saveHTML(); ?></div>
     <div class="container">
-      <!-- Inicia ventana modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="myModalLabel">Bienvenido, haz login!</h4>
-            </div>
-            <form role="form" id="login">
-            <div class="modal-body">
-              <form role="form">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Correo Electrónico</label>
-                  <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="usuario_email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="Password" name="usuario_password">
-                </div>
-                <a href="html/PerdidaPass.html">¿Olvidaste tu Password?</a>
-            </div>
-            <div class="modal-footer navbar-inverse">
-              <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10"
-              class="img-responsive text-center" width="207" height="26"/>
-              <button type="submit" class="btn btn-success" >Iniciar Sesión</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-            </div>
-            </form>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+      <?php
+  //SIMILAR AL NAV BAR, CARGAMOS DINAMICAMENTE LOS LAYOUTS PARA LAS VENTANAS MODALES
+  //CARGAR VENTANA MODAL PARA INICIO DE SESION
+  $modal_sesion_html = file_get_contents("../html/layouts/modal_login_layout.html");
+  $modal_sesion = new DOMDocument();
+  $modal_sesion->loadHTML(mb_convert_encoding($modal_sesion_html, 'HTML-ENTITIES', 'UTF-8'));
+  echo $modal_sesion->saveHTML();
+
+  //CARGAR VENTANA MODAL PARA REGISTRO CON FACEBOOK Y CORREO
+  $modal_registro_html = file_get_contents("../html/layouts/modal_registro_layout.html");
+  $modal_registro = new DOMDocument();
+  $modal_registro->loadHTML(mb_convert_encoding($modal_registro_html, 'HTML-ENTITIES', 'UTF-8'));
+  echo $modal_registro->saveHTML();
+  ?>
       
       <div class="container tres">
         <div class="jumbotron">
