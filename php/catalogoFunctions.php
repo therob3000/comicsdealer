@@ -8,6 +8,7 @@ if (isset($_POST['inventario'])) {
 }
 
 function cargarCatalogo($arrayComics, $rowid, $layout) {
+        
     $inventarioArray = array();
 
     $campos = array("inventario_id",

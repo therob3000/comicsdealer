@@ -5,6 +5,9 @@ $(document).ready(function(){
 	botonEliminar();
 	finalizarCompra();
 	botonComprarNologin();
+        busquedaporDescripcion();
+        busquedaporPersonaje();
+        busquedaporTitulo();
 	//cargarCatalogoComics2(0,4, "../html/layouts/catalogo_layout_index.html");
       $('#coin-slider').coinslider({hoverPause: true});
       $('#slider').coinslider({
@@ -118,4 +121,40 @@ function modalIniciarSesion(){
 	$("#nav_bar").on("click", "#loginButton", function(e){
 		$('#myModal').modal('show');
 	});
+}
+
+function busquedaporPersonaje(){
+    $('#busqueda_personaje').on("click",function(){
+        parametro = $('#txtBusqueda').val();
+        if(parametro !== ''){
+            window.location.href = "/html/Catalogo.php?busqueda=1&parametro_busqueda="+parametro;
+        }
+        else{
+            alert("La busqueda requiere una palabra clave u__u");
+        }
+    });
+}
+
+function busquedaporTitulo(){
+    $('#busqueda_titulo').on("click", function(){
+        parametro = $('#txtBusqueda').val();
+        if(parametro !== ''){
+            window.location.href = "/html/Catalogo.php?busqueda=1&parametro_busqueda="+parametro;
+        }
+        else{
+            alert("La busqueda requiere una palabra clave u__u");
+        }
+    });
+}
+
+function busquedaporDescripcion(){
+    $('#busqueda_descripcion').on("click", function(){
+        parametro = $('#txtBusqueda').val();
+        if(parametro !== ''){
+            window.location.href = "/html/Catalogo.php?busqueda=1&parametro_busqueda="+parametro;
+        }
+        else{
+            alert("La busqueda requiere una palabra clave u__u");
+        }
+    });
 }

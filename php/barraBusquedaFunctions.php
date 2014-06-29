@@ -38,7 +38,7 @@ function cargarCodigoInicialBarra(){
     echo "<nav class='navbar navbar-default' style='margin-bottom: auto;background-color: #d2322d;border-color: #ac2925;'>
   <div class='row'>
     <div class='col-md-12'>
-      <form role='search'>
+      <div role='search'>
         <div class='input-group'>
           <input type='search' class='form-control input-sm' placeholder='Busqueda específica' id='txtBusqueda'>
           <div class='input-group-btn'>
@@ -51,7 +51,7 @@ function cargarCodigoInicialBarra(){
             </ul>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
   <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->

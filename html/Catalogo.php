@@ -219,7 +219,8 @@ if (empty($_GET['parametro_busqueda'])) {
           <br><br>
           <div id="searchnav">
             <?php
-            cargarBarraBusqueda();
+                //SE CARGA EN barraBusquedaFunctions.php
+                cargarBarraBusqueda();
             ?>
           </div>
 
@@ -273,7 +274,7 @@ if (empty($_GET['parametro_busqueda'])) {
                         "cat_comic_numero_visitas"
                     );
                     $contador = $pagina;
-
+                    $inventario = array();
                     if ($busqueda != 0) {
                       //$i = 4 por que queremos desplegar 4 renglones en el catalogo
                       //CONSULTA ESPECIFICA DE CATALOGO
@@ -281,11 +282,24 @@ if (empty($_GET['parametro_busqueda'])) {
                         $arrayComics = consulta_especifica($busqueda, $parametro_busqueda, $campos, $contador, 4);
                         $inventarioArray = cargarCatalogo($arrayComics, $i, 0);
                         $contador+=4;
-                        for ($j = 0; $j < count($inventarioArray); $j++) {
-                          $inventario[] = $inventarioArray[$j];
+                        if($inventarioArray != 0){
+                            for ($j = 0; $j < count($inventarioArray); $j++) {
+                                $inventario[] = $inventarioArray[$j];
+                            }
                         }
+                        
+                        
                       }
-                      $_SESSION['inventario'] = $inventario;
+                      if(count($inventario) == 0){
+                        echo "<div class='alert alert-warning alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>
+                            <strong>Lo sentimos</strong> No encontramos ningun cómic con esos criterios, tal vez no somos tan geniales despues de todo u__u.
+                            </div>";
+                      }
+                      else{
+                          $_SESSION['inventario'] = $inventario;
+                      }
+                      
                     } 
                     //CONSULTA GENERAL DE CATALOGO
                     else {
