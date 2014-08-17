@@ -4,6 +4,7 @@ $con = conexion();
 include 'php/barraBusquedaFunctions.php';
 include 'php/catalogoFunctions.php';
 include 'php/articulosFunctions.php';
+include 'php/carouselFunctions.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 session_start();
@@ -28,7 +29,7 @@ session_start();
   <link rel="stylesheet" type="text/css" href="bootstrap/css/comicsD.css">
   <script src="/bootstrap/assets/js/jquery.js"></script>
   <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/js/catalogo.js"></script>
+<!--  <script src="/js/catalogo.js"></script>-->
   <script src="/js/promocion_index.js"></script>
   <script src="/js/index.js"></script>
   <script src="/js/login.js"></script>
@@ -187,7 +188,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
       <div class="row">
         <div class="col-sm-9">
-          <div class="thumbnail hidden-xs hidden-sm">
+<!--          <div class="thumbnail hidden-xs hidden-sm">
             <div id="carousel-comics-dealer" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carousel-comics-dealer" data-slide-to="0" class="active"></li>
@@ -204,7 +205,25 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 <span class="glyphicon glyphicon-chevron-right"></span>
               </a>
             </div>  
-          </div>
+          </div>-->
+        <?php
+                $campos = array("inventario_id",
+                "cat_comic_titulo",
+                "cat_comic_descripcion",
+                "cat_comic_personaje",
+                "cat_comic_numero_ejemplar",
+                "cat_comic_imagen_url",
+                "inventario_precio_salida",
+                "cat_comic_idioma",
+                "inventario_paquete",
+                "cat_comic_imagen_mini",
+                "cat_comic_unique_id",
+                "cat_comic_numero_visitas"
+            );
+                $arrayCarousel = consulta_catalogo_carousel($campos);
+                cargarCarousel($arrayCarousel, 1);
+        ?>
+            
         </div>
         <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
           Anuncio

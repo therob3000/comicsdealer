@@ -23,12 +23,12 @@
     <script src="../js/pie_pagina.js"></script>
     <script src="/js/compra.js"></script>
 
-    <style>
+<!--    <style>
       .container {
         background: url(../img/spawn1.jpg) no-repeat center center fixed;
         background-size: cover;
       }       
-    </style>
+    </style>-->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>

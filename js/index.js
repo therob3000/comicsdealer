@@ -4,7 +4,7 @@ $(document).ready(function(){
 	//cargarCarousels();
 	//cargarPromocionFinDeSemana('index');
 	modalIniciarSesion();
-	cargarCarouselNologin(0);
+	//cargarCarouselNologin(0);
 	modalRegistrar();
 	//botonComprarNologin();
 	registroFacebook();
