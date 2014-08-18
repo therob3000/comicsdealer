@@ -1,3 +1,5 @@
 {
-    "name": "CarlosEduardo"
+    "require":{
+        "mbstring": "*"
+    }
 }
