@@ -30,19 +30,15 @@ function cargarCarousel($arrayComics, $rowid) {
 
         $arrayComic2 = $arrayComics[$j];
         $codigohtml = "";
-
-        $inventario_id = $arrayComic2[$campos[0]];
         $comic_titulo = $arrayComic2[$campos[1]];
-        $comic_descripcion = substr($arrayComic2[$campos[2]], 0, 90);
         $comic_personaje = $arrayComic2[$campos[3]];
         $comic_numero = $arrayComic2[$campos[4]];
-        $comic_imagen = $arrayComic2[$campos[5]];
         $comic_precio = $arrayComic2[$campos[6]];
         $comic_idioma = $arrayComic2[$campos[7]];
         $inventario_paquete = $arrayComic2[$campos[8]];
         $cat_comic_imagen_mini = $arrayComic2[$campos[9]];
         $cat_comic_unique_id = $arrayComic2{$campos{10}};
-        $cat_comic_numero_visitas = $arrayComic2[$campos[11]];
+        
 
         if ($comic_idioma == "ing") {
             $comic_idioma = "Inglés";
@@ -156,7 +152,11 @@ function consulta_catalogo_carousel($camposArray) {
             GROUP BY INV.inventario_paquete
             HAVING INV.inventario_paquete != 0
             ORDER BY inventario_fecha_entrada DESC) AS LEL
-            WHERE inventario_activo = 1
+            WHERE
+                    cat_comic_activo = 1 
+                    AND cat_comic_copias > 0 
+                    AND inventario_existente = 1 
+                    AND inventario_activo = 1
             LIMIT 12";
 
     $queryResultado = mysql_query($queryCatalogoCarousel);
