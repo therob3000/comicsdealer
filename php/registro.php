@@ -15,6 +15,7 @@ SendGrid::register_autoloader();
 
 $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
+
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
 
