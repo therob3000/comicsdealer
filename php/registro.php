@@ -102,11 +102,11 @@ function insertUsuario($con,$usuario_email,$passwd, $usuario_nombre, $cadena_con
       
       $id_insert = $con->insert_id;
       $con->commit();
-      echo 'Transaction completed successfully!';
+      //echo 'Transaction completed successfully!';
 
     } 
     catch (Exception $e) {
-      echo 'Transaction failed: ' . $e->getMessage();
+      //echo 'Transaction failed: ' . $e->getMessage();
       $id_insert = 0;
       $con->rollback();
     }
