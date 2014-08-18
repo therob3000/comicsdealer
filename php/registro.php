@@ -13,7 +13,7 @@ require_once 'Swift-5.0.1/lib/swift_required.php';
 
 SendGrid::register_autoloader();
 
-$sendgrid = new SendGrid('app22515118@heroku.com', 'ubb0aski');
+$sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
 /*ini_set('display_errors',1); 
 error_reporting(E_ALL);*/
