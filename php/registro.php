@@ -50,23 +50,23 @@ else{
 	if($insert_id != 0){
 	//echo $usuario_id;
 	$cadena_activacion_completa = "www.comicsdealer.com/php/activacion.php?fier=$insert_id&codigo=$cadena_confirmacion";
-        echo $usuario_email;
+        //echo $usuario_email;
 	$mail1 = new SendGrid\Mail();
 	$mail1->
-	 	addTo($usuario_email)->
+	 	addTo('$usuario_email')->
 	 	setFrom('comics.dealer@gmail.com')->
 	 	setSubject('Bienvenido a Comics Dealer')->
 	 	setHtml('<strong>Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en </strong><a href="'  . $cadena_activacion_completa . '"><strong>ESTE ENLACE</strong></a>')->
 	 	addCategory("Registro");
   	$sendgrid->smtp->send($mail1);
 
-	$mail2 = new SendGrid\Mail();
-	$mail2->
-		addTo('comics.dealer@gmail.com')->
-		setFrom('comics.dealer@gmail.com')->
-		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
-		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
-	$sendgrid->smtp->send($mail2);
+//	$mail2 = new SendGrid\Mail();
+//	$mail2->
+//		addTo('comics.dealer@gmail.com')->
+//		setFrom('comics.dealer@gmail.com')->
+//		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
+//		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
+//	$sendgrid->smtp->send($mail2);
 
 	/*$mail = new SendGrid\Mail();
 	$mail->
