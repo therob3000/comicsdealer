@@ -15,10 +15,6 @@ SendGrid::register_autoloader();
 
 $sendgrid = new SendGrid('app19174783@heroku.com', 'entimovj');
 
-
-/*ini_set('display_errors',1); 
-error_reporting(E_ALL);*/
-
 //Variables que recibe este archivo para hacer INSERT en la base de datos
 
 $usuario_email		= $_REQUEST['usuario_email'];
@@ -53,7 +49,7 @@ else{
         //echo $usuario_email;
 	$mail1 = new SendGrid\Mail();
 	$mail1->
-	 	addTo('$usuario_email')->
+	 	addTo($usuario_email)->
 	 	setFrom('comics.dealer@gmail.com')->
 	 	setSubject('Bienvenido a Comics Dealer')->
 	 	setHtml('<strong>Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en </strong><a href="'  . $cadena_activacion_completa . '"><strong>ESTE ENLACE</strong></a>')->

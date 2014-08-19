@@ -90,7 +90,7 @@ $(document).ready(function(){
 			//alert(cadena);
 			cadena = cadena + '&tipo_registro=0';
 			//console.log(cadena);
-			alert(cadena);
+			//alert(cadena);
 
 			//Hacemos INSERT en la base de datos
 			$.post("../php/registro.php",
