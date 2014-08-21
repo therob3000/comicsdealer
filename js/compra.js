@@ -87,7 +87,7 @@ function finalizarCompra_rep(){
 		cadena = $(this).serialize();
 		cadena = cadena + "&codigo_postal="+$("#zipcode").val();
 		$.ajaxSetup({async:false});
-		$.post("/php/insertarCompra.php",
+		$.post("/php/insertarCompra_Tran.php",
 			cadena, function(data){
 				if(data.exito){
 					//alert(data.exito);
@@ -109,7 +109,7 @@ function finalizarCompra_df(){
 		//$('#myModal').modal('show');
 		cadena = "forma_pago_id=4&codigo_postal=NULL"
 		$.ajaxSetup({async:false});
-		$.post("/php/insertarCompra.php",
+		$.post("/php/insertarCompra_Tran.php",
 			cadena, function(data){
 				if(data.exito){
 					//alert(data.exito);

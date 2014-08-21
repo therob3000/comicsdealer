@@ -80,24 +80,28 @@ $(document).ready(function(){
 		}
 
 		if(nombre && ver_correo == false && passwords == true){
-			pass = $('#password2').val();
+			
 			//Cadena a pasar al archivo php
-			nombre = $('#nombre').val();
+                        pass = $('#password_registro').serialize();
+                        
+			nombre = $('#nombre').serialize();
 			//alert(cadena);
-			correo = $('#email_registro').val().toLowerCase();
+                        $('#email_registro').val().toLowerCase();
+                        correo = $('#email_registro').serialize();
 			//alert(correo);
-			cadena = 'usuario_nombre='+nombre+ '&usuario_email=' + correo+'&usuario_password='+pass+'&usuario_facebook_id='+usuario_facebook_id;
+			//cadena = "usuario_nombre='"+nombre+"'&usuario_email='"+ correo+'&usuario_password='+pass+'&usuario_facebook_id='+usuario_facebook_id;
+                        cadena = nombre +"&"+correo+"&"+pass+"&usuario_facebook_id="+usuario_facebook_id;
 			//alert(cadena);
 			cadena = cadena + '&tipo_registro=0';
 			//console.log(cadena);
-			//alert(cadena);
+			alert(cadena);
 
 			//Hacemos INSERT en la base de datos
 			$.post("../php/registro.php",
 				cadena,
 				function(data){
 					exito = data.registro;
-					//alert(exito);
+					alert(exito);
 				},
 				'json');
 

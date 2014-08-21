@@ -35,6 +35,7 @@ else{
 	if (CRYPT_STD_DES == 1) {
     	$passwd 		= crypt($usuario_password, 'rl');
 	}
+        
 	$cadena_confirmacion = md5(uniqid(rand(), true));
 	//Generamos el INSERT
 	//$queryRegistro	= "INSERT INTO usuarios VALUES (NULL, '$usuario_email', '$passwd', '$usuario_nombre','$cadena_confirmacion',0,0, CURDATE(), '$usuario_pro', $usuario_facebook_id)";
@@ -44,38 +45,50 @@ else{
 	//mysql_query($queryRegistro, $con);
 
 	if($insert_id != 0){
-	//echo $usuario_id;
-	$cadena_activacion_completa = "www.comicsdealer.com/php/activacion.php?fier=$insert_id&codigo=$cadena_confirmacion";
-        //echo $usuario_email;
-	$mail1 = new SendGrid\Mail();
-	$mail1->
-	 	addTo($usuario_email)->
-	 	setFrom('comics.dealer@gmail.com')->
-	 	setSubject('Bienvenido a Comics Dealer')->
-	 	setHtml('<strong>Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en </strong><a href="'  . $cadena_activacion_completa . '"><strong>ESTE ENLACE</strong></a>')->
-	 	addCategory("Registro");
-  	$sendgrid->smtp->send($mail1);
+            echo $insert_id;
+            echo $usuario_email;
+            echo $usuario_password;
+            echo $usuario_nombre;
+            echo $usuario_pro;
+            echo $usuario_facebook_id;
+            
+            $cadena_activacion_completa = "www.comicsdealer.com/php/activacion.php?fier=$insert_id&codigo=$cadena_confirmacion";
+            //echo $usuario_email;
+            $mail1 = new SendGrid\Mail();
+            $mail1->
+                    addTo($usuario_email)->
+                    setFrom('comics.dealer@gmail.com')->
+                    setSubject('Bienvenido a Comics Dealer')->
+                    setHtml('<strong>Gracias por tu registro, el ultimo paso es confirmar tu correo haciendo clic en </strong><a href="'  . $cadena_activacion_completa . '"><strong>ESTE ENLACE</strong></a>')->
+                    addCategory("Registro");
+            $sendgrid->smtp->send($mail1);
+            
+            $mail2 = new SendGrid\Mail();
+            $mail2->
+                    addTo('comics.dealer@gmail.com')->
+                    setFrom('comics.dealer@gmail.com')->
+                    setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
+                    setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
+            $sendgrid->smtp->send($mail2);
 
-//	$mail2 = new SendGrid\Mail();
-//	$mail2->
-//		addTo('comics.dealer@gmail.com')->
-//		setFrom('comics.dealer@gmail.com')->
-//		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
-//		setText('El usuario: ' . $usuario_nombre . 'se ha registrado, en espera de confirmacion de su correo.');
-//	$sendgrid->smtp->send($mail2);
+            /*$mail = new SendGrid\Mail();
+            $mail->
+                    addTo('carlos.mejia.rueda@gmail.com')->
+                    setFrom('comics.dealer@gmail.com')->
+                    setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
+                    setText('El usuario: ' . $usuario_nombre . ' se ha registrado, en espera de confirmacion de su correo.');
+            $sendgrid->smtp->send($mail);*/
 
-	/*$mail = new SendGrid\Mail();
-	$mail->
-		addTo('carlos.mejia.rueda@gmail.com')->
-		setFrom('comics.dealer@gmail.com')->
-		setSubject('Usuario nuevo registrado: ' . $usuario_nombre)->
-		setText('El usuario: ' . $usuario_nombre . ' se ha registrado, en espera de confirmacion de su correo.');
-	$sendgrid->smtp->send($mail);*/
-
-	$respuestaJSON	= true;
+            $respuestaJSON	= true;
         }
         else{
-            $respuestaJSON	= true;
+            
+            echo $usuario_email;
+            echo $usuario_password;
+            echo $usuario_nombre;
+            echo $usuario_pro;
+            echo $usuario_facebook_id;
+            $respuestaJSON	= false;
         }
 }
 
@@ -86,7 +99,8 @@ echo json_encode($json);
 
 function insertUsuario($con,$usuario_email,$passwd, $usuario_nombre, $cadena_confirmacion,$usuario_pro, $usuario_facebook_id){
     
-    $queryInsertUsuario = "INSERT INTO usuarios VALUES (NULL, $usuario_email, '$passwd', $usuario_nombre,'$cadena_confirmacion',0,0, CURDATE(),$usuario_pro,$usuario_facebook_id)";
+    $queryInsertUsuario = "INSERT INTO usuarios VALUES (NULL, '$usuario_email', '$passwd', '$usuario_nombre','$cadena_confirmacion',0,0, CURDATE(),$usuario_pro,$usuario_facebook_id)";
+    //echo $queryInsertUsuario;
     try {
       /* switch autocommit status to FALSE. Actually, it starts transaction */
       $con->autocommit(FALSE);
