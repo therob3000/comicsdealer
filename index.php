@@ -222,7 +222,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
             );
                 $arrayCarousel = consulta_catalogo_carousel($campos);
                 cargarCarousel($arrayCarousel, 1);
-        ?>
+       ?>
             
         </div>
         <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">

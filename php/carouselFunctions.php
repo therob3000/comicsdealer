@@ -1,6 +1,7 @@
 <?php
 
-function cargarCarousel($arrayComics, $rowid) {
+function cargarCarousel($arrayComics){
+    
     $campos = array("inventario_id",
         "cat_comic_titulo",
         "cat_comic_descripcion",
@@ -14,22 +15,19 @@ function cargarCarousel($arrayComics, $rowid) {
         "cat_comic_unique_id",
         "cat_comic_numero_visitas"
     );
-
-    echo "<div class='thumbnail hidden-xs hidden-sm'>
-            <div id='carousel-comics-dealer' class='carousel slide' data-ride='carousel'>
-              <ol class='carousel-indicators'>
-                <li data-target='#carousel-comics-dealer' data-slide-to='0' class='active'></li>
-                <li data-target='#carousel-comics-dealer' data-slide-to='1' class=''></li>
-                <li data-target='#carousel-comics-dealer' data-slide-to='2' class=''></li>
-              </ol>
-              <div class='carousel-inner carousels'>";
-
-    $contador = 3;
-
+    
+    echo "<div id='carousel-comics-dealer' class='carousel slide' data-ride='carousel'>
+            <ol class='carousel-indicators'>
+                <li data-target='#carousel-comics-dealer' data-slide-to='0' ></li>
+                <li data-target='#carousel-comics-dealer' data-slide-to='1' ></li>
+                <li data-target='#carousel-comics-dealer' data-slide-to='2' class='active'></li>
+            </ol>
+            <div class='carousel-inner carousels'>";
+    $contador = 0;
+   
     for ($j = 0; $j < count($arrayComics); $j++) {
-
+        
         $arrayComic2 = $arrayComics[$j];
-        $codigohtml = "";
         $comic_titulo = $arrayComic2[$campos[1]];
         $comic_personaje = $arrayComic2[$campos[3]];
         $comic_numero = $arrayComic2[$campos[4]];
@@ -39,88 +37,88 @@ function cargarCarousel($arrayComics, $rowid) {
         $cat_comic_imagen_mini = $arrayComic2[$campos[9]];
         $cat_comic_unique_id = $arrayComic2{$campos{10}};
         
-
-        if ($comic_idioma == "ing") {
-            $comic_idioma = "Inglés";
-        } else {
-            $comic_idioma = "Español";
+        if($j == 0){
+            $ItemActivo = "active";
+        }
+        else{
+            $ItemActivo = "";
+        }
+        if(is_null($inventario_paquete)){
+            $hrefDetalle = "/html/Detalle.php?comic_id=$cat_comic_unique_id";
+            $h5Class = "textoimg";
+            $h5Texto = $comic_personaje;
+            $titulo = $comic_titulo . " " . "#" . $comic_numero;
+            $precio = $comic_precio;
+        }
+        else{
+            $hrefDetalle = "/html/Detalle.php?comic_id=$cat_comic_unique_id&paquete_id=$inventario_paquete";
+            $h5Class = "paquete";
+            $h5Texto = "PAQUETE";
+            $titulo = obtenerNombrePaquete($inventario_paquete);
+            $precio = obtenerPrecioPaquete($inventario_paquete);
         }
         
-        if (is_null($inventario_paquete)) {
-            $hrefDetalle = "/html/Detalle.php?comic_id=$cat_comic_unique_id";
-        } else {
-            $hrefDetalle = "/html/Detalle.php?comic_id=$cat_comic_unique_id&paquete_id=$inventario_paquete";
+        
+        if($contador == 0){
+            echo "<div class='item $ItemActivo'>
+                    <img>
+                    <div class='carousel-caption'>
+                        <div class='row renglon'>
+                            <div class='row' id='carousel_comics'>
+                                <div class='cuadro3 col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$cat_comic_unique_id' align='center'>
+                                    <a href='$hrefDetalle' id='cat_detalle'>
+                                        <div class='image'>
+                                           <img id='cat_imagen' src='$cat_comic_imagen_mini' style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
+                                           <h5 class='$h5Class col-xs-12'>
+                                               $h5Texto
+                                              <br>
+                                              <titulo>$titulo</titulo>
+                                              <br>
+                                              <idioma>$comic_idioma</idioma>
+                                              <br>
+                                              <precio>$$precio<small> MXN</small></precio>
+                                           </h5>
+                                        </div>
+                                    </a>
+                                </div>";
         }
-
-        if ($j == 0 && $contador == 3) {
-            $codigohtml = "<div class='item active'>"
-                        . "<img>"
-                            . "<div class='carousel-caption'>"
-                            . "<div class='row renglon'>"
-                            . "<div class='row' id='carousel_comics'>"
-                                . "<div align='center' class='cuadro3 col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$cat_comic_unique_id'>"
-                                    . "<a href='$hrefDetalle' id='cat_detalle'>"
-                                    . "<div class='image'>"
-                                        . "<img id='cat_imagen' src=$cat_comic_imagen_mini style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
-        } else {
-            if ($j > 0 && $contador == 3) {
-                $codigohtml = "<div class='item'>"
-                        . "<img>"
-                            . "<div class='carousel-caption'>"
-                            . "<div class='row renglon'>"
-                            . "<div class='row' id='carousel_comics'>"
-                                . "<div align='center' class='cuadro3 col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$cat_comic_unique_id'>"
-                                    . "<a href='$hrefDetalle' id='cat_detalle'>"
-                                    . "<div class='image'>"
-                                        . "<img id='cat_imagen' src=$cat_comic_imagen_mini style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
-                                    
-                                    
-            }
-            else{
-                $codigohtml = "<div align='center' class='cuadro3 col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$cat_comic_unique_id'>"
-                                . "<a href='$hrefDetalle' id='cat_detalle'>"
-                                . "<div class='image'>"
-                                    . "<img id='cat_imagen' src=$cat_comic_imagen_mini style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>";
-                                
-            }
+        else{
+            echo "<div class='cuadro3 col-xs-12 col-sm-6 col-md-3 col-lg-3' id='$cat_comic_unique_id' align='center'>
+                                    <a href='$hrefDetalle' id='cat_detalle'>
+                                        <div class='image'>
+                                           <img id='cat_imagen' src='$cat_comic_imagen_mini' style='max-width: 100%;max-height: 100%' class='img-rounded img-responsive'>
+                                           <h5 class='$h5Class col-xs-12'>
+                                               $h5Texto
+                                              <br>
+                                              <titulo>$titulo</titulo>
+                                              <br>
+                                              <idioma>$comic_idioma</idioma>
+                                              <br>
+                                              <precio>$$precio<small> MXN</small></precio>
+                                           </h5>
+                                        </div>
+                                    </a>
+                                </div>";
         }
-
-        if (is_null($inventario_paquete)) {
-            $codigohtml = $codigohtml ."<h5 class='textoimg col-xs-12'>" . $comic_personaje . "<br>"
-                                            . "<titulo>" . $comic_titulo . " " . "#" . $comic_numero . "</titulo><br>"
-                                            . "<idioma>" . $comic_idioma . "</idioma><br>"
-                                            . "<precio>$$comic_precio<small> MXN</small></precio>"
-                                      ."</h5>"
-                                    . "</div>"
-                                . "</a>"
-                            . "</div>";
-        } else { //HTML para PAQUETES
-            //FUNCION QUE OBTIENE EL NOMBRE DEL PAQUETE
-            $nombrePaquete = obtenerNombrePaquete($inventario_paquete);
-            $precio_paquete = obtenerPrecioPaquete($inventario_paquete);
-            $codigohtml = $codigohtml . "<h5 class='paquete col-xs-12'>PAQUETE<br><titulo>$nombrePaquete</titulo><br><idioma>$comic_idioma</idioma><br><precio>$$precio_paquete<small> MXN</small></precio></h5></div></a></div>";
-        }
-        echo $codigohtml;
-
-        if ($contador <= 0) {
+        
+        if($contador >= 3){
             echo "</div></div></div></div>";
-            $contador = 3;
-        } else {
-            $contador--;
+            $contador = 0;
         }
-    }//TERMINA FOR     
-
-
-    echo "
-           </div>
-              <a class='left carousel-control' href='#carousel-comics-dealer' data-slide='prev'>
-                <span class='glyphicon glyphicon-chevron-left'></span>
-              </a>
-              <a class='right carousel-control' href='#carousel-comics-dealer' data-slide='next'>
-                <span class='glyphicon glyphicon-chevron-right'></span>
-              </a>
-            </div>  
-          </div>";
+        else{
+            $contador++;
+        }
+           
+    }
+   
+    echo "</div>
+          <a class='left carousel-control' href='#carousel-comics-dealer' data-slide='prev'>
+          <span class='glyphicon glyphicon-chevron-left'></span>
+          </a>
+          <a class='right carousel-control' href='#carousel-comics-dealer' data-slide='next'>
+          <span class='glyphicon glyphicon-chevron-right'></span>
+          </a>
+        </div>";
 }
 
 function consulta_catalogo_carousel($camposArray) {
