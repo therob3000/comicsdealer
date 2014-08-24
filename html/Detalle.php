@@ -60,7 +60,7 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
     </script>
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/catalogo.js"></script>
+<!--    <script src="../js/catalogo.js"></script>-->
     <script src="../js/detalle_comic.js"></script>
     <script src="../js/login.js"></script>
     
@@ -99,7 +99,15 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
   </head>
   <body>
     <div id="fb-root"></div>
-
+        <style>
+        body { 
+  background: url('../../img/marvelbg1.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+};
+    </style>
     <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id))

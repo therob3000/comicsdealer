@@ -86,6 +86,15 @@ if (empty($_GET['parametro_busqueda'])) {
       })();
 
     </script>
+    <style>
+        body { 
+  background: url('../../img/marvelbg1.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+};
+    </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

@@ -82,8 +82,18 @@ session_start();
     js.id = id;
     js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=655150577891800";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 
+<style>
+body { 
+  background: url(../../img/marvelbg1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 
 <?php
 if (isset($_SESSION['usuario_email']) && isset($_SESSION['usuario_nombre'])) {
@@ -374,11 +384,11 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         ?>
       </div><!-- /.row1 -->
 
-      <div class="row">             
+<!--      <div class="row">             
         <div class="col-lg-4 col-lg-offset-8"> 
           <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>
         </div> 
-      </div>
+      </div>-->
       <hr></hr>
     </div>
   </div><!-- /.Catalogo Muestra-->
