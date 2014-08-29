@@ -18,7 +18,8 @@ $camposArray = array("inventario_id",
     "cat_comic_precio_portada",
     "cat_comic_precio_tienda",
     "cat_comic_imagen_mini",
-    "cat_comic_unique_id"
+    "cat_comic_unique_id",
+    "cat_comic_rareza"
     //"existe"
 );
 
@@ -79,7 +80,9 @@ INV.inventario_integridad,
 CATALOGO.cat_comic_precio_portada,
 CATALOGO.cat_comic_precio_tienda,
 CATALOGO.cat_comic_imagen_mini,
-CATALOGO.cat_comic_unique_id
+CATALOGO.cat_comic_unique_id,
+CATALOGO.cat_comic_rareza,
+CATALOGO.cat_comic_fecha
 FROM
 cat_comics as CATALOGO
 INNER JOIN
@@ -190,6 +193,16 @@ function obtenerPrecioPortada(){
     return $rowArray["cat_comic_precio_portada"];
 }
 
+function obtenerRarezaComic(){
+    global $rowArray;
+    return $rowArray["cat_comic_rareza"];
+}
+
+function obtenerFechaPublicacion(){
+    global $rowArray;
+    return $rowArray["cat_comic_fecha"];
+}
+
 function generarHTMLComicIndividual($comic_id){
     
     obtenerDatos($comic_id);
@@ -205,15 +218,71 @@ function generarHTMLComicIndividual($comic_id){
     $precio_salida = obtenerPrecio();
     $precio_portada = obtenerPrecioPortada();
     $precio_tiendas = obtenerPrecioTienda();
-    $descuento = (($precio_salida * 100) / $precio_tiendas) - 100;
     
-    //CONDICIONAMOS EL DESCUENTO
-    if($descuento >= 0 ){
-        $etiquetaDescuento = "";
+    $rareza = obtenerRarezaComic();
+    $fecha_publicacion = obtenerFechaPublicacion();
+    
+    //CONDICION PARA PRECIO EN OTRAS TIENDAS
+    if($precio_tiendas != NULL){
+        $descuento = (($precio_salida * 100) / $precio_tiendas) - 100;
+        //CONDICIONAMOS EL DESCUENTO
+        if($descuento >= 0 ){
+            $etiquetaDescuento = "";
+        }
+        else{
+            $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>$descuento%</span>  </p></td>";
+        }
+        $etiquetaPrecioTiendas = "<td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas</p></td>";
     }
     else{
+        $etiquetaPrecioTiendas = "";
+    }
+    
+    //CONDICION PARA LA INTEGRIDAD
+    if($integridad |= 0){
+        $etiquetaIntegridad = "<div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si está nuevo, y 0 si está¡ 'pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>";
+    }
+    else{
+        $etiquetaIntegridad = "";
+    }
+    
+    
+    //CONDICION PARA RAREZA
+    if($rareza != NULL){
+        switch ($rareza){
+            case 'comun':
+                $etiquetaRareza = "label-comun";
+                $titleRareza = "Es normal";
+                $textoRareza = "Común";
+                break;
+            case 'incomun':
+                $etiquetaRareza = "label-incomun";
+                $titleRareza = "Es incomun";
+                $textoRareza = "Incomun";
+                break;
+            case 'raro':
+                $etiquetaRareza = "label-raro";
+                $titleRareza = "Es RARO!";
+                $textoRareza = "RARO";
+                break;
+        }
         
-        $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>$descuento%</span>  </p></td>";
+        
+        $rarezaHTML = "<small>
+                    <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
+                    <span class='label $etiquetaRareza tip-top' data-toggle='tooltip' data-placement='top' title='$titleRareza'>$textoRareza</span>
+                  </small>";
+    }
+    else{
+        $rarezaHTML ="";
+    }
+    
+    //CONDICION PARA FECHA DE PUBLICACION
+    if($fecha_publicacion != NULL){
+        $fechaPublicacionHTML = "<div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>";
+    }
+    else{
+        $fecha_publicacion = "";
     }
     
     echo "<div class='row'>
@@ -233,10 +302,7 @@ function generarHTMLComicIndividual($comic_id){
                   <small>
                     <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$titulo #$numero</span></span>
                   </small>
-                  <small>
-                    <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
-                    <span class='label label-comun tip-top' data-toggle='tooltip' data-placement='top' title='Es normal'>Común</span>
-                  </small>
+                  $rarezaHTML
                 </strong>
                 <small id='comic_idioma' class='tip-right' data-toggle='tooltip' data-placement='right' title='Idioma del cómic'>$idioma</small>
               </h1>
@@ -244,15 +310,15 @@ function generarHTMLComicIndividual($comic_id){
               <hr style='margin-bottom: 0px'></hr>
               <div class='row'>
                 <div class='col-md-3 tip-bottom' id='comic_copias' align='left' data-toggle='tooltip' data-placement='bottom' title='Todos los que tenemos en este momento'><h4>Existencias: <small><span itemprop='availability'>$numero_copias</span></small></h4></div>
-                <div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si está nuevo, y 0 si está 'pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>
-                <div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>
+                $etiquetaIntegridad
+                $fechaPublicacionHTML
               </div>
               <p align='justify' style='font-size: 12pt' id='comic_descripcion'><span itemprop='description'>$descripcion</span></p>
               <table style='margin-bottom: 2px' class='table table-condensed'>
                 <thead>
                   <tr>
-                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada</p></td>
-                    <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas</p></td>
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en DÃ³lares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada</p></td>
+                    $etiquetaPrecioTiendas
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida</p></td>
                     $etiquetaDescuento
                   </tr>
@@ -329,7 +395,7 @@ function generarHTMLComicsPaquete($paquete_id){
             $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>$descuento%</span>  </p></td>";
         }
        
-       if($idioma == "Español"){
+       if($idioma == "EspaÃ±ol"){
            $moneda = "MXN";
        }
        else{
@@ -349,29 +415,29 @@ function generarHTMLComicsPaquete($paquete_id){
               <h1 style='margin-top: 5px'>
                 <strong>
                   <small>
-                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$nombre_paquete</span></span>
+                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el nÃºmero'><span itemprop='name'>$nombre_paquete</span></span>
                   </small>
                   <small>
                     <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
-                    <span class='label label-comun tip-top' data-toggle='tooltip' data-placement='top' title='Es normal'>Común</span>
+                    <span class='label label-comun tip-top' data-toggle='tooltip' data-placement='top' title='Es normal'>ComÃºn</span>
                   </small>
                 </strong>
-                <small id='comic_idioma' class='tip-right' data-toggle='tooltip' data-placement='right' title='Idioma del cómic'>$idioma</small>
+                <small id='comic_idioma' class='tip-right' data-toggle='tooltip' data-placement='right' title='Idioma del cÃ³mic'>$idioma</small>
               </h1>
 
               <hr style='margin-bottom: 0px'></hr>
               <div class='row'>
                 <div class='col-md-3 tip-bottom' id='comic_copias' align='left' data-toggle='tooltip' data-placement='bottom' title='Todos los que tenemos en este momento'><h4>Existencias: <small><span itemprop='availability'>$numero_copias</span></small></h4></div>
-                <div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si está nuevo, y 0 si está 'pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>
-                <div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>
+                <div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si estÃ¡ nuevo, y 0 si estÃ¡ 'pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>
+                <div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de PublicaciÃ³n: <small>11/9/2001</small></h4></div>
               </div>
               <p align='justify' style='font-size: 12pt' id='comic_descripcion'><span itemprop='description'>$descripcion</span></p>
               <table style='margin-bottom: 2px' class='table table-condensed'>
                 <thead>
                   <tr>
-                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada $moneda</p></td>
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cÃ³mic cuando fue publicado, puede ser en Pesos o en DÃ³lares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada $moneda</p></td>
                     <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas MXN</p></td>
-                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida MXN</p></td>
+                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='SÃ­, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida MXN</p></td>
                     $etiquetaDescuento
                   </tr>
                 </thead>
