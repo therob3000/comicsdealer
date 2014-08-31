@@ -47,7 +47,7 @@ function cargarCodigoInicialBarra(){
               <li id='busqueda_personaje'><a>Personaje</a></li>
               <li id='busqueda_titulo'><a>Título</a></li>
               <li id='busqueda_descripcion'><a>Descripción</a></li>
-              <li><a href='#'>Con el texto</a></li>
+              <!--<li><a href='#'>Con el texto</a></li>-->
             </ul>
           </div>
         </div>

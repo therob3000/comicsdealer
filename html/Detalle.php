@@ -20,10 +20,13 @@ if (empty($_GET['paquete_id'])) {
 insertarVisita($comic_id);
 
 //Datos para las meta etiquetas de FACEBOOK
-$comic_img_query = "select cat.cat_comic_imagen_url, dat.datos_comic_titulo, SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion from inventario as inv
+$comic_img_query = "select cat.cat_comic_imagen_url, 
+    dat.datos_comic_titulo, 
+    SUBSTRING(dat.datos_comic_descripcion,1,180) as descripcion 
+from inventario as inv
 inner join cat_comics as cat on inv.inventario_cat_comic_unique_id = cat.cat_comic_unique_id
 inner join datos_comics as dat on cat.cat_comic_descripcion_id = dat.datos_comic_id
-where inv.inventario_id = $comic_id";
+where cat.cat_comic_unique_id = $comic_id";
 
 $queryResultado = mysql_query($comic_img_query);
 $comic_img = mysql_result($queryResultado, 0, "cat_comic_imagen_url");

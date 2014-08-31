@@ -235,8 +235,8 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
        ?>
             
         </div>
-        <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
-          Anuncio
+        <div class="col-sm-3 hidden-sm" style="width: 23%" >
+            <img src="img/anuncio_sm_01.jpg" alt=""/>
         </div>
       </div>
 
@@ -298,8 +298,8 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
           </div>
 
         </div>
-        <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
-          Anuncio
+        <div class="col-sm-3 hidden-sm" style="width: 23%">
+            <img src="img/anuncio_lg_01.jpg" alt=""/>
         </div>
 
       </div>
@@ -351,8 +351,8 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
           </div>
 
         </div>
-        <div class="col-sm-3 cuadro2 hidden-sm" style="width: 23%">
-          Anuncio
+        <div class="col-sm-3 hidden-sm" style="width: 23%">
+            <img src="img/anuncio_lg_02.jpg" alt=""/>
         </div>
 
       </div>

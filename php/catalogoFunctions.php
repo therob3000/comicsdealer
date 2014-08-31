@@ -11,7 +11,8 @@ function cargarCatalogo($arrayComics, $rowid, $layout) {
         
     $inventarioArray = array();
 
-    $campos = array("inventario_id",
+    $campos = array(
+        "inventario_id",
         "cat_comic_titulo",
         "cat_comic_descripcion",
         "cat_comic_personaje",
@@ -133,12 +134,15 @@ function consulta_catalogo($camposArray, $salto, $rango, $compania_id, $idioma, 
 
     $queryCatalogoComics = generaQueryGeneral();
 
+    //GENERAMOS BUSQUEDA GENERAL
     if ($idioma == 0 && $compania_id == 0 && $personaje_id == 0) {
         $queryCatalogoComicsCondicion = "
             WHERE
                 cat_comic_activo = 1 AND cat_comic_copias > 0 AND inventario_existente = 1 AND inventario_activo = 1 $cadena_orden
             LIMIT $salto, $rango";
-    } else {
+    } 
+    //GENERAMOS BUSQUEDA CON PARAMETROS
+    else {
         $queryCatalogoComicsCondicion = generaQueryPorIdioma($idioma, $compania_id, $salto, $rango, $personaje_id, $cadena_orden);
     }
 
@@ -167,7 +171,7 @@ function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salt
     $queryGeneral = generaQueryGeneral();
 
     switch ($busqueda) {
-        //Personaje
+        //BUSQUEDA POR PERSONAJE
         case 1:
             //$query = $queryGeneral . " WHERE cat_comic_personaje LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
             $query = $queryGeneral . " WHERE inventario_activo = 1 AND personaje_nombre LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
@@ -185,12 +189,13 @@ function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salt
                     }
                     $catalogoArray[] = $rowArray;
                 }
-            } else {
+            } 
+            else {
                 $catalogoArray = array();
             }
-            return $catalogoArray;
+            
             break;
-
+         //BUSQUEDA POR TITULO
         case 2:
             $query = $queryGeneral . " WHERE datos_comic_titulo LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
             $queryResultado = mysql_query($query);
@@ -210,10 +215,8 @@ function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salt
             } else {
                 $catalogoArray = array();
             }
-
-            return $catalogoArray;
-
             break;
+        //BUSQUEDA POR DESCRIPCION
         case 3:
             $query = $queryGeneral . " WHERE datos_comic_descripcion LIKE '%" . $parametro_busqueda . "%' LIMIT $salto, $rango;";
             $queryResultado = mysql_query($query);
@@ -233,14 +236,12 @@ function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salt
             } else {
                 $catalogoArray = array();
             }
-
-            return $catalogoArray;
-
             break;
 
         default:
             break;
     }
+     return $catalogoArray;
 }
 
 function generaQueryGeneral() {
@@ -260,13 +261,16 @@ function generaQueryGeneral() {
         cat_comic_numero_visitas,
         inventario_activo
         FROM 
-        (SELECT * FROM inventario as INV
+        (SELECT *, max(inventario_precio_entrada) as inv_max FROM inventario as INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
             INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id
             INNER JOIN datos_comics as DAT ON CAT.cat_comic_descripcion_id = DAT.datos_comic_id
             WHERE INV.inventario_paquete IS NULL
+            GROUP BY INV.inventario_cat_comic_unique_id
+            HAVING INV.inventario_precio_entrada = inv_max
+
             UNION
-            SELECT * FROM inventario AS INV
+            SELECT *, max(inventario_precio_entrada) as inv_max FROM inventario AS INV
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
             INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id
             INNER JOIN datos_comics as DAT ON CAT.cat_comic_descripcion_id = DAT.datos_comic_id

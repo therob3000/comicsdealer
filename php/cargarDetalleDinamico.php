@@ -395,7 +395,7 @@ function generarHTMLComicsPaquete($paquete_id){
             $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>$descuento%</span>  </p></td>";
         }
        
-       if($idioma == "EspaÃ±ol"){
+       if($idioma == "Español"){
            $moneda = "MXN";
        }
        else{

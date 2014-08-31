@@ -29,26 +29,31 @@ $json = new stdClass();
 //OBTENEMOS LOS ID'S DE LOS ELEMENTOS COMPRADOS
 $inventario_ids = implode(",", $inventario_id_compra);
 
+$queryObtenerIds = "
+        SELECT inventario_id, NULL
+        FROM inventario as INV 
+            WHERE INV.inventario_paquete IN (select inventario_paquete from inventario where inventario_cat_comic_unique_id in ($inventario_ids) and inventario_paquete is not null) 
+        UNION 
+        SELECT inventario_id, max(inventario_precio_entrada) as inv_max 
+        FROM inventario as INV 
+        INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id 
+        INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id 
+        INNER JOIN datos_comics as DAT ON CAT.cat_comic_descripcion_id = DAT.datos_comic_id 
+            WHERE INV.inventario_paquete IS NULL 
+            AND inventario_cat_comic_unique_id IN ($inventario_ids)";
+//echo $queryObtenerIds;
 //GENERAMOS QUERY PARA OBTENER ID'S DE LOS COMICS EN PAQUETE COMO INDIVIDUALES
-$res = $con->query("select inventario_cat_comic_unique_id from inventario 
-                            where inventario_paquete in 
-                                (select inventario_paquete from inventario
-                                where inventario_cat_comic_unique_id in ($inventario_ids)
-                                and inventario_paquete is not null)
-                            union
-                            select inventario_cat_comic_unique_id from inventario 
-                            where inventario_cat_comic_unique_id in ($inventario_ids)
-                            and inventario_paquete is null;");
+$res = $con->query($queryObtenerIds);
 
 $num = $res->num_rows;
 
 if ($num >= 0) {
     while($row = $res->fetch_assoc()) {
-        $inventario_id[] = $row['inventario_cat_comic_unique_id'];
+        $inventario_id[] = $row['inventario_id'];
     }
 }
 
-$exitoFinal = compra($con, $inventario_id, $usuario_id, $forma_pago_id, $codigo_postal);
+$exitoFinal = compra($con, $inventario_id, $inventario_ids, $usuario_id, $forma_pago_id, $codigo_postal);
 
 if ($exitoFinal) {
 
@@ -96,7 +101,7 @@ function obtenerComics($inventario_id, $con) {
     );
 
     $queryCatalogoComics = "
-            SELECT 
+            SELECT
 	    (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
 	    CATALOGO.cat_comic_numero_ejemplar,
 	    INV.inventario_precio_salida
@@ -111,7 +116,7 @@ function obtenerComics($inventario_id, $con) {
 	        inventario
 	    GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 		WHERE
-	    	CATALOGO.cat_comic_activo = 1 AND INV.inventario_cat_comic_unique_id IN ($comicsIds)";
+	    	CATALOGO.cat_comic_activo = 1 AND INV.inventario_id IN ($comicsIds)";
 
     //echo $queryCatalogoComics;
     
@@ -145,12 +150,13 @@ function obtenerComics($inventario_id, $con) {
     return $rowArray;
 }
 
-function compra($con, $inventario_id, $usuario_id, $forma_pago_id, $codigo_postal){
+function compra($con, $inventario_id, $inventario_unique_id, $usuario_id, $forma_pago_id, $codigo_postal){
     
     $inventario = implode(",", $inventario_id);
     
-    $queryActInventario = "UPDATE inventario SET inventario_existente = 0 WHERE inventario_existente = 1 AND inventario_cat_comic_unique_id IN ($inventario)";
-    $queryComics = "UPDATE cat_comics SET cat_comic_copias = cat_comic_copias - 1, cat_comic_numero_compras = cat_comic_numero_compras + 1 WHERE cat_comic_copias NOT IN (0) AND cat_comic_unique_id IN ($inventario)";
+    $queryActInventario = "UPDATE inventario SET inventario_existente = 0 WHERE inventario_existente = 1 AND inventario_id IN ($inventario)";
+    //echo $queryActInventario;
+    $queryComics = "UPDATE cat_comics SET cat_comic_copias = cat_comic_copias - 1, cat_comic_numero_compras = cat_comic_numero_compras + 1 WHERE cat_comic_copias NOT IN (0) AND cat_comic_unique_id IN ($inventario_unique_id)";
     $queryCompra = "INSERT INTO compras VALUES('',$usuario_id, 0, CURDATE(), $forma_pago_id, $codigo_postal)";
     
     try {

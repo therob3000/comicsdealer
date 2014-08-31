@@ -143,7 +143,7 @@ function busquedaporTitulo(){
     $('#busqueda_titulo').on("click", function(){
         parametro = $('#txtBusqueda').val();
         if(parametro !== ''){
-            window.location.href = "/html/Catalogo.php?busqueda=1&parametro_busqueda="+parametro;
+            window.location.href = "/html/Catalogo.php?busqueda=2&parametro_busqueda="+parametro;
         }
         else{
             alert("La busqueda requiere una palabra clave u__u");
@@ -155,7 +155,7 @@ function busquedaporDescripcion(){
     $('#busqueda_descripcion').on("click", function(){
         parametro = $('#txtBusqueda').val();
         if(parametro !== ''){
-            window.location.href = "/html/Catalogo.php?busqueda=1&parametro_busqueda="+parametro;
+            window.location.href = "/html/Catalogo.php?busqueda=3&parametro_busqueda="+parametro;
         }
         else{
             alert("La busqueda requiere una palabra clave u__u");

@@ -23,6 +23,7 @@ function cargarComicsCompra(){
 					$("#compras").append(data2);
 					$("#compras").find("#compra_comic").attr("id", val.cat_comic_unique_id);
 					$("#"+val.cat_comic_unique_id).find("#imagen").attr("src", val.cat_comic_imagen_url);
+                                        $("#"+val.cat_comic_unique_id).find("#inventario_id").attr("id", val.inventario_id);
 					$("#"+val.cat_comic_unique_id).find("#catal").text(val.cat_comic_descripcion);
                                         //alert(val.inventario_paquete);
                                         if(val.inventario_paquete !== null){
