@@ -204,23 +204,15 @@ if (empty($_GET['parametro_busqueda'])) {
                 </div>
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 3%; margin-top: 3%">
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.comicsdealer.com" data-text="Es la neta" data-via="ComicsDealer" data-lang="es">Twittear</a>
-                    <script>!function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                        if (!d.getElementById(id)) {
-                          js = d.createElement(s);
-                          js.id = id;
-                          js.src = p + '://platform.twitter.com/widgets.js';
-                          fjs.parentNode.insertBefore(js, fjs);
-                        }
-                      }(document, 'script', 'twitter-wjs');</script>
+                     <a href="https://twitter.com/share" class="twitter-share-button" data-text="Hey! Revisa el Catalogo de Comics Dealer! :)" data-via="comicsdealer">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                   </div>
                 </div>
-                <div class="row">
+<!--                <div class="row">
                   <div class="col-sm-12" style="margin-top: 3%">
                     <a class="btn btn-xs btn-danger" href="/html/preRegistro.html">Regístrate ahora!</a>
                   </div>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>

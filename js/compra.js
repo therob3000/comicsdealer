@@ -75,7 +75,8 @@ function botonComprarInit(){
 function eliminaComic(){
 	$(".eliminaComic").on("click", function(){
 		id = $(this).attr("id");
-		cadena = "cat_comic_inventario_id="+$(this).attr('id');
+		cadena = "cat_comic_unique_id="+$(this).attr('id');
+                alert(cadena);
 		$.post("/php/eliminarCompra.php",cadena);
 		//$("#"+id).remove();
 		location.reload(true);

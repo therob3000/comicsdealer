@@ -150,9 +150,11 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
           </div>
         </div>
         <!--Aqui se inserta el contenido Principal-->
-        <div id="layout"></div>
+        <div id="layout">
+            
+        </div>
 
-        <!--            <div class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
+                    <div class="col-sm-3 col-md-3 col-lg-3 hidden-xs" id="redessociales">
                       <div align="right">
                         <div class="row">
                           <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
@@ -171,13 +173,13 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                           </div>
                         </div>
-                        <div class="row">
+<!--                        <div class="row">
                           <div class="col-sm-12" style="margin-top: 3%">
                             <a class="btn btn-xs btn-danger" href="html/preRegistro.html">Regístrate ahora!</a>
                           </div>
-                        </div>
+                        </div>-->
                       </div>
-                    </div>-->
+                    </div>
 
       </div>
 
