@@ -19,12 +19,12 @@ function cargarPromocionFinDeSemana(paginaOrigen){
 				
 			});
 		}
-		else{
-			if(paginaOrigen == 'index')
-				$('#layout').load("../html/layouts/principal_layout.html");
-			else
-				$('#promocion').remove();
-		}
+//		else{
+//			if(paginaOrigen == 'index')
+//				$('#layout').load("../html/layouts/principal_layout.html");
+//			else
+//				$('#promocion').remove();
+//		}
 	},
 	'json');
 }

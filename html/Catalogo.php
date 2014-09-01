@@ -185,7 +185,7 @@ if (empty($_GET['parametro_busqueda'])) {
             <div id="layout">
             
         </div>
-            <div class="col-sm-3 col-md-3 col-lg-3 hidden-xs" id="redessociales">
+            <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs" id="redessociales">
               <div align="right">
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">
