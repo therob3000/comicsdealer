@@ -68,6 +68,7 @@ if (empty($_GET['parametro_busqueda'])) {
     <script src="../js/catalogo.js"></script>
     <script src="../js/registro_login.js"></script>
     <script src="../js/catalogo_index.js"></script>
+    <script src="../js/promocion_index.js"></script>
 
     <script type="text/javascript">
 
@@ -178,10 +179,13 @@ if (empty($_GET['parametro_busqueda'])) {
         <div class="catalogo">
           <div class="row">
             <!--Aqui se inserta el logo Principal-->
-            <div class="col-sm-9">
+            <div class="col-sm-6">
               <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
             </div>
-            <div class="col-sm-3 hidden-xs">
+            <div id="layout">
+            
+        </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 hidden-xs" id="redessociales">
               <div align="right">
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">

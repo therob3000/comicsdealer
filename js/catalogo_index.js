@@ -4,6 +4,7 @@ $(document).ready(function(){
 	verificaSesion(pagina);
 	modalIniciarSesion();
         //Funciones ubicadas en registro_login.js
+        cargarPromocionFinDeSemana('index');
         modalRegistrar();
         registroFacebook();
         registroCorreo();
