@@ -8,7 +8,9 @@
 
 	$finDeSemana = determinaFindeSemana();
         
-        $campos = array("inventario_id",
+        $campos = array(
+      "inventario_cat_comic_unique_id",
+      "inventario_id",
       "cat_comic_titulo",
       "cat_comic_descripcion",
       "cat_comic_personaje",
@@ -24,7 +26,8 @@
 
 	if($finDeSemana){
 		
-            $queryPromocion = "SELECT 
+            $queryPromocion = "SELECT
+                    INV.inventario_cat_comic_unique_id,
                     INV.inventario_id,
                     (SELECT datos_comic_titulo FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_titulo,
                     (SELECT datos_comic_descripcion FROM datos_comics WHERE datos_comic_id = CATALOGO.cat_comic_descripcion_id) as cat_comic_descripcion,
@@ -63,6 +66,7 @@
                 $num = mysql_num_rows($queryResultado);
                 
                 if($num >= 0){
+                    $inventario_cat_comic_unique_id = mysql_result($queryResultado, 0, "inventario_cat_comic_unique_id");
                     $inventario_id              = mysql_result($queryResultado, 0, "inventario_id");
                     $descripcion_titulo 	= mysql_result($queryResultado, 0, "cat_comic_titulo");
                     $descripcion_historia	= mysql_result($queryResultado, 0, "cat_comic_descripcion");
@@ -71,6 +75,7 @@
                     $promocion_imagen		= mysql_result($queryResultado, 0, "cat_comic_imagen_url");
                     
                     //$json->descripcion_formato 	= $descripcion_formato;
+                    $json->inventario_cat_comic_unique_id = $inventario_cat_comic_unique_id;
                     $json->inventario_id        = $inventario_id;
                     $json->descripcion_titulo 	= $descripcion_titulo;
                     $json->descripcion_historia = $descripcion_historia;

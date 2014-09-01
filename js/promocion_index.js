@@ -12,7 +12,7 @@ function cargarPromocionFinDeSemana(paginaOrigen){
 			
 				if(data.precio_portada != 0){
 					$("#campos_promocion").html("<strike style='color: grey; font-weight: 400;'>$"+data.precio_portada+"</strike><strong style='font-weight: 400;color: #5cb85c;'>  $"+data.precio_oferta+"</strong> <span class='label label-descuento'>-"+data.porcentaje+"%</span>");
-                                        $("#det_promo").attr("href", "./Detalle.php?comic_id="+data.inventario_id);
+                                        $("#det_promo").attr("href", "./html/Detalle.php?comic_id="+data.inventario_cat_comic_unique_id);
 					//$("#campos_promocion").append("<li id='precio_portada'><strike><strong>Precio de portada: $"+data.precio_portada+"</strong></strike></li>");
 					//$("#campos_promocion").append("<li id='precio_promocion'><strong>Precio de promocion: $"+data.precio_oferta+"</strong></li>");
 				}
