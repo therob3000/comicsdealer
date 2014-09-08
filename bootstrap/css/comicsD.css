@@ -286,6 +286,7 @@ hr {
 .image {
   border-color: beige; 
   position: relative;  /* for IE 6 */
+  width: -moz-fit-content;
 }
 
 .textoimg { 

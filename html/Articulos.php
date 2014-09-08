@@ -273,7 +273,7 @@ $articulo_resumen = mysql_result($queryResultado, 0, "articulo_resumen");
               ?>
               <div class="row">             
                 <div class="col-lg-4 col-lg-offset-8"> 
-                  <p style="font-size: 14pt" align="center"><a href="html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>
+                  <p style="font-size: 14pt" align="center"><a href="/html/Catalogo.php"><strong>Ver el catálogo completo »</strong></a></p>
                 </div> 
               </div>
               <hr></hr>

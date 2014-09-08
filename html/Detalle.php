@@ -66,6 +66,8 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
 <!--    <script src="../js/catalogo.js"></script>-->
     <script src="../js/detalle_comic.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/promocion_index.js"></script>
+    
     
     <script type="text/javascript" src="/coin-slider/coin-slider.min.js"></script>
     <link rel="stylesheet" href="/coin-slider/coin-slider-styles.css" type="text/css" />
@@ -155,10 +157,13 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
 
           <div class="row">
             <!--Aqui se inserta el logo Principal-->
-            <div class="col-sm-9">
+            <div class="col-sm-6">
               <img style="height: 150px;" src="/img/ComicDLogo-09.svg" class="img-responsive" />
             </div>
-            <div class="col-sm-3 hidden-xs">
+            <div id="layout">
+            
+        </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs" id="redessociales">
               <div align="right">
                 <div class="row">
                   <div class="col-sm-12" style="margin-bottom: 4%; margin-top: 6%">

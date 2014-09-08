@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	verificaSesion(comic_id);
 	modalIniciarSesion();
+        cargarPromocionFinDeSemana('index');
 	botonComprar();
 	botonEliminar();
 	finalizarCompra();

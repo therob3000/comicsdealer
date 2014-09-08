@@ -37,12 +37,20 @@ function cargarCarousel($arrayComics){
         $cat_comic_imagen_mini = $arrayComic2[$campos[9]];
         $cat_comic_unique_id = $arrayComic2{$campos{10}};
         
+        if($comic_idioma == 'ing'){
+            $comic_idioma_html = 'Inglés';
+        }
+        else{
+            $comic_idioma_html = 'Español';
+        }
+        
         if($j == 0){
             $ItemActivo = "active";
         }
         else{
             $ItemActivo = "";
         }
+        
         if(is_null($inventario_paquete)){
             $hrefDetalle = "/html/Detalle.php?comic_id=$cat_comic_unique_id";
             $h5Class = "textoimg";
@@ -74,7 +82,7 @@ function cargarCarousel($arrayComics){
                                               <br>
                                               <titulo>$titulo</titulo>
                                               <br>
-                                              <idioma>$comic_idioma</idioma>
+                                              <idioma>$comic_idioma_html</idioma>
                                               <br>
                                               <precio>$$precio<small> MXN</small></precio>
                                            </h5>
@@ -92,7 +100,7 @@ function cargarCarousel($arrayComics){
                                               <br>
                                               <titulo>$titulo</titulo>
                                               <br>
-                                              <idioma>$comic_idioma</idioma>
+                                              <idioma>$comic_idioma_html</idioma>
                                               <br>
                                               <precio>$$precio<small> MXN</small></precio>
                                            </h5>
