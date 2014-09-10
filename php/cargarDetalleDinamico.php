@@ -4,7 +4,8 @@
 
 	//$comic_id = $_GET['comic_id'];
 
-$camposArray = array("inventario_id",
+$camposArray = array(
+    "inventario_id",
     "cat_comic_titulo",
     "cat_comic_descripcion",
     "cat_comic_personaje",
@@ -19,7 +20,11 @@ $camposArray = array("inventario_id",
     "cat_comic_precio_tienda",
     "cat_comic_imagen_mini",
     "cat_comic_unique_id",
-    "cat_comic_rareza"
+    "cat_comic_rareza",
+    "inventario_fecha_publicacion",
+    "inventario_TPB",
+    "inventario_HC",
+    "inventario_GN"
     //"existe"
 );
 
@@ -82,7 +87,10 @@ CATALOGO.cat_comic_precio_tienda,
 CATALOGO.cat_comic_imagen_mini,
 CATALOGO.cat_comic_unique_id,
 CATALOGO.cat_comic_rareza,
-CATALOGO.cat_comic_fecha
+INV.inventario_fecha_publicacion,
+INV.inventario_TPB,
+INV.inventario_HC,
+INV.inventario_GN
 FROM
 cat_comics as CATALOGO
 INNER JOIN
@@ -92,7 +100,11 @@ INNER JOIN
 	inventario_precio_salida,
 	inventario_cat_comic_unique_id,
 	inventario_existente,
-	inventario_integridad
+	inventario_integridad,
+        inventario_fecha_publicacion,
+        inventario_TPB,
+	inventario_HC,
+	inventario_GN
 	FROM
 	inventario
 	GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
@@ -146,7 +158,7 @@ function obtenerIdioma(){
 	global $rowArray;
 	$idioma = $rowArray["cat_comic_idioma"];
 	if ($idioma == "ing") {
-		return "Ingles";
+		return "Inglés";
 	}
 	else{
 		return "Español";
@@ -200,7 +212,22 @@ function obtenerRarezaComic(){
 
 function obtenerFechaPublicacion(){
     global $rowArray;
-    return $rowArray["cat_comic_fecha"];
+    return $rowArray["inventario_fecha_publicacion"];
+}
+
+function obtenerFormatoTPB(){
+    global $rowArray;
+    return $rowArray["inventario_TPB"];
+}
+
+function obtenerFormatoHC(){
+    global $rowArray;
+    return $rowArray["inventario_HC"];
+}
+
+function obtenerFormatoGN(){
+    global $rowArray;
+    return $rowArray["inventario_GN"];
 }
 
 function generarHTMLComicIndividual($comic_id){
@@ -218,7 +245,10 @@ function generarHTMLComicIndividual($comic_id){
     $precio_salida = obtenerPrecio();
     $precio_portada = obtenerPrecioPortada();
     $precio_tiendas = obtenerPrecioTienda();
-    
+    $inventario_TPB = obtenerFormatoTPB();
+    $inventario_HC = obtenerFormatoHC();
+    $inventario_GN = obtenerFormatoGN();
+  
     $rareza = obtenerRarezaComic();
     $fecha_publicacion = obtenerFechaPublicacion();
     
@@ -227,7 +257,7 @@ function generarHTMLComicIndividual($comic_id){
         $descuento = (($precio_salida * 100) / $precio_tiendas) - 100;
         //CONDICIONAMOS EL DESCUENTO
         if($descuento >= 0 ){
-            $etiquetaDescuento = "";
+            $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top'></td>";
         }
         else{
             $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top' title='Ahorro total con respecto a las otras tiendas'><strong>Ahorro</strong><p style='margin-top: 6px' align='right'><span class='label label-descuento label-lg'>$descuento%</span>  </p></td>";
@@ -235,12 +265,13 @@ function generarHTMLComicIndividual($comic_id){
         $etiquetaPrecioTiendas = "<td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas</p></td>";
     }
     else{
+        $etiquetaDescuento = "<td class='tip-top' data-toggle='tooltip' data-placement='top'></td>";
         $etiquetaPrecioTiendas = "";
     }
     
     //CONDICION PARA LA INTEGRIDAD
     if($integridad |= 0){
-        $etiquetaIntegridad = "<div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si está nuevo, y 0 si está¡ 'pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>";
+        $etiquetaIntegridad = "<div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si está nuevo, y 0 si está pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>";
     }
     else{
         $etiquetaIntegridad = "";
@@ -279,10 +310,32 @@ function generarHTMLComicIndividual($comic_id){
     
     //CONDICION PARA FECHA DE PUBLICACION
     if($fecha_publicacion != NULL){
-        $fechaPublicacionHTML = "<div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>";
+        $fechaPublicacionHTML = "<div class='col-md-3 tip-bottom' id='comic_fecha' align='left' data-toggle='tooltip' data-placement='bottom' title='Fecha en que fue publicado originalmente este cómic.'><h4>Fecha Publicación: <small>$fecha_publicacion</small></h4></div>";
     }
     else{
         $fecha_publicacion = "";
+    }
+    
+    //CONDICION PARA FORMATO
+    if($inventario_TPB != NULL || $inventario_GN != NULL || $inventario_HC != NULL){
+        $textoFormatoTPB = "";
+        $textoFormatoGN = "";
+        $textpFormatoHC = "";
+        
+        if($inventario_TPB != NULL){
+            $textoFormatoTPB = "TPB";
+        }
+        if($inventario_GN != NULL){
+            $textoFormatoGN = "GN";
+        }
+        if($inventario_HC != NULL){
+            $textoFormatoHC = "HC";
+        }
+        
+        $formatoHTML = "<div class='col-md-3 tip-bottom' id='comic_formato' align='left' data-toggle='tooltip' data-placement='bottom' title='TPB: Trade Paperback, HC: Hardcover, GN: Graphic Novel'><h4>Formato:<small>$textoFormatoTPB $textoFormatoGN $textoFormatoHC</small></h4></div>";
+    }
+    else{
+        $formatoHTML = "";
     }
     
     echo "<div class='row'>
@@ -312,12 +365,13 @@ function generarHTMLComicIndividual($comic_id){
                 <div class='col-md-3 tip-bottom' id='comic_copias' align='left' data-toggle='tooltip' data-placement='bottom' title='Todos los que tenemos en este momento'><h4>Existencias: <small><span itemprop='availability'>$numero_copias</span></small></h4></div>
                 $etiquetaIntegridad
                 $fechaPublicacionHTML
+                $formatoHTML
               </div>
               <p align='justify' style='font-size: 12pt' id='comic_descripcion'><span itemprop='description'>$descripcion</span></p>
               <table style='margin-bottom: 2px' class='table table-condensed'>
                 <thead>
                   <tr>
-                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en DÃ³lares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada</p></td>
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada</p></td>
                     $etiquetaPrecioTiendas
                     <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida</p></td>
                     $etiquetaDescuento

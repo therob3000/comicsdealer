@@ -237,7 +237,7 @@ function consulta_especifica($busqueda, $parametro_busqueda, $camposArray, $salt
                 $catalogoArray = array();
             }
             break;
-
+            
         default:
             break;
     }

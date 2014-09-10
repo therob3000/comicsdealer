@@ -198,11 +198,11 @@ $comic_descripcion = htmlspecialchars($comic_descripcion, ENT_QUOTES);
                       }(document, 'script', 'twitter-wjs');</script>
                   </div>
                 </div>
-                <div class="row">
+<!--                <div class="row">
                   <div class="col-sm-12" style="margin-top: 3%">
                     <a class="btn btn-xs btn-danger" href="/html/preRegistro.html">Regístrate ahora!</a>
                   </div>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
