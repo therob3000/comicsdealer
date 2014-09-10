@@ -154,7 +154,7 @@ function compra($con, $inventario_id, $inventario_unique_id, $usuario_id, $forma
     
     $inventario = implode(",", $inventario_id);
     
-    $queryActInventario = "UPDATE inventario SET inventario_existente = 0 WHERE inventario_existente = 1 AND inventario_id IN ($inventario)";
+    $queryActInventario = "UPDATE inventario SET inventario_existente = 0, inventario_fecha_salida = NOW() WHERE inventario_existente = 1 AND inventario_id IN ($inventario)";
     //echo $queryActInventario;
     $queryComics = "UPDATE cat_comics SET cat_comic_copias = cat_comic_copias - 1, cat_comic_numero_compras = cat_comic_numero_compras + 1 WHERE cat_comic_copias NOT IN (0) AND cat_comic_unique_id IN ($inventario_unique_id)";
     $queryCompra = "INSERT INTO compras VALUES('',$usuario_id, 0, CURDATE(), $forma_pago_id, $codigo_postal)";

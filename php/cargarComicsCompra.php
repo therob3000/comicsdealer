@@ -46,7 +46,7 @@
             INNER JOIN cat_comics as CAT ON INV.inventario_cat_comic_unique_id = CAT.cat_comic_unique_id
             INNER JOIN personajes as PERS ON CAT.cat_comic_personaje_id = PERS.personaje_id
             INNER JOIN datos_comics as DAT ON CAT.cat_comic_descripcion_id = DAT.datos_comic_id
-            WHERE INV.inventario_paquete IS NULL
+            WHERE INV.inventario_paquete IS NULL AND INV.inventario_existente = 1
 			GROUP BY INV.inventario_cat_comic_unique_id
 			HAVING INV.inventario_precio_entrada = inv_max
 

@@ -50,11 +50,13 @@
 		inventario_integridad
     FROM
         inventario
+    WHERE inventario_existente=1
     GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 	WHERE
     	CATALOGO.cat_comic_activo = 1 
     	AND INV.inventario_existente = 1
     	AND CATALOGO.cat_comic_unique_id = $comic_id";
+//echo $queryComic;
 $queryResultado = mysql_query($queryComic);
 $num = mysql_num_rows($queryResultado);
 if($num>=0){

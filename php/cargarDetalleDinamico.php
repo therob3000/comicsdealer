@@ -107,6 +107,7 @@ INNER JOIN
 	inventario_GN
 	FROM
 	inventario
+        WHERE inventario_existente = 1
 	GROUP BY inventario_cat_comic_unique_id) AS INV ON INV.inventario_cat_comic_unique_id = CATALOGO.cat_comic_unique_id
 WHERE
 CATALOGO.cat_comic_activo = 1 
@@ -469,30 +470,30 @@ function generarHTMLComicsPaquete($paquete_id){
               <h1 style='margin-top: 5px'>
                 <strong>
                   <small>
-                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el nÃºmero'><span itemprop='name'>$nombre_paquete</span></span>
+                    <span class='label label-primary tip-top' id='comic_titulo' data-toggle='tooltip' data-placement='top' title='La serie y el número'><span itemprop='name'>$nombre_paquete</span></span>
                   </small>
                   <small>
                     <!--Este se debe generar desde el class, pues es uno diferente para cada caso, y aparte la palabra es diferente y el title lel-->
-                    <span class='label label-comun tip-top' data-toggle='tooltip' data-placement='top' title='Es normal'>ComÃºn</span>
+                    <!--<span class='label label-comun tip-top' data-toggle='tooltip' data-placement='top' title='Es normal'>ComÃºn</span>-->
                   </small>
                 </strong>
-                <small id='comic_idioma' class='tip-right' data-toggle='tooltip' data-placement='right' title='Idioma del cÃ³mic'>$idioma</small>
+                <small id='comic_idioma' class='tip-right' data-toggle='tooltip' data-placement='right' title='Idioma del cómic'>$idioma</small>
               </h1>
 
               <hr style='margin-bottom: 0px'></hr>
               <div class='row'>
                 <div class='col-md-3 tip-bottom' id='comic_copias' align='left' data-toggle='tooltip' data-placement='bottom' title='Todos los que tenemos en este momento'><h4>Existencias: <small><span itemprop='availability'>$numero_copias</span></small></h4></div>
-                <div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si estÃ¡ nuevo, y 0 si estÃ¡ 'pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>
-                <div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de PublicaciÃ³n: <small>11/9/2001</small></h4></div>
+                <div class='col-md-3 tip-bottom' id='comic_integridad' align='left' data-toggle='tooltip' data-placement='bottom' title='10 si está nuevo, y 0 si está pal boiler'><h4>Integridad: <small>$integridad/10</small></h4></div>
+                <!--<div class='col-md-6' id='comic_fecha' align='left'><h4>Fecha de Publicación: <small>11/9/2001</small></h4></div>-->
               </div>
               <p align='justify' style='font-size: 12pt' id='comic_descripcion'><span itemprop='description'>$descripcion</span></p>
               <table style='margin-bottom: 2px' class='table table-condensed'>
                 <thead>
                   <tr>
-                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cÃ³mic cuando fue publicado, puede ser en Pesos o en DÃ³lares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada $moneda</p></td>
-                    <td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas MXN</p></td>
-                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='SÃ­, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida MXN</p></td>
-                    $etiquetaDescuento
+                    <td class='text-primary tip-bottom' data-toggle='tooltip' data-placement='bottom' title='Precio del cómic cuando fue publicado, puede ser en Pesos o en Dólares'><strong>Precio de Portada</strong><p class='precio' align='right'>$$precio_portada $moneda</p></td>
+                    <!--<td class='text-danger tip-bottom' data-toggle='tooltip' data-placement='bottom' title='En este precio lo tienen en otras tiendas'><strong>Precio en Tiendas</strong><p class='precio' align='right'>$$precio_tiendas MXN</p></td>-->
+                    <td class='tip-top' data-toggle='tooltip' data-placement='top' title='Sí, nos volvimos locos!'><strong>Precio Comics Dealer</strong><p class='precio' align='right'>$$precio_salida MXN</p></td>
+                    
                   </tr>
                 </thead>
               </table>
