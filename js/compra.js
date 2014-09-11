@@ -1,4 +1,5 @@
 $(document).ready(function(){
+        cargar_info();
 	$("#entrega_df").hide();
 	$("#entrega_republica").hide();
 	$("#zipcode").hide();
@@ -11,6 +12,12 @@ $(document).ready(function(){
 		window.location.href = "/html/Catalogo.php";
 	});
 });
+
+function cargar_info() {
+    //$("#searchnav").load("../html/layouts/search_nav_layout.html");
+    $("#infos").load("../html/layouts/infos.html");
+    $("#footer").load("../html/layouts/pie_pagina.html");
+}
 
 function cargarComicsCompra(){
 	$.ajaxSetup({async:false});

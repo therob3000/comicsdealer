@@ -13,7 +13,7 @@ function verificaSesion(){
 		function(data){
 			verifica 	= data.ver_sesion.estado;
 			pro 		= data.ver_sesion.usuario_pro;
-			if(verifica == true && pro == true){
+			if(verifica == true){
                                 nombre 		= data.ver_sesion.usuario_nombre;
 				usuario_correo 		= data.ver_sesion.usuario_email;
 				usuario_id		= data.ver_sesion.usuario_id;
@@ -24,8 +24,8 @@ function verificaSesion(){
                                 botonComprarInit();
 			}
 			else{
-				alert("No ha iniciado sesion o no eres usuario PRO amiguito");
-				window.location.href = "../index.html";
+				alert("No ha iniciado sesion");
+				window.location.href = "../index.php";
 			}
 		},
 		'json');

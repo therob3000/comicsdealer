@@ -20,7 +20,7 @@
     <script src="../bootstrap/assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/pie_pagina.js"></script>
+<!--    <script src="../js/pie_pagina.js"></script>-->
     <script src="/js/compra.js"></script>
 
     <style>
@@ -165,8 +165,10 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
           <hr></hr>
         </div>
       </div>
-
-      <div class="container tres" id="info">
+      
+      
+      
+<!--      <div class="container tres" id="info">
         <div class="jumbotron">
           <div class="row">
             <div class="col-lg-4">
@@ -186,7 +188,9 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
+      
+      <div id="infos"></div>
 
       <div class="container tres">  
         <div class="jumbotron">
