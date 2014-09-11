@@ -71,7 +71,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
               <p id="inicial"></p>
               <p>Te hemos enviado un correo a: </p>
               <p id="correo"></p>
-              <p id="mensaje">En este correo te indicamos las instrucciones a seguir para la entrega de tus comics, NO OLVIDES REVISARLO.</p>
+              <p id="mensaje">En este correo te indicamos las instrucciones a seguir para la entrega de tus comics, <b>NO OLVIDES REVISARLO</b>.</p>
             </div>
             <div class="modal-footer navbar-inverse">
               <img src="../img/ComicDLogo-04.svg" vspace="10" hspace="10" class="img-responsive text-center" width="207" height="26"/>
@@ -129,17 +129,16 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
           <div class="row" id="entrega_df">
           <div class="col-lg-7">
-          <div class="alert alert-info" >
-            <strong>Si eres del DF </strong>el pago es a contraentrega
-          </div>
+            <div class="alert alert-info" >
+              <strong>Si eres del DF </strong>el pago es a contraentrega
+            </div>
           
           </div>
-          <div class="col-lg-4 col-lg-offset-1"> 
+          <div class="col-lg-4"> 
               <button class="btn btn-success" id="finalizarCompra_df">Finalizar la compra <strong>»</strong></button>
+              <img id="loading_gif" src="../img/ajax-loader.gif" alt=""/>
             </div> 
           </div>
-
-
           <div class="row" id="entrega_republica">
           <h5>Forma de Pago:</h5>
             <form id="formasPago">
@@ -157,8 +156,10 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
                 </label>
               </div>
             </div>  
-            <div class="col-lg-3 col-lg-offset-1"> 
+            <div class="col-lg-3 col-lg-offset-1">
+           
               <button type="submit" class="btn btn-success" id="finalizarCompra_rep">Finalizar la compra <strong>»</strong></button>
+              <img id="loading_gif_edos" src="../img/ajax-loader.gif" alt=""/>
             </div> 
             </form>
           </div>

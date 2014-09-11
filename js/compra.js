@@ -1,4 +1,6 @@
 $(document).ready(function(){
+        $('#loading_gif_edos').hide();
+        $('#loading_gif').hide();
         cargar_info();
 	$("#entrega_df").hide();
 	$("#entrega_republica").hide();
@@ -101,12 +103,14 @@ function finalizarCompra_rep(){
 		cadena = $(this).serialize();
 		cadena = cadena + "&codigo_postal="+$("#zipcode").val();
 		$.ajaxSetup({async:false});
+                $('#loading_gif_edos').show();
 		$.post("/php/insertarCompra_Tran.php",
 			cadena, function(data){
 				if(data.exito){
 					//alert(data.exito);
-					$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
-					$("#correo").text(data.usuario_correo);
+					$("#inicial").html("Gracias por tu compra <b>"+data.usuario_nombre+"</b>");
+					$("#correo").html("<b>"+data.usuario_correo+"</b>");
+                                        $('#loading_gif_edos').hide();
 				}
 				else{
 					alert("Ocurrio un error en tu compra, probablemente alguien te gano algun comic :(");
@@ -123,12 +127,14 @@ function finalizarCompra_df(){
 		//$('#myModal').modal('show');
 		cadena = "forma_pago_id=4&codigo_postal=NULL"
 		$.ajaxSetup({async:false});
+                $('#loading_gif').show();
 		$.post("/php/insertarCompra_Tran.php",
 			cadena, function(data){
 				if(data.exito){
 					//alert(data.exito);
-					$("#inicial").text("Gracias por tu compra "+data.usuario_nombre);
-					$("#correo").text(data.usuario_correo);
+					$("#inicial").html("Gracias por tu compra <b>"+data.usuario_nombre+"</b>");
+					$("#correo").html("<b>"+data.usuario_correo+"</b>");
+                                        $('#loading_gif').hide();
 				}
 				else{
 					alert("Ocurrio un error en tu compra, probablemente alguien te gano algun comic :(");
