@@ -52,7 +52,7 @@ else{
             echo $usuario_pro;
             echo $usuario_facebook_id;
             
-            $cadena_activacion_completa = "www.comicsdealer.com/php/activacion.php?fier=$insert_id&codigo=$cadena_confirmacion";
+            $cadena_activacion_completa = "http://www.comicsdealer.com/php/activacion.php?fier=$insert_id&codigo=$cadena_confirmacion";
             //echo $usuario_email;
             $mail1 = new SendGrid\Mail();
             $mail1->

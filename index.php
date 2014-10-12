@@ -406,7 +406,7 @@ $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
         <span class="label label-success">Los pagas y te los entregamos \o/</span></p>
       <p style="font-size: 12pt" align="justify">Ahora, si eres un Jedi usa la fuerza pra pedirnos cómics, si no, no temas y...</p>        
       <p align="right">
-        <a class="btn btn-lg btn-danger" href="html/preRegistro.html">Regístrate ya!</a>
+          <button class="btn btn-lg btn-danger" id="registroButtonBanner">Registrate!</button>
       </p>
       <p align="right" class="text-muted" style="font-size: 11pt">Este servicio es para toda la Republica Mexicana.</p>
     </div>

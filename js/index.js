@@ -3,10 +3,11 @@ $(document).ready(function(){
         verificaSesion();
 	//cargarCarousels();
 	cargarPromocionFinDeSemana('index');
-	modalIniciarSesion();
+	modalIniciarSesion();               //Del archivo registro_login.js
 	//cargarCarouselNologin(0);
-	modalRegistrar();
+	modalRegistrar();                   //Del archivo registro_login.js
 	//botonComprarNologin();
+        modalRegistrar2();                  //Del archivo registro_login.js
 	registroFacebook();
         registroCorreo();
         busquedaporPersonaje();
@@ -14,6 +15,11 @@ $(document).ready(function(){
         busquedaporDescripcion();
 });
 
+function modalRegistrar2(){
+    $("#registroButtonBanner").click(function(e){
+        $('#myModal2').modal('show');
+    });
+}
 
 
 function botonComprarNologin(){
